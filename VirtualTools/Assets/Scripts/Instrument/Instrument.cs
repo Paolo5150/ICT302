@@ -25,7 +25,7 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
 
     public void OnPointing()
     {
-        m_renderer.material.SetFloat("_Outline", 0.1f);
+        SetEnableOutline(true);
         
     }
 
@@ -34,8 +34,18 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
         throw new System.NotImplementedException();
     }
 
+    public void SetEnableOutline(bool enabled)
+    {
+        if(enabled)
+            m_renderer.material.SetFloat("_Outline", 0.1f);
+        else
+            m_renderer.material.SetFloat("_Outline", 0.0f);
+
+    }
+
     public void OnReleasedPointing()
     {
-        m_renderer.material.SetFloat("_Outline", 0.0f);
+        SetEnableOutline(false);
+
     }
 }

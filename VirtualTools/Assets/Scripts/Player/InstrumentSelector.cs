@@ -2,41 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstrumentSelector : MonoBehaviour
-{
-    public Camera raycastingCamera;
-    public float raycastLength = 150.0f;
-    public Color selectableOutlineColor = Color.white;
-
+public class InstrumentSelector
+{    
+    private Color m_selectableOutlineColor = Color.white;
     private int m_layerMask;
     private Instrument m_currentlyPointingInstrument;
+    private Camera m_raycastingCamera;
 
-    // Start is called before the first frame update
-    void Start()
+    public InstrumentSelector()
     {
         m_layerMask = LayerMask.GetMask("Instrument");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSelectableOutlineColor(Color color)
     {
-        RaycastFromCamera();
-        if(Input.GetButton("Fire1"))
-        {
-            if(m_currentlyPointingInstrument != null)
-            {
-                Debug.Log("Selected " + m_currentlyPointingInstrument.gameObject.name);
-            }
-        }
-
+        m_selectableOutlineColor = color;
+    }
+    public Instrument GetCurrentlyPointingIstrument()
+    {
+        return m_currentlyPointingInstrument;
+    }
+    public void SetRaycastingCamera(Camera camera)
+    {
+        m_raycastingCamera = camera;
     }
 
-    void RaycastFromCamera()
+    public void RaycastFromCamera(float raycastLength)
     {
-        if(raycastingCamera != null)
+        if(m_raycastingCamera != null)
         {
             RaycastHit hit;
-            Ray ray = new Ray(raycastingCamera.transform.position, raycastingCamera.transform.forward);
+            Ray ray = new Ray(m_raycastingCamera.transform.position, m_raycastingCamera.transform.forward);
 
             if (Physics.Raycast(ray, out hit, raycastLength, m_layerMask))
             {
@@ -50,7 +46,7 @@ public class InstrumentSelector : MonoBehaviour
                     if (m_currentlyPointingInstrument != null)
                         m_currentlyPointingInstrument.OnReleasedPointing();
 
-                     instrument.SetOutlineColor(selectableOutlineColor);
+                     instrument.SetOutlineColor(m_selectableOutlineColor);
                      instrument.OnPointing();
                      m_currentlyPointingInstrument = instrument;   
                 }
