@@ -6,6 +6,5 @@ public interface IInstrumentSelectable
 {
     void OnPointing();
     void OnSelected();
-
     void OnReleasedPointing();
 }
