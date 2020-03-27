@@ -21,6 +21,14 @@ public class InstrumentSelector : MonoBehaviour
     void Update()
     {
         RaycastFromCamera();
+        if(Input.GetButton("Fire1"))
+        {
+            if(m_currentlyPointingInstrument != null)
+            {
+                Debug.Log("Selected " + m_currentlyPointingInstrument.gameObject.name);
+            }
+        }
+
     }
 
     void RaycastFromCamera()
