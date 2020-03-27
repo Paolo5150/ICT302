@@ -15,7 +15,7 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
     // Update is called once per frame
     void Update()
     {
-        OnPointing();
+
     }
 
     public void OnPointing()
