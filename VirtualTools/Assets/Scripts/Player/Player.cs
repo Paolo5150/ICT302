@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private InstrumentSelector m_instrumentSelector;
     private FirstPersonController m_firstPersonController;
     private GameObject m_zoomViewSpot;
+    private Instrument m_currentlyPointingInstrument;
+    private Transform m_currentlyViewingTrans;
 
     public enum PlayerMode
     {
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
                 break;
             case PlayerMode.VIEWING:
                 m_firstPersonController.enabled = false;
-                m_instrumentSelector.GetCurrentlyPointingIstrument().SetEnableOutline(false);
+                m_currentlyPointingInstrument.SetEnableOutline(false);
                 break;
         }
         m_playerMode = mode;
@@ -55,22 +57,50 @@ public class Player : MonoBehaviour
     {
         if(m_playerMode == PlayerMode.FREE)
         {
-            m_instrumentSelector.RaycastFromCamera(raycastLength);
+            UpdatePointingInstrument();
+
             if (Input.GetButton("Fire1"))
             {
-                if (m_instrumentSelector.GetCurrentlyPointingIstrument() != null)
+                if (m_currentlyPointingInstrument != null)
                 {
+                    m_currentlyViewingTrans = Transform.Instantiate(m_currentlyPointingInstrument.gameObject.transform);
+
                     SetPlayerMode(PlayerMode.VIEWING);
-                    m_instrumentSelector.GetCurrentlyPointingIstrument().gameObject.transform.SetParent(m_zoomViewSpot.gameObject.transform);
-                    m_instrumentSelector.GetCurrentlyPointingIstrument().gameObject.transform.transform.localPosition = new Vector3(0, 0, 0);
-                    m_instrumentSelector.GetCurrentlyPointingIstrument().gameObject.transform.transform.localRotation = Quaternion.identity;
+                    StartCoroutine(m_instrumentSelector.SetIntrumentToView(m_currentlyPointingInstrument.gameObject, m_zoomViewSpot.transform));
                 }
             }
         }
         else
         {
-
+            if (Input.GetButton("Fire2"))
+            {
+                StartCoroutine(m_instrumentSelector.UnsetIntrumentToView(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
+                SetPlayerMode(PlayerMode.FREE);
+            }
         }
 
+    }
+
+    private void UpdatePointingInstrument()
+    {
+        Instrument instrument = m_instrumentSelector.RaycastFromCamera(raycastLength);
+        // If I'm looking at an intrument and it's not the one i was already looking at
+        if (instrument != null && instrument != m_currentlyPointingInstrument)
+        {
+            if (m_currentlyPointingInstrument != null)
+                m_currentlyPointingInstrument.OnReleasedPointing();
+
+            instrument.SetOutlineColor(selectableOutlineColor);
+            instrument.OnPointing();
+            m_currentlyPointingInstrument = instrument;
+        }
+        else if (instrument == null) // If no hit
+        {
+            if (m_currentlyPointingInstrument != null)
+            {
+                m_currentlyPointingInstrument.OnReleasedPointing();
+                m_currentlyPointingInstrument = null;
+            }
+        }
     }
 }

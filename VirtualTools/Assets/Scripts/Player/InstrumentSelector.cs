@@ -6,8 +6,8 @@ public class InstrumentSelector
 {    
     private Color m_selectableOutlineColor = Color.white;
     private int m_layerMask;
-    private Instrument m_currentlyPointingInstrument;
     private Camera m_raycastingCamera;
+    private Vector3 m_instrumentOriginalPosition;
 
     public InstrumentSelector()
     {
@@ -18,17 +18,15 @@ public class InstrumentSelector
     {
         m_selectableOutlineColor = color;
     }
-    public Instrument GetCurrentlyPointingIstrument()
-    {
-        return m_currentlyPointingInstrument;
-    }
+
     public void SetRaycastingCamera(Camera camera)
     {
         m_raycastingCamera = camera;
     }
 
-    public void RaycastFromCamera(float raycastLength)
+    public Instrument RaycastFromCamera(float raycastLength)
     {
+        Instrument toReturn = null;
         if(m_raycastingCamera != null)
         {
             RaycastHit hit;
@@ -40,25 +38,45 @@ public class InstrumentSelector
 
                 // If an object on layer Instrument was hit, it must be inheriting "IInstrumentSelectable"
                 Instrument instrument = objectHit.gameObject.GetComponent<Instrument>();
-
-                if(instrument != null && instrument != m_currentlyPointingInstrument)
-                {
-                    if (m_currentlyPointingInstrument != null)
-                        m_currentlyPointingInstrument.OnReleasedPointing();
-
-                     instrument.SetOutlineColor(m_selectableOutlineColor);
-                     instrument.OnPointing();
-                     m_currentlyPointingInstrument = instrument;   
-                }
-            }
-            else
-            {
-                if (m_currentlyPointingInstrument != null)
-                {
-                    m_currentlyPointingInstrument.OnReleasedPointing();
-                    m_currentlyPointingInstrument = null;
-                }
+                toReturn = instrument;   
             }
         }
+        return toReturn;
+    }
+
+    public IEnumerator SetIntrumentToView(GameObject instrument, Transform zoomViewSpotTransform)
+    {
+        m_instrumentOriginalPosition = new Vector3(instrument.transform.position.x, instrument.transform.position.y, instrument.transform.position.z);
+
+        float lerpValue = 0;
+        float distance = (instrument.transform.position - zoomViewSpotTransform.position).magnitude;
+        while (distance > 0.5f)
+        {
+            lerpValue += Time.deltaTime * 0.5f;
+            Vector3 newPos = Vector3.Lerp(instrument.transform.position, zoomViewSpotTransform.position, lerpValue);
+            instrument.transform.position = newPos;
+            distance = (instrument.transform.position - zoomViewSpotTransform.position).magnitude;
+            yield return null;
+        }
+        //instrument.transform.transform.localPosition = new Vector3(0, 0, 0);
+        //instrument.transform.transform.localRotation = Quaternion.identity;
+    }
+
+    public IEnumerator UnsetIntrumentToView(GameObject instrument, Vector3 originalPos)
+    {
+        m_instrumentOriginalPosition = new Vector3(instrument.transform.position.x, instrument.transform.position.y, instrument.transform.position.z);
+
+        float lerpValue = 0;
+        float distance = (instrument.transform.position - originalPos).magnitude;
+        while (distance > 0.5f)
+        {
+            lerpValue += Time.deltaTime * 0.5f;
+            Vector3 newPos = Vector3.Lerp(instrument.transform.position, originalPos, lerpValue);
+            instrument.transform.position = newPos;
+            distance = (instrument.transform.position - originalPos).magnitude;
+            yield return null;
+        }
+        //instrument.transform.transform.localPosition = new Vector3(0, 0, 0);
+        //instrument.transform.transform.localRotation = Quaternion.identity;
     }
 }
