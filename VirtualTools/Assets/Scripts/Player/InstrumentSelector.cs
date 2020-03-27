@@ -5,6 +5,8 @@ using UnityEngine;
 public class InstrumentSelector : MonoBehaviour
 {
     public Camera raycastingCamera;
+    public float raycastLength = 150.0f;
+    public Color selectableOutlineColor = Color.white;
 
     private int m_layerMask;
     private Instrument m_currentlyPointingInstrument;
@@ -28,10 +30,9 @@ public class InstrumentSelector : MonoBehaviour
             RaycastHit hit;
             Ray ray = new Ray(raycastingCamera.transform.position, raycastingCamera.transform.forward);
 
-            if (Physics.Raycast(ray, out hit, 100.0f, m_layerMask))
+            if (Physics.Raycast(ray, out hit, raycastLength, m_layerMask))
             {
                 Transform objectHit = hit.transform;
-                Debug.Log("HITTING " + objectHit.gameObject.name);
 
                 // If an object on layer Instrument was hit, it must be inheriting "IInstrumentSelectable"
                 Instrument instrument = objectHit.gameObject.GetComponent<Instrument>();
@@ -40,7 +41,8 @@ public class InstrumentSelector : MonoBehaviour
                 {
                     if (m_currentlyPointingInstrument != null)
                         m_currentlyPointingInstrument.OnReleasedPointing();
-          
+
+                     instrument.SetOutlineColor(selectableOutlineColor);
                      instrument.OnPointing();
                      m_currentlyPointingInstrument = instrument;   
                 }
@@ -52,7 +54,6 @@ public class InstrumentSelector : MonoBehaviour
                     m_currentlyPointingInstrument.OnReleasedPointing();
                     m_currentlyPointingInstrument = null;
                 }
-
             }
         }
     }

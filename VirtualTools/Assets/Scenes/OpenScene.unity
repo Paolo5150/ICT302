@@ -2083,6 +2083,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastingCamera: {fileID: 1768366414}
+  raycastLength: 150
+  selectableOutlineColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1 &2099465004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 134278, guid: 80565fbeae15fa746956cf545776c7d6,

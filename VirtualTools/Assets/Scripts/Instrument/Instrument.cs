@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Instrument : MonoBehaviour, IInstrumentSelectable
 {
-
     private Renderer m_renderer;
 
     // Start is called before the first frame update
@@ -19,9 +18,15 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
 
     }
 
+    public void SetOutlineColor(Color color)
+    {
+        m_renderer.material.SetColor("_OutColor", color);
+    }
+
     public void OnPointing()
     {
         m_renderer.material.SetFloat("_Outline", 0.1f);
+        
     }
 
     public void OnSelected()
