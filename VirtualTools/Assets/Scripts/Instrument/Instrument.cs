@@ -5,11 +5,12 @@ using UnityEngine;
 public class Instrument : MonoBehaviour, IInstrumentSelectable
 {
 
+    private Renderer m_renderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_renderer = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -20,11 +21,16 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
 
     public void OnPointing()
     {
-        transform.Rotate(new Vector3(0, 1, 0));
+        m_renderer.material.SetFloat("_Outline", 0.1f);
     }
 
     public void OnSelected()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void OnReleasedPointing()
+    {
+        m_renderer.material.SetFloat("_Outline", 0.0f);
     }
 }

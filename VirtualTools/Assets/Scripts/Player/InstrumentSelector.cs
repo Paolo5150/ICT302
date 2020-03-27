@@ -6,7 +6,8 @@ public class InstrumentSelector : MonoBehaviour
 {
     public Camera raycastingCamera;
 
-    int m_layerMask;
+    private int m_layerMask;
+    private Instrument m_currentlyPointingInstrument;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +32,27 @@ public class InstrumentSelector : MonoBehaviour
             {
                 Transform objectHit = hit.transform;
                 Debug.Log("HITTING " + objectHit.gameObject.name);
+
                 // If an object on layer Instrument was hit, it must be inheriting "IInstrumentSelectable"
                 Instrument instrument = objectHit.gameObject.GetComponent<Instrument>();
-                if (instrument)
-                    instrument.OnPointing();
+
+                if(instrument != null && instrument != m_currentlyPointingInstrument)
+                {
+                    if (m_currentlyPointingInstrument != null)
+                        m_currentlyPointingInstrument.OnReleasedPointing();
+          
+                     instrument.OnPointing();
+                     m_currentlyPointingInstrument = instrument;   
+                }
+            }
+            else
+            {
+                if (m_currentlyPointingInstrument != null)
+                {
+                    m_currentlyPointingInstrument.OnReleasedPointing();
+                    m_currentlyPointingInstrument = null;
+                }
+
             }
         }
     }
