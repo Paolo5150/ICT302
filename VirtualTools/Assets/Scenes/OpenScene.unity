@@ -2306,7 +2306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastLength: 150
   selectableOutlineColor: {r: 0, g: 1, b: 0.09281945, a: 1}
-  itemViewRotationSpeed: 250
+  itemViewRotationSpeed: 500
   itemViewMovementSpeed: 0.5
   itemViewMovementLimitRange: 20
 --- !u!1 &2099465004 stripped
