@@ -19,13 +19,22 @@ public class GUIManager : MonoBehaviour
         }
     }
 
+    public MainCanvas GetMainCanvas()
+    {
+        return m_mainCanvas;
+    }
+
+    public void Init()
+    {
+        m_mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<MainCanvas>();
+        m_mainCanvas.Init();
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        m_mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<MainCanvas>();
 
-        string[] instructions = { "Hi, I'm Gustaf Von Horbert. Press the Fire button to dismiss my messages.", "How are you?", "Fuck off then!" };
-        m_mainCanvas.DogInstructionSequence(instructions);
     }
 
     // Update is called once per frame

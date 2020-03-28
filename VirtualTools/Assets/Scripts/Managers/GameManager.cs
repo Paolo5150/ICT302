@@ -47,7 +47,14 @@ public class GameManager : MonoBehaviour
     {
         m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        SetGameMode(GAME_MODE.PLAYING);
+        SetGameMode(GAME_MODE.INSTRUCTION);
+
+        GUIManager.Instance.Init();
+
+        string[] instructions = { "Hi, I'm Gustaf Von Horbert. Press the Fire button to dismiss my messages.", "How are you?", "Fuck off then!" };
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, ()=> {
+            SetGameMode(GAME_MODE.PLAYING);
+        });
     }
 
     // Update is called once per frame

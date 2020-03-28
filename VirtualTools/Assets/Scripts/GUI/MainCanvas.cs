@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,10 +7,15 @@ using UnityEngine.UI;
 public class MainCanvas : MonoBehaviour
 {
     private GameObject m_dog;
+
+    public void Init()
+    {
+        m_dog = transform.GetChild(0).gameObject;
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        m_dog = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -40,7 +46,7 @@ public class MainCanvas : MonoBehaviour
         StartCoroutine(PopUpMessage(seconds, text));
     }
 
-    private IEnumerator InstructionSequence(string[] instructions)
+    private IEnumerator InstructionSequence(string[] instructions, Action action)
     {
         int index = 0;
         while(index < instructions.Length)
@@ -58,10 +64,11 @@ public class MainCanvas : MonoBehaviour
                 yield return null;
         }
         SetDogEnabled(false);
+        action();
     }
 
-    public void DogInstructionSequence(string[] instructions)
+    public void DogInstructionSequence(string[] instructions, Action action)
     {
-        StartCoroutine(InstructionSequence(instructions));
+        StartCoroutine(InstructionSequence(instructions, action));
     }
 }
