@@ -882,6 +882,10 @@ PrefabInstance:
       propertyPath: m_GravityMultiplier
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+      propertyPath: m_JumpSpeed
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 14300000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_SkinWidth
       value: 1
@@ -2209,7 +2213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastLength: 150
-  selectableOutlineColor: {r: 1, g: 1, b: 1, a: 1}
+  selectableOutlineColor: {r: 1, g: 0, b: 0, a: 1}
   itemViewRotationSpeed: 250
   itemViewMovementSpeed: 0.5
   itemViewMovementLimitRange: 20
