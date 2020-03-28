@@ -44,10 +44,8 @@ public class InstrumentSelector
         return toReturn;
     }
 
-    public IEnumerator LerpToPosition(GameObject instrument, Vector3 viewPosition, Quaternion viewRotation)
+    public IEnumerator LerpToPosition(GameObject instrument, Vector3 viewPosition)
     {
-        m_instrumentOriginalPosition = new Vector3(instrument.transform.position.x, instrument.transform.position.y, instrument.transform.position.z);
-
         float lerpValue = 0;
         float distance = (instrument.transform.position - viewPosition).magnitude;
         while (distance > 0.5f)
@@ -58,5 +56,23 @@ public class InstrumentSelector
             distance = (instrument.transform.position - viewPosition).magnitude;
             yield return null;
         }
+    }
+
+    public IEnumerator LerpToRotation(GameObject instrument, Quaternion viewRotation)
+    {
+        float lerpValue = 0;
+        int i = 1000;
+        while (i > 0)
+        {
+            lerpValue += Time.deltaTime * 0.5f;
+            Quaternion newRot = Quaternion.Lerp(instrument.transform.rotation, viewRotation, lerpValue);
+            instrument.transform.rotation = newRot;
+            i--;
+            yield return null;
+        }
+    }
+
+    public void ItemRotationManipulation(Instrument instrument, float speed)
+    {
     }
 }
