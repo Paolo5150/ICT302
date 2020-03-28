@@ -7,10 +7,15 @@ public class Player : MonoBehaviour
 {
     public float raycastLength = 150.0f;
     public Color selectableOutlineColor = Color.white;
+    public float itemViewRotationSpeed = 50.0f;
+    public float itemViewMovementSpeed = 50.0f;
+    public float itemViewMovementLimitRange = 50.0f;
+
 
     private InstrumentSelector m_instrumentSelector;
     private FirstPersonController m_firstPersonController;
     private GameObject m_zoomViewSpot;
+    private Instrument m_currentlyPointingInstrument;
 
     public enum PlayerMode
     {
@@ -44,7 +49,7 @@ public class Player : MonoBehaviour
                 break;
             case PlayerMode.VIEWING:
                 m_firstPersonController.enabled = false;
-                m_instrumentSelector.GetCurrentlyPointingIstrument().SetEnableOutline(false);
+                m_currentlyPointingInstrument.SetEnableOutline(false);
                 break;
         }
         m_playerMode = mode;
@@ -53,24 +58,78 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(m_playerMode == PlayerMode.FREE)
+        switch(m_playerMode)
         {
-            m_instrumentSelector.RaycastFromCamera(raycastLength);
-            if (Input.GetButton("Fire1"))
+            case PlayerMode.FREE:
+                FreeMode();
+                break;
+            case PlayerMode.VIEWING:
+                ViewMode();
+                break;
+        }
+    }
+
+    private void FreeMode()
+    {
+        UpdatePointingInstrument();
+
+        if (Input.GetButton("Fire1"))
+        {
+            if (m_currentlyPointingInstrument != null)
             {
-                if (m_instrumentSelector.GetCurrentlyPointingIstrument() != null)
-                {
-                    SetPlayerMode(PlayerMode.VIEWING);
-                    m_instrumentSelector.GetCurrentlyPointingIstrument().gameObject.transform.SetParent(m_zoomViewSpot.gameObject.transform);
-                    m_instrumentSelector.GetCurrentlyPointingIstrument().gameObject.transform.transform.localPosition = new Vector3(0, 0, 0);
-                    m_instrumentSelector.GetCurrentlyPointingIstrument().gameObject.transform.transform.localRotation = Quaternion.identity;
-                }
+                SetPlayerMode(PlayerMode.VIEWING);
+                StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_zoomViewSpot.transform.position));
             }
+        }
+    }
+
+    private void ViewMode()
+    {
+        // Manipulate object being viewed
+        m_currentlyPointingInstrument.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * itemViewRotationSpeed, Space.World);
+
+        float distance = (m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position).magnitude;
+        if(distance < itemViewMovementLimitRange)
+        {
+            m_currentlyPointingInstrument.gameObject.transform.position += transform.forward * itemViewMovementSpeed * Input.GetAxis("Vertical");
+            m_currentlyPointingInstrument.gameObject.transform.position += transform.right * itemViewMovementSpeed * Input.GetAxis("Horizontal");
         }
         else
         {
-
+            Vector3 goBack = m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position;
+            m_currentlyPointingInstrument.gameObject.transform.position += goBack.normalized * 0.2f;
         }
 
+
+
+        if (Input.GetButton("Fire2"))
+        {
+            StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
+            m_currentlyPointingInstrument.gameObject.transform.rotation = m_currentlyPointingInstrument.originalRotation;
+            SetPlayerMode(PlayerMode.FREE);
+        }
+    }
+
+    private void UpdatePointingInstrument()
+    {
+        Instrument instrument = m_instrumentSelector.RaycastFromCamera(raycastLength);
+        // If I'm looking at an intrument and it's not the one i was already looking at
+        if (instrument != null && instrument != m_currentlyPointingInstrument)
+        {
+            if (m_currentlyPointingInstrument != null)
+                m_currentlyPointingInstrument.OnReleasedPointing();
+
+            instrument.SetOutlineColor(selectableOutlineColor);
+            instrument.OnPointing();
+            m_currentlyPointingInstrument = instrument;
+        }
+        else if (instrument == null) // If no hit
+        {
+            if (m_currentlyPointingInstrument != null)
+            {
+                m_currentlyPointingInstrument.OnReleasedPointing();
+                m_currentlyPointingInstrument = null;
+            }
+        }
     }
 }

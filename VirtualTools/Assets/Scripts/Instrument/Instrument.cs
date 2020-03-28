@@ -5,11 +5,16 @@ using UnityEngine;
 public class Instrument : MonoBehaviour, IInstrumentSelectable
 {
     private Renderer m_renderer;
+    public Vector3 originalPosition;
+    public Quaternion originalRotation;
+
 
     // Start is called before the first frame update
     void Start()
     {
         m_renderer = GetComponent<MeshRenderer>();
+        originalPosition = transform.position;
+        originalRotation = transform.rotation;
     }
 
     // Update is called once per frame

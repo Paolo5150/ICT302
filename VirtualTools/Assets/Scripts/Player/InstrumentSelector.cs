@@ -6,8 +6,8 @@ public class InstrumentSelector
 {    
     private Color m_selectableOutlineColor = Color.white;
     private int m_layerMask;
-    private Instrument m_currentlyPointingInstrument;
     private Camera m_raycastingCamera;
+    private Vector3 m_instrumentOriginalPosition;
 
     public InstrumentSelector()
     {
@@ -18,17 +18,15 @@ public class InstrumentSelector
     {
         m_selectableOutlineColor = color;
     }
-    public Instrument GetCurrentlyPointingIstrument()
-    {
-        return m_currentlyPointingInstrument;
-    }
+
     public void SetRaycastingCamera(Camera camera)
     {
         m_raycastingCamera = camera;
     }
 
-    public void RaycastFromCamera(float raycastLength)
+    public Instrument RaycastFromCamera(float raycastLength)
     {
+        Instrument toReturn = null;
         if(m_raycastingCamera != null)
         {
             RaycastHit hit;
@@ -40,25 +38,41 @@ public class InstrumentSelector
 
                 // If an object on layer Instrument was hit, it must be inheriting "IInstrumentSelectable"
                 Instrument instrument = objectHit.gameObject.GetComponent<Instrument>();
-
-                if(instrument != null && instrument != m_currentlyPointingInstrument)
-                {
-                    if (m_currentlyPointingInstrument != null)
-                        m_currentlyPointingInstrument.OnReleasedPointing();
-
-                     instrument.SetOutlineColor(m_selectableOutlineColor);
-                     instrument.OnPointing();
-                     m_currentlyPointingInstrument = instrument;   
-                }
-            }
-            else
-            {
-                if (m_currentlyPointingInstrument != null)
-                {
-                    m_currentlyPointingInstrument.OnReleasedPointing();
-                    m_currentlyPointingInstrument = null;
-                }
+                toReturn = instrument;   
             }
         }
+        return toReturn;
+    }
+
+    public IEnumerator LerpToPosition(GameObject instrument, Vector3 viewPosition)
+    {
+        float lerpValue = 0;
+        float distance = (instrument.transform.position - viewPosition).magnitude;
+        while (distance > 0.5f)
+        {
+            lerpValue += Time.deltaTime * 0.5f;
+            Vector3 newPos = Vector3.Lerp(instrument.transform.position, viewPosition, lerpValue);
+            instrument.transform.position = newPos;
+            distance = (instrument.transform.position - viewPosition).magnitude;
+            yield return null;
+        }
+    }
+
+    public IEnumerator LerpToRotation(GameObject instrument, Quaternion viewRotation)
+    {
+        float lerpValue = 0;
+        int i = 1000;
+        while (i > 0)
+        {
+            lerpValue += Time.deltaTime * 0.5f;
+            Quaternion newRot = Quaternion.Lerp(instrument.transform.rotation, viewRotation, lerpValue);
+            instrument.transform.rotation = newRot;
+            i--;
+            yield return null;
+        }
+    }
+
+    public void ItemRotationManipulation(Instrument instrument, float speed)
+    {
     }
 }
