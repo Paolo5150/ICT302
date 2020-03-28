@@ -2212,6 +2212,7 @@ MonoBehaviour:
   selectableOutlineColor: {r: 1, g: 1, b: 1, a: 1}
   itemViewRotationSpeed: 250
   itemViewMovementSpeed: 0.5
+  itemViewMovementLimitRange: 20
 --- !u!1 &2099465004 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 134278, guid: 80565fbeae15fa746956cf545776c7d6,

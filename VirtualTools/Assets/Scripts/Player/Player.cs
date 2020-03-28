@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public Color selectableOutlineColor = Color.white;
     public float itemViewRotationSpeed = 50.0f;
     public float itemViewMovementSpeed = 50.0f;
+    public float itemViewMovementLimitRange = 50.0f;
 
 
     private InstrumentSelector m_instrumentSelector;
@@ -86,8 +87,21 @@ public class Player : MonoBehaviour
     {
         // Manipulate object being viewed
         m_currentlyPointingInstrument.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), Input.GetAxis("Mouse X"), 0) * Time.deltaTime * itemViewRotationSpeed, Space.World);
-        m_currentlyPointingInstrument.gameObject.transform.position += transform.forward * itemViewMovementSpeed * Input.GetAxis("Vertical");
-        m_currentlyPointingInstrument.gameObject.transform.position += transform.right * itemViewMovementSpeed * Input.GetAxis("Horizontal");
+
+        float distance = (m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position).magnitude;
+        if(distance < itemViewMovementLimitRange)
+        {
+            m_currentlyPointingInstrument.gameObject.transform.position += transform.forward * itemViewMovementSpeed * Input.GetAxis("Vertical");
+            m_currentlyPointingInstrument.gameObject.transform.position += transform.right * itemViewMovementSpeed * Input.GetAxis("Horizontal");
+        }
+        else
+        {
+            Vector3 goBack = m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position;
+            m_currentlyPointingInstrument.gameObject.transform.position += goBack.normalized * 0.2f;
+        }
+
+
+
         if (Input.GetButton("Fire2"))
         {
             StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
