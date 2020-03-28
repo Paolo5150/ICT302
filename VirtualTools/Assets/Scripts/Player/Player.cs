@@ -62,11 +62,9 @@ public class Player : MonoBehaviour
             if (Input.GetButton("Fire1"))
             {
                 if (m_currentlyPointingInstrument != null)
-                {
-                    m_currentlyViewingTrans = Transform.Instantiate(m_currentlyPointingInstrument.gameObject.transform);
-
+                { 
                     SetPlayerMode(PlayerMode.VIEWING);
-                    StartCoroutine(m_instrumentSelector.SetIntrumentToView(m_currentlyPointingInstrument.gameObject, m_zoomViewSpot.transform));
+                    StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_zoomViewSpot.transform.position,Quaternion.identity));
                 }
             }
         }
@@ -74,7 +72,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetButton("Fire2"))
             {
-                StartCoroutine(m_instrumentSelector.UnsetIntrumentToView(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
+                StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition, Quaternion.identity));
                 SetPlayerMode(PlayerMode.FREE);
             }
         }

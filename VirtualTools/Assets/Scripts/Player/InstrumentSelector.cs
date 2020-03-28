@@ -44,39 +44,19 @@ public class InstrumentSelector
         return toReturn;
     }
 
-    public IEnumerator SetIntrumentToView(GameObject instrument, Transform zoomViewSpotTransform)
+    public IEnumerator LerpToPosition(GameObject instrument, Vector3 viewPosition, Quaternion viewRotation)
     {
         m_instrumentOriginalPosition = new Vector3(instrument.transform.position.x, instrument.transform.position.y, instrument.transform.position.z);
 
         float lerpValue = 0;
-        float distance = (instrument.transform.position - zoomViewSpotTransform.position).magnitude;
+        float distance = (instrument.transform.position - viewPosition).magnitude;
         while (distance > 0.5f)
         {
             lerpValue += Time.deltaTime * 0.5f;
-            Vector3 newPos = Vector3.Lerp(instrument.transform.position, zoomViewSpotTransform.position, lerpValue);
+            Vector3 newPos = Vector3.Lerp(instrument.transform.position, viewPosition, lerpValue);
             instrument.transform.position = newPos;
-            distance = (instrument.transform.position - zoomViewSpotTransform.position).magnitude;
+            distance = (instrument.transform.position - viewPosition).magnitude;
             yield return null;
         }
-        //instrument.transform.transform.localPosition = new Vector3(0, 0, 0);
-        //instrument.transform.transform.localRotation = Quaternion.identity;
-    }
-
-    public IEnumerator UnsetIntrumentToView(GameObject instrument, Vector3 originalPos)
-    {
-        m_instrumentOriginalPosition = new Vector3(instrument.transform.position.x, instrument.transform.position.y, instrument.transform.position.z);
-
-        float lerpValue = 0;
-        float distance = (instrument.transform.position - originalPos).magnitude;
-        while (distance > 0.5f)
-        {
-            lerpValue += Time.deltaTime * 0.5f;
-            Vector3 newPos = Vector3.Lerp(instrument.transform.position, originalPos, lerpValue);
-            instrument.transform.position = newPos;
-            distance = (instrument.transform.position - originalPos).magnitude;
-            yield return null;
-        }
-        //instrument.transform.transform.localPosition = new Vector3(0, 0, 0);
-        //instrument.transform.transform.localRotation = Quaternion.identity;
     }
 }
