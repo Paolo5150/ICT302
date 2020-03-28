@@ -28,7 +28,6 @@ public class GUIManager : MonoBehaviour
     {
         m_mainCanvas = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<MainCanvas>();
         m_mainCanvas.Init();
-
     }
 
     // Start is called before the first frame update

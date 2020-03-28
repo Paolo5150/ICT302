@@ -51,7 +51,9 @@ public class GameManager : MonoBehaviour
 
         GUIManager.Instance.Init();
 
-        string[] instructions = { "Hi, I'm Gustaf Von Horbert. Press the Fire button to dismiss my messages.", "How are you?", "Fuck off then!" };
+        string[] instructions = { "Hi, I'm Gustaf Von Horbert. Press the Fire button to dismiss my messages.",
+                                    "How are you?",
+                                    "Fuck off then!" };
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, ()=> {
             SetGameMode(GAME_MODE.PLAYING);
         });
