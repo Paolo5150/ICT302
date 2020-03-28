@@ -132,4 +132,9 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void SetMovementEnabled(bool enabled)
+    {
+        m_firstPersonController.enabled = enabled;
+    }
 }
