@@ -26,10 +26,33 @@ public class Player : MonoBehaviour
     public enum PlayerMode
     {
         VIEWING,
-        FREE
+        PICKING
     }
 
     private PlayerMode m_playerMode;
+    private static Player m_instance;
+    public static Player Instance
+    {
+        get
+        {
+            if (m_instance == null)
+            {
+                GameObject coreGameObject = GameObject.Find("Player");
+                m_instance = coreGameObject.AddComponent<Player>();
+            }
+
+            return m_instance;
+        }
+    }
+
+    protected virtual void Awake()
+    {
+        if (m_instance == null)
+            m_instance = GetComponent<Player>();
+        else
+            DestroyImmediate(this);
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +62,7 @@ public class Player : MonoBehaviour
 
     public void Init()
     {
-        m_playerMode = PlayerMode.FREE;
+        m_playerMode = PlayerMode.PICKING;
 
         m_instrumentSelector = new InstrumentSelector();
         m_firstPersonController = GetComponent<FirstPersonController>();
@@ -51,6 +74,12 @@ public class Player : MonoBehaviour
         m_instrumentSelector.SetSelectableOutlineColor(selectableOutlineColor);
         m_pickingEnabled = true;
         m_viewingEnabled = true;
+    }
+
+    public void FreezePlayer(bool freeze)
+    {
+        GetComponent<FirstPersonController>().enabled = !freeze;
+        enabled = !freeze;
     }
 
     public void SetPickingEnabled(bool enabled)
@@ -67,16 +96,14 @@ public class Player : MonoBehaviour
     {
         switch(mode)
         {
-            case PlayerMode.FREE:
+            case PlayerMode.PICKING:
                 m_firstPersonController.enabled = true;
-                m_pickingEnabled = true;
-                m_viewingEnabled = true;
+
                 break;
             case PlayerMode.VIEWING:                    
                 m_firstPersonController.enabled = false;
-                m_pickingEnabled = false;
                 m_currentlyPointingInstrument.SetEnableOutline(false);
-                m_viewingEnabled = true;
+
                 break;
         }
         m_playerMode = mode;
@@ -87,8 +114,8 @@ public class Player : MonoBehaviour
     {
         switch(m_playerMode)
         {
-            case PlayerMode.FREE:
-                FreeMode();
+            case PlayerMode.PICKING:
+                PickingMode();
                 break;
             case PlayerMode.VIEWING:
                 ViewMode();
@@ -96,7 +123,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FreeMode()
+    private void PickingMode()
     {
         if (m_pickingEnabled)
         {
@@ -113,7 +140,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ResetPlayerMode()
+    public void ResetItemAndPlayerToFree()
     {
         // Put item back
         if(m_currentlyPointingInstrument != null)
@@ -123,8 +150,7 @@ public class Player : MonoBehaviour
             m_currentlyPointingInstrument = null;
         }
 
-        SetPlayerMode(PlayerMode.FREE);
-
+        SetPlayerMode(PlayerMode.PICKING);
     }
 
     private void ViewMode()
@@ -157,10 +183,11 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
                 m_currentlyPointingInstrument.gameObject.transform.rotation = m_currentlyPointingInstrument.originalRotation;
-                SetPlayerMode(PlayerMode.FREE);
+                SetPlayerMode(PlayerMode.PICKING);
             }
         }       
     }
+
 
     private void UpdatePointingInstrument()
     {

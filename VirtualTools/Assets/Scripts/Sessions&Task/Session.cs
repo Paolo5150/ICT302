@@ -21,14 +21,32 @@ public class Session
         Task.STATUS status = m_currentTask.Evaluate(instrumentTag);
         if(status == Task.STATUS.COMPLETED_SUCCESS)
         {
-            GUIManager.Instance.GetMainCanvas().DogPopUp(3.0f, "Well done!");
-            //Next task
+            Player.Instance.FreezePlayer(true);
+
+            GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Nicely done!" }, () => {
+                Player.Instance.ResetItemAndPlayerToFree();
+                Player.Instance.FreezePlayer(false);
+                Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                
+                // Next task
+                if (!NextTask())
+                {
+                    //If this is reached there are no tasks left (write to report here?)
+                    Player.Instance.SetPickingEnabled(false);
+                    GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
+
+                }
+
+            });
         }
         else
         {
-            GameManager.Instance.SetGameMode(GameManager.GAME_MODE.INSTRUCTION);
+            Player.Instance.FreezePlayer(true);
             GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Oh no, wrong item!" } , ()=> {
-                GameManager.Instance.m_player.ResetPlayerMode();
+                Player.Instance.ResetItemAndPlayerToFree();
+                Player.Instance.FreezePlayer(false);
+                Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+
                 // Restart session
                 Restart();
 
@@ -67,6 +85,16 @@ public class Session
 
     }
 
+    private bool NextTask()
+    {
+        int indexOfCurrent = tasks.IndexOf(m_currentTask);
+        if (indexOfCurrent == tasks.Count - 1)
+            return false;
+
+        m_currentTask = tasks[indexOfCurrent + 1];
+        return true;
+    }
+
     public void Update()
     {
         if(m_isStarted)
@@ -74,9 +102,10 @@ public class Session
             if(m_currentTask.taskStatus == Task.STATUS.PENDING)
             {
                 m_currentTask.taskStatus = Task.STATUS.INSTRUCTING;
-                GameManager.Instance.SetGameMode(GameManager.GAME_MODE.INSTRUCTION);
+                Player.Instance.FreezePlayer(true);
                 GUIManager.Instance.GetMainCanvas().DogInstructionSequence(m_currentTask.instructions.ToArray(), ()=> {
-                    GameManager.Instance.SetGameMode(GameManager.GAME_MODE.PLAYING);
+                    Player.Instance.FreezePlayer(false);
+                    Player.Instance.SetPickingEnabled(true);
                     m_currentTask.taskStatus = Task.STATUS.STARTED;
                 });
             }

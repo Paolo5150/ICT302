@@ -40,10 +40,6 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
         
     }
 
-    public void OnSelected()
-    {
-        throw new System.NotImplementedException();
-    }
 
     public void SetEnableOutline(bool enabled)
     {
