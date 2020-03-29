@@ -38,9 +38,10 @@ public class GameManager : MonoBehaviour
     {
         // Initialize other managers here
         GUIManager.Instance.Init();
-
         Player.Instance.Init();
+        Cursor.visible = false;
 
+        //Will create a session manager
         session = new Session();
         InstrumentSelectTask task1 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SCALP);
         InstrumentSelectTask task2 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SCISSOR);
@@ -49,15 +50,7 @@ public class GameManager : MonoBehaviour
         session.AddTask(task2);
 
         session.Start();
-       /* SetGameMode(GAME_MODE.INSTRUCTION);
 
-        string[] instructions = { "Hi, I'm Gustaf Von Horbert. Press the Fire button to dismiss my messages.",
-                                    "How are you?",
-                                    "Nice!" };
-
-        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, ()=> {
-            SetGameMode(GAME_MODE.PLAYING);
-        });*/
     }
 
     // Update is called once per frame
