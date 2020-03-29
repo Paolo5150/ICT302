@@ -48,11 +48,13 @@ public class MainCanvas : MonoBehaviour
 
     private IEnumerator InstructionSequence(string[] instructions, Action action)
     {
+        yield return new WaitForSeconds(0.2f);
+
         int index = 0;
         while(index < instructions.Length)
         {
             DogSpeak(instructions[index]);
-            if (Input.GetButton("Fire1"))
+            if (Input.GetButtonDown("Fire1"))
             {
                 index++;
                 if (index >= instructions.Length) break;

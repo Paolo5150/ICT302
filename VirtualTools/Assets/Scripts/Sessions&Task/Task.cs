@@ -23,5 +23,7 @@ public abstract class Task
         instructions = new List<string>();
     }
 
+    abstract public STATUS Evaluate(Instrument.INSTRUMENT_TAG instrumentTag);
+
 
 }

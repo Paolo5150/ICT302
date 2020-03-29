@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager m_instance;
-    private Player m_player;
+    public Player m_player;
     Session session;
 
     public static GameManager Instance
@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
     public enum GAME_MODE
     {
         PLAYING,
-        INSTRUCTION
+        INSTRUCTION,
+
     }
 
     private GAME_MODE m_gameMode;
@@ -44,9 +45,11 @@ public class GameManager : MonoBehaviour
         {
             case GAME_MODE.INSTRUCTION:
                 m_player.SetMovementEnabled(false);
+                m_player.enabled = false;
                 break;
             case GAME_MODE.PLAYING:
                 m_player.SetMovementEnabled(true);
+                m_player.enabled = true;
 
                 break;
         }

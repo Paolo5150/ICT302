@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,28 @@ public class Session
     {
         tasks = new List<Task>();
         m_isStarted = false;
+        Player.instrumentSelectedEvent += OnInstrumentSelected;
+    }
+
+    private void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag)
+    {
+        Task.STATUS status = m_currentTask.Evaluate(instrumentTag);
+        if(status == Task.STATUS.COMPLETED_SUCCESS)
+        {
+            GUIManager.Instance.GetMainCanvas().DogPopUp(3.0f, "Well done!");
+            //Next task
+        }
+        else
+        {
+            GameManager.Instance.SetGameMode(GameManager.GAME_MODE.INSTRUCTION);
+            GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Oh no, wrong item!" } , ()=> {
+                GameManager.Instance.m_player.ResetPlayerMode();
+                // Restart session
+                Restart();
+
+            });
+
+        }
     }
 
     public void AddTask(Task task)
@@ -29,6 +52,21 @@ public class Session
         }
     }
 
+    public void Restart()
+    {
+        //Set all tasks to pending
+        foreach (Task t in tasks)
+            t.taskStatus = Task.STATUS.PENDING;
+
+        if (!m_isStarted)
+        {
+            m_isStarted = true;
+        }
+
+        m_currentTask = tasks[0];
+
+    }
+
     public void Update()
     {
         if(m_isStarted)
@@ -43,8 +81,6 @@ public class Session
                 });
             }
         }
-
-        Debug.Log("Task status " + m_currentTask.taskStatus.ToString());
     }
   
 }
