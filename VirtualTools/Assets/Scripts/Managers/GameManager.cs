@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager m_instance;
     private Player m_player;
+    Session session;
 
     public static GameManager Instance
     {
@@ -13,13 +14,22 @@ public class GameManager : MonoBehaviour
         {
             if (m_instance == null)
             {
-                GameObject go = new GameObject();
-                m_instance = go.AddComponent<GameManager>();
+                GameObject coreGameObject = GameObject.Find("Managers");
+                m_instance = coreGameObject.AddComponent<GameManager>();
             }
+
             return m_instance;
         }
     }
 
+    protected virtual void Awake()
+    {
+        if (m_instance == null)
+            m_instance = GetComponent<GameManager>();
+        else
+            DestroyImmediate(this);
+    }
+  
     public enum GAME_MODE
     {
         PLAYING,
@@ -45,23 +55,30 @@ public class GameManager : MonoBehaviour
     // GameManager is set to be compiled after Player.cs, so when setting the game mode, the player reference is valid (see Project Setting -> Script execution order)
     void Start()
     {
-        m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
-        SetGameMode(GAME_MODE.INSTRUCTION);
-
+        // Initialize other managers here
         GUIManager.Instance.Init();
+        m_player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        m_player.Init();
+
+        session = new Session();
+        InstrumentSelectTask task = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SCALP);
+
+        session.AddTask(task);
+        session.Start();
+       /* SetGameMode(GAME_MODE.INSTRUCTION);
 
         string[] instructions = { "Hi, I'm Gustaf Von Horbert. Press the Fire button to dismiss my messages.",
                                     "How are you?",
-                                    "Fuck off then!" };
+                                    "Nice!" };
+
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, ()=> {
             SetGameMode(GAME_MODE.PLAYING);
-        });
+        });*/
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        session.Update();
     }
 }

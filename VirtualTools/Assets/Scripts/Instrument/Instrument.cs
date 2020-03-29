@@ -8,7 +8,13 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
     public Vector3 originalPosition;
     public Quaternion originalRotation;
 
+    public enum INSTRUMENT_TAG
+    {
+        SCALP,
+        SCISSOR
+    }
 
+    public INSTRUMENT_TAG instrumentTag;
     // Start is called before the first frame update
     void Start()
     {

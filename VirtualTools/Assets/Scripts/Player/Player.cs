@@ -28,6 +28,11 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Initialization is done in Init(), called by the game manager
+    }
+
+    public void Init()
+    {
         m_playerMode = PlayerMode.FREE;
 
         m_instrumentSelector = new InstrumentSelector();
