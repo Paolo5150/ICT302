@@ -6,18 +6,29 @@ public class GUIManager : MonoBehaviour
 {
     private static GUIManager m_instance;
     private MainCanvas m_mainCanvas;
+
     public static GUIManager Instance
     {
         get
         {
             if (m_instance == null)
             {
-                GameObject go = new GameObject();
-                m_instance = go.AddComponent<GUIManager>();
+                GameObject coreGameObject = GameObject.Find("Managers");
+                m_instance = coreGameObject.AddComponent<GUIManager>();
             }
+
             return m_instance;
         }
     }
+
+    protected virtual void Awake()
+    {
+        if (m_instance == null)
+            m_instance = GetComponent<GUIManager>();
+        else
+            DestroyImmediate(this);
+    }
+
 
     public MainCanvas GetMainCanvas()
     {

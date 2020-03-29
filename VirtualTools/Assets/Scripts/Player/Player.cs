@@ -5,6 +5,9 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour
 {
+    public delegate void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag);
+    public static event OnInstrumentSelected instrumentSelectedEvent;
+
     public float raycastLength = 150.0f;
     public Color selectableOutlineColor = Color.white;
     public float itemViewRotationSpeed = 50.0f;
@@ -16,19 +19,50 @@ public class Player : MonoBehaviour
     private FirstPersonController m_firstPersonController;
     private GameObject m_zoomViewSpot;
     private Instrument m_currentlyPointingInstrument;
+    private bool m_pickingEnabled;
+    private bool m_viewingEnabled;
+
 
     public enum PlayerMode
     {
         VIEWING,
-        FREE
+        PICKING
     }
 
     private PlayerMode m_playerMode;
+    private static Player m_instance;
+    public static Player Instance
+    {
+        get
+        {
+            if (m_instance == null)
+            {
+                GameObject coreGameObject = GameObject.Find("Player");
+                m_instance = coreGameObject.AddComponent<Player>();
+            }
+
+            return m_instance;
+        }
+    }
+
+    protected virtual void Awake()
+    {
+        if (m_instance == null)
+            m_instance = GetComponent<Player>();
+        else
+            DestroyImmediate(this);
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        m_playerMode = PlayerMode.FREE;
+        // Initialization is done in Init(), called by the game manager
+    }
+
+    public void Init()
+    {
+        m_playerMode = PlayerMode.PICKING;
 
         m_instrumentSelector = new InstrumentSelector();
         m_firstPersonController = GetComponent<FirstPersonController>();
@@ -38,18 +72,38 @@ public class Player : MonoBehaviour
 
         m_zoomViewSpot = transform.GetChild(1).gameObject; //Might need to change this
         m_instrumentSelector.SetSelectableOutlineColor(selectableOutlineColor);
+        m_pickingEnabled = true;
+        m_viewingEnabled = true;
+    }
+
+    public void FreezePlayer(bool freeze)
+    {
+        GetComponent<FirstPersonController>().enabled = !freeze;
+        enabled = !freeze;
+    }
+
+    public void SetPickingEnabled(bool enabled)
+    {
+        m_pickingEnabled = enabled;
+    }
+
+    public void SetViewingEnabled(bool enabled)
+    {
+        m_viewingEnabled = enabled;
     }
 
     private void SetPlayerMode(PlayerMode mode)
     {
         switch(mode)
         {
-            case PlayerMode.FREE:
+            case PlayerMode.PICKING:
                 m_firstPersonController.enabled = true;
+
                 break;
-            case PlayerMode.VIEWING:
+            case PlayerMode.VIEWING:                    
                 m_firstPersonController.enabled = false;
                 m_currentlyPointingInstrument.SetEnableOutline(false);
+
                 break;
         }
         m_playerMode = mode;
@@ -60,8 +114,8 @@ public class Player : MonoBehaviour
     {
         switch(m_playerMode)
         {
-            case PlayerMode.FREE:
-                FreeMode();
+            case PlayerMode.PICKING:
+                PickingMode();
                 break;
             case PlayerMode.VIEWING:
                 ViewMode();
@@ -69,46 +123,71 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FreeMode()
+    private void PickingMode()
     {
-        UpdatePointingInstrument();
-
-        if (Input.GetButton("Fire1"))
+        if (m_pickingEnabled)
         {
-            if (m_currentlyPointingInstrument != null)
+            UpdatePointingInstrument();
+
+            if (Input.GetButtonDown("Fire1"))
             {
-                SetPlayerMode(PlayerMode.VIEWING);
-                StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_zoomViewSpot.transform.position));
+                if (m_currentlyPointingInstrument != null)
+                {
+                    SetPlayerMode(PlayerMode.VIEWING);
+                    StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_zoomViewSpot.transform.position));
+                }
             }
         }
     }
 
-    private void ViewMode()
+    public void ResetItemAndPlayerToFree()
     {
-        // Manipulate object being viewed
-        m_currentlyPointingInstrument.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * Time.deltaTime * itemViewRotationSpeed, Space.World);
-
-        float distance = (m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position).magnitude;
-        if(distance < itemViewMovementLimitRange)
-        {
-            m_currentlyPointingInstrument.gameObject.transform.position += transform.forward * itemViewMovementSpeed * Input.GetAxis("Vertical");
-            m_currentlyPointingInstrument.gameObject.transform.position += transform.right * itemViewMovementSpeed * Input.GetAxis("Horizontal");
-        }
-        else
-        {
-            Vector3 goBack = m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position;
-            m_currentlyPointingInstrument.gameObject.transform.position += goBack.normalized * 0.2f;
-        }
-
-
-
-        if (Input.GetButton("Fire2"))
+        // Put item back
+        if(m_currentlyPointingInstrument != null)
         {
             StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
             m_currentlyPointingInstrument.gameObject.transform.rotation = m_currentlyPointingInstrument.originalRotation;
-            SetPlayerMode(PlayerMode.FREE);
+            m_currentlyPointingInstrument = null;
         }
+
+        SetPlayerMode(PlayerMode.PICKING);
     }
+
+    private void ViewMode()
+    {
+        if(m_currentlyPointingInstrument != null && m_viewingEnabled)
+        {
+            // Manipulate object being viewed
+            m_currentlyPointingInstrument.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * Time.deltaTime * itemViewRotationSpeed, Space.World);
+
+            float distance = (m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position).magnitude;
+            if (distance < itemViewMovementLimitRange)
+            {
+                m_currentlyPointingInstrument.gameObject.transform.position += transform.forward * itemViewMovementSpeed * Input.GetAxis("Vertical");
+                m_currentlyPointingInstrument.gameObject.transform.position += transform.right * itemViewMovementSpeed * Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                Vector3 goBack = m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position;
+                m_currentlyPointingInstrument.gameObject.transform.position += goBack.normalized * 0.2f;
+            }
+
+            // Confirm selection
+            if (Input.GetButtonDown("Fire1"))
+            {
+                instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
+
+            }
+            // Put item back
+            if (Input.GetButtonDown("Fire2"))
+            {
+                StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
+                m_currentlyPointingInstrument.gameObject.transform.rotation = m_currentlyPointingInstrument.originalRotation;
+                SetPlayerMode(PlayerMode.PICKING);
+            }
+        }       
+    }
+
 
     private void UpdatePointingInstrument()
     {
