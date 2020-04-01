@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
@@ -39,6 +40,7 @@ public class GameManager : MonoBehaviour
         // Initialize other managers here
         GUIManager.Instance.Init();
         Player.Instance.Init();
+        FileSaver.Init();
         Cursor.visible = false;
 
         //Will create a session manager
@@ -50,6 +52,13 @@ public class GameManager : MonoBehaviour
         session.AddTask(task2);
 
         session.Start();
+
+        string text = "Original text";
+        byte[] e = FileSaver.Encrypt(text);
+        string converted = Encoding.UTF8.GetString(e, 0, e.Length);
+        Debug.Log("Encrypted: " + converted);
+        string dec = FileSaver.Decrypt(e);
+        Debug.Log("Decrypted: " + dec);
 
     }
 
