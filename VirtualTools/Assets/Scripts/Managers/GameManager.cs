@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManager : MonoBehaviour
@@ -36,6 +37,8 @@ public class GameManager : MonoBehaviour
     // GameManager is set to be compiled after Player.cs, so when setting the game mode, the player reference is valid (see Project Setting -> Script execution order)
     void Start()
     {
+        StartCoroutine(SendRequest());
+
         // Initialize other managers here
         GUIManager.Instance.Init();
         Player.Instance.Init();
@@ -57,5 +60,23 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         session.Update();
+    }
+
+    IEnumerator SendRequest()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("test", "variable_test");
+        UnityWebRequest www = UnityWebRequest.Post("http://localhost/test.php", form);
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log("Form upload complete!");
+            Debug.Log("WWWForm: " + www.downloadHandler.text);
+        }
     }
 }
