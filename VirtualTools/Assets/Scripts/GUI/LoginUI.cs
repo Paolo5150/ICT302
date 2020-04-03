@@ -21,8 +21,17 @@ public class LoginUI : MonoBehaviour
 
     }
 
+    IEnumerator StartNextScene()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(1);
+    }
+
     private void Click()
     {
+        Text dogText = GameObject.Find("DogText").GetComponent<Text>();
+        dogText.text = "One moment please... "; 
+
         string id = m_idField.text;
         string psw = m_pswField.text;
 
@@ -36,11 +45,11 @@ public class LoginUI : MonoBehaviour
             
             if(reply == "ok")
             {
-                SceneManager.LoadScene(1);
+                dogText.text = "Welcome " + id + ", the simulation will start shortly! "; //Here we can put the name
+                StartCoroutine(StartNextScene());
             }
             else
             {
-                Text dogText = GameObject.Find("DogText").GetComponent<Text>();
                 dogText.text = "ID or password incorrect.";
             }
         },
