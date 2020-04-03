@@ -65,8 +65,10 @@ public class GameManager : MonoBehaviour
     IEnumerator SendRequest()
     {
         WWWForm form = new WWWForm();
-        form.AddField("test", "variable_test");
-        UnityWebRequest www = UnityWebRequest.Post("http://localhost/test.php", form);
+        form.AddField("username", "shri");
+        form.AddField("password", "Faila");
+
+        UnityWebRequest www = UnityWebRequest.Post("https://unreckoned-worry.000webhostapp.com/login.php", form);
         yield return www.SendWebRequest();
 
         if (www.isNetworkError || www.isHttpError)
@@ -74,8 +76,7 @@ public class GameManager : MonoBehaviour
             Debug.Log(www.error);
         }
         else
-        {
-            Debug.Log("Form upload complete!");
+        { 
             Debug.Log("WWWForm: " + www.downloadHandler.text);
         }
     }
