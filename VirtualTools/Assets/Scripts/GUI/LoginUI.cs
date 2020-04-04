@@ -42,16 +42,30 @@ public class LoginUI : MonoBehaviour
         form.AddField("password", psw);
 
         NetworkManager.Instance.SendRequest(form, "login.php", (string reply) => {
-            
-            if(reply == "ok")
-            {
-                dogText.text = "Welcome " + id + ", the simulation will start shortly! "; //Here we can put the name
+
+            Debug.Log(reply);
+            JSONObject test = JSONObject.Create(reply);
+            string status = "";
+
+            test.GetField(ref status, "status");
+
+            dogText.text = "Status: " + status;
+
+
+              if(status == "ok")
+              {
+                // Extract data
+                JSONObject data = test.GetField("data");
+                string firstName = "";
+                data.GetField(ref firstName, "firstName");
+                dogText.text = "Welcome " + firstName + ", the simulation will start shortly! "; //Here we can put the name
+
                 StartCoroutine(StartNextScene());
-            }
-            else
-            {
-                dogText.text = "ID or password incorrect.";
-            }
+              }
+              else
+              {
+                  dogText.text = "ID or password incorrect.";
+              }
         },
         
         () => {

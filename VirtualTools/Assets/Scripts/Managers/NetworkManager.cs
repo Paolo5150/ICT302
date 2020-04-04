@@ -8,7 +8,8 @@ using UnityEngine.Networking;
 public class NetworkManager : MonoBehaviour
 {
 
-    public static string SERVER_ADDRESS = "https://unreckoned-worry.000webhostapp.com/";
+   // public static string SERVER_ADDRESS = "https://unreckoned-worry.000webhostapp.com/";
+    public static string SERVER_ADDRESS = "http://localhost/ict302-server/";
 
     private static NetworkManager m_instance;
 
