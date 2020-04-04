@@ -65,7 +65,7 @@ public class LoginUI : MonoBehaviour
                 data.GetField(ref firstName, "FirstName");
                 
                 int firstLoginComplete = 0;
-                data.GetField(ref firstLoginComplete, "FirstLoginCompleted");
+                data.GetField(ref firstLoginComplete, "FirstLoginComplete");
 
                 int enabled = 0;
                 data.GetField(ref enabled, "AccountActive");
@@ -79,7 +79,7 @@ public class LoginUI : MonoBehaviour
                     }
                     else
                     {
-                        dogText.text = "Your account is not valid!";
+                        dogText.text = "Your account is not active!";
                         StartCoroutine(ExitAfterTime());
 
                     }
