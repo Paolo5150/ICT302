@@ -47,7 +47,7 @@ public class LoginUI : MonoBehaviour
             JSONObject test = JSONObject.Create(reply);
             string status = "";
 
-            test.GetField(ref status, "status");
+            test.GetField(ref status, "Status");
 
             dogText.text = "Status: " + status;
 
@@ -55,9 +55,9 @@ public class LoginUI : MonoBehaviour
               if(status == "ok")
               {
                 // Extract data
-                JSONObject data = test.GetField("data");
+                JSONObject data = test.GetField("Data");
                 string firstName = "";
-                data.GetField(ref firstName, "firstName");
+                data.GetField(ref firstName, "FirstName");
                 dogText.text = "Welcome " + firstName + ", the simulation will start shortly! "; //Here we can put the name
 
                 StartCoroutine(StartNextScene());
