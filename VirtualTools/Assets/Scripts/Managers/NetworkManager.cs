@@ -8,10 +8,20 @@ using UnityEngine.Networking;
 public class NetworkManager : MonoBehaviour
 {
 
-   // public static string SERVER_ADDRESS = "https://unreckoned-worry.000webhostapp.com/";
-    public static string SERVER_ADDRESS = "http://localhost/ict302-server/";
+    public static string REMOTE_SERVER_ADDRESS = "https://unreckoned-worry.000webhostapp.com/";
+    public static string LOCAL_SERVER_ADDRESS = "http://localhost/ict302-server/";
 
     private static NetworkManager m_instance;
+
+    public enum SERVER
+    {
+        LOCAL,
+        REMOTE
+    }
+
+    public SERVER server;
+
+    public string currentServer;
 
     public static NetworkManager Instance
     {
@@ -35,6 +45,11 @@ public class NetworkManager : MonoBehaviour
             DestroyImmediate(this);
     }
 
+    private void Start()
+    {
+        currentServer = server == SERVER.LOCAL ? LOCAL_SERVER_ADDRESS : REMOTE_SERVER_ADDRESS;
+    }
+
     public void SendRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail)
     {
         StartCoroutine(SendPostRequest(form, targetScript, onSuccess, onFail));
@@ -42,8 +57,8 @@ public class NetworkManager : MonoBehaviour
 
     private IEnumerator SendPostRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail)
     {
-        Debug.Log("Sending to: " + SERVER_ADDRESS + targetScript);
-        UnityWebRequest www = UnityWebRequest.Post(SERVER_ADDRESS + targetScript, form);
+        Debug.Log("Sending to: " + currentServer + targetScript);
+        UnityWebRequest www = UnityWebRequest.Post(currentServer + targetScript, form);
         yield return www.SendWebRequest();
         
 
