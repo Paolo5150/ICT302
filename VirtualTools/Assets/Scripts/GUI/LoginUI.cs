@@ -64,32 +64,28 @@ public class LoginUI : MonoBehaviour
                 string firstName = "";
                 data.GetField(ref firstName, "FirstName");
                 
-                int firstLoginComplete = 0;
-                data.GetField(ref firstLoginComplete, "FirstLoginComplete");
+                int passwordResetRequired = 0;
+                data.GetField(ref passwordResetRequired, "PasswordResetRequired");
 
                 int enabled = 0;
                 data.GetField(ref enabled, "AccountActive");
 
-                if(enabled == 0)
+                // Is password reset is required, an email should have been sent, so notify the user and quit.
+                if (passwordResetRequired == 1)
                 {
-                    if(firstLoginComplete == 0)
-                    {
-                        dogText.text = "IMPORTANT: An email has been sent to you, please follow the link to reset your password. Come back and log in here after you've done that.";
-                        StartCoroutine(ExitAfterTime());
-                    }
-                    else
-                    {
-                        dogText.text = "Your account is not active!";
-                        StartCoroutine(ExitAfterTime());
-
-                    }
+                    dogText.text = "PASSWORD RESET REQUIRED: An email has been sent to you, please follow the link to reset your password. Come back and log in here after you've done that.";
+                    StartCoroutine(ExitAfterTime());
                 }
-                else
+                else if (enabled == 0) // If the account is not active, quit
+                {
+                    dogText.text = "Your account is not active!";
+                    StartCoroutine(ExitAfterTime());
+                }
+                else // Otherwise, all good!
                 {
                     dogText.text = "Welcome " + firstName + " the simulation will start in a moment";
                     StartCoroutine(StartNextScene());
-                }
-                
+                }                
             }
             else
             {
