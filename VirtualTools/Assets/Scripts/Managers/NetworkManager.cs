@@ -9,7 +9,7 @@ public class NetworkManager : MonoBehaviour
 {
 
     public const string REMOTE_SERVER_ADDRESS = "https://unreckoned-worry.000webhostapp.com/server/";
-    public const string LOCAL_SERVER_ADDRESS = "http://localhost/ict302-server/server/";
+    public const string LOCAL_SERVER_ADDRESS = "http://localhost/ict302-webapp/server/";
 
     private static NetworkManager m_instance;
 
