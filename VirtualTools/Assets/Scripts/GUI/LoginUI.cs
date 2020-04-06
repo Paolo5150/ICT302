@@ -49,14 +49,12 @@ public class LoginUI : MonoBehaviour
         form.AddField("Password", psw);
 
         NetworkManager.Instance.SendRequest(form, "login.php", (string reply) => {
-            Debug.Log(reply);
-
+            Debug.Log("Reply: " + reply);
             JSONObject replyObj = JSONObject.Create(reply);
             string status = "";
 
             replyObj.GetField(ref status, "Status");
 
-            dogText.text = "Status: " + status;
             if (status == "ok")
             {
                 // Extract data
@@ -64,32 +62,14 @@ public class LoginUI : MonoBehaviour
                 string firstName = "";
                 data.GetField(ref firstName, "FirstName");
                 
-                int passwordResetRequired = 0;
-                data.GetField(ref passwordResetRequired, "PasswordResetRequired");
-
-                int enabled = 0;
-                data.GetField(ref enabled, "AccountActive");
-
-                // Is password reset is required, an email should have been sent, so notify the user and quit.
-                if (passwordResetRequired == 1)
-                {
-                    dogText.text = "PASSWORD RESET REQUIRED: An email has been sent to you, please follow the link to reset your password. Come back and log in here after you've done that.";
-                    StartCoroutine(ExitAfterTime());
-                }
-                else if (enabled == 0) // If the account is not active, quit
-                {
-                    dogText.text = "Your account is not active!";
-                    StartCoroutine(ExitAfterTime());
-                }
-                else // Otherwise, all good!
-                {
-                    dogText.text = "Welcome " + firstName + " the simulation will start in a moment";
-                    StartCoroutine(StartNextScene());
-                }                
+                dogText.text = "Welcome " + firstName + " the simulation will start in a moment";
+                StartCoroutine(StartNextScene());                 
             }
             else
             {
-                dogText.text = "ID or password incorrect.";
+                string errorMessage = "";
+                replyObj.GetField(ref errorMessage, "Message");
+                dogText.text = errorMessage;
                 m_loginButton.gameObject.SetActive(true);
 
             }

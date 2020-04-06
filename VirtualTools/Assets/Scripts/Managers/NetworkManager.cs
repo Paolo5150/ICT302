@@ -9,7 +9,7 @@ public class NetworkManager : MonoBehaviour
 {
 
     public const string REMOTE_SERVER_ADDRESS = "https://unreckoned-worry.000webhostapp.com/server/";
-    public const string LOCAL_SERVER_ADDRESS = "http://localhost/ict302-webapp/server/";
+    public const string LOCAL_SERVER_ADDRESS = "http://localhost/ICT302-WebApp/server/";
 
     private static NetworkManager m_instance;
 
@@ -65,7 +65,7 @@ public class NetworkManager : MonoBehaviour
         if (www.isNetworkError || www.isHttpError)
         {
             onFail();
-            Debug.Log(www.error);
+            Debug.Log("Error " + www.error);
         }
         else
         {
