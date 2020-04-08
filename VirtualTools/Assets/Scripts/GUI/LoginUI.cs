@@ -47,6 +47,8 @@ public class LoginUI : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("MurdochUserNumber", id);
         form.AddField("Password", psw);
+        form.AddField("IsSim", 1);
+
 
         NetworkManager.Instance.SendRequest(form, "login.php", (string reply) => {
             Debug.Log("Reply: " + reply);

@@ -11,7 +11,8 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
     public enum INSTRUMENT_TAG
     {
         SCALP,
-        SCISSOR
+        SCISSOR,
+        ADDSON_BROWN_FORCEPS
     }
 
     public INSTRUMENT_TAG instrumentTag;
@@ -55,4 +56,19 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
         SetEnableOutline(false);
 
     }
+
+    public static string GetName(INSTRUMENT_TAG tag)
+    {
+        switch (tag)
+        {
+            case INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS:
+                return "Addson-Brown Forceps";
+            case INSTRUMENT_TAG.SCALP:
+                return "Scalp";
+            case INSTRUMENT_TAG.SCISSOR:
+                return "Scissor";
+            default:
+                return "";
+        }
+    } 
 }

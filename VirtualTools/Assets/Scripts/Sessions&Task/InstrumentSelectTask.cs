@@ -9,7 +9,7 @@ public class InstrumentSelectTask : Task
     public InstrumentSelectTask(Instrument.INSTRUMENT_TAG instrumentTag)
     {
         m_instrumentToSelect = instrumentTag;
-        instructions.Add("New task: pick up a " + m_instrumentToSelect.ToString());
+        instructions.Add("New task: pick up a " + Instrument.GetName(m_instrumentToSelect));
     }
 
     public override STATUS Evaluate(Instrument.INSTRUMENT_TAG instrumentTag)

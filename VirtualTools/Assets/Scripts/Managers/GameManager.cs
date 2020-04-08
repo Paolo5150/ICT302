@@ -46,9 +46,12 @@ public class GameManager : MonoBehaviour
         session = new Session();
         InstrumentSelectTask task1 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SCALP);
         InstrumentSelectTask task2 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SCISSOR);
+        InstrumentSelectTask task3 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS);
+
 
         session.AddTask(task1);
         session.AddTask(task2);
+        session.AddTask(task3);
 
         session.Start();
 
