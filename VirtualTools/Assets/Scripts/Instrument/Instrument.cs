@@ -12,7 +12,14 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
     {
         SCALP,
         SCISSOR,
-        ADDSON_BROWN_FORCEPS
+        ADDSON_BROWN_FORCEPS,
+        SCALPEL,
+        METZEMBAUM_SCISSOR,
+        ROCHESTER_CARMALT_FORCEPS,
+        MAYO_HEGAR_NEEDLE_DRIVER,
+        SUTURE_SCISSOR,
+        MAYO_SCISSOR,
+        TOWEL_CLAMPS
     }
 
     public INSTRUMENT_TAG instrumentTag;
@@ -65,8 +72,22 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
                 return "Addson-Brown Forceps";
             case INSTRUMENT_TAG.SCALP:
                 return "Scalp";
+            case INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER:
+                return "Mayo Hegar Needle Driver";
+            case INSTRUMENT_TAG.MAYO_SCISSOR:
+                return "Mayo Scissor";
+            case INSTRUMENT_TAG.METZEMBAUM_SCISSOR:
+                return "Metzembaum Scissor";
+            case INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS:
+                return "Rochester Carmalt Forceps";
+            case INSTRUMENT_TAG.SCALPEL:
+                return "Scalpel";
             case INSTRUMENT_TAG.SCISSOR:
                 return "Scissor";
+            case INSTRUMENT_TAG.SUTURE_SCISSOR:
+                return "Suture Scissor";
+            case INSTRUMENT_TAG.TOWEL_CLAMPS:
+                return "Towel Clamps";
             default:
                 return "";
         }
