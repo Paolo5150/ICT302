@@ -10,8 +10,6 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
 
     public enum INSTRUMENT_TAG
     {
-        SCALP,
-        SCISSOR,
         ADDSON_BROWN_FORCEPS,
         SCALPEL,
         METZEMBAUM_SCISSOR,
@@ -70,8 +68,6 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
         {
             case INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS:
                 return "Addson-Brown Forceps";
-            case INSTRUMENT_TAG.SCALP:
-                return "Scalp";
             case INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER:
                 return "Mayo Hegar Needle Driver";
             case INSTRUMENT_TAG.MAYO_SCISSOR:
@@ -82,8 +78,6 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
                 return "Rochester Carmalt Forceps";
             case INSTRUMENT_TAG.SCALPEL:
                 return "Scalpel";
-            case INSTRUMENT_TAG.SCISSOR:
-                return "Scissor";
             case INSTRUMENT_TAG.SUTURE_SCISSOR:
                 return "Suture Scissor";
             case INSTRUMENT_TAG.TOWEL_CLAMPS:

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 12178d29abc2c744eb5d422eaa5241c0
+guid: 4560edd1d38bc23438ab92d7f7a05fde
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -61,7 +61,7 @@ ModelImporter:
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    normalImportMode: 1
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
@@ -80,7 +80,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 0.01
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

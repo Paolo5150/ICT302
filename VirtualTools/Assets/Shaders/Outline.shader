@@ -43,7 +43,7 @@
 			[HideInInspector] _ZWrite("__zw", Float) = 1.0
 
 			// Outline
-			_Outline("Outline Extrusion", Range(-1,1)) = 0.05
+			_Outline("Outline Extrusion", Range(-1,5)) = 0.05
 			_OutColor("Outline Color", Color) = (1,1,1,1)
 	}
 
