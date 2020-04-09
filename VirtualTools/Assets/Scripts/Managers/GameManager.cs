@@ -60,4 +60,9 @@ public class GameManager : MonoBehaviour
     {
         session.Update();
     }
+
+    private void OnApplicationQuit()
+    {
+        Debug.Log("QUITTING!");
+    }
 }
