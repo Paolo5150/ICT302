@@ -7,6 +7,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class GameManager : MonoBehaviour
 {
     private static GameManager m_instance;
+    public string MockStudentNumber; //TODO: remove this
 
     public static GameManager Instance
     {
@@ -41,6 +42,7 @@ public class GameManager : MonoBehaviour
         Player.Instance.Init();
         Cursor.visible = false;
         Player.Instance.FreezePlayer(true);
+
 
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Left click to start a 'Select instrument by name session'" }, () => {
 

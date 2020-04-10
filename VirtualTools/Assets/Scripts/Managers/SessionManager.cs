@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using System.Threading;
+using System;
 
 public class SessionManager
 {
@@ -59,7 +61,7 @@ public class SessionManager
     private int GenerateID()
     {
         //TODO: Change this
-        return Random.Range(0,5000);       
+        return UnityEngine.Random.Range(0,5000);       
       
     }
 
@@ -110,40 +112,78 @@ public class SessionManager
 
     public void OnQuit()
     {
-        ExportResults(m_currentSession);
+       // ExportResults(m_currentSession);
+        //Thread.Sleep(1000);
+
     }
+
+    public string CreateJSONString(Session s, string fileName)
+    {
+        JSONObject obj = new JSONObject();
+
+        obj.AddField("Date", s.sessionResults.date.ToShortDateString());
+        obj.AddField("StartTime", s.sessionResults.startTime.ToShortTimeString());
+
+
+        if (s.sessionResults.completed)
+        {
+            obj.AddField("EndTime", s.sessionResults.endTime.ToShortTimeString());
+            obj.AddField("Completed", "true");
+        }
+        else
+        {
+            obj.AddField("EndTime", "0");
+            obj.AddField("Completed", "false");
+        }
+
+        obj.AddField("Retries", s.sessionResults.retries);
+        obj.AddField("FileName", fileName);
+
+        return obj.ToString();
+    }
+
     
     public void ExportResults(Session s)
     {
-        string fileName = s.GetID() + "_" + ".txt";
+        string fileName = "";
 
-        JSONObject obj = new JSONObject();
-        obj.AddField("StartTime", s.sessioResults.startTime.ToShortTimeString());
-        if(!s.sessioResults.endTime.ToShortTimeString().Equals(s.sessioResults.startTime.ToShortTimeString()))
-            obj.AddField("EndTime", s.sessioResults.endTime.ToShortTimeString());
-        else
-            obj.AddField("Completed", "false");
-
-        obj.AddField("Attempts", s.sessioResults.retries);
-
-        // Create the Binary Formatter.
-        BinaryFormatter bf = new BinaryFormatter();
-        // Stream the file with a File Stream. (Note that File.Create() 'Creates' or 'Overwrites' a file.)
-        FileStream file = File.Create(Application.persistentDataPath + fileName);
-        // Create a new Player_Data.
-        if(file != null)
+        // If first name is set, we can safely assume that all other keys are set
+        if (PlayerPrefs.HasKey("FirstName"))
         {
-             bf.Serialize(file,obj.ToString());
+            fileName += PlayerPrefs.GetString("FirstName") + "_" + PlayerPrefs.GetString("LastName") + "_" + PlayerPrefs.GetString("MurdochUserNumber") + "_";
         }
         else
         {
-            Debug.Log("Didn't serialize");
+            fileName += "Anonymous_";
         }
-        // Serialize the file so the contents cannot be manipulated.
-       
-        // Close the file to prevent any corruptions
-        file.Close();
 
+        string dateString = s.sessionResults.startTime.Date.ToShortDateString();
+        dateString = dateString.Replace('/','_');
+        fileName += dateString + ".dat";
+
+        string json = CreateJSONString(s,fileName);
+
+        //Save to file, always
+      /*  BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(fileName);
+        bf.Serialize(file, json);
+        file.Close();*/
+
+        //Send to server
+        WWWForm form = new WWWForm();
+        form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
+        form.AddField("SessionString", json);
+
+       NetworkManager.Instance.SendRequest(form, "recordSession.php", 
+            (string reply) => {
+                Debug.Log("Server said: " + reply);
+
+            }, 
+            () => {
+                Debug.Log("Failed to upload");
+   
+            });
+        Debug.Log("Exported!");
     }
  
 }

@@ -8,7 +8,9 @@ public class SessionResults
 {
     public DateTime startTime;
     public DateTime endTime;
+    public DateTime date;
     public int retries;
+    public bool completed = false;
 }
 
 public class Session
@@ -19,11 +21,11 @@ public class Session
     private bool m_isStarted;    
     private int m_id;
 
-    public SessionResults sessioResults;
+    public SessionResults sessionResults;
 
     public Session(int id)
     {
-        sessioResults = new SessionResults();
+        sessionResults = new SessionResults();
         tasks = new List<Task>();
         m_isStarted = false;
         m_id = id;
@@ -50,8 +52,8 @@ public class Session
         {
             m_isStarted = true;
             m_currentTask = tasks[0];
-            sessioResults.startTime = DateTime.Now;
-            sessioResults.endTime = DateTime.Now; //This will be compared when it's time to write the output. If endtime == startime, session was incomplete
+            sessionResults.startTime = DateTime.Now;
+            sessionResults.date = DateTime.Today;
             StartCurrentTask();
         }
     }
@@ -61,7 +63,8 @@ public class Session
         if (m_isStarted)
         {
             m_isStarted = false;            
-            sessioResults.endTime = DateTime.Now;
+            sessionResults.endTime = DateTime.Now;
+            sessionResults.completed = true;
 
         }
     }
@@ -78,7 +81,7 @@ public class Session
         }
 
         m_currentTask = tasks[0];
-        sessioResults.retries++;
+        sessionResults.retries++;
         StartCurrentTask();
 
     }
@@ -103,7 +106,7 @@ public class Session
             Player.Instance.FreezePlayer(false);
             Player.Instance.SetPickingEnabled(true);
             m_currentTask.taskStatus = Task.STATUS.STARTED;
-            sessioResults.endTime = DateTime.Now;
+            sessionResults.endTime = DateTime.Now;
 
         });
     }

@@ -59,8 +59,9 @@ public class NetworkManager : MonoBehaviour
     {
         Debug.Log("Sending to: " + currentServer + targetScript);
         UnityWebRequest www = UnityWebRequest.Post(currentServer + targetScript, form);
+        www.timeout = 3;
         yield return www.SendWebRequest();
-        
+       
 
         if (www.isNetworkError || www.isHttpError)
         {
@@ -70,6 +71,6 @@ public class NetworkManager : MonoBehaviour
         else
         {
             onSuccess(www.downloadHandler.text);
-        }
+        }   
     }
 }
