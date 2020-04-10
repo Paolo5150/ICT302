@@ -19,11 +19,11 @@ public class Session
 
     private Task m_currentTask;
     private bool m_isStarted;    
-    private int m_id;
+    private long m_id;
 
     public SessionResults sessionResults;
 
-    public Session(int id)
+    public Session(long id)
     {
         sessionResults = new SessionResults();
         tasks = new List<Task>();
@@ -31,7 +31,7 @@ public class Session
         m_id = id;
     }
 
-    public int GetID()
+    public long GetID()
     {
         return m_id;
     }

@@ -57,12 +57,15 @@ public class SessionManager
         }
 
     }
-
-    private int GenerateID()
+    
+    private long GenerateID()
     {
-        //TODO: Change this
-        return UnityEngine.Random.Range(0,5000);       
-      
+        string id = "" +  DateTime.Today.DayOfYear + DateTime.Today.Month + DateTime.Today.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
+
+        long idLong = long.Parse(id);
+        return idLong;
+
+
     }
 
     private void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag)
@@ -112,7 +115,7 @@ public class SessionManager
 
     public void OnQuit()
     {
-       // ExportResults(m_currentSession);
+        ExportResults(m_currentSession);
         //Thread.Sleep(1000);
 
     }
@@ -121,6 +124,8 @@ public class SessionManager
     {
         JSONObject obj = new JSONObject();
 
+        obj.AddField("UnityID", s.GetID());
+
         obj.AddField("Date", s.sessionResults.date.ToShortDateString());
         obj.AddField("StartTime", s.sessionResults.startTime.ToShortTimeString());
 
@@ -128,12 +133,10 @@ public class SessionManager
         if (s.sessionResults.completed)
         {
             obj.AddField("EndTime", s.sessionResults.endTime.ToShortTimeString());
-            obj.AddField("Completed", "true");
         }
         else
         {
             obj.AddField("EndTime", "0");
-            obj.AddField("Completed", "false");
         }
 
         obj.AddField("Retries", s.sessionResults.retries);
@@ -163,7 +166,7 @@ public class SessionManager
 
         string json = CreateJSONString(s,fileName);
 
-        //Save to file, always
+        //Save to file
       /*  BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(fileName);
         bf.Serialize(file, json);
@@ -174,16 +177,15 @@ public class SessionManager
         form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
         form.AddField("SessionString", json);
 
-       NetworkManager.Instance.SendRequest(form, "recordSession.php", 
+       NetworkManager.Instance.SendRequest(form, "recordSesssion.php", 
             (string reply) => {
-                Debug.Log("Server said: " + reply);
+                //Debug.Log("Server said: " + reply);
 
             }, 
             () => {
-                Debug.Log("Failed to upload");
+               // Debug.Log("Failed to upload");
    
             });
-        Debug.Log("Exported!");
     }
  
 }
