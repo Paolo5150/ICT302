@@ -252,7 +252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  instrumentTag: 7
+  instrumentTag: 5
 --- !u!4 &159168471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 493704, guid: 2bb715d5d7333cd4cb60235ee1d6bfc4,
@@ -302,7 +302,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 0.5
   m_Range: 50
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1431,6 +1431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86be4fecc59cc741b09010ab6e873d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MockStudentNumber: 33256656
 --- !u!114 &922758312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2806,6 +2807,8 @@ MonoBehaviour:
   itemViewRotationSpeed: 500
   itemViewMovementSpeed: 0.5
   itemViewMovementLimitRange: 20
+  m_pickingEnabled: 0
+  m_viewingEnabled: 0
 --- !u!1001 &1138684957140664499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2901,6 +2904,11 @@ PrefabInstance:
     - target: {fileID: 2818937634280153166, guid: be90a44bd3d4ec24e87ab3e329166757,
         type: 3}
       propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818937634280153167, guid: be90a44bd3d4ec24e87ab3e329166757,
+        type: 3}
+      propertyPath: instrumentTag
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

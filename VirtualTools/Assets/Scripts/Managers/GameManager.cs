@@ -7,7 +7,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class GameManager : MonoBehaviour
 {
     private static GameManager m_instance;
-    Session session;
+    public string MockStudentNumber; //TODO: remove this
 
     public static GameManager Instance
     {
@@ -41,28 +41,26 @@ public class GameManager : MonoBehaviour
         GUIManager.Instance.Init();
         Player.Instance.Init();
         Cursor.visible = false;
-
-        //Will create a session manager
-        session = new Session();
-        InstrumentSelectTask task1 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR);
-        InstrumentSelectTask task2 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS);
+        Player.Instance.FreezePlayer(true);
 
 
-        session.AddTask(task1);
-        session.AddTask(task2);
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Left click to start a 'Select instrument by name session'" }, () => {
 
-        session.Start();
+            SessionManager.Instance.CreateSession(true, true);
+
+
+        });
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        session.Update();
+
     }
 
     private void OnApplicationQuit()
     {
-        Debug.Log("QUITTING!");
+        SessionManager.Instance.OnQuit();
     }
 }

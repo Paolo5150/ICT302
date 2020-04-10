@@ -3,56 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public class SessionResults
+{
+    public DateTime startTime;
+    public DateTime endTime;
+    public DateTime date;
+    public int retries;
+    public bool completed = false;
+}
+
 public class Session
 {
     public List<Task> tasks;
 
     private Task m_currentTask;
-    private bool m_isStarted;
-    public Session()
+    private bool m_isStarted;    
+    private long m_id;
+
+    public SessionResults sessionResults;
+
+    public Session(long id)
     {
+        sessionResults = new SessionResults();
         tasks = new List<Task>();
         m_isStarted = false;
-        Player.instrumentSelectedEvent += OnInstrumentSelected;
+        m_id = id;
     }
 
-    private void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag)
+    public long GetID()
     {
-        Task.STATUS status = m_currentTask.Evaluate(instrumentTag);
-        if(status == Task.STATUS.COMPLETED_SUCCESS)
-        {
-            Player.Instance.FreezePlayer(true);
+        return m_id;
+    }
 
-            GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Nicely done!" }, () => {
-                Player.Instance.ResetItemAndPlayerToFree();
-                Player.Instance.FreezePlayer(false);
-                Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-                
-                // Next task
-                if (!NextTask())
-                {
-                    //If this is reached there are no tasks left (write to report here?)
-                    Player.Instance.SetPickingEnabled(false);
-                    GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
-
-                }
-
-            });
-        }
-        else
-        {
-            Player.Instance.FreezePlayer(true);
-            GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Oh no, wrong item!" } , ()=> {
-                Player.Instance.ResetItemAndPlayerToFree();
-                Player.Instance.FreezePlayer(false);
-                Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-
-                // Restart session
-                Restart();
-
-            });
-
-        }
+   public Task GetCurrentTask()
+    {
+        return m_currentTask;
     }
 
     public void AddTask(Task task)
@@ -66,6 +52,19 @@ public class Session
         {
             m_isStarted = true;
             m_currentTask = tasks[0];
+            sessionResults.startTime = DateTime.Now;
+            sessionResults.date = DateTime.Today;
+            StartCurrentTask();
+        }
+    }
+
+    public void End()
+    {
+        if (m_isStarted)
+        {
+            m_isStarted = false;            
+            sessionResults.endTime = DateTime.Now;
+            sessionResults.completed = true;
 
         }
     }
@@ -82,34 +81,39 @@ public class Session
         }
 
         m_currentTask = tasks[0];
+        sessionResults.retries++;
+        StartCurrentTask();
 
     }
 
-    private bool NextTask()
+    public bool NextTask()
     {
         int indexOfCurrent = tasks.IndexOf(m_currentTask);
         if (indexOfCurrent == tasks.Count - 1)
             return false;
 
         m_currentTask = tasks[indexOfCurrent + 1];
+        StartCurrentTask();
         return true;
+    }
+
+    private void StartCurrentTask()
+    {
+        m_currentTask.taskStatus = Task.STATUS.INSTRUCTING;
+
+        Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(m_currentTask.instructions.ToArray(), () => {
+            Player.Instance.FreezePlayer(false);
+            Player.Instance.SetPickingEnabled(true);
+            m_currentTask.taskStatus = Task.STATUS.STARTED;
+            sessionResults.endTime = DateTime.Now;
+
+        });
     }
 
     public void Update()
     {
-        if(m_isStarted)
-        {
-            if(m_currentTask.taskStatus == Task.STATUS.PENDING)
-            {
-                m_currentTask.taskStatus = Task.STATUS.INSTRUCTING;
-                Player.Instance.FreezePlayer(true);
-                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(m_currentTask.instructions.ToArray(), ()=> {
-                    Player.Instance.FreezePlayer(false);
-                    Player.Instance.SetPickingEnabled(true);
-                    m_currentTask.taskStatus = Task.STATUS.STARTED;
-                });
-            }
-        }
+      
     }
   
 }

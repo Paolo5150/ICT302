@@ -18,6 +18,7 @@ public class LoginUI : MonoBehaviour
         m_pswField = GameObject.Find("PswField").GetComponent<InputField>();
         m_loginButton = GameObject.Find("LogInButton").GetComponent<Button>();
         m_loginButton.onClick.AddListener(Click);
+        PlayerPrefs.DeleteAll(); //Clear player prefs
 
     }
 
@@ -61,10 +62,23 @@ public class LoginUI : MonoBehaviour
             {
                 // Extract data
                 JSONObject data = replyObj.GetField("Data");
+
                 string firstName = "";
                 data.GetField(ref firstName, "FirstName");
-                
+
+                string lastName = "";
+                data.GetField(ref lastName, "LastName");
+
+                string murdochUserNumber = "";
+                data.GetField(ref murdochUserNumber, "MurdochUserNumber");
+
                 dogText.text = "Welcome " + firstName + " the simulation will start in a moment";
+
+                //Save info to PlayerPrefs
+                PlayerPrefs.SetString("FirstName", firstName);
+                PlayerPrefs.SetString("LastName", lastName);
+                PlayerPrefs.SetString("MurdochUserNumber", murdochUserNumber);
+                
                 StartCoroutine(StartNextScene());                 
             }
             else
