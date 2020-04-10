@@ -177,7 +177,7 @@ public class SessionManager
         form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
         form.AddField("SessionString", json);
 
-       NetworkManager.Instance.SendRequest(form, "recordSesssion.php", 
+       NetworkManager.Instance.SendRequest(form, "recordSession.php", 
             (string reply) => {
                 //Debug.Log("Server said: " + reply);
 
