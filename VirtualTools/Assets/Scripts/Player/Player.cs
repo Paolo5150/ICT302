@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
     private FirstPersonController m_firstPersonController;
     private GameObject m_zoomViewSpot;
     private Instrument m_currentlyPointingInstrument;
-    private bool m_pickingEnabled;
-    private bool m_viewingEnabled;
+    public bool m_pickingEnabled;
+    public bool m_viewingEnabled;
 
 
     public enum PlayerMode

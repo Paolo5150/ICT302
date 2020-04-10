@@ -7,7 +7,6 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class GameManager : MonoBehaviour
 {
     private static GameManager m_instance;
-    Session session;
 
     public static GameManager Instance
     {
@@ -41,28 +40,25 @@ public class GameManager : MonoBehaviour
         GUIManager.Instance.Init();
         Player.Instance.Init();
         Cursor.visible = false;
+        Player.Instance.FreezePlayer(true);
 
-        //Will create a session manager
-        session = new Session();
-        InstrumentSelectTask task1 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR);
-        InstrumentSelectTask task2 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS);
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Left click to start a 'Select instrument by name session'" }, () => {
+
+            SessionManager.Instance.CreateSession(true, true);
 
 
-        session.AddTask(task1);
-        session.AddTask(task2);
-
-        session.Start();
+        });
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        session.Update();
+
     }
 
     private void OnApplicationQuit()
     {
-        Debug.Log("QUITTING!");
+        
     }
 }
