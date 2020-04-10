@@ -174,7 +174,11 @@ public class SessionManager
 
         //Send to server
         WWWForm form = new WWWForm();
-        form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
+        if(PlayerPrefs.HasKey("MurdochUserNumber"))
+        form.AddField("MurdochUserNumber", PlayerPrefs.GetString("MurdochUserNumber"));
+        else
+            form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
+
         form.AddField("SessionString", json);
 
        NetworkManager.Instance.SendRequest(form, "recordSession.php", 
