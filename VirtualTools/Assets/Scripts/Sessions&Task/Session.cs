@@ -3,22 +3,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public class SessionResults
+{
+    public DateTime startTime;
+    public DateTime endTime;
+    public int retries;
+}
+
 public class Session
 {
     public List<Task> tasks;
 
     private Task m_currentTask;
-    private bool m_isStarted;
-    private DateTime m_startTime;
-    private DateTime m_endTime;
-    private int m_attempts;
+    private bool m_isStarted;    
     private int m_id;
+
+    public SessionResults sessioResults;
 
     public Session(int id)
     {
+        sessioResults = new SessionResults();
         tasks = new List<Task>();
         m_isStarted = false;
         m_id = id;
+    }
+
+    public int GetID()
+    {
+        return m_id;
     }
 
    public Task GetCurrentTask()
@@ -37,6 +50,8 @@ public class Session
         {
             m_isStarted = true;
             m_currentTask = tasks[0];
+            sessioResults.startTime = DateTime.Now;
+            sessioResults.endTime = DateTime.Now; //This will be compared when it's time to write the output. If endtime == startime, session was incomplete
             StartCurrentTask();
         }
     }
@@ -46,7 +61,7 @@ public class Session
         if (m_isStarted)
         {
             m_isStarted = false;            
-            m_endTime = DateTime.Now;
+            sessioResults.endTime = DateTime.Now;
 
         }
     }
@@ -63,7 +78,7 @@ public class Session
         }
 
         m_currentTask = tasks[0];
-        m_attempts++;
+        sessioResults.retries++;
         StartCurrentTask();
 
     }
@@ -88,7 +103,7 @@ public class Session
             Player.Instance.FreezePlayer(false);
             Player.Instance.SetPickingEnabled(true);
             m_currentTask.taskStatus = Task.STATUS.STARTED;
-            m_startTime = DateTime.Now;
+            sessioResults.endTime = DateTime.Now;
 
         });
     }

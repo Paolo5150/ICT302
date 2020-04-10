@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
 public class SessionManager
@@ -82,7 +84,8 @@ public class SessionManager
                         Player.Instance.SetPickingEnabled(false);
                         GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
                         m_currentSession.End();
-
+                        ExportResults(m_currentSession);
+                         
                     }
                 });
             }
@@ -103,6 +106,44 @@ public class SessionManager
             }
         }
         
+    }
+
+    public void OnQuit()
+    {
+        ExportResults(m_currentSession);
+    }
+    
+    public void ExportResults(Session s)
+    {
+        string fileName = s.GetID() + "_" + ".txt";
+
+        JSONObject obj = new JSONObject();
+        obj.AddField("StartTime", s.sessioResults.startTime.ToShortTimeString());
+        if(!s.sessioResults.endTime.ToShortTimeString().Equals(s.sessioResults.startTime.ToShortTimeString()))
+            obj.AddField("EndTime", s.sessioResults.endTime.ToShortTimeString());
+        else
+            obj.AddField("Completed", "false");
+
+        obj.AddField("Attempts", s.sessioResults.retries);
+
+        // Create the Binary Formatter.
+        BinaryFormatter bf = new BinaryFormatter();
+        // Stream the file with a File Stream. (Note that File.Create() 'Creates' or 'Overwrites' a file.)
+        FileStream file = File.Create(Application.persistentDataPath + fileName);
+        // Create a new Player_Data.
+        if(file != null)
+        {
+             bf.Serialize(file,obj.ToString());
+        }
+        else
+        {
+            Debug.Log("Didn't serialize");
+        }
+        // Serialize the file so the contents cannot be manipulated.
+       
+        // Close the file to prevent any corruptions
+        file.Close();
+
     }
  
 }
