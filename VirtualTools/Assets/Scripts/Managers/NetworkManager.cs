@@ -70,6 +70,8 @@ public class NetworkManager : MonoBehaviour
         }
         else
         {
+           // Debug.Log("Server OK " + www.downloadHandler.text);
+
             onSuccess(www.downloadHandler.text);
         }   
     }

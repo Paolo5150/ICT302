@@ -78,7 +78,8 @@ public class LoginUI : MonoBehaviour
                 PlayerPrefs.SetString("FirstName", firstName);
                 PlayerPrefs.SetString("LastName", lastName);
                 PlayerPrefs.SetString("MurdochUserNumber", murdochUserNumber);
-                
+                PlayerPrefs.Save();
+
                 StartCoroutine(StartNextScene());                 
             }
             else
