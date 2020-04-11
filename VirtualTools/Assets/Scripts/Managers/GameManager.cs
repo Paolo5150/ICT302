@@ -59,6 +59,11 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+
     private void OnApplicationQuit()
     {
         SessionManager.Instance.OnQuit();
