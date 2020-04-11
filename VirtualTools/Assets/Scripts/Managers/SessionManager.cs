@@ -89,6 +89,9 @@ public class SessionManager
                         Player.Instance.SetPickingEnabled(false);
                         GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
                         m_currentSession.End();
+                        Player.Instance.FreezePlayer(true);
+                        Cursor.lockState = CursorLockMode.Confined;
+                        Cursor.visible = true;
                         DisplayResults(m_currentSession);
                         ExportResults(m_currentSession);
                          
