@@ -89,6 +89,7 @@ public class SessionManager
                         Player.Instance.SetPickingEnabled(false);
                         GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
                         m_currentSession.End();
+                        DisplayResults(m_currentSession);
                         ExportResults(m_currentSession);
                          
                     }
@@ -145,6 +146,33 @@ public class SessionManager
         return obj.ToString();
     }
 
+    public void DisplayResults(Session s)
+    {
+        string name, studentNumber;
+
+        // If first name is set, we can safely assume that all other keys are set
+        if (PlayerPrefs.HasKey("FirstName"))
+        {
+            name = PlayerPrefs.GetString("FirstName") + " " + PlayerPrefs.GetString("LastName");
+            
+        }
+        else
+        {
+            name = "Anonymous";
+        }
+
+        if (PlayerPrefs.HasKey("MurdochUserNumber"))
+        {
+            studentNumber = PlayerPrefs.GetString("MurdochUserNumber");
+        }
+        else
+            studentNumber = GameManager.Instance.MockStudentNumber;
+
+        string startDateString = s.sessionResults.startTime.ToShortTimeString();
+        string endDateString = s.sessionResults.endTime.ToShortTimeString();
+
+        GUIManager.Instance.GetMainCanvas().DisplayResults(s.sessionResults.completed, name, studentNumber, s.sessionResults.date.ToShortDateString(), startDateString, endDateString, s.sessionResults.retries);
+    }
     
     public void ExportResults(Session s)
     {
