@@ -148,50 +148,56 @@ public class SessionManager
     
     public void ExportResults(Session s)
     {
-        string fileName = "";
-
-        // If first name is set, we can safely assume that all other keys are set
-        if (PlayerPrefs.HasKey("FirstName"))
+        if (s == null)
+            Debug.Log("NULLLLLLLLLLLLLL");
+        if(s != null && s.IsStarted())
         {
-            fileName += PlayerPrefs.GetString("FirstName") + "_" + PlayerPrefs.GetString("LastName") + "_" + PlayerPrefs.GetString("MurdochUserNumber") + "_";
-        }
-        else
-        {
-            fileName += "Anonymous_";
-        }
 
-        string dateString = s.sessionResults.startTime.Date.ToShortDateString();
-        dateString = dateString.Replace('/','_');
-        fileName += dateString + ".dat";
+            string fileName = "";
 
-        string json = CreateJSONString(s,fileName);
+            // If first name is set, we can safely assume that all other keys are set
+            if (PlayerPrefs.HasKey("FirstName"))
+            {
+                fileName += PlayerPrefs.GetString("FirstName") + "_" + PlayerPrefs.GetString("LastName") + "_" + PlayerPrefs.GetString("MurdochUserNumber") + "_";
+            }
+            else
+            {
+                fileName += "Anonymous_";
+            }
 
-        //Save to file
-      /*  BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(fileName);
-        bf.Serialize(file, json);
-        file.Close();*/
+            string dateString = s.sessionResults.startTime.Date.ToShortDateString();
+            dateString = dateString.Replace('/','_');
+            fileName += dateString + ".dat";
 
-        //Send to server
-        WWWForm form = new WWWForm();
-        if(PlayerPrefs.HasKey("MurdochUserNumber"))
-        {
-            form.AddField("MurdochUserNumber",  PlayerPrefs.GetString("MurdochUserNumber"));
-        }
-        else
-            form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
+            string json = CreateJSONString(s,fileName);
 
-        form.AddField("SessionString", json);
+            //Save to file
+          /*  BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(fileName);
+            bf.Serialize(file, json);
+            file.Close();*/
 
-       NetworkManager.Instance.SendRequest(form, "recordSession.php", 
-            (string reply) => {
-                //Debug.Log("Server said: " + reply);
+            //Send to server
+            WWWForm form = new WWWForm();
+            if(PlayerPrefs.HasKey("MurdochUserNumber"))
+            {
+                form.AddField("MurdochUserNumber",  PlayerPrefs.GetString("MurdochUserNumber"));
+            }
+            else
+                form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
 
-            }, 
-            () => {
-               // Debug.Log("Failed to upload");
+            form.AddField("SessionString", json);
+
+           NetworkManager.Instance.SendRequest(form, "recordSession.php", 
+                (string reply) => {
+                    Debug.Log("Server said: " + reply);
+
+                }, 
+                () => {
+                    Debug.Log("Failed to upload");
    
-            });
+                });
+            }
     }
- 
+
 }

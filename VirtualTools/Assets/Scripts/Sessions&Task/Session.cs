@@ -31,6 +31,10 @@ public class Session
         m_id = id;
     }
 
+    public bool IsStarted()
+    {
+        return m_isStarted;
+    }
     public long GetID()
     {
         return m_id;
@@ -61,11 +65,9 @@ public class Session
     public void End()
     {
         if (m_isStarted)
-        {
-            m_isStarted = false;            
+        {          
             sessionResults.endTime = DateTime.Now;
             sessionResults.completed = true;
-
         }
     }
 
