@@ -13,11 +13,11 @@ public class Player : MonoBehaviour
     public float itemViewRotationSpeed = 50.0f;
     public float itemViewMovementSpeed = 50.0f;
     public float itemViewMovementLimitRange = 50.0f;
+    public GameObject m_zoomViewSpot;
 
 
     private InstrumentSelector m_instrumentSelector;
     private FirstPersonController m_firstPersonController;
-    private GameObject m_zoomViewSpot;
     private Instrument m_currentlyPointingInstrument;
     public bool m_pickingEnabled;
     public bool m_viewingEnabled;
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
         Camera cam = GetComponentInChildren<Camera>();
         m_instrumentSelector.SetRaycastingCamera(cam);
 
-        m_zoomViewSpot = transform.GetChild(1).gameObject; //Might need to change this
+
         m_instrumentSelector.SetSelectableOutlineColor(selectableOutlineColor);
         m_pickingEnabled = true;
         m_viewingEnabled = true;
@@ -157,13 +157,15 @@ public class Player : MonoBehaviour
     {
         if(m_currentlyPointingInstrument != null && m_viewingEnabled)
         {
+            m_currentlyPointingInstrument.OnReleasedPointing();
             // Manipulate object being viewed
             m_currentlyPointingInstrument.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * Time.deltaTime * itemViewRotationSpeed, Space.World);
 
-            float distance = (m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position).magnitude;
+            Vector3 dir =  m_currentlyPointingInstrument.gameObject.transform.position - m_zoomViewSpot.transform.position;
+            float distance = dir.magnitude;
             if (distance < itemViewMovementLimitRange)
             {
-                m_currentlyPointingInstrument.gameObject.transform.position += transform.forward * itemViewMovementSpeed * Input.GetAxis("Vertical");
+                m_currentlyPointingInstrument.gameObject.transform.position += Camera.main.transform.forward * itemViewMovementSpeed * Input.GetAxis("Vertical");
                 m_currentlyPointingInstrument.gameObject.transform.position += transform.right * itemViewMovementSpeed * Input.GetAxis("Horizontal");
             }
             else
@@ -198,7 +200,6 @@ public class Player : MonoBehaviour
             if (m_currentlyPointingInstrument != null)
                 m_currentlyPointingInstrument.OnReleasedPointing();
 
-            instrument.SetOutlineColor(selectableOutlineColor);
             instrument.OnPointing();
             m_currentlyPointingInstrument = instrument;
         }

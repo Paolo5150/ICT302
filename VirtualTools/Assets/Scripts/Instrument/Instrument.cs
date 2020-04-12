@@ -29,36 +29,24 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
         originalRotation = transform.rotation;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public void SetOutlineColor(Color color)
-    {
-        m_renderer.material.SetColor("_OutColor", color);
-    }
 
     public void OnPointing()
     {
-        SetEnableOutline(true);
-        
+        m_renderer.material.color = Color.green;
+
     }
 
 
     public void SetEnableOutline(bool enabled)
     {
-        if(enabled)
-            m_renderer.material.SetFloat("_Outline", outlineSize);
-        else
-            m_renderer.material.SetFloat("_Outline", 0.0f);
-
+        
+;
     }
 
     public void OnReleasedPointing()
     {
-        SetEnableOutline(false);
+        m_renderer.material.color = Color.white;
+
 
     }
 

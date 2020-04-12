@@ -43,8 +43,8 @@ public class SessionManager
         Session session = new Session(GenerateID());
         //Randomize? From external file?
 
-
         session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
+        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
         session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
         session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
         session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));

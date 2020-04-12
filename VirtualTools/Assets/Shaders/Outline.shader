@@ -61,7 +61,7 @@
 			// Outline addition starts here
 			Cull Off
 			ZWrite Off
-			//ZTest Always // Uncomment for "see through"
+			ZTest Always // Uncomment for "see through"
 
 			CGPROGRAM
 				#pragma surface surf Solid vertex:vert
