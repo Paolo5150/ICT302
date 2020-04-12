@@ -44,9 +44,11 @@ public class SessionManager
         //Randomize? From external file?
         InstrumentSelectTask task1 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR);
         InstrumentSelectTask task2 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS);
+        InstrumentSelectTask task3 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR);
 
         session.AddTask(task1);
         session.AddTask(task2);
+        session.AddTask(task3);
         m_sessionsRun.Add(session);
         if (setAsCurrent)
             m_currentSession = session;

@@ -7,7 +7,7 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
     private Renderer m_renderer;
     public Vector3 originalPosition;
     public Quaternion originalRotation;
-
+    public float outlineSize = 0.1f;
     public enum INSTRUMENT_TAG
     {
         ADDSON_BROWN_FORCEPS,
@@ -50,7 +50,7 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
     public void SetEnableOutline(bool enabled)
     {
         if(enabled)
-            m_renderer.material.SetFloat("_Outline", 0.1f);
+            m_renderer.material.SetFloat("_Outline", outlineSize);
         else
             m_renderer.material.SetFloat("_Outline", 0.0f);
 
