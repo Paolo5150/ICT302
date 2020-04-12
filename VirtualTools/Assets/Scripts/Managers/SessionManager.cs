@@ -42,13 +42,14 @@ public class SessionManager
         //Will create a session manager
         Session session = new Session(GenerateID());
         //Randomize? From external file?
-        InstrumentSelectTask task1 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR);
-        InstrumentSelectTask task2 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS);
-        InstrumentSelectTask task3 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR);
 
-        session.AddTask(task1);
-        session.AddTask(task2);
-        session.AddTask(task3);
+
+        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
+        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
+        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
+        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
+
+
         m_sessionsRun.Add(session);
         if (setAsCurrent)
             m_currentSession = session;
