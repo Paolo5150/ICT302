@@ -253,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  outlineSize: 0.15
+  outlineSize: 0.2
   instrumentTag: 5
 --- !u!4 &159168471 stripped
 Transform:

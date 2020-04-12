@@ -91,7 +91,7 @@ public class SessionManager
                         Player.Instance.SetPickingEnabled(false);
                         GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
                         m_currentSession.End();
-                        //ExportResults(m_currentSession);
+                        ExportResults(m_currentSession);
                          
                     }
                 });
@@ -117,8 +117,7 @@ public class SessionManager
 
     public void OnQuit()
     {
-        //ExportResults(m_currentSession);
-        //Thread.Sleep(1000);
+        ExportResults(m_currentSession);;
 
     }
 
