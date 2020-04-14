@@ -19,7 +19,6 @@ public class LoginUI : MonoBehaviour
         m_loginButton = GameObject.Find("LogInButton").GetComponent<Button>();
         m_loginButton.onClick.AddListener(Click);
         PlayerPrefs.DeleteAll(); //Clear player prefs
-
     }
 
     IEnumerator StartNextScene()
