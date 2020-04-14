@@ -790,6 +790,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1452935738385713647, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738385713647, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738385713647, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738385713647, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1452935738385713649, guid: 563f8863a34ef3d43a1bc3411d549e44,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -894,6 +914,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935739217514276, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 563f8863a34ef3d43a1bc3411d549e44, type: 3}
