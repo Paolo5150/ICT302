@@ -27,9 +27,6 @@ public class MainCanvas : MonoBehaviour
         m_retriesText = GameObject.Find("Retries").GetComponent<Text>();
         m_results.SetActive(false);
         m_dog.SetActive(false);
-
-
-
     }
     // Start is called before the first frame update
     void Start()

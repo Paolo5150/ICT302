@@ -173,7 +173,6 @@ public class Player : MonoBehaviour
                 Vector3 goBack = m_zoomViewSpot.transform.position - m_currentlyPointingInstrument.gameObject.transform.position;
                 m_currentlyPointingInstrument.gameObject.transform.position += goBack.normalized * 0.2f;
             }
-
             // Confirm selection
             if (Input.GetButtonDown("Fire1"))
             {

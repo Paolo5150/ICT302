@@ -103,4 +103,9 @@ public class LoginUI : MonoBehaviour
     {
         
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }
