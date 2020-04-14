@@ -8,16 +8,34 @@ public class MainCanvas : MonoBehaviour
 {
     private GameObject m_dog;
     private GameObject m_results;
+    private Text m_nameText;
+    private Text m_studentNumberText;
+    private Text m_dateText;
+    private Text m_startText;
+    private Text m_endText;
+    private Text m_retriesText;
 
     public void Init()
     {
-        m_dog = transform.GetChild(0).gameObject;
-        m_results = transform.GetChild(1).gameObject;
+        m_dog = GameObject.Find("Dog");
+        m_results = GameObject.Find("ResultsPanel");
+        m_nameText = GameObject.Find("Name").GetComponent<Text>();
+        m_studentNumberText = GameObject.Find("StudentNumber").GetComponent<Text>();
+        m_dateText = GameObject.Find("Date").GetComponent<Text>();
+        m_startText = GameObject.Find("StartTime").GetComponent<Text>();
+        m_endText = GameObject.Find("EndTime").GetComponent<Text>();
+        m_retriesText = GameObject.Find("Retries").GetComponent<Text>();
+        m_results.SetActive(false);
+        m_dog.SetActive(false);
+
+
 
     }
     // Start is called before the first frame update
     void Start()
     {
+        
+        
     }
 
     // Update is called once per frame
@@ -85,11 +103,12 @@ public class MainCanvas : MonoBehaviour
         else
             m_results.transform.GetChild(0).GetComponent<Text>().text = "Failed";
 
-        m_results.transform.GetChild(1).GetComponent<Text>().text = "Name: " + name;
-        m_results.transform.GetChild(2).GetComponent<Text>().text = "Student Number: " + studentNumber;
-        m_results.transform.GetChild(3).GetComponent<Text>().text = "Date: " + date;
-        m_results.transform.GetChild(4).GetComponent<Text>().text = "Start Time: " + startTime;
-        m_results.transform.GetChild(5).GetComponent<Text>().text = "End Time: " + endTime;
-        m_results.transform.GetChild(6).GetComponent<Text>().text = "Retries: " + retries.ToString();
+        m_nameText.text = name;
+        m_studentNumberText.text = studentNumber;
+        m_dateText.text = date;
+        m_startText.text = startTime;
+        m_endText.text = endTime;
+        m_retriesText.text = "" +  retries; //LAziest int->string conversion ever
+
     }
 }

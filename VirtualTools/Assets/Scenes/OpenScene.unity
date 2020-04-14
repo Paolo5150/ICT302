@@ -785,6 +785,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1452935737779203927, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_Name
+      value: EndTime
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935737914496729, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738054564263, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738054564263, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_Name
+      value: ResultsPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 1452935738385713645, guid: 563f8863a34ef3d43a1bc3411d549e44,
         type: 3}
       propertyPath: m_Name
@@ -919,6 +939,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_Alignment
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935739248994605, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_Name
+      value: StudentNumber
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935739854837464, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_Name
+      value: StartTime
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 563f8863a34ef3d43a1bc3411d549e44, type: 3}

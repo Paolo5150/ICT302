@@ -93,7 +93,7 @@ public class SessionManager
                         Cursor.lockState = CursorLockMode.Confined;
                         Cursor.visible = true;
                         DisplayResults(m_currentSession);
-                        ExportResults(m_currentSession);
+                        //ExportResults(m_currentSession);
                          
                     }
                 });
@@ -119,7 +119,7 @@ public class SessionManager
 
     public void OnQuit()
     {
-        ExportResults(m_currentSession);
+       // ExportResults(m_currentSession);
         //Thread.Sleep(1000);
 
     }
@@ -182,6 +182,7 @@ public class SessionManager
     
     public void ExportResults(Session s)
     {
+        Debug.Log("Exporting");
         string fileName = "";
 
         // If first name is set, we can safely assume that all other keys are set
