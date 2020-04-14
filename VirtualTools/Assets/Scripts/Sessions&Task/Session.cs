@@ -31,7 +31,7 @@ public class Session
         m_id = id;
     }
 
-    public bool IsStarted()
+    public bool HasStarted()
     {
         return m_isStarted;
     }

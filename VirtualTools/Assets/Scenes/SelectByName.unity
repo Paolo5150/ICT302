@@ -805,6 +805,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResultsPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1452935738359961125, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 60.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738359961126, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738359961126, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738359961126, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738359961126, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738359961126, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738359961126, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452935738359961126, guid: 563f8863a34ef3d43a1bc3411d549e44,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1452935738385713645, guid: 563f8863a34ef3d43a1bc3411d549e44,
         type: 3}
       propertyPath: m_Name

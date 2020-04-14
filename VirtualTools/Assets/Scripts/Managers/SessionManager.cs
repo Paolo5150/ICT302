@@ -93,7 +93,7 @@ public class SessionManager
                         Cursor.lockState = CursorLockMode.Confined;
                         Cursor.visible = true;
                         DisplayResults(m_currentSession);
-                        //ExportResults(m_currentSession);
+                        ExportResults(m_currentSession);
                          
                     }
                 });
@@ -119,7 +119,7 @@ public class SessionManager
 
     public void OnQuit()
     {
-       // ExportResults(m_currentSession);
+        ExportResults(m_currentSession);
         //Thread.Sleep(1000);
 
     }
@@ -182,51 +182,53 @@ public class SessionManager
     
     public void ExportResults(Session s)
     {
-        Debug.Log("Exporting");
-        string fileName = "";
-
-        // If first name is set, we can safely assume that all other keys are set
-        if (PlayerPrefs.HasKey("FirstName"))
+        if(s.HasStarted())
         {
-            fileName += PlayerPrefs.GetString("FirstName") + "_" + PlayerPrefs.GetString("LastName") + "_" + PlayerPrefs.GetString("MurdochUserNumber") + "_";
-        }
-        else
-        {
-            fileName += "Anonymous_";
-        }
+            string fileName = "";
 
-        string dateString = s.sessionResults.startTime.Date.ToShortDateString();
-        dateString = dateString.Replace('/','_');
-        fileName += dateString + ".dat";
+            // If first name is set, we can safely assume that all other keys are set
+            if (PlayerPrefs.HasKey("FirstName"))
+            {
+                fileName += PlayerPrefs.GetString("FirstName") + "_" + PlayerPrefs.GetString("LastName") + "_" + PlayerPrefs.GetString("MurdochUserNumber") + "_";
+            }
+            else
+            {
+                fileName += "Anonymous_";
+            }
 
-        string json = CreateJSONString(s,fileName);
+            string dateString = s.sessionResults.startTime.Date.ToShortDateString();
+            dateString = dateString.Replace('/','_');
+            fileName += dateString + ".dat";
 
-        //Save to file
-      /*  BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Create(fileName);
-        bf.Serialize(file, json);
-        file.Close();*/
+            string json = CreateJSONString(s,fileName);
 
-        //Send to server
-        WWWForm form = new WWWForm();
-        if(PlayerPrefs.HasKey("MurdochUserNumber"))
-        {
-            form.AddField("MurdochUserNumber",  PlayerPrefs.GetString("MurdochUserNumber"));
-        }
-        else
-            form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
+            //Save to file
+          /*  BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Create(fileName);
+            bf.Serialize(file, json);
+            file.Close();*/
 
-        form.AddField("SessionString", json);
+            //Send to server
+            WWWForm form = new WWWForm();
+            if(PlayerPrefs.HasKey("MurdochUserNumber"))
+            {
+                form.AddField("MurdochUserNumber",  PlayerPrefs.GetString("MurdochUserNumber"));
+            }
+            else
+                form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
 
-       NetworkManager.Instance.SendRequest(form, "recordSession.php", 
-            (string reply) => {
-                //Debug.Log("Server said: " + reply);
+            form.AddField("SessionString", json);
 
-            }, 
-            () => {
-               // Debug.Log("Failed to upload");
+           NetworkManager.Instance.SendRequest(form, "recordSession.php", 
+                (string reply) => {
+                    //Debug.Log("Server said: " + reply);
+
+                }, 
+                () => {
+                   // Debug.Log("Failed to upload");
    
-            });
-    }
- 
+                });
+        }
+        }
+
 }
