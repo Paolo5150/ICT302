@@ -42,14 +42,11 @@ public class SessionManager
         //Will create a session manager
         Session session = new Session(GenerateID());
         //Randomize? From external file?
+        InstrumentSelectTask task1 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR);
+        InstrumentSelectTask task2 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS);
 
-        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
-        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
-        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
-        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
-        session.AddTask(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
-
-
+        session.AddTask(task1);
+        session.AddTask(task2);
         m_sessionsRun.Add(session);
         if (setAsCurrent)
             m_currentSession = session;
@@ -92,6 +89,10 @@ public class SessionManager
                         Player.Instance.SetPickingEnabled(false);
                         GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
                         m_currentSession.End();
+                        Player.Instance.FreezePlayer(true);
+                        Cursor.lockState = CursorLockMode.Confined;
+                        Cursor.visible = true;
+                        DisplayResults(m_currentSession);
                         ExportResults(m_currentSession);
                          
                     }
@@ -118,7 +119,8 @@ public class SessionManager
 
     public void OnQuit()
     {
-        ExportResults(m_currentSession);;
+        ExportResults(m_currentSession);
+        //Thread.Sleep(1000);
 
     }
 
@@ -147,57 +149,83 @@ public class SessionManager
         return obj.ToString();
     }
 
+    public void DisplayResults(Session s)
+    {
+        string name, studentNumber;
+
+        // If first name is set, we can safely assume that all other keys are set
+        if (PlayerPrefs.HasKey("FirstName"))
+        {
+            name = PlayerPrefs.GetString("FirstName") + " " + PlayerPrefs.GetString("LastName");
+            
+        }
+        else
+        {
+            name = "Anonymous";
+        }
+
+        if (PlayerPrefs.HasKey("MurdochUserNumber"))
+        {
+            studentNumber = PlayerPrefs.GetString("MurdochUserNumber");
+        }
+        else
+            studentNumber = GameManager.Instance.MockStudentNumber;
+
+        bool completed = s.sessionResults.completed;
+        string date = s.sessionResults.date.ToShortDateString();
+        string startDateString = s.sessionResults.startTime.ToShortTimeString();
+        string endDateString = s.sessionResults.endTime.ToShortTimeString();
+        int retries = s.sessionResults.retries;
+
+        GUIManager.Instance.GetMainCanvas().DisplayResults(completed, name, studentNumber, date, startDateString, endDateString, retries);
+    }
     
     public void ExportResults(Session s)
     {
-        if(s != null && s.IsStarted())
+        string fileName = "";
+
+        // If first name is set, we can safely assume that all other keys are set
+        if (PlayerPrefs.HasKey("FirstName"))
         {
+            fileName += PlayerPrefs.GetString("FirstName") + "_" + PlayerPrefs.GetString("LastName") + "_" + PlayerPrefs.GetString("MurdochUserNumber") + "_";
+        }
+        else
+        {
+            fileName += "Anonymous_";
+        }
 
-            string fileName = "";
+        string dateString = s.sessionResults.startTime.Date.ToShortDateString();
+        dateString = dateString.Replace('/','_');
+        fileName += dateString + ".dat";
 
-            // If first name is set, we can safely assume that all other keys are set
-            if (PlayerPrefs.HasKey("FirstName"))
-            {
-                fileName += PlayerPrefs.GetString("FirstName") + "_" + PlayerPrefs.GetString("LastName") + "_" + PlayerPrefs.GetString("MurdochUserNumber") + "_";
-            }
-            else
-            {
-                fileName += "Anonymous_";
-            }
+        string json = CreateJSONString(s,fileName);
 
-            string dateString = s.sessionResults.startTime.Date.ToShortDateString();
-            dateString = dateString.Replace('/','_');
-            fileName += dateString + ".dat";
+        //Save to file
+      /*  BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(fileName);
+        bf.Serialize(file, json);
+        file.Close();*/
 
-            string json = CreateJSONString(s,fileName);
+        //Send to server
+        WWWForm form = new WWWForm();
+        if(PlayerPrefs.HasKey("MurdochUserNumber"))
+        {
+            form.AddField("MurdochUserNumber",  PlayerPrefs.GetString("MurdochUserNumber"));
+        }
+        else
+            form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
 
-            //Save to file
-          /*  BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(fileName);
-            bf.Serialize(file, json);
-            file.Close();*/
+        form.AddField("SessionString", json);
 
-            //Send to server
-            WWWForm form = new WWWForm();
-            if(PlayerPrefs.HasKey("MurdochUserNumber"))
-            {
-                form.AddField("MurdochUserNumber",  PlayerPrefs.GetString("MurdochUserNumber"));
-            }
-            else
-                form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
+       NetworkManager.Instance.SendRequest(form, "recordSession.php", 
+            (string reply) => {
+                //Debug.Log("Server said: " + reply);
 
-            form.AddField("SessionString", json);
-
-           NetworkManager.Instance.SendRequest(form, "recordSession.php", 
-                (string reply) => {
-                    Debug.Log("Server said: " + reply);
-
-                }, 
-                () => {
-                    Debug.Log("Failed to upload");
+            }, 
+            () => {
+               // Debug.Log("Failed to upload");
    
-                });
-            }
+            });
     }
-
+ 
 }
