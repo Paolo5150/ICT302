@@ -9,6 +9,7 @@ public class MainCanvas : MonoBehaviour
 {
     private GameObject m_dog;
     private GameObject m_results;
+    private GameObject m_controlHints;
     private Text m_nameText;
     private Text m_studentNumberText;
     private Text m_dateText;
@@ -20,6 +21,7 @@ public class MainCanvas : MonoBehaviour
     {
         m_dog = GameObject.Find("Dog");
         m_results = GameObject.Find("ResultsPanel");
+        m_controlHints = GameObject.Find("ControlsHint");
         m_nameText = GameObject.Find("Name").GetComponent<Text>();
         m_studentNumberText = GameObject.Find("StudentNumber").GetComponent<Text>();
         m_dateText = GameObject.Find("Date").GetComponent<Text>();
@@ -28,6 +30,7 @@ public class MainCanvas : MonoBehaviour
         m_retriesText = GameObject.Find("Retries").GetComponent<Text>();
         m_results.SetActive(false);
         m_dog.SetActive(false);
+        m_controlHints.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
@@ -40,6 +43,11 @@ public class MainCanvas : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetHintActive(bool active)
+    {
+        m_controlHints.SetActive(active);
     }
 
     public void DogSpeak(string text)

@@ -116,9 +116,13 @@ public class Player : MonoBehaviour
         {
             case PlayerMode.PICKING:
                 PickingMode();
+                GUIManager.Instance.GetMainCanvas().SetHintActive(false);
+
                 break;
             case PlayerMode.VIEWING:
                 ViewMode();
+                GUIManager.Instance.GetMainCanvas().SetHintActive(true);
+
                 break;
         }
     }
@@ -157,6 +161,7 @@ public class Player : MonoBehaviour
     {
         if(m_currentlyPointingInstrument != null && m_viewingEnabled)
         {
+
             m_currentlyPointingInstrument.OnReleasedPointing();
             // Manipulate object being viewed
             m_currentlyPointingInstrument.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * Time.deltaTime * itemViewRotationSpeed, Space.World);
