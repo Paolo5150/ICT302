@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,7 +45,7 @@ public class MainCanvas : MonoBehaviour
     public void DogSpeak(string text)
     {
         SetDogEnabled(true);
-        m_dog.transform.GetComponentInChildren<Text>().text = text;
+        m_dog.transform.GetComponentInChildren<TextMeshProUGUI>().text = text;
     }
 
     public void SetDogEnabled(bool enabled)

@@ -182,7 +182,7 @@ public class SessionManager
     
     public void ExportResults(Session s)
     {
-        if(s.HasStarted())
+        if(s != null && s.HasStarted())
         {
             string fileName = "";
 
