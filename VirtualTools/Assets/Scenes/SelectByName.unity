@@ -255,7 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  outlineSize: 0.025
+  purposeDescription: Cutting of suture
   instrumentTag: 5
 --- !u!4 &159168471 stripped
 Transform:
@@ -2050,7 +2050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  outlineSize: 0.01
+  purposeDescription: Crushing of vascular pedicles
   instrumentTag: 3
 --- !u!65 &1022875744
 BoxCollider:
@@ -2249,7 +2249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  outlineSize: 0.1
+  purposeDescription: Blunt dissection of subcutaneous tissues
   instrumentTag: 2
 --- !u!65 &1156570308
 BoxCollider:
@@ -3101,7 +3101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  outlineSize: 0.002
+  purposeDescription: Extension of abdominal wall incision
   instrumentTag: 6
 --- !u!65 &1887275270
 BoxCollider:
@@ -3532,6 +3532,11 @@ PrefabInstance:
         type: 3}
       propertyPath: outlineSize
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818937634280153167, guid: be90a44bd3d4ec24e87ab3e329166757,
+        type: 3}
+      propertyPath: purposeDescription
+      value: Traction and manipulation of tissues
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be90a44bd3d4ec24e87ab3e329166757, type: 3}

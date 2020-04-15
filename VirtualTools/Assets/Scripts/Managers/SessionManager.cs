@@ -42,13 +42,13 @@ public class SessionManager
         //Will create a session manager
         Session session = new Session(GenerateID());
         //Randomize? From external file?
-        List<InstrumentSelectTask> allTasks = new List<InstrumentSelectTask>();
+        List<InstrumentSelectByNameTask> allTasks = new List<InstrumentSelectByNameTask>();
 
-        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
-        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
-        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
-        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
-        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
+        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
+        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
+        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
+        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
+        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
 
         while(allTasks.Count > 0)
         {
@@ -60,9 +60,32 @@ public class SessionManager
         return session;
     }
 
+    private Session SelectByPurposeSession()
+    {
+        //Will create a session manager
+        Session session = new Session(GenerateID());
+        //Randomize? From external file?
+        List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
+
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
+
+        while (allTasks.Count > 0)
+        {
+            int i = UnityEngine.Random.Range(0, allTasks.Count);
+            session.AddTask(allTasks[i]);
+            allTasks.Remove(allTasks[i]);
+        }
+
+        return session;
+    }
+
     public void CreateSession(bool setAsCurrent = true, bool startImmediately = false)
     {
-        Session session = SelectByNameSession();
+        Session session = SelectByPurposeSession();
         m_sessionsRun.Add(session);
 
         if (setAsCurrent)
@@ -122,7 +145,6 @@ public class SessionManager
                     Player.Instance.ResetItemAndPlayerToFree();
                     Player.Instance.FreezePlayer(false);
                     Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-
                     
                     // Restart session
                     m_currentSession.Restart();

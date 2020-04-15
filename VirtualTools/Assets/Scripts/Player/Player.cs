@@ -102,8 +102,6 @@ public class Player : MonoBehaviour
                 break;
             case PlayerMode.VIEWING:                    
                 m_firstPersonController.enabled = false;
-                m_currentlyPointingInstrument.SetEnableOutline(false);
-
                 break;
         }
         m_playerMode = mode;

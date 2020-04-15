@@ -44,10 +44,9 @@ public class GameManager : MonoBehaviour
         Player.Instance.FreezePlayer(true);
 
 
-        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Left click to start a 'Select instrument by name session'" }, () => {
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Left click to start!" }, () => {
 
             SessionManager.Instance.CreateSession(true, true);
-
 
         });
 

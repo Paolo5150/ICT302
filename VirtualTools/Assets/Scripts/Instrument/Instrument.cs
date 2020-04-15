@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Instrument : MonoBehaviour, IInstrumentSelectable
 {
-    private Renderer m_renderer;
     public Vector3 originalPosition;
     public Quaternion originalRotation;
-    public float outlineSize = 0.1f;
+
+    private Renderer m_renderer;
+
     public enum INSTRUMENT_TAG
     {
         ADDSON_BROWN_FORCEPS,
@@ -33,21 +34,11 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
     public void OnPointing()
     {
         m_renderer.material.color = Color.green;
-
-    }
-
-
-    public void SetEnableOutline(bool enabled)
-    {
-        
-;
     }
 
     public void OnReleasedPointing()
     {
         m_renderer.material.color = Color.white;
-
-
     }
 
     public static string GetName(INSTRUMENT_TAG tag)
@@ -73,5 +64,30 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
             default:
                 return "";
         }
-    } 
+    }
+
+    public static string GetPurposeDescription(INSTRUMENT_TAG tag)
+    {
+        switch (tag)
+        {
+            case INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS:
+                return "Traction and manipulation of tissues.";
+            case INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER:
+                return "Suturing, placement of ligatures";
+            case INSTRUMENT_TAG.MAYO_SCISSOR:
+                return "Extension of abdominal wall incisions";
+            case INSTRUMENT_TAG.METZEMBAUM_SCISSOR:
+                return "Blunt dissection of subcutaneous tissues";
+            case INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS:
+                return "Crrushing of vascular pedicles";
+            case INSTRUMENT_TAG.SCALPEL:
+                return "Skin and abdominal incision, transection of ligated pedicles";
+            case INSTRUMENT_TAG.SUTURE_SCISSOR:
+                return "Cutting of suture";
+            case INSTRUMENT_TAG.TOWEL_CLAMPS:
+                return "Joining drapes to patient";
+            default:
+                return "";
+        }
+    }
 }

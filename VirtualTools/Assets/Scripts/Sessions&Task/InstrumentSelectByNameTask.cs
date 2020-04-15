@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstrumentSelectTask : Task
+public class InstrumentSelectByNameTask : Task
 {
     private Instrument.INSTRUMENT_TAG m_instrumentToSelect;
 
-    public InstrumentSelectTask(Instrument.INSTRUMENT_TAG instrumentTag)
+    public InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG instrumentTag)
     {
         m_instrumentToSelect = instrumentTag;
         instructions.Add("New task: pick up a <b><u>" + Instrument.GetName(m_instrumentToSelect) + "</u></b>");
