@@ -85,7 +85,7 @@ public class SessionManager
 
     public void CreateSession(bool setAsCurrent = true, bool startImmediately = false)
     {
-        Session session = SelectByPurposeSession();
+        Session session = SelectByNameSession();
         m_sessionsRun.Add(session);
 
         if (setAsCurrent)
@@ -112,10 +112,11 @@ public class SessionManager
     {
         if(m_currentSession != null)
         {
-            Task.STATUS status = m_currentSession.GetCurrentTask().Evaluate(instrumentTag);
+            Task.STATUS status = m_currentSession.GetCurrentTask().Evaluate(instrumentTag, m_currentSession);
             if (status == Task.STATUS.COMPLETED_SUCCESS)
             {
                 Player.Instance.FreezePlayer(true);
+                
 
                 GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Nicely done!" }, () => {
                     Player.Instance.ResetItemAndPlayerToFree();
@@ -158,6 +159,8 @@ public class SessionManager
 
     public void OnQuit()
     {
+        if (m_currentSession != null)
+            m_currentSession.sessionResults.Log_SimulationClosedPrematurely();
         ExportResults(m_currentSession);
         //Thread.Sleep(1000);
 
@@ -184,6 +187,16 @@ public class SessionManager
 
         obj.AddField("Retries", s.sessionResults.retries);
         obj.AddField("FileName", fileName);
+
+        JSONObject logs = new JSONObject();
+        int counter = 0;
+        foreach(string log in s.sessionResults.logs)
+        {
+            logs.AddField("Log_" + counter, log);
+            counter++;
+        }
+
+        obj.AddField("Logs", logs);
 
         return obj.ToString();
     }
@@ -242,10 +255,10 @@ public class SessionManager
             string json = CreateJSONString(s,fileName);
 
             //Save to file
-          /*  BinaryFormatter bf = new BinaryFormatter();
+            BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Create(fileName);
             bf.Serialize(file, json);
-            file.Close();*/
+            file.Close();
 
             //Send to server
             WWWForm form = new WWWForm();

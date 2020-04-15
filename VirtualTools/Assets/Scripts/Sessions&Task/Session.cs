@@ -11,9 +11,56 @@ public class SessionResults
     public DateTime date;
     public int retries;
     public bool completed = false;
-}
+    public List<string> logs;
 
-public class Session
+    public SessionResults()
+    {
+        logs = new List<string>();
+    }
+
+    public void Log_SessionStart()
+    {
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Session start");
+    }
+
+    public void Log_SessionEnd()
+    {
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Session end");
+    }
+
+    public void Log_Instruction(string[] instructions)
+    {
+        for(int i=0; i< instructions.Length; i++)
+            logs.Add(DateTime.Now.ToShortTimeString() + " - " + instructions[i]);
+
+
+    }
+    public void Log_FailedToSelectByName(Instrument.INSTRUMENT_TAG instrumentTag)
+    {
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Failed to select by name " + Instrument.GetName(instrumentTag));
+    }
+
+    public void Log_FailedToSelectByPurpose(Instrument.INSTRUMENT_TAG instrumentTag)
+    {
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Failed to select by purpose " + Instrument.GetName(instrumentTag));
+    }
+
+    public void Log_CorrectlySelectedInstrumentByPurpose(Instrument.INSTRUMENT_TAG instrumentTag)
+    {
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Correctly selected by purpose " + Instrument.GetName(instrumentTag));
+    }
+
+    public void Log_CorrectlySelectedInstrumentByName(Instrument.INSTRUMENT_TAG instrumentTag)
+    {
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Correctly selectedt by name " + Instrument.GetName(instrumentTag));
+    }
+
+    public void Log_SimulationClosedPrematurely()
+    {
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Simulation closed prematurely");
+    }
+}
+    public class Session
 {
     public List<Task> tasks;
 
@@ -58,6 +105,7 @@ public class Session
             m_currentTask = tasks[0];
             sessionResults.startTime = DateTime.Now;
             sessionResults.date = DateTime.Today;
+            sessionResults.Log_SessionStart();
             StartCurrentTask();
         }
     }
@@ -68,6 +116,7 @@ public class Session
         {          
             sessionResults.endTime = DateTime.Now;
             sessionResults.completed = true;
+            sessionResults.Log_SessionEnd();
         }
     }
 
@@ -109,6 +158,7 @@ public class Session
             Player.Instance.SetPickingEnabled(true);
             m_currentTask.taskStatus = Task.STATUS.STARTED;
             sessionResults.endTime = DateTime.Now;
+            sessionResults.Log_Instruction(m_currentTask.instructions.ToArray());
 
         });
     }
