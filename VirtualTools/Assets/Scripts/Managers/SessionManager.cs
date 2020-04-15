@@ -37,17 +37,34 @@ public class SessionManager
 
     }
 
-    public void CreateSession(bool setAsCurrent = true, bool startImmediately = false)
+    private Session SelectByNameSession()
     {
         //Will create a session manager
         Session session = new Session(GenerateID());
         //Randomize? From external file?
-        InstrumentSelectTask task1 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR);
-        InstrumentSelectTask task2 = new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS);
+        List<InstrumentSelectTask> allTasks = new List<InstrumentSelectTask>();
 
-        session.AddTask(task1);
-        session.AddTask(task2);
+        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
+        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
+        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
+        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
+        allTasks.Add(new InstrumentSelectTask(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
+
+        while(allTasks.Count > 0)
+        {
+            int i = UnityEngine.Random.Range(0, allTasks.Count);
+            session.AddTask(allTasks[i]);
+            allTasks.Remove(allTasks[i]);
+        }
+
+        return session;
+    }
+
+    public void CreateSession(bool setAsCurrent = true, bool startImmediately = false)
+    {
+        Session session = SelectByNameSession();
         m_sessionsRun.Add(session);
+
         if (setAsCurrent)
             m_currentSession = session;
         if(startImmediately)
