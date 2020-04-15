@@ -255,7 +255,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  purposeDescription: Cutting of suture
   instrumentTag: 5
 --- !u!4 &159168471 stripped
 Transform:
@@ -1930,7 +1929,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fc76d251cee7541aa98dfe9862b860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  server: 0
+  server: 1
   currentServer: 
 --- !u!1 &977797286
 GameObject:
@@ -2050,7 +2049,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  purposeDescription: Crushing of vascular pedicles
   instrumentTag: 3
 --- !u!65 &1022875744
 BoxCollider:
@@ -2249,7 +2247,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  purposeDescription: Blunt dissection of subcutaneous tissues
   instrumentTag: 2
 --- !u!65 &1156570308
 BoxCollider:
@@ -3101,7 +3098,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalPosition: {x: 0, y: 0, z: 0}
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
-  purposeDescription: Extension of abdominal wall incision
   instrumentTag: 6
 --- !u!65 &1887275270
 BoxCollider:

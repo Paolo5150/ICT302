@@ -20,12 +20,12 @@ public class SessionResults
 
     public void Log_SessionStart()
     {
-        logs.Add(DateTime.Now.ToShortTimeString() + " - Session start");
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Session starts");
     }
 
     public void Log_SessionEnd()
     {
-        logs.Add(DateTime.Now.ToShortTimeString() + " - Session end");
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Session ends");
     }
 
     public void Log_Instruction(string[] instructions)
@@ -52,7 +52,7 @@ public class SessionResults
 
     public void Log_CorrectlySelectedInstrumentByName(Instrument.INSTRUMENT_TAG instrumentTag)
     {
-        logs.Add(DateTime.Now.ToShortTimeString() + " - Correctly selectedt by name " + Instrument.GetName(instrumentTag));
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Correctly selected by name " + Instrument.GetName(instrumentTag));
     }
 
     public void Log_SimulationClosedPrematurely()
