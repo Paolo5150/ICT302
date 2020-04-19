@@ -41,6 +41,12 @@ public class GUIManager : MonoBehaviour
         m_mainCanvas.Init();
     }
 
+    public void ConfigureCursor(bool visible, CursorLockMode lockstate)
+    {
+        Cursor.visible = visible;
+        Cursor.lockState = lockstate;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

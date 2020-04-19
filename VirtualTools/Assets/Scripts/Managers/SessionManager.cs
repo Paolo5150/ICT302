@@ -83,6 +83,24 @@ public class SessionManager
         return session;
     }
 
+    public void CreateSelectByNameSession()
+    {
+        Session session = SelectByNameSession();
+        m_sessionsRun.Add(session);
+
+        m_currentSession = session;
+        m_currentSession.Start();
+    }
+
+    public void CreateSelectByPurposeSession()
+    {
+        Session session = SelectByPurposeSession();
+        m_sessionsRun.Add(session);
+
+        m_currentSession = session;
+        m_currentSession.Start();
+    }
+
     public void CreateSession(bool setAsCurrent = true, bool startImmediately = false)
     {
         Session session = SelectByNameSession();
@@ -131,8 +149,7 @@ public class SessionManager
                         GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
                         m_currentSession.End();
                         Player.Instance.FreezePlayer(true);
-                        Cursor.lockState = CursorLockMode.Confined;
-                        Cursor.visible = true;
+                        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
                         DisplayResults(m_currentSession);
                         ExportResults(m_currentSession);
                          

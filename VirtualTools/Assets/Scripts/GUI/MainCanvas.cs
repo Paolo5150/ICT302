@@ -8,8 +8,10 @@ using UnityEngine.UI;
 public class MainCanvas : MonoBehaviour
 {
     private GameObject m_dog;
-    private GameObject m_results;
     private GameObject m_controlHints;
+    private GameObject m_escapeMenu;
+
+    private GameObject m_results;
     private Text m_nameText;
     private Text m_studentNumberText;
     private Text m_dateText;
@@ -20,14 +22,19 @@ public class MainCanvas : MonoBehaviour
     public void Init()
     {
         m_dog = GameObject.Find("Dog");
-        m_results = GameObject.Find("ResultsPanel");
         m_controlHints = GameObject.Find("ControlsHint");
-        m_nameText = GameObject.Find("Name").GetComponent<Text>();
-        m_studentNumberText = GameObject.Find("StudentNumber").GetComponent<Text>();
-        m_dateText = GameObject.Find("Date").GetComponent<Text>();
-        m_startText = GameObject.Find("StartTime").GetComponent<Text>();
-        m_endText = GameObject.Find("EndTime").GetComponent<Text>();
-        m_retriesText = GameObject.Find("Retries").GetComponent<Text>();
+        m_escapeMenu = GameObject.Find("EscapeMenu");
+
+        m_results = GameObject.Find("ResultsPanel");
+        m_nameText = m_results.transform.Find("Name").GetComponent<Text>();
+        m_studentNumberText = m_results.transform.Find("StudentNumber").GetComponent<Text>();
+        m_dateText = m_results.transform.Find("Date").GetComponent<Text>();
+        m_startText = m_results.transform.Find("StartTime").GetComponent<Text>();
+        m_endText = m_results.transform.Find("EndTime").GetComponent<Text>();
+        m_retriesText = m_results.transform.Find("Retries").GetComponent<Text>();
+
+
+
         m_results.SetActive(false);
         m_dog.SetActive(false);
         m_controlHints.SetActive(false);
@@ -98,6 +105,11 @@ public class MainCanvas : MonoBehaviour
     public void DogInstructionSequence(string[] instructions, Action action)
     {
         StartCoroutine(InstructionSequence(instructions, action));
+    }
+
+    public void DisplayEscapeMenu(bool enabled)
+    {
+        m_escapeMenu.SetActive(enabled);
     }
 
     public void DisplayResults(bool success, string name, string studentNumber, string date, string startTime, string endTime, int retries)

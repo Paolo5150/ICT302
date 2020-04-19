@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
 
@@ -31,7 +32,15 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(this);
     }
 
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
   
     // Start is called before the first frame update
     // GameManager is set to be compiled after Player.cs, so when setting the game mode, the player reference is valid (see Project Setting -> Script execution order)
@@ -40,15 +49,16 @@ public class GameManager : MonoBehaviour
         // Initialize other managers here
         GUIManager.Instance.Init();
         Player.Instance.Init();
-        Cursor.visible = false;
+        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.Confined);
         Player.Instance.FreezePlayer(true);
 
 
-        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Left click to start!" }, () => {
+        //GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Left click to start!" }, () =>
+        //{
 
-            SessionManager.Instance.CreateSession(true, true);
+        //    SessionManager.Instance.CreateSession(true, true);
 
-        });
+        //});
 
     }
 
