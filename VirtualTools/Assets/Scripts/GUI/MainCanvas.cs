@@ -107,9 +107,14 @@ public class MainCanvas : MonoBehaviour
         StartCoroutine(InstructionSequence(instructions, action));
     }
 
-    public void DisplayEscapeMenu(bool enabled)
+    public void SetEscapeMenu(bool enabled)
     {
         m_escapeMenu.SetActive(enabled);
+    }
+
+    public void ToggleEscapeMenu()
+    {
+        m_escapeMenu.SetActive(!m_escapeMenu.activeSelf);
     }
 
     public void DisplayResults(bool success, string name, string studentNumber, string date, string startTime, string endTime, int retries)
