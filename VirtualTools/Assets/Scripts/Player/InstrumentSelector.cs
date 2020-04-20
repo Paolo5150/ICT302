@@ -48,7 +48,7 @@ public class InstrumentSelector
     {
         float lerpValue = 0;
         float distance = (instrument.transform.position - viewPosition).magnitude;
-        while (distance > 0.5f)
+        while (distance > 0.05f)
         {
             lerpValue += Time.deltaTime * 0.5f;
             Vector3 newPos = Vector3.Lerp(instrument.transform.position, viewPosition, lerpValue);

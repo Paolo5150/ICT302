@@ -10,6 +10,7 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_dog;
     private GameObject m_controlHints;
     private GameObject m_escapeMenu;
+    private GameObject m_sceneSelector;
 
     private GameObject m_results;
     private Text m_nameText;
@@ -24,6 +25,7 @@ public class MainCanvas : MonoBehaviour
         m_dog = GameObject.Find("Dog");
         m_controlHints = GameObject.Find("ControlsHint");
         m_escapeMenu = GameObject.Find("EscapeMenu");
+        m_sceneSelector = GameObject.Find("SceneSelector");
 
         m_results = GameObject.Find("ResultsPanel");
         m_nameText = m_results.transform.Find("Name").GetComponent<Text>();
@@ -112,9 +114,15 @@ public class MainCanvas : MonoBehaviour
         m_escapeMenu.SetActive(enabled);
     }
 
-    public void ToggleEscapeMenu()
+    public void SetSceneSelector(bool enabled)
+    {
+        m_sceneSelector.SetActive(enabled);
+    }
+
+    public void ToggleEscapeMenu(bool includeSceneSelector = false)
     {
         m_escapeMenu.SetActive(!m_escapeMenu.activeSelf);
+        SetSceneSelector(m_escapeMenu.activeSelf); //Hide or show the scene selector depending on whether the escape menu is hidden or shown, respectively
     }
 
     public void DisplayResults(bool success, string name, string studentNumber, string date, string startTime, string endTime, int retries)
@@ -133,5 +141,10 @@ public class MainCanvas : MonoBehaviour
         m_endText.text = endTime;
         m_retriesText.text = "" +  retries; //LAziest int->string conversion ever
 
+    }
+
+    public bool GetResultsPanelEnabled()
+    {
+        return m_results.activeSelf;
     }
 }

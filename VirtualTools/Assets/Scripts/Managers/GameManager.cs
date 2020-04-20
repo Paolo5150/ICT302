@@ -49,24 +49,22 @@ public class GameManager : MonoBehaviour
         // Initialize other managers here
         GUIManager.Instance.Init();
         Player.Instance.Init();
-        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.Confined);
+        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
         Player.Instance.FreezePlayer(true);
-
-
-        //GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Left click to start!" }, () =>
-        //{
-
-        //    SessionManager.Instance.CreateSession(true, true);
-
-        //});
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if (SessionManager.Instance.GetSessionActive() && !GUIManager.Instance.GetMainCanvas().GetResultsPanelEnabled() && Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    GUIManager.Instance.ToggleCursor();
+        //    GUIManager.Instance.GetMainCanvas().ToggleEscapeMenu(true);
+        //    Player.Instance.FreezePlayer(!Player.Instance.GetPlayerFrozen());
+        //}
+
         if (Input.GetKeyDown(KeyCode.Escape))
-            GUIManager.Instance.GetMainCanvas().ToggleEscapeMenu();
+            Application.Quit();
     }
 
     private void OnApplicationQuit()
