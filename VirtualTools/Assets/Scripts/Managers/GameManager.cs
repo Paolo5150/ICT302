@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         //    Player.Instance.FreezePlayer(!Player.Instance.GetPlayerFrozen());
         //}
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetAxis("Cancel") == 1)
             Application.Quit();
     }
 
