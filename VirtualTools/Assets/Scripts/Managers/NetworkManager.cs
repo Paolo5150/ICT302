@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -13,7 +11,7 @@ public class NetworkManager : MonoBehaviour
     public const string LOCAL_SERVER_ADDRESS = "http://localhost/ICT302-WebApp/server/";
 
     private static NetworkManager m_instance;
-
+    private bool started = false;
     public enum SERVER
     {
         LOCAL,
@@ -53,40 +51,44 @@ public class NetworkManager : MonoBehaviour
 
     public void SendRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail)
     {
-        StartCoroutine(SendPostRequest(form, targetScript, onSuccess, onFail));
+        StartCoroutine(SendPostRequest(form, targetScript, onSuccess, onFail));      
     }
 
     private IEnumerator SendPostRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail)
     {
-        Debug.Log("Sending to: " + currentServer + targetScript);
-        using (UnityWebRequest www = UnityWebRequest.Post(currentServer + targetScript, form))
+        int attempts = 0;
+
+        while(attempts < 5)
         {
-            bool gotAnyReply = false;
-            www.timeout = 2;
-            Logger.LogToFile("Right before sending");
-            yield return www.SendWebRequest();
-            Logger.LogToFile("Right after sending");
+            Logger.LogToFile("Sending to: " + currentServer + targetScript + ", attempt: " + attempts);
 
-
-
-            if (www.isNetworkError || www.isHttpError || www.isNetworkError)
+            using (UnityWebRequest www = UnityWebRequest.Post(currentServer + targetScript, form))
             {
-                onFail();
-                Debug.Log("Error " + www.error);
-                Logger.LogToFile("Network error " + www.error);
-                gotAnyReply = true;
-            }
-            else
-            {
-                Debug.Log("Server OK " + www.downloadHandler.text);
-                onSuccess(www.downloadHandler.text);
-                gotAnyReply = true;
+                www.timeout = 2;
 
-            }
+                yield return www.SendWebRequest();
 
-            Logger.LogToFile("Request disposed, got reply: " + gotAnyReply);
-            www.Dispose();
+                if (www.isNetworkError || www.isHttpError)
+                {
+                    onFail();
+                    Debug.Log("Error " + www.error);
+                    Logger.LogToFile("Network error " + www.error);
+                    www.Abort();
+                    www.Dispose();
+                    attempts++;
+
+                }
+                else
+                {
+                    Debug.Log("Server OK " + www.downloadHandler.text);
+                    onSuccess(www.downloadHandler.text);
+                    www.Dispose();
+                    break;
+                }
+                
+            }
         }
+       
 
     }
 }
