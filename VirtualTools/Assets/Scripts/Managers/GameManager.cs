@@ -56,19 +56,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (SessionManager.Instance.GetSessionActive() && !GUIManager.Instance.GetMainCanvas().GetResultsPanelEnabled() && Input.GetKeyDown(KeyCode.Escape))
-        //{
-        //    GUIManager.Instance.ToggleCursor();
-        //    GUIManager.Instance.GetMainCanvas().ToggleEscapeMenu(true);
-        //    Player.Instance.FreezePlayer(!Player.Instance.GetPlayerFrozen());
-        //}
-
-        if (Input.GetAxis("Cancel") == 1)
-            Application.Quit();
-    }
-
-    private void OnApplicationQuit()
-    {
-        SessionManager.Instance.OnQuit();
+        
     }
 }
