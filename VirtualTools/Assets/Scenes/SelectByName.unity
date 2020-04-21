@@ -4392,12 +4392,12 @@ PrefabInstance:
     - target: {fileID: 2841916218697318664, guid: b7de0512956c2a345825e8d099a17df1,
         type: 3}
       propertyPath: itemViewMovementSpeed
-      value: 0.008
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 2841916218697318664, guid: b7de0512956c2a345825e8d099a17df1,
         type: 3}
       propertyPath: itemViewMovementLimitRange
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2841916218697318664, guid: b7de0512956c2a345825e8d099a17df1,
         type: 3}
@@ -4407,12 +4407,12 @@ PrefabInstance:
     - target: {fileID: 2841916218697318664, guid: b7de0512956c2a345825e8d099a17df1,
         type: 3}
       propertyPath: itemViewRotationSpeed
-      value: 200
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2841916218868793200, guid: b7de0512956c2a345825e8d099a17df1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2841916218868793200, guid: b7de0512956c2a345825e8d099a17df1,
         type: 3}

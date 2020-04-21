@@ -179,7 +179,6 @@ public class SessionManager
         if (m_currentSession != null)
             m_currentSession.sessionResults.Log_SimulationClosedPrematurely();
         ExportResults(m_currentSession);
-        //Thread.Sleep(1000);
 
     }
 
@@ -199,7 +198,7 @@ public class SessionManager
         }
         else
         {
-            obj.AddField("EndTime", "0");
+            obj.AddField("EndTime", s.sessionResults.endTime.ToShortTimeString() + " (Incomplete)");
         }
 
         obj.AddField("Retries", s.sessionResults.retries);
