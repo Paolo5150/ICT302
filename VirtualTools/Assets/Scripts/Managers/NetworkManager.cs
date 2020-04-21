@@ -9,6 +9,7 @@ public class NetworkManager : MonoBehaviour
 {
 
     public const string REMOTE_SERVER_ADDRESS = "https://unreckoned-worry.000webhostapp.com/server/";
+    //public const string REMOTE_SERVER_ADDRESS = "http://virtualinstruments.unaux.com/server/";
     public const string LOCAL_SERVER_ADDRESS = "http://localhost/ICT302-WebApp/server/";
 
     private static NetworkManager m_instance;
