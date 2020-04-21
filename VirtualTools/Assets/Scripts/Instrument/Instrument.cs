@@ -79,7 +79,7 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
             case INSTRUMENT_TAG.METZEMBAUM_SCISSOR:
                 return "Blunt dissection of subcutaneous tissues";
             case INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS:
-                return "Crrushing of vascular pedicles";
+                return "Crushing of vascular pedicles";
             case INSTRUMENT_TAG.SCALPEL:
                 return "Skin and abdominal incision, transection of ligated pedicles";
             case INSTRUMENT_TAG.SUTURE_SCISSOR:
