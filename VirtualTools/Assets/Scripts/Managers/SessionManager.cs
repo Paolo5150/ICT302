@@ -68,10 +68,10 @@ public class SessionManager
         List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
 
         allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
+      //  allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
+      //  allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
+      //  allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
+      //  allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
 
         while (allTasks.Count > 0)
         {
@@ -100,21 +100,6 @@ public class SessionManager
         m_currentSession = session;
         m_currentSession.Start();
     }
-
-    public void CreateSession(bool setAsCurrent = true, bool startImmediately = false)
-    {
-        Session session = SelectByNameSession();
-        m_sessionsRun.Add(session);
-
-        if (setAsCurrent)
-            m_currentSession = session;
-        if(startImmediately)
-        {
-            m_currentSession = session;
-            m_currentSession.Start();
-        }
-
-    }
     
     private long GenerateID()
     {
@@ -122,8 +107,6 @@ public class SessionManager
 
         long idLong = long.Parse(id);
         return idLong;
-
-
     }
 
     private void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag)
@@ -178,6 +161,7 @@ public class SessionManager
     {
         if (m_currentSession != null)
             m_currentSession.sessionResults.Log_SimulationClosedPrematurely();
+
         ExportResults(m_currentSession);
     }
 
@@ -251,6 +235,7 @@ public class SessionManager
     {
         if(s != null && s.HasStarted())
         {
+            Debug.Log("Exporting session");
             string fileName = "";
 
             // If first name is set, we can safely assume that all other keys are set

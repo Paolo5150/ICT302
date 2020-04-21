@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
         if (!m_isQuitting)
         {
             m_isQuitting = true;
+            Player.Instance.FreezePlayer(true);
+            GUIManager.Instance.GetMainCanvas().DogSpeak("Quitting...");
             SessionManager.Instance.OnQuit();
             StartCoroutine(QuitCoroutine());
         }
@@ -50,7 +52,7 @@ public class GameManager : MonoBehaviour
   
     private IEnumerator QuitCoroutine()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         Application.Quit();
     }
 
