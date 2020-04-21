@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     private InstrumentSelector m_instrumentSelector;
     private FirstPersonController m_firstPersonController;
     private Instrument m_currentlyPointingInstrument;
-    private bool m_isQuitting = false; //Used when the user presses the cancel axis to mimic GetButtonDown
     public bool m_pickingEnabled;
     public bool m_viewingEnabled;
 
@@ -109,11 +108,9 @@ public class Player : MonoBehaviour
 
     private void ProcessInput()
     {
-        if (Input.GetAxis("Cancel") == 1 && !m_isQuitting)
+        if (Input.GetAxis("Cancel") == 1)
         {
-            m_isQuitting = true;
-            SessionManager.Instance.OnQuit();
-            Application.Quit();
+            GameManager.Instance.Quit();
         }
     }
 

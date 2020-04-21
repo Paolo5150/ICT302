@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager m_instance;
     public string MockStudentNumber; //TODO: remove this
+    private bool m_isQuitting = false; //Used when the user presses the cancel axis to mimic GetButtonDown
 
     public static GameManager Instance
     {
@@ -39,9 +40,20 @@ public class GameManager : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        if (!m_isQuitting)
+        {
+            m_isQuitting = true;
+            SessionManager.Instance.OnQuit();
+            StartCoroutine(QuitCoroutine());
+        }
     }
   
+    private IEnumerator QuitCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        Application.Quit();
+    }
+
     // Start is called before the first frame update
     // GameManager is set to be compiled after Player.cs, so when setting the game mode, the player reference is valid (see Project Setting -> Script execution order)
     void Start()

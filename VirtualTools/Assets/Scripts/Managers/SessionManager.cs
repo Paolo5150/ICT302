@@ -179,7 +179,6 @@ public class SessionManager
         if (m_currentSession != null)
             m_currentSession.sessionResults.Log_SimulationClosedPrematurely();
         ExportResults(m_currentSession);
-
     }
 
     public string CreateJSONString(Session s, string fileName)
