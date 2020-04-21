@@ -59,21 +59,34 @@ public class NetworkManager : MonoBehaviour
     private IEnumerator SendPostRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail)
     {
         Debug.Log("Sending to: " + currentServer + targetScript);
-        UnityWebRequest www = UnityWebRequest.Post(currentServer + targetScript, form);
-        www.timeout = 5;
-        yield return www.SendWebRequest();
-       
-
-        if (www.isNetworkError || www.isHttpError)
+        using (UnityWebRequest www = UnityWebRequest.Post(currentServer + targetScript, form))
         {
-            onFail();
-            Debug.Log("Error " + www.error);
+            bool gotAnyReply = false;
+            www.timeout = 2;
+            Logger.LogToFile("Right before sending");
+            yield return www.SendWebRequest();
+            Logger.LogToFile("Right after sending");
+
+
+
+            if (www.isNetworkError || www.isHttpError || www.isNetworkError)
+            {
+                onFail();
+                Debug.Log("Error " + www.error);
+                Logger.LogToFile("Network error " + www.error);
+                gotAnyReply = true;
+            }
+            else
+            {
+                Debug.Log("Server OK " + www.downloadHandler.text);
+                onSuccess(www.downloadHandler.text);
+                gotAnyReply = true;
+
+            }
+
+            Logger.LogToFile("Request disposed, got reply: " + gotAnyReply);
+            www.Dispose();
         }
-        else
-        {
-            Debug.Log("Server OK " + www.downloadHandler.text);
 
-            onSuccess(www.downloadHandler.text);
-        }   
     }
 }

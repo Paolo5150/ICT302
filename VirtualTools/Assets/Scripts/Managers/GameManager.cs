@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
   
     private IEnumerator QuitCoroutine()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
         Application.Quit();
     }
 

@@ -68,10 +68,10 @@ public class SessionManager
         List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
 
         allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
-      //  allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
-      //  allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
-      //  allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
-      //  allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
 
         while (allTasks.Count > 0)
         {
@@ -103,9 +103,11 @@ public class SessionManager
     
     private long GenerateID()
     {
-        string id = "" +  DateTime.Today.DayOfYear + DateTime.Today.Month + DateTime.Today.Year + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
+        string id = "" +  DateTime.Today.DayOfYear  + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
 
         long idLong = long.Parse(id);
+        Debug.Log("ID: " + idLong);
+        Logger.LogToFile("ID: " + idLong);
         return idLong;
     }
 
@@ -235,7 +237,7 @@ public class SessionManager
     {
         if(s != null && s.HasStarted())
         {
-            Debug.Log("Exporting session");
+            Logger.LogToFile("Exporting session, id " + m_currentSession.GetID());
             string fileName = "";
 
             // If first name is set, we can safely assume that all other keys are set
@@ -255,11 +257,11 @@ public class SessionManager
             string json = CreateJSONString(s,fileName);
 
             //Save to file
-            BinaryFormatter bf = new BinaryFormatter();
+           /* BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Create(fileName);
             bf.Serialize(file, json);
             file.Close();
-
+            */
             //Send to server
             WWWForm form = new WWWForm();
             if(PlayerPrefs.HasKey("MurdochUserNumber"))
@@ -270,15 +272,19 @@ public class SessionManager
                 form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
 
             form.AddField("SessionString", json);
-
+            Logger.LogToFile("Just about to send request, " + m_currentSession.GetID());
            NetworkManager.Instance.SendRequest(form, "recordSession.php", 
                 (string reply) => {
                     //Debug.Log("Server said: " + reply);
+                    Logger.LogToFile("Session recorded, id " + m_currentSession.GetID());
+                    Logger.LogToFile("Reply" + reply);
+
+
 
                 }, 
                 () => {
-                   // Debug.Log("Failed to upload");
-   
+                    // Debug.Log("Failed to upload");
+                    Logger.LogToFile("Failed to upload results, id " + m_currentSession.GetID());
                 });
         }
         }

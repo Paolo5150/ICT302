@@ -23,7 +23,7 @@ public class LoginUI : MonoBehaviour
 
     IEnumerator StartNextScene()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(2);
         SceneManager.LoadScene(1);             
     }
 
