@@ -3,7 +3,12 @@ guid: 73c6aa044ec847044bd189bb51bd9dd8
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _17219_Mayo_scissors_V1default
+    second: {fileID: 2100000, guid: 6e47be9c3623d234fb734f7abf5d4686, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
