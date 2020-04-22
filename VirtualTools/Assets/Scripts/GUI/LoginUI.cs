@@ -14,6 +14,8 @@ public class LoginUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Logger.LogToFile("Login START");
+
         m_idField = GameObject.Find("IdField").GetComponent<InputField>();
         m_pswField = GameObject.Find("PswField").GetComponent<InputField>();
         m_loginButton = GameObject.Find("LogInButton").GetComponent<Button>();
@@ -49,9 +51,10 @@ public class LoginUI : MonoBehaviour
         form.AddField("Password", psw);
         form.AddField("IsSim", 1);
 
-
+        Logger.LogToFile("Send login form");
         NetworkManager.Instance.SendRequest(form, "login.php", (string reply) => {
             Debug.Log("Reply: " + reply);
+
             JSONObject replyObj = JSONObject.Create(reply);
             string status = "";
 
@@ -94,6 +97,10 @@ public class LoginUI : MonoBehaviour
         () => {
             dogText.text = "An error occurred :)";
             m_loginButton.gameObject.SetActive(true);
+        },
+        ()=> {
+            // If all attempts to connect fail
+            Application.Quit();
         });
 
     }

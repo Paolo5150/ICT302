@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
+using System.Diagnostics;
 
 public class GameManager : MonoBehaviour
 {
@@ -38,6 +39,24 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    private void ProcessTest()
+    {
+        Process p = new Process();
+        p.StartInfo.UseShellExecute = false;
+        // You can start any process, HelloWorld is a do-nothing example.
+        p.StartInfo.FileName = "W://HelloWorld.exe";
+        p.StartInfo.CreateNoWindow = true;
+        p.StartInfo.RedirectStandardOutput = false;
+        p.StartInfo.RedirectStandardError = true;
+        p.StartInfo.UseShellExecute = false;
+        p.ErrorDataReceived += (s, a) => {
+            Logger.LogToFile("Wtf is this", "process.txt");
+        };
+        p.Start();
+
+
+    }
+
     public void Quit()
     {
         if (!m_isQuitting)
@@ -45,16 +64,30 @@ public class GameManager : MonoBehaviour
             m_isQuitting = true;
             Player.Instance.FreezePlayer(true);
             GUIManager.Instance.GetMainCanvas().DogSpeak("Quitting...");
-            SessionManager.Instance.OnQuit();
-            StartCoroutine(QuitCoroutine());
+
+            string json = SessionManager.Instance.CreateJSONString(SessionManager.Instance.GetCurrentSession());
+            WWWForm form = SessionManager.Instance.GetSessionForm(json);
+            Logger.LogToFile("Just about to send request, " + SessionManager.Instance.GetCurrentSession().GetID());
+            NetworkManager.Instance.SendRequest(form, "recordSession.php",
+                 (string reply) => {
+
+                    Logger.LogToFile("Session recorded, id " + SessionManager.Instance.GetCurrentSession().GetID());
+                     Logger.LogToFile("Reply" + reply);
+                     Logger.LogToFile("Quitting now");
+                     Application.Quit();
+                 },
+                 () => {
+
+                    Logger.LogToFile("Failed to upload results, id " + SessionManager.Instance.GetCurrentSession().GetID());
+                 },
+                 ()=> {
+                     Logger.LogToFile("Quitting now");
+                     Application.Quit();
+                 });
         }
     }
   
-    private IEnumerator QuitCoroutine()
-    {
-        yield return new WaitForSeconds(3);
-        Application.Quit();
-    }
+
 
     // Start is called before the first frame update
     // GameManager is set to be compiled after Player.cs, so when setting the game mode, the player reference is valid (see Project Setting -> Script execution order)

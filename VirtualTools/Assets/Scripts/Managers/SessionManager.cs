@@ -37,6 +37,11 @@ public class SessionManager
 
     }
 
+    public Session GetCurrentSession()
+    {
+        return m_currentSession;
+    }
+
     private Session SelectByNameSession()
     {
         //Will create a session manager
@@ -167,7 +172,7 @@ public class SessionManager
         ExportResults(m_currentSession);
     }
 
-    public string CreateJSONString(Session s, string fileName)
+    public string CreateJSONString(Session s)
     {
         JSONObject obj = new JSONObject();
 
@@ -187,7 +192,6 @@ public class SessionManager
         }
 
         obj.AddField("Retries", s.sessionResults.retries);
-        obj.AddField("FileName", fileName);
 
         JSONObject logs = new JSONObject();
         int counter = 0;
@@ -232,6 +236,20 @@ public class SessionManager
 
         GUIManager.Instance.GetMainCanvas().DisplayResults(completed, name, studentNumber, date, startDateString, endDateString, retries);
     }
+
+    public WWWForm GetSessionForm(string json)
+    {
+        WWWForm form = new WWWForm();
+        if (PlayerPrefs.HasKey("MurdochUserNumber"))
+        {
+            form.AddField("MurdochUserNumber", PlayerPrefs.GetString("MurdochUserNumber"));
+        }
+        else
+            form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
+
+        form.AddField("SessionString", json);
+        return form;
+    }
     
     public void ExportResults(Session s)
     {
@@ -250,42 +268,36 @@ public class SessionManager
                 fileName += "Anonymous_";
             }
 
-            string dateString = s.sessionResults.startTime.Date.ToShortDateString();
+           /* string dateString = s.sessionResults.startTime.Date.ToShortDateString();
             dateString = dateString.Replace('/','_');
-            fileName += dateString + ".dat";
+            fileName += dateString + ".dat";*/
 
-            string json = CreateJSONString(s,fileName);
 
             //Save to file
-           /* BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Create(fileName);
-            bf.Serialize(file, json);
-            file.Close();
-            */
+            /* BinaryFormatter bf = new BinaryFormatter();
+             FileStream file = File.Create(fileName);
+             bf.Serialize(file, json);
+             file.Close();
+             */
             //Send to server
-            WWWForm form = new WWWForm();
-            if(PlayerPrefs.HasKey("MurdochUserNumber"))
-            {
-                form.AddField("MurdochUserNumber",  PlayerPrefs.GetString("MurdochUserNumber"));
-            }
-            else
-                form.AddField("MurdochUserNumber", GameManager.Instance.MockStudentNumber);
 
-            form.AddField("SessionString", json);
+            string json = CreateJSONString(s);
+            WWWForm form = GetSessionForm(json);
             Logger.LogToFile("Just about to send request, " + m_currentSession.GetID());
            NetworkManager.Instance.SendRequest(form, "recordSession.php", 
                 (string reply) => {
                     //Debug.Log("Server said: " + reply);
                     Logger.LogToFile("Session recorded, id " + m_currentSession.GetID());
                     Logger.LogToFile("Reply" + reply);
-
-
-
                 }, 
                 () => {
                     // Debug.Log("Failed to upload");
                     Logger.LogToFile("Failed to upload results, id " + m_currentSession.GetID());
-                });
+                },
+                () => {
+                    //If all attempts to connect fail
+                }
+                );
         }
         }
 
