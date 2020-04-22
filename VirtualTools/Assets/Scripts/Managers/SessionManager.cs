@@ -55,8 +55,10 @@ public class SessionManager
         allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
         allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
         allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.SCALPEL));
+        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.TOWEL_CLAMPS));
+        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER));
 
-        while(allTasks.Count > 0)
+        while (allTasks.Count > 0)
         {
             int i = UnityEngine.Random.Range(0, allTasks.Count);
             session.AddTask(allTasks[i]);
@@ -79,6 +81,8 @@ public class SessionManager
         allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
         allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
         allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.SCALPEL));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.TOWEL_CLAMPS));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER));
 
         while (allTasks.Count > 0)
         {
