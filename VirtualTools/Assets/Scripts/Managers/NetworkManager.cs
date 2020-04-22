@@ -49,12 +49,12 @@ public class NetworkManager : MonoBehaviour
         currentServer = server == SERVER.LOCAL ? LOCAL_SERVER_ADDRESS : REMOTE_SERVER_ADDRESS;
     }
 
-    public void SendRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail)
+    public void SendRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail, Action onAttemptsFailed)
     {
-        StartCoroutine(SendPostRequest(form, targetScript, onSuccess, onFail));      
+        StartCoroutine(SendPostRequest(form, targetScript, onSuccess, onFail, onAttemptsFailed));      
     }
 
-    private IEnumerator SendPostRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail)
+    private IEnumerator SendPostRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail, Action onAttemptsFailed)
     {
         int attempts = 0;
 
@@ -83,11 +83,15 @@ public class NetworkManager : MonoBehaviour
                     Debug.Log("Server OK " + www.downloadHandler.text);
                     onSuccess(www.downloadHandler.text);
                     www.Dispose();
-                    break;
+                    yield break;
+
                 }
-                
+
             }
         }
+        Logger.LogToFile("Finished send form coroutine");
+        onAttemptsFailed();
+        yield break;
        
 
     }

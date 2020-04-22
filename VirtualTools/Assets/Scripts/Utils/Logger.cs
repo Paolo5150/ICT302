@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class Logger
         using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(fileName, true))
         {
-            file.WriteLine(message);
+            file.WriteLine(DateTime.Now.ToShortTimeString() + " - " +  message);
         }
     }
 }

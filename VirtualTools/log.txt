@@ -1,0 +1,32 @@
+6:28 PM - ID: 113182836
+6:28 PM - Just about to send request, 113182836
+6:28 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:28 PM - Session recorded, id 113182836
+6:28 PM - Reply{"Log_0":"6:28 PM - Session starts","Log_1":"6:28 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>"}{"Data":{},"Status":"ok"}
+6:28 PM - Quitting now
+6:33 PM - ID: 113183318
+6:33 PM - Just about to send request, 113183318
+6:33 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:34 PM - ID: 113183426
+6:34 PM - Exporting session, id 113183426
+6:34 PM - Just about to send request, 113183426
+6:34 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:34 PM - Just about to send request, 113183426
+6:34 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:34 PM - Session recorded, id 113183426
+6:34 PM - Reply{"Log_0":"6:34 PM - Session starts","Log_1":"6:34 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"6:34 PM - Failed to select by name Suture Scissor","Log_3":"6:34 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_4":"6:34 PM - Correctly selected by name Suture Scissor","Log_5":"6:34 PM - New task: pick up a <b><u>Metzembaum Scissor<\/u><\/b>","Log_6":"6:34 PM - Correctly selected by name Metzembaum Scissor","Log_7":"6:34 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_8":"6:34 PM - Correctly selected by name Mayo Scissor","Log_9":"6:34 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_10":"6:34 PM - Correctly selected by name Rochester Carmalt Forceps","Log_11":"6:34 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_12":"6:34 PM - Correctly selected by name Scalpel","Log_13":"6:34 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_14":"6:34 PM - Correctly selected by name Addson-Brown Forceps","Log_15":"6:34 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:38 PM - ID: 113183848
+6:38 PM - Just about to send request, 113183848
+6:38 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:42 PM - ID: 113184225
+6:42 PM - Just about to send request, 113184225
+6:42 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:46 PM - ID: 113184647
+6:46 PM - Just about to send request, 113184647
+6:46 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+7:05 PM - ID: 11319553
+7:06 PM - Just about to send request, 11319553
+7:06 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+7:06 PM - Session recorded, id 11319553
+7:06 PM - Reply{"Log_0":"7:05 PM - Session starts","Log_1":"7:05 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>"}{"Data":{},"Status":"ok"}
+7:06 PM - Quitting now
