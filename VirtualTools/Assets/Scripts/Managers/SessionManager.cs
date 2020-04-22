@@ -54,6 +54,7 @@ public class SessionManager
         allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
         allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
         allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
+        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.SCALPEL));
 
         while(allTasks.Count > 0)
         {
@@ -77,6 +78,7 @@ public class SessionManager
         allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
         allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
         allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
+        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.SCALPEL));
 
         while (allTasks.Count > 0)
         {
