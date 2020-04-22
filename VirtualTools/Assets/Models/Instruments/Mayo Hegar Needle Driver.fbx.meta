@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4560edd1d38bc23438ab92d7f7a05fde
+guid: 3cca8704fca984b47bcef6a8083ba9a9
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: steel
-    second: {fileID: 2100000, guid: 3d1c87a96b5be2448b0f4019038ca48c, type: 2}
+      name: _17219_Mayo_scissors_V1default
+    second: {fileID: 2100000, guid: ce33791e525748744bf1e92724a24f7f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: _17219_Mayo_scissors_V2default
+    second: {fileID: 2100000, guid: 405d12bf79971f048b855bca21426cc8, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
