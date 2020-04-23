@@ -160,6 +160,9 @@ public class SessionResults
             sessionResults.endTime = DateTime.Now;
             sessionResults.Log_Instruction(m_currentTask.instructions.ToArray());
 
+            //Keep first instruction on screen
+            GUIManager.Instance.GetMainCanvas().DogSpeak(m_currentTask.instructions[0]);
+
         });
     }
 

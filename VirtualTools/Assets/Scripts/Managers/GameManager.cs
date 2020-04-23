@@ -39,23 +39,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    private void ProcessTest()
-    {
-        Process p = new Process();
-        p.StartInfo.UseShellExecute = false;
-        // You can start any process, HelloWorld is a do-nothing example.
-        p.StartInfo.FileName = "W://HelloWorld.exe";
-        p.StartInfo.CreateNoWindow = true;
-        p.StartInfo.RedirectStandardOutput = false;
-        p.StartInfo.RedirectStandardError = true;
-        p.StartInfo.UseShellExecute = false;
-        p.ErrorDataReceived += (s, a) => {
-            Logger.LogToFile("Wtf is this", "process.txt");
-        };
-        p.Start();
 
-
-    }
 
     public void Quit()
     {
@@ -106,6 +90,7 @@ public class GameManager : MonoBehaviour
         Player.Instance.Init();
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
         Player.Instance.FreezePlayer(true);
+        
     }
 
     // Update is called once per frame

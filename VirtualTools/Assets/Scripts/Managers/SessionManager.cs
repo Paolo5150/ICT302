@@ -100,7 +100,12 @@ public class SessionManager
         m_sessionsRun.Add(session);
 
         m_currentSession = session;
-        m_currentSession.Start();
+        Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Hi, I'm your assistant! Left click to dismiss my messages" }, () => {
+            Player.Instance.FreezePlayer(true);
+
+            m_currentSession.Start();
+        });
     }
 
     public void CreateSelectByPurposeSession()
@@ -109,7 +114,13 @@ public class SessionManager
         m_sessionsRun.Add(session);
 
         m_currentSession = session;
-        m_currentSession.Start();
+        Player.Instance.FreezePlayer(true);
+
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Hi, I'm your assistant! Left click to dismiss my messages" }, () => {
+            Player.Instance.FreezePlayer(false);
+
+            m_currentSession.Start();
+        });
     }
     
     private long GenerateID()
