@@ -65,25 +65,33 @@ public class GameManager : MonoBehaviour
             Player.Instance.FreezePlayer(true);
             GUIManager.Instance.GetMainCanvas().DogSpeak("Quitting...");
 
-            string json = SessionManager.Instance.CreateJSONString(SessionManager.Instance.GetCurrentSession());
-            WWWForm form = SessionManager.Instance.GetSessionForm(json);
-            Logger.LogToFile("Just about to send request, " + SessionManager.Instance.GetCurrentSession().GetID());
-            NetworkManager.Instance.SendRequest(form, "recordSession.php",
-                 (string reply) => {
+            if(SessionManager.Instance.GetCurrentSession() != null)
+            {
+                string json = SessionManager.Instance.CreateJSONString(SessionManager.Instance.GetCurrentSession());
+                WWWForm form = SessionManager.Instance.GetSessionForm(json);
+                Logger.LogToFile("Just about to send request, " + SessionManager.Instance.GetCurrentSession().GetID());
+                NetworkManager.Instance.SendRequest(form, "recordSession.php",
+                     (string reply) => {
 
-                    Logger.LogToFile("Session recorded, id " + SessionManager.Instance.GetCurrentSession().GetID());
-                     Logger.LogToFile("Reply" + reply);
-                     Logger.LogToFile("Quitting now");
-                     Application.Quit();
-                 },
-                 () => {
+                         Logger.LogToFile("Session recorded, id " + SessionManager.Instance.GetCurrentSession().GetID());
+                         Logger.LogToFile("Reply" + reply);
+                         Logger.LogToFile("Quitting now");
+                         Application.Quit();
+                     },
+                     () => {
 
-                    Logger.LogToFile("Failed to upload results, id " + SessionManager.Instance.GetCurrentSession().GetID());
-                 },
-                 ()=> {
-                     Logger.LogToFile("Quitting now");
-                     Application.Quit();
-                 });
+                         Logger.LogToFile("Failed to upload results, id " + SessionManager.Instance.GetCurrentSession().GetID());
+                     },
+                     () => {
+                         Logger.LogToFile("Quitting now");
+                         Application.Quit();
+                     });
+            }
+            else
+            {
+                Application.Quit();
+            }
+           
         }
     }
   

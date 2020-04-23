@@ -64,7 +64,7 @@ public class NetworkManager : MonoBehaviour
 
             using (UnityWebRequest www = UnityWebRequest.Post(currentServer + targetScript, form))
             {
-                www.timeout = 2;
+                www.timeout = 5;
 
                 yield return www.SendWebRequest();
 
