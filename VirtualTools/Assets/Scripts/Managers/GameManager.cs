@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour
 
             if(SessionManager.Instance.GetCurrentSession() != null)
             {
+                if(!SessionManager.Instance.GetCurrentSession().sessionResults.completed)
+                    SessionManager.Instance.GetCurrentSession().sessionResults.Log_SimulationClosedPrematurely();
+
                 string json = SessionManager.Instance.CreateJSONString(SessionManager.Instance.GetCurrentSession());
                 WWWForm form = SessionManager.Instance.GetSessionForm(json);
                 Logger.LogToFile("Just about to send request, " + SessionManager.Instance.GetCurrentSession().GetID());
