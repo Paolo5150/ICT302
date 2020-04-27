@@ -43,7 +43,6 @@ public class InstrumentLocManager : MonoBehaviour
             Assert.IsTrue(InstrumentLocationSlots.Count > i);
             instrumentToMove.gameObject.transform.SetParent(InstrumentLocationSlots[i].transform);
             instrumentToMove.gameObject.transform.localPosition = new Vector3();
-            instrumentToMove.gameObject.transform.localRotation = new Quaternion();
             instrumentToMove.gameObject.SetActive(true);
             ++i;
         }
