@@ -78,6 +78,8 @@ public class SessionResults
         m_id = id;
     }
 
+
+
     public bool HasStarted()
     {
         return m_isStarted;
