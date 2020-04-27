@@ -26,19 +26,19 @@ public class InstrumentLocManager : MonoBehaviour
     /// </summary>
     /// <param name="instruments">List of instruments. Each one must be unique. 
     /// Must not be larger in size than the number of InstrumentLocationSlots.</param>
-    void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instruments)
+    void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
     {
         int i = 0;
-        foreach(Instrument.INSTRUMENT_TAG instrument in instruments)
+        foreach(Instrument.INSTRUMENT_TAG instrument in instrumentsOrder)
         {
             // Get the instrument with each tag in the instrument gameobject list.
             // Also ensure there's no repeated instruments gameobjects.
             List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
-            Assert.AreEqual(taggedGameObjects.Count, 1);
+            Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
             Instrument instrumentToMove = taggedGameObjects[0];
             // Ensure there's no repeats of the current item in the ordered list that was sent through.
-            List<Instrument.INSTRUMENT_TAG> instrumentRepeatedTags = instruments.FindAll(b => b == instrument);
-            Assert.AreEqual(instrumentRepeatedTags.Count, 1);
+            List<Instrument.INSTRUMENT_TAG> instrumentRepeatedTags = instrumentsOrder.FindAll(b => b == instrument);
+            Assert.AreEqual(instrumentRepeatedTags.Count, 1, "Duplicate INSTRUMENT_TAG in the instrumentsOrder parameter");
             // Place the instrument gameobject in the desired location and unhide it
             Assert.IsTrue(InstrumentLocationSlots.Count > i);
             instrumentToMove.gameObject.transform.SetParent(InstrumentLocationSlots[i].transform);
@@ -53,7 +53,13 @@ public class InstrumentLocManager : MonoBehaviour
     void Start()
     {
         PlaceInstrumentsInOrder(new List<Instrument.INSTRUMENT_TAG> { Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS,
-        Instrument.INSTRUMENT_TAG.SCALPEL});
+        Instrument.INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER,
+        Instrument.INSTRUMENT_TAG.MAYO_SCISSOR,
+        Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR,
+        Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS,
+        Instrument.INSTRUMENT_TAG.SCALPEL,
+        Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR,
+        Instrument.INSTRUMENT_TAG.TOWEL_CLAMPS});
     }
 
     // Update is called once per frame
