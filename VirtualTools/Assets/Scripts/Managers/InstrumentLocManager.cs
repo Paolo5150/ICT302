@@ -41,26 +41,25 @@ public class InstrumentLocManager : MonoBehaviour
     /// </summary>
     /// <param name="instruments">List of instruments. Each one must be unique. 
     /// Must not be larger in size than the number of InstrumentLocationSlots.</param>
-    private void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instruments)
+    private void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
     {
         int i = 0;
-        foreach(Instrument.INSTRUMENT_TAG instrument in instruments)
+        foreach(Instrument.INSTRUMENT_TAG instrument in instrumentsOrder)
         {
             if(instrument != Instrument.INSTRUMENT_TAG.NONE)
             {
                 // Get the instrument with each tag in the instrument gameobject list.
                 // Also ensure there's no repeated instruments gameobjects.
                 List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
-                Assert.AreEqual(taggedGameObjects.Count, 1);
+            	Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
                 Instrument instrumentToMove = taggedGameObjects[0];
                 // Ensure there's no repeats of the current item in the ordered list that was sent through.
-                List<Instrument.INSTRUMENT_TAG> instrumentRepeatedTags = instruments.FindAll(b => b == instrument);
-                Assert.AreEqual(instrumentRepeatedTags.Count, 1);
+            	List<Instrument.INSTRUMENT_TAG> instrumentRepeatedTags = instrumentsOrder.FindAll(b => b == instrument);
+            	Assert.AreEqual(instrumentRepeatedTags.Count, 1, "Duplicate INSTRUMENT_TAG in the instrumentsOrder parameter");
                 // Place the instrument gameobject in the desired location and unhide it
                 Assert.IsTrue(InstrumentLocationSlots.Count > i);
                 instrumentToMove.gameObject.transform.SetParent(InstrumentLocationSlots[i].transform);
                 instrumentToMove.gameObject.transform.localPosition = new Vector3();
-                instrumentToMove.gameObject.transform.localRotation = new Quaternion();
                 instrumentToMove.gameObject.SetActive(true);
             }
             ++i;
@@ -70,7 +69,7 @@ public class InstrumentLocManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlaceInstrumentsInOrder("Addson-Brown Forceps,Empty,Scalpel,Towel Clamps");
+        PlaceInstrumentsInOrder("Addson-Brown Forceps,Mayo Hegar Needle Driver,Mayo Scissor,Metzembaum Scissor,Rochester Carmalt Forceps,Scalpel,Suture Scissor,Towel Clamps");
     }
 
     // Update is called once per frame
