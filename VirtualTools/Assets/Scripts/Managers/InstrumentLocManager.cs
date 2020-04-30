@@ -22,29 +22,47 @@ public class InstrumentLocManager : MonoBehaviour
     List<Instrument> InstrumentGameObjects;
 
     /// <summary>
-    /// Order the instruments.
+    /// Order the instruments in the order given by the string.
+    /// </summary>
+    /// <param name="instruments">String representing a list of instruments tags. Each one must be unique. 
+    /// Number of instruments in the list must be <= than the number of InstrumentLocationSlots.</param>
+    public void PlaceInstrumentsInOrder(string instrumentsString)
+    {
+        string[] instrumentsSplit = instrumentsString.Split(',');
+        List<Instrument.INSTRUMENT_TAG> instrumentTags = new List<Instrument.INSTRUMENT_TAG>();
+        foreach (var instrumentTagString in instrumentsSplit)
+        {
+            instrumentTags.Add(Instrument.GetInstrumentTagFromString(instrumentTagString));
+        }
+        PlaceInstrumentsInOrder(instrumentTags);
+    }
+    /// <summary>
+    /// Order the instruments. (internal method)
     /// </summary>
     /// <param name="instruments">List of instruments. Each one must be unique. 
     /// Must not be larger in size than the number of InstrumentLocationSlots.</param>
-    void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instruments)
+    private void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instruments)
     {
         int i = 0;
         foreach(Instrument.INSTRUMENT_TAG instrument in instruments)
         {
-            // Get the instrument with each tag in the instrument gameobject list.
-            // Also ensure there's no repeated instruments gameobjects.
-            List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
-            Assert.AreEqual(taggedGameObjects.Count, 1);
-            Instrument instrumentToMove = taggedGameObjects[0];
-            // Ensure there's no repeats of the current item in the ordered list that was sent through.
-            List<Instrument.INSTRUMENT_TAG> instrumentRepeatedTags = instruments.FindAll(b => b == instrument);
-            Assert.AreEqual(instrumentRepeatedTags.Count, 1);
-            // Place the instrument gameobject in the desired location and unhide it
-            Assert.IsTrue(InstrumentLocationSlots.Count > i);
-            instrumentToMove.gameObject.transform.SetParent(InstrumentLocationSlots[i].transform);
-            instrumentToMove.gameObject.transform.localPosition = new Vector3();
-            instrumentToMove.gameObject.transform.localRotation = new Quaternion();
-            instrumentToMove.gameObject.SetActive(true);
+            if(instrument != Instrument.INSTRUMENT_TAG.NONE)
+            {
+                // Get the instrument with each tag in the instrument gameobject list.
+                // Also ensure there's no repeated instruments gameobjects.
+                List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
+                Assert.AreEqual(taggedGameObjects.Count, 1);
+                Instrument instrumentToMove = taggedGameObjects[0];
+                // Ensure there's no repeats of the current item in the ordered list that was sent through.
+                List<Instrument.INSTRUMENT_TAG> instrumentRepeatedTags = instruments.FindAll(b => b == instrument);
+                Assert.AreEqual(instrumentRepeatedTags.Count, 1);
+                // Place the instrument gameobject in the desired location and unhide it
+                Assert.IsTrue(InstrumentLocationSlots.Count > i);
+                instrumentToMove.gameObject.transform.SetParent(InstrumentLocationSlots[i].transform);
+                instrumentToMove.gameObject.transform.localPosition = new Vector3();
+                instrumentToMove.gameObject.transform.localRotation = new Quaternion();
+                instrumentToMove.gameObject.SetActive(true);
+            }
             ++i;
         }
     }
@@ -52,8 +70,7 @@ public class InstrumentLocManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlaceInstrumentsInOrder(new List<Instrument.INSTRUMENT_TAG> { Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS,
-        Instrument.INSTRUMENT_TAG.SCALPEL});
+        PlaceInstrumentsInOrder("Addson-Brown Forceps,Empty,Scalpel,Towel Clamps");
     }
 
     // Update is called once per frame

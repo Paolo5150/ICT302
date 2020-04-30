@@ -18,7 +18,8 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
         MAYO_HEGAR_NEEDLE_DRIVER,
         SUTURE_SCISSOR,
         MAYO_SCISSOR,
-        TOWEL_CLAMPS
+        TOWEL_CLAMPS,
+        NONE
     }
 
     public INSTRUMENT_TAG instrumentTag;
@@ -63,6 +64,32 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
                 return "Towel Clamps";
             default:
                 return "";
+        }
+    }
+    public static INSTRUMENT_TAG GetInstrumentTagFromString(string str)
+    {
+        switch (str)
+        {
+            case "Addson-Brown Forceps":
+                return INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS;
+            case "Mayo Hegar Needle Driver":
+                return INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER;
+            case "Mayo Scissor":
+                return INSTRUMENT_TAG.MAYO_SCISSOR;
+            case "Metzembaum Scissor":
+                return INSTRUMENT_TAG.METZEMBAUM_SCISSOR;
+            case "Rochester Carmalt Forceps":
+                return INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS;
+            case "Scalpel":
+                return INSTRUMENT_TAG.SCALPEL;
+            case "Suture Scissor":
+                return INSTRUMENT_TAG.SUTURE_SCISSOR;
+            case "Towel Clamps":
+                return INSTRUMENT_TAG.TOWEL_CLAMPS;
+            case "Empty":
+                return INSTRUMENT_TAG.NONE;
+            default:
+                throw new System.Exception("Enum for instrument " + str + " does not exist.");
         }
     }
 
