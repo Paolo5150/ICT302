@@ -32,13 +32,34 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
 
 
     public void OnPointing()
+
     {
-        m_renderer.material.color = Color.green;
+    
+	foreach(Material mat in GetComponent<Renderer>().materials)
+    
+	{
+	
+		mat.color = Color.green;
+
+    	}
+    
     }
 
+    
+
     public void OnReleasedPointing()
+    
     {
-        m_renderer.material.color = Color.white;
+        
+	foreach(Material mat in GetComponent<Renderer>().materials)
+
+	{
+            
+		mat.color = Color.white;
+        
+	}
+        
+    
     }
 
     public static string GetName(INSTRUMENT_TAG tag)

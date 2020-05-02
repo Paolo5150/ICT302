@@ -1,0 +1,13 @@
+3:20 PM - ID: 123152012
+3:20 PM - Just about to send request, 123152012
+3:20 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:20 PM - Session recorded, id 123152012
+3:20 PM - Reply<br />
+<b>Warning</b>:  mysqli_connect(): (HY000/1049): Unknown database 'ict302' in <b>C:\xampp\htdocs\ICT302-WebApp\server\functions.php</b> on line <b>5</b><br />
+<br />
+<b>Fatal error</b>:  Uncaught Error: Call to a member function prepare() on bool in C:\xampp\htdocs\ICT302-WebApp\server\recordSession.php:14
+Stack trace:
+#0 {main}
+  thrown in <b>C:\xampp\htdocs\ICT302-WebApp\server\recordSession.php</b> on line <b>14</b><br />
+
+3:20 PM - Quitting now
