@@ -22,7 +22,7 @@ public class InstrumentSelectByNameTask : Task
         }
         else
         {
-            session.sessionResults.Log_FailedToSelectByName(m_instrumentToSelect);
+            session.sessionResults.Log_FailedToSelectByName(m_instrumentToSelect, instrumentTag);
 
             taskStatus = STATUS.COMPLETED_FAIL;
         }
