@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2818937634280153160
+--- !u!1 &5221185167180361123
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1244604346661425755}
-  - component: {fileID: 2740563000954927365}
-  - component: {fileID: 218825928526904632}
-  - component: {fileID: 2818937634280153166}
-  - component: {fileID: 2818937634280153167}
+  - component: {fileID: 9092268366097555376}
+  - component: {fileID: 249175005421315462}
+  - component: {fileID: 5785355529341688191}
+  - component: {fileID: 4275197155104988849}
+  - component: {fileID: 4275197155104988855}
   m_Layer: 8
-  m_Name: Addson-Brown Forceps
+  m_Name: Metzembaum scissors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1244604346661425755
+--- !u!4 &9092268366097555376
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818937634280153160}
-  m_LocalRotation: {x: -0.000000021855696, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -71.4, y: 107.38, z: 500}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_GameObject: {fileID: 5221185167180361123}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 1.4, y: 1.0594, z: -1.3}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2740563000954927365
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!33 &249175005421315462
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818937634280153160}
-  m_Mesh: {fileID: 8681237571545070976, guid: 4560edd1d38bc23438ab92d7f7a05fde, type: 3}
---- !u!23 &218825928526904632
+  m_GameObject: {fileID: 5221185167180361123}
+  m_Mesh: {fileID: 8660135394266051959, guid: 5ce1e15515aece349bd7d3d72497d06c, type: 3}
+--- !u!23 &5785355529341688191
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818937634280153160}
+  m_GameObject: {fileID: 5221185167180361123}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,6 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 3c01c93bb7012694da54c0101a0bbb80, type: 2}
   - {fileID: 2100000, guid: 3c01c93bb7012694da54c0101a0bbb80, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -81,26 +82,26 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2818937634280153166
+--- !u!65 &4275197155104988849
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818937634280153160}
+  m_GameObject: {fileID: 5221185167180361123}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 520.38, y: 172.7, z: 346.6}
-  m_Center: {x: -0.000030517578, y: 0.93294144, z: -15}
---- !u!114 &2818937634280153167
+  m_Size: {x: 0.59, y: 0.23, z: 0.91}
+  m_Center: {x: 0.043656003, y: 0.0027650297, z: -0.033439107}
+--- !u!114 &4275197155104988855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818937634280153160}
+  m_GameObject: {fileID: 5221185167180361123}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 106d62bf4e5fc984cb592d2156187a46, type: 3}
