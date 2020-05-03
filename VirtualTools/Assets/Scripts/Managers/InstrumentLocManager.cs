@@ -9,6 +9,28 @@ using UnityEngine.Assertions;
 /// </summary>
 public class InstrumentLocManager : MonoBehaviour
 {
+    private static InstrumentLocManager m_instance;
+    public static InstrumentLocManager Instance
+    {
+        get
+        {
+            if (m_instance == null)
+            {
+                GameObject coreGameObject = GameObject.Find("Managers");
+                m_instance = coreGameObject.AddComponent<InstrumentLocManager>();
+            }
+
+            return m_instance;
+        }
+    }
+
+    protected virtual void Awake()
+    {
+        if (m_instance == null)
+            m_instance = GetComponent<InstrumentLocManager>();
+        else
+            DestroyImmediate(this);
+    }
     /// <summary>
     /// Gameobjects representing locations where instruments can go.
     /// </summary>
@@ -74,25 +96,6 @@ public class InstrumentLocManager : MonoBehaviour
     void Start()
     {
 
-        WWWForm form = new WWWForm();
-        form.AddField("MurdochUserNumber", PlayerPrefs.GetString("MurdochUserNumber"));
-        string order = "";
-        Logger.LogToFile("Sending getConfiguration request");
-        NetworkManager.Instance.SendRequest(form, "getConfiguration.php",
-                (string reply) => {
-                    Logger.LogToFile("Server said: " + reply);
-                    order = reply.Substring(reply.IndexOf('\\') + 2, reply.LastIndexOf('\\') - reply.IndexOf('\\') - 2);
-                    Logger.LogToFile("Order: " + order);
-                    PlaceInstrumentsInOrder(order);
-                },
-                () => {
-                    Logger.LogToFile("Failed to upload");
-                },
-                () => {
-                    //If all attempts to connect fail
-                    Logger.LogToFile("All attempts to connect failed");
-                }
-                );
     }
 
     // Update is called once per frame
