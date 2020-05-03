@@ -11,3 +11,83 @@ Stack trace:
   thrown in <b>C:\xampp\htdocs\ICT302-WebApp\server\recordSession.php</b> on line <b>14</b><br />
 
 3:20 PM - Quitting now
+6:19 PM - Sending getConfiguration request
+6:19 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/getConfiguration.php, attempt: 0
+6:19 PM - Failed to upload
+6:19 PM - Network error Request timeout
+6:19 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/getConfiguration.php, attempt: 1
+6:19 PM - Failed to upload
+6:19 PM - Network error Request timeout
+6:19 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/getConfiguration.php, attempt: 2
+6:19 PM - Failed to upload
+6:19 PM - Network error Cannot resolve destination host
+6:19 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/getConfiguration.php, attempt: 3
+6:19 PM - Sending getConfiguration request
+6:19 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:19 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:19 PM - Order: Suture Scissors,Towel Clamps
+6:22 PM - Sending getConfiguration request
+6:22 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:22 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:22 PM - Order: Suture Scissors,Towel Clamps
+6:23 PM - Sending getConfiguration request
+6:23 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:23 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:23 PM - Order: 
+6:24 PM - Sending getConfiguration request
+6:24 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:24 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:24 PM - Order: 
+6:26 PM - Sending getConfiguration request
+6:26 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:26 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:26 PM - Order: 
+6:27 PM - Sending getConfiguration request
+6:27 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:28 PM - Sending getConfiguration request
+6:28 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:30 PM - Sending getConfiguration request
+6:30 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:31 PM - Sending getConfiguration request
+6:31 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:33 PM - Sending getConfiguration request
+6:33 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:33 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:33 PM - Order: Suture Scissors,Towel Clamps
+6:34 PM - Sending getConfiguration request
+6:34 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:34 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:34 PM - Order: Suture Scissors,Towel Clamps
+6:35 PM - Sending getConfiguration request
+6:35 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:35 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:35 PM - Order: Suture Scissors,Towel Clamps
+6:36 PM - Sending getConfiguration request
+6:36 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:36 PM - Server said: 
+{"Data":{"AssessmentMode":"false","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:36 PM - Order: Suture Scissors,Towel Clamps
+6:37 PM - Sending getConfiguration request
+6:37 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:37 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:37 PM - Order: Suture Scissors,Towel Clamps
+6:38 PM - Sending getConfiguration request
+6:38 PM - Sending to: http://localhost/ICT302-WebApp/server/getConfiguration.php, attempt: 0
+6:38 PM - Server said: 
+{"Data":{"AssessmentMode":"true","Layout":"\"Suture Scissors,Towel Clamps\""}}
+6:38 PM - Order: Suture Scissors,Towel Clamps
+6:38 PM - ID: 124183828
+6:38 PM - Just about to send request, 124183828
+6:38 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:38 PM - Session recorded, id 124183828
+6:38 PM - Reply{"Log_0":"6:38 PM - Session starts","Log_1":"6:38 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"6:38 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+6:38 PM - Quitting now

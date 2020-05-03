@@ -268,7 +268,7 @@ public class SessionManager
     
     public void ExportResults(Session s)
     {
-        if(s != null && s.HasStarted())
+        if(s != null && s.HasStarted() && GameManager.Instance.IsAssessmentMode())
         {
             Logger.LogToFile("Exporting session, id " + m_currentSession.GetID());
             string fileName = "";

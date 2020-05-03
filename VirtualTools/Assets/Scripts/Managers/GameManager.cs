@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private static GameManager m_instance;
     public string MockStudentNumber; //TODO: remove this
     private bool m_isQuitting = false; //Used when the user presses the cancel axis to mimic GetButtonDown
-
+    private bool assessmentMode;
     public static GameManager Instance
     {
         get
@@ -39,7 +39,10 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
+    public bool IsAssessmentMode()
+    {
+        return assessmentMode;
+    }
 
     public void Quit()
     {
@@ -49,7 +52,7 @@ public class GameManager : MonoBehaviour
             Player.Instance.FreezePlayer(true);
             GUIManager.Instance.GetMainCanvas().DogSpeak("Quitting...");
 
-            if(SessionManager.Instance.GetCurrentSession() != null)
+            if(SessionManager.Instance.GetCurrentSession() != null && assessmentMode)
             {
                 if(!SessionManager.Instance.GetCurrentSession().sessionResults.completed)
                     SessionManager.Instance.GetCurrentSession().sessionResults.Log_SimulationClosedPrematurely();
@@ -88,6 +91,39 @@ public class GameManager : MonoBehaviour
     // GameManager is set to be compiled after Player.cs, so when setting the game mode, the player reference is valid (see Project Setting -> Script execution order)
     void Start()
     {
+
+        WWWForm form = new WWWForm();
+        form.AddField("MurdochUserNumber", PlayerPrefs.GetString("MurdochUserNumber"));
+        string order = "";
+        Logger.LogToFile("Sending getConfiguration request");
+        NetworkManager.Instance.SendRequest(form, "getConfiguration.php",
+                (string reply) => {
+                    Logger.LogToFile("Server said: " + reply);
+
+                    JSONObject jobj = JSONObject.Create(reply);
+                    JSONObject data = jobj.GetField("Data");
+
+                    string aMode = "";
+                    data.GetField(out aMode, "AssessmentMode", "false");
+                    assessmentMode = aMode.Equals("true");
+
+                    UnityEngine.Debug.Log("AM " + assessmentMode);
+
+
+
+                    order = reply.Substring(reply.IndexOf('\\') + 2, reply.LastIndexOf('\\') - reply.IndexOf('\\') - 2);
+
+                    Logger.LogToFile("Order: " + order);
+                    InstrumentLocManager.Instance.PlaceInstrumentsInOrder(order);
+                },
+                () => {
+                    Logger.LogToFile("Failed to upload");
+                },
+                () => {
+                    //If all attempts to connect fail
+                    Logger.LogToFile("All attempts to connect failed");
+                }
+                );
         // Initialize other managers here
         GUIManager.Instance.Init();
         Player.Instance.Init();
