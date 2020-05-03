@@ -84,7 +84,7 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
             case INSTRUMENT_TAG.TOWEL_CLAMPS:
                 return "Towel Clamps";
             default:
-                return "";
+                throw new System.Exception("Purpose description for instrument tag " + tag + " does not exist.");
         }
     }
     public static INSTRUMENT_TAG GetInstrumentTagFromString(string str)
@@ -95,15 +95,15 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
                 return INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS;
             case "Mayo Hegar Needle Driver":
                 return INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER;
-            case "Mayo Scissor":
+            case "Mayo Scissors":
                 return INSTRUMENT_TAG.MAYO_SCISSOR;
-            case "Metzembaum Scissor":
+            case "Metzembaum Scissors":
                 return INSTRUMENT_TAG.METZEMBAUM_SCISSOR;
             case "Rochester Carmalt Forceps":
                 return INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS;
             case "Scalpel":
                 return INSTRUMENT_TAG.SCALPEL;
-            case "Suture Scissor":
+            case "Suture Scissors":
                 return INSTRUMENT_TAG.SUTURE_SCISSOR;
             case "Towel Clamps":
                 return INSTRUMENT_TAG.TOWEL_CLAMPS;
@@ -135,7 +135,7 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
             case INSTRUMENT_TAG.TOWEL_CLAMPS:
                 return "Joining drapes to patient";
             default:
-                return "";
+                throw new System.Exception("Purpose description for instrument tag "+tag+" does not exist.");
         }
     }
 }

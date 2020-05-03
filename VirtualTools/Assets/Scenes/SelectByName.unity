@@ -2847,7 +2847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fc76d251cee7541aa98dfe9862b860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  server: 0
+  server: 1
   currentServer: 
 --- !u!114 &922758314
 MonoBehaviour:
@@ -4250,6 +4250,11 @@ PrefabInstance:
       propertyPath: itemViewRotationSpeed
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 2841916218697318664, guid: b7de0512956c2a345825e8d099a17df1,
+        type: 3}
+      propertyPath: m_zoomViewSpot
+      value: 
+      objectReference: {fileID: 1234077957}
     - target: {fileID: 2841916218868793200, guid: b7de0512956c2a345825e8d099a17df1,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -4262,6 +4267,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7de0512956c2a345825e8d099a17df1, type: 3}
+--- !u!1 &1234077957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2841916218868793201, guid: b7de0512956c2a345825e8d099a17df1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1234077956}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1245230206 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1945295405437834849, guid: b50fb53d020fdac4f8473960e7f44623,

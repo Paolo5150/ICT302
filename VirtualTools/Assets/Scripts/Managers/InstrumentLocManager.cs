@@ -21,6 +21,9 @@ public class InstrumentLocManager : MonoBehaviour
     [SerializeField]
     List<Instrument> InstrumentGameObjects;
 
+
+    public static List<Instrument.INSTRUMENT_TAG> CurrentInstrumentOrder { get; set; }
+
     /// <summary>
     /// Order the instruments in the order given by the string.
     /// </summary>
@@ -43,6 +46,7 @@ public class InstrumentLocManager : MonoBehaviour
     /// Must not be larger in size than the number of InstrumentLocationSlots.</param>
     private void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
     {
+        CurrentInstrumentOrder = instrumentsOrder;
         int i = 0;
         foreach(Instrument.INSTRUMENT_TAG instrument in instrumentsOrder)
         {
@@ -69,7 +73,26 @@ public class InstrumentLocManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlaceInstrumentsInOrder("Addson-Brown Forceps,Mayo Hegar Needle Driver,Mayo Scissor,Metzembaum Scissor,Rochester Carmalt Forceps,Scalpel,Suture Scissor,Towel Clamps");
+
+        WWWForm form = new WWWForm();
+        form.AddField("MurdochUserNumber", PlayerPrefs.GetString("MurdochUserNumber"));
+        string order = "";
+        Logger.LogToFile("Sending getConfiguration request");
+        NetworkManager.Instance.SendRequest(form, "getConfiguration.php",
+                (string reply) => {
+                    Logger.LogToFile("Server said: " + reply);
+                    order = reply.Substring(reply.IndexOf('\\') + 2, reply.LastIndexOf('\\') - reply.IndexOf('\\') - 2);
+                    Logger.LogToFile("Order: " + order);
+                    PlaceInstrumentsInOrder(order);
+                },
+                () => {
+                    Logger.LogToFile("Failed to upload");
+                },
+                () => {
+                    //If all attempts to connect fail
+                    Logger.LogToFile("All attempts to connect failed");
+                }
+                );
     }
 
     // Update is called once per frame
