@@ -49,14 +49,13 @@ public class SessionManager
         //Randomize? From external file?
         List<InstrumentSelectByNameTask> allTasks = new List<InstrumentSelectByNameTask>();
 
-        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
-        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
-        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
-        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
-        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
-        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.SCALPEL));
-        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.TOWEL_CLAMPS));
-        allTasks.Add(new InstrumentSelectByNameTask(Instrument.INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER));
+        foreach(var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        {
+            if (tag != Instrument.INSTRUMENT_TAG.NONE)
+            {
+                allTasks.Add(new InstrumentSelectByNameTask(tag));
+            }
+        }
 
         while (allTasks.Count > 0)
         {
@@ -75,14 +74,13 @@ public class SessionManager
         //Randomize? From external file?
         List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
 
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.SUTURE_SCISSOR));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ADDSON_BROWN_FORCEPS));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.MAYO_SCISSOR));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.METZEMBAUM_SCISSOR));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.ROCHESTER_CARMALT_FORCEPS));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.SCALPEL));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.TOWEL_CLAMPS));
-        allTasks.Add(new InstrumentSelectByPurpose(Instrument.INSTRUMENT_TAG.MAYO_HEGAR_NEEDLE_DRIVER));
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        {
+            if (tag != Instrument.INSTRUMENT_TAG.NONE)
+            {
+                allTasks.Add(new InstrumentSelectByPurpose(tag));
+            }
+        }
 
         while (allTasks.Count > 0)
         {
