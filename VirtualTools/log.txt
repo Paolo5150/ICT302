@@ -91,3 +91,20 @@ Stack trace:
 6:38 PM - Session recorded, id 124183828
 6:38 PM - Reply{"Log_0":"6:38 PM - Session starts","Log_1":"6:38 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"6:38 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
 6:38 PM - Quitting now
+4:01 PM - Login START
+4:01 PM - Send login form
+4:01 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+4:01 PM - ID: 12516135
+4:02 PM - Login START
+4:02 PM - Send login form
+4:02 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+4:02 PM - ID: 12516252
+4:04 PM - Login START
+4:05 PM - Send login form
+4:05 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+4:05 PM - ID: 1251655
+4:05 PM - Login START
+4:05 PM - Send login form
+4:05 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+4:05 PM - ID: 12516554
+4:06 PM - ID: 12516623

@@ -136,8 +136,10 @@ public class SessionManager
         if(m_currentSession != null)
         {
             Task.STATUS status = m_currentSession.GetCurrentTask().Evaluate(instrumentTag, m_currentSession);
+
             if (status == Task.STATUS.COMPLETED_SUCCESS)
             {
+
                 Player.Instance.FreezePlayer(true);
                 
 
@@ -168,9 +170,9 @@ public class SessionManager
                     Player.Instance.ResetItemAndPlayerToFree();
                     Player.Instance.FreezePlayer(false);
                     Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-                    
+
                     // Restart session
-                    m_currentSession.Restart();
+                    m_currentSession.NextTask();
 
                 });
 

@@ -122,6 +122,7 @@ public class SessionResults
         }
     }
 
+    
     public void Restart()
     {
         //Set all tasks to pending
@@ -141,11 +142,17 @@ public class SessionResults
 
     public bool NextTask()
     {
-        int indexOfCurrent = tasks.IndexOf(m_currentTask);
-        if (indexOfCurrent == tasks.Count - 1)
+        if(m_currentTask.taskStatus == Task.STATUS.COMPLETED_SUCCESS)
+        {
+            int indexOfCurrent = tasks.IndexOf(m_currentTask);
+            tasks.RemoveAt(indexOfCurrent);
+        }
+
+        if (tasks.Count == 0)
             return false;
 
-        m_currentTask = tasks[indexOfCurrent + 1];
+        System.Random r = new System.Random();
+        m_currentTask = tasks[r.Next(tasks.Count)];
         StartCurrentTask();
         return true;
     }
