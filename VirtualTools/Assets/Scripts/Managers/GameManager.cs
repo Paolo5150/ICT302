@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
         Player.Instance.FreezePlayer(true);
 
-        if (PlayerPrefs.HasKey("asd"))
+        if (PlayerPrefs.HasKey("InstrumentOrder"))
         {
             InstrumentLocManager.Instance.PlaceInstrumentsInOrder(PlayerPrefs.GetString("InstrumentOrder"));
         }
