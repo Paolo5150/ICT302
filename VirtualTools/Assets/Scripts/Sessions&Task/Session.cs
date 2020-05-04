@@ -135,7 +135,7 @@ public class SessionResults
         }
 
         m_currentTask = tasks[0];
-        sessionResults.retries++;
+        
         StartCurrentTask();
 
     }

@@ -170,7 +170,7 @@ public class SessionManager
                     Player.Instance.ResetItemAndPlayerToFree();
                     Player.Instance.FreezePlayer(false);
                     Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-
+                    m_currentSession.sessionResults.retries++;
                     // Restart session
                     m_currentSession.NextTask();
 

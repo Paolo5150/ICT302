@@ -82,7 +82,7 @@ public class LoginUI : MonoBehaviour
 
                 UnityEngine.Debug.Log("AM " + assessmentMode);
                 string order = reply.Substring(reply.IndexOf('\\') + 2, reply.LastIndexOf('\\') - reply.IndexOf('\\') - 2);
-
+                Debug.Log("Order: " + order);
                 //Save info to PlayerPrefs
                 PlayerPrefs.SetString("FirstName", firstName);
                 PlayerPrefs.SetString("LastName", lastName);

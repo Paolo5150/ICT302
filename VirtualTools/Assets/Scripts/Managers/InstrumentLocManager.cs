@@ -66,7 +66,7 @@ public class InstrumentLocManager : MonoBehaviour
     /// </summary>
     /// <param name="instruments">List of instruments. Each one must be unique. 
     /// Must not be larger in size than the number of InstrumentLocationSlots.</param>
-    private void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
+    public void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
     {
         CurrentInstrumentOrder = instrumentsOrder;
         int i = 0;

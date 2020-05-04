@@ -108,3 +108,19 @@ Stack trace:
 4:05 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
 4:05 PM - ID: 12516554
 4:06 PM - ID: 12516623
+4:24 PM - Login START
+4:24 PM - Send login form
+4:24 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+4:39 PM - Login START
+4:39 PM - Send login form
+4:39 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+4:39 PM - ID: 125163923
+4:39 PM - Just about to send request, 125163923
+4:39 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+4:39 PM - Session recorded, id 125163923
+4:39 PM - Reply{"Log_0":"4:39 PM - Session starts","Log_1":"4:39 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"4:39 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+4:39 PM - Quitting now
+4:39 PM - Login START
+4:39 PM - Send login form
+4:39 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+4:39 PM - ID: 125163945

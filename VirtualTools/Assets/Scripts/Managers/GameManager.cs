@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Networking;
 using UnityStandardAssets.Characters.FirstPerson;
 using System.Diagnostics;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -99,9 +100,32 @@ public class GameManager : MonoBehaviour
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
         Player.Instance.FreezePlayer(true);
 
-        if (PlayerPrefs.HasKey("InstrumentOrder"))
+        if (PlayerPrefs.HasKey("asd"))
         {
             InstrumentLocManager.Instance.PlaceInstrumentsInOrder(PlayerPrefs.GetString("InstrumentOrder"));
+        }
+        else
+        {
+            List<Instrument.INSTRUMENT_TAG> allTags = new List<Instrument.INSTRUMENT_TAG>();
+
+            foreach(Instrument.INSTRUMENT_TAG tag in Enum.GetValues(typeof(Instrument.INSTRUMENT_TAG)))
+            {
+                allTags.Add(tag);
+            }
+
+            //Shuffle
+            System.Random rand = new System.Random();
+            int n = allTags.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rand.Next(n + 1);
+                Instrument.INSTRUMENT_TAG value = allTags[k];
+                allTags[k] = allTags[n];
+                allTags[n] = value;
+            }
+
+            InstrumentLocManager.Instance.PlaceInstrumentsInOrder(allTags);
         }
 
         if (PlayerPrefs.HasKey("AssessmentMode"))
