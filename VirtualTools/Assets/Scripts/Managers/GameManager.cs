@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
             Player.Instance.FreezePlayer(true);
             GUIManager.Instance.GetMainCanvas().DogSpeak("Quitting...");
 
+
+            //Wait until data is pushed to server before quitting
             if(SessionManager.Instance.GetCurrentSession() != null && assessmentMode)
             {
                 if(!SessionManager.Instance.GetCurrentSession().sessionResults.completed)
@@ -90,46 +92,22 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     // GameManager is set to be compiled after Player.cs, so when setting the game mode, the player reference is valid (see Project Setting -> Script execution order)
     void Start()
-    {
-
-        WWWForm form = new WWWForm();
-        form.AddField("MurdochUserNumber", PlayerPrefs.GetString("MurdochUserNumber"));
-        string order = "";
-        Logger.LogToFile("Sending getConfiguration request");
-        NetworkManager.Instance.SendRequest(form, "getConfiguration.php",
-                (string reply) => {
-                    Logger.LogToFile("Server said: " + reply);
-
-                    JSONObject jobj = JSONObject.Create(reply);
-                    JSONObject data = jobj.GetField("Data");
-
-                    string aMode = "";
-                    data.GetField(out aMode, "AssessmentMode", "false");
-                    assessmentMode = aMode.Equals("true");
-
-                    UnityEngine.Debug.Log("AM " + assessmentMode);
-
-
-
-                    order = reply.Substring(reply.IndexOf('\\') + 2, reply.LastIndexOf('\\') - reply.IndexOf('\\') - 2);
-
-                    Logger.LogToFile("Order: " + order);
-                    InstrumentLocManager.Instance.PlaceInstrumentsInOrder(order);
-                },
-                () => {
-                    Logger.LogToFile("Failed to upload");
-                },
-                () => {
-                    //If all attempts to connect fail
-                    Logger.LogToFile("All attempts to connect failed");
-                }
-                );
+    {                
         // Initialize other managers here
         GUIManager.Instance.Init();
         Player.Instance.Init();
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
         Player.Instance.FreezePlayer(true);
-        
+
+        if (PlayerPrefs.HasKey("InstrumentOrder"))
+        {
+            InstrumentLocManager.Instance.PlaceInstrumentsInOrder(PlayerPrefs.GetString("InstrumentOrder"));
+        }
+
+        if (PlayerPrefs.HasKey("AssessmentMode"))
+        {
+            assessmentMode = PlayerPrefs.GetInt("AssessmentMode") == 1;
+        }
     }
 
     // Update is called once per frame

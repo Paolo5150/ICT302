@@ -76,10 +76,20 @@ public class LoginUI : MonoBehaviour
 
                 dogText.text = "Welcome " + firstName + " the simulation will start in a moment";
 
+                string aMode = "";
+                data.GetField(out aMode, "AssessmentMode", "false");
+                bool assessmentMode = aMode.Equals("true");
+
+                UnityEngine.Debug.Log("AM " + assessmentMode);
+                string order = reply.Substring(reply.IndexOf('\\') + 2, reply.LastIndexOf('\\') - reply.IndexOf('\\') - 2);
+
                 //Save info to PlayerPrefs
                 PlayerPrefs.SetString("FirstName", firstName);
                 PlayerPrefs.SetString("LastName", lastName);
                 PlayerPrefs.SetString("MurdochUserNumber", murdochUserNumber);
+                PlayerPrefs.SetInt("AssessmentMode", assessmentMode? 1 : 0);
+                PlayerPrefs.SetString("InstrumentOrder", order);
+
                 PlayerPrefs.Save();
 
                 StartCoroutine(StartNextScene());                 
