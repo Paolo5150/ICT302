@@ -81,7 +81,11 @@ public class LoginUI : MonoBehaviour
                 bool assessmentMode = aMode.Equals("true");
 
                 UnityEngine.Debug.Log("AM " + assessmentMode);
-                string order = reply.Substring(reply.IndexOf('\\') + 2, reply.LastIndexOf('\\') - reply.IndexOf('\\') - 2);
+                string order = "";
+                if(data.HasField("InstrumentLayout"))
+                {
+                    data.GetField(out order, "InstrumentLayout", "");
+                }
                 Debug.Log("Order: " + order);
                 //Save info to PlayerPrefs
                 PlayerPrefs.SetString("FirstName", firstName);

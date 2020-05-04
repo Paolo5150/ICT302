@@ -100,17 +100,23 @@ public class GameManager : MonoBehaviour
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
         Player.Instance.FreezePlayer(true);
 
-        if (PlayerPrefs.HasKey("InstrumentOrder"))
+        string order = PlayerPrefs.GetString("InstrumentOrder");
+
+        if (!order.Equals(""))
         {
-            InstrumentLocManager.Instance.PlaceInstrumentsInOrder(PlayerPrefs.GetString("InstrumentOrder"));
+            UnityEngine.Debug.Log("Order is ok");
+            InstrumentLocManager.Instance.PlaceInstrumentsInOrder(order);
         }
         else
         {
+            UnityEngine.Debug.Log("Order is NOT ok");
+
             List<Instrument.INSTRUMENT_TAG> allTags = new List<Instrument.INSTRUMENT_TAG>();
 
             foreach(Instrument.INSTRUMENT_TAG tag in Enum.GetValues(typeof(Instrument.INSTRUMENT_TAG)))
             {
-                allTags.Add(tag);
+                if(tag != Instrument.INSTRUMENT_TAG.NONE)
+                    allTags.Add(tag);
             }
 
             //Shuffle
@@ -119,7 +125,7 @@ public class GameManager : MonoBehaviour
             while (n > 1)
             {
                 n--;
-                int k = rand.Next(n + 1);
+                int k = rand.Next(n);
                 Instrument.INSTRUMENT_TAG value = allTags[k];
                 allTags[k] = allTags[n];
                 allTags[n] = value;

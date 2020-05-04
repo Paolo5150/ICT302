@@ -124,3 +124,43 @@ Stack trace:
 4:39 PM - Send login form
 4:39 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
 4:39 PM - ID: 125163945
+4:57 PM - ID: 125165725
+4:57 PM - Just about to send request, 125165725
+4:57 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+5:27 PM - Login START
+5:27 PM - Send login form
+5:27 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:38 PM - Login START
+5:38 PM - Send login form
+5:38 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:38 PM - Login START
+5:38 PM - Send login form
+5:38 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:40 PM - Login START
+5:40 PM - Send login form
+5:40 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:40 PM - ID: 125174048
+5:41 PM - Login START
+5:41 PM - Send login form
+5:41 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:43 PM - Login START
+5:43 PM - Send login form
+5:43 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:45 PM - Login START
+5:45 PM - Send login form
+5:45 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:45 PM - Login START
+5:46 PM - Send login form
+5:46 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:47 PM - Login START
+5:47 PM - Send login form
+5:47 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:48 PM - Login START
+5:48 PM - Send login form
+5:48 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:49 PM - Login START
+5:49 PM - Send login form
+5:49 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+5:49 PM - ID: 125174945
+5:49 PM - Just about to send request, 125174945
+5:49 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
