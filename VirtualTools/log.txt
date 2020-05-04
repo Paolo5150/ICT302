@@ -164,3 +164,27 @@ Stack trace:
 5:49 PM - ID: 125174945
 5:49 PM - Just about to send request, 125174945
 5:49 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:26 PM - Login START
+6:26 PM - Send login form
+6:26 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:27 PM - Login START
+6:27 PM - Send login form
+6:27 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:29 PM - Login START
+6:29 PM - Send login form
+6:29 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:29 PM - Login START
+6:30 PM - Send login form
+6:30 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:30 PM - Login START
+6:30 PM - Send login form
+6:30 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:30 PM - Login START
+6:30 PM - Send login form
+6:30 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:31 PM - Login START
+6:31 PM - Send login form
+6:31 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:31 PM - ID: 125183148
+6:31 PM - Just about to send request, 125183148
+6:31 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0

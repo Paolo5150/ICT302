@@ -82,9 +82,10 @@ public class LoginUI : MonoBehaviour
 
                 UnityEngine.Debug.Log("AM " + assessmentMode);
                 string order = "";
-                if(data.HasField("InstrumentLayout"))
+                if(data.HasField("Layout"))
                 {
-                    data.GetField(out order, "InstrumentLayout", "");
+                    data.GetField(out order, "Layout", "");
+                    order = order.Substring(2,order.Length - 4);
                 }
                 Debug.Log("Order: " + order);
                 //Save info to PlayerPrefs
