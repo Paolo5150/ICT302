@@ -53,12 +53,12 @@ public class GameManager : MonoBehaviour
             Player.Instance.FreezePlayer(true);
             GUIManager.Instance.GetMainCanvas().DogSpeak("Quitting...");
 
+            if (!SessionManager.Instance.GetCurrentSession().sessionResults.completed)
+                SessionManager.Instance.GetCurrentSession().sessionResults.Log_SimulationClosedPrematurely();
 
             //Wait until data is pushed to server before quitting
             if(SessionManager.Instance.GetCurrentSession() != null && assessmentMode)
-            {
-                if(!SessionManager.Instance.GetCurrentSession().sessionResults.completed)
-                    SessionManager.Instance.GetCurrentSession().sessionResults.Log_SimulationClosedPrematurely();
+            {               
 
                 string json = SessionManager.Instance.CreateJSONString(SessionManager.Instance.GetCurrentSession());
                 WWWForm form = SessionManager.Instance.GetSessionForm(json);

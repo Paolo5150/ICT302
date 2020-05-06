@@ -188,3 +188,64 @@ Stack trace:
 6:31 PM - ID: 125183148
 6:31 PM - Just about to send request, 125183148
 6:31 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:59 PM - Login START
+6:59 PM - Send login form
+6:59 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:00 PM - ID: 1251903
+9:44 AM - Login START
+9:44 AM - Send login form
+9:44 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:44 AM - ID: 12794447
+9:45 AM - Login START
+9:46 AM - Send login form
+9:46 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:46 AM - ID: 1279465
+9:46 AM - Login START
+9:46 AM - Send login form
+9:46 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:46 AM - ID: 12794652
+9:48 AM - Login START
+9:48 AM - Send login form
+9:48 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:48 AM - ID: 12794841
+9:49 AM - Login START
+9:49 AM - Send login form
+9:49 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:49 AM - ID: 12794947
+10:47 AM - Login START
+10:47 AM - Send login form
+10:47 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:47 AM - ID: 127104743
+11:32 AM - Login START
+11:32 AM - Send login form
+11:32 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:33 AM - ID: 12711332
+11:34 AM - Login START
+11:34 AM - Send login form
+11:34 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:34 AM - ID: 127113412
+11:35 AM - Login START
+11:35 AM - Send login form
+11:35 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:35 AM - ID: 127113559
+11:37 AM - Login START
+11:37 AM - Send login form
+11:37 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:37 AM - ID: 127113713
+11:41 AM - Login START
+11:41 AM - Send login form
+11:41 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:42 AM - ID: 12711422
+11:44 AM - Login START
+11:44 AM - Send login form
+11:44 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:45 AM - ID: 12711452
+11:45 AM - Login START
+11:45 AM - Send login form
+11:45 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:46 AM - ID: 12711460
+11:47 AM - Login START
+11:48 AM - Login START
+11:48 AM - Send login form
+11:48 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:48 AM - ID: 127114814

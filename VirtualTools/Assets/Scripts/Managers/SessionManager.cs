@@ -268,34 +268,52 @@ public class SessionManager
         return form;
     }
     
+    public void SaveToFile()
+    {
+        DirectoryInfo info =  System.IO.Directory.CreateDirectory("SavedReports");
+        string fileName = "";
+
+        string fname = PlayerPrefs.GetString("FirstName", "Anonymous");
+        string lname = PlayerPrefs.GetString("LastName", "");
+        string mus = PlayerPrefs.GetString("MurdochUserNumber","");
+
+        fileName += "SavedReports\\" +  fname + "_" + lname + "_" + mus + "_";
+
+        string dateString = m_currentSession.sessionResults.startTime.Date.ToShortDateString() + "_" + m_currentSession.sessionResults.startTime.TimeOfDay.Hours + "_" + m_currentSession.sessionResults.startTime.TimeOfDay.Minutes;
+
+         dateString = dateString.Replace('/','_');
+         fileName += dateString + ".html";
+
+
+        //Save to file
+         
+        using (System.IO.StreamWriter file =
+           new System.IO.StreamWriter(fileName, false))
+        {
+            file.WriteLine("<h2>Name: " + fname + " " + lname + "</h2>");
+            file.WriteLineAsync("<h2>ID: " + mus + "</h2>");
+            foreach(string log in m_currentSession.sessionResults.logs)
+            {
+                if(log.Contains("Failed"))
+                    file.WriteLine("<p style='color: red'>" + log + "</p>");
+                else if (log.Contains("Correctly"))
+                    file.WriteLine("<p style='color: green'>" + log + "</p>");
+                else
+                    file.WriteLine("<p style='color: black'>" + log + "</p>");
+
+
+            }
+
+        }
+         
+    }
     public void ExportResults(Session s)
     {
+        SaveToFile();
         if(s != null && s.HasStarted() && GameManager.Instance.IsAssessmentMode())
         {
             Logger.LogToFile("Exporting session, id " + m_currentSession.GetID());
-            string fileName = "";
-
-            // If first name is set, we can safely assume that all other keys are set
-            if (PlayerPrefs.HasKey("FirstName"))
-            {
-                fileName += PlayerPrefs.GetString("FirstName") + "_" + PlayerPrefs.GetString("LastName") + "_" + PlayerPrefs.GetString("MurdochUserNumber") + "_";
-            }
-            else
-            {
-                fileName += "Anonymous_";
-            }
-
-           /* string dateString = s.sessionResults.startTime.Date.ToShortDateString();
-            dateString = dateString.Replace('/','_');
-            fileName += dateString + ".dat";*/
-
-
-            //Save to file
-            /* BinaryFormatter bf = new BinaryFormatter();
-             FileStream file = File.Create(fileName);
-             bf.Serialize(file, json);
-             file.Close();
-             */
+            
             //Send to server
 
             string json = CreateJSONString(s);
