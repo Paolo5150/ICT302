@@ -38,7 +38,7 @@ public class InstrumentLocManager : MonoBehaviour
     List<GameObject> InstrumentLocationSlots;
 
     /// <summary>
-    /// Instrument monobehaviours for instrument gameobjects in the scene that will be moved to the correct scene location.
+    /// Instrument monobehaviours for instrument gameobjects in the scene that will be instantiated in the correct scene location.
     /// </summary>
     [SerializeField]
     List<Instrument> InstrumentGameObjects;
@@ -78,15 +78,13 @@ public class InstrumentLocManager : MonoBehaviour
                 // Also ensure there's no repeated instruments gameobjects.
                 List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
             	Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
-                Instrument instrumentToMove = taggedGameObjects[0];
-                // Ensure there's no repeats of the current item in the ordered list that was sent through.
-            	List<Instrument.INSTRUMENT_TAG> instrumentRepeatedTags = instrumentsOrder.FindAll(b => b == instrument);
-            	Assert.AreEqual(instrumentRepeatedTags.Count, 1, "Duplicate INSTRUMENT_TAG in the instrumentsOrder parameter");
+                Instrument instrumentToPlace = taggedGameObjects[0];
                 // Place the instrument gameobject in the desired location and unhide it
                 Assert.IsTrue(InstrumentLocationSlots.Count > i);
-                instrumentToMove.gameObject.transform.SetParent(InstrumentLocationSlots[i].transform);
-                instrumentToMove.gameObject.transform.localPosition = new Vector3();
-                instrumentToMove.gameObject.SetActive(true);
+                Instantiate<GameObject>(instrumentToPlace.gameObject,
+                    InstrumentLocationSlots[i].transform.position,
+                    instrumentToPlace.transform.rotation,
+                    InstrumentLocationSlots[i].transform);
             }
             ++i;
         }

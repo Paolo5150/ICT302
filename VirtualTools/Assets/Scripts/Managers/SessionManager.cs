@@ -72,8 +72,7 @@ public class SessionManager
         Session session = new Session(GenerateID());
         //Randomize? From external file?
         List<InstrumentSelectByNameTask> allTasks = new List<InstrumentSelectByNameTask>();
-
-        foreach(var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Select(x => x).Distinct())
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
             {
@@ -98,7 +97,7 @@ public class SessionManager
         //Randomize? From external file?
         List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
 
-        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Select(x => x).Distinct())
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
             {
