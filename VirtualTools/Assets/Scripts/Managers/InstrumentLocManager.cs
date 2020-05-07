@@ -43,7 +43,6 @@ public class InstrumentLocManager : MonoBehaviour
     [SerializeField]
     List<Instrument> InstrumentGameObjects;
 
-
     public static List<Instrument.INSTRUMENT_TAG> CurrentInstrumentOrder { get; set; }
 
     /// <summary>
@@ -79,7 +78,6 @@ public class InstrumentLocManager : MonoBehaviour
                 List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
             	Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
                 Instrument instrumentToPlace = taggedGameObjects[0];
-                // Place the instrument gameobject in the desired location and unhide it
                 Assert.IsTrue(InstrumentLocationSlots.Count > i);
                 Instantiate<GameObject>(instrumentToPlace.gameObject,
                     InstrumentLocationSlots[i].transform.position,

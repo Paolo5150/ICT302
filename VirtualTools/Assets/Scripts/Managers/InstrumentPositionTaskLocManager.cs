@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -33,10 +34,9 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Gameobjects representing locations where instruments can go.
+    /// Gameobjects representing slots where instruments can be placed.
     /// </summary>
-    [SerializeField]
-    List<GameObject> InstrumentLocationSlots;
+    public List<InstrumentPositionTaskSlot> InstrumentSlots { get; set; }
 
     /// <summary>
     /// Instrument monobehaviours for instrument gameobjects in the scene that will be moved to the correct scene location.
@@ -80,9 +80,8 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
                 List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
             	Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
                 Instrument instrumentToPlace = taggedGameObjects[0];
-                // Place the instrument gameobject in the desired location and unhide it
-                Assert.IsTrue(InstrumentLocationSlots.Count > i);
-                Instantiate<GameObject>(instrumentToPlace.gameObject, InstrumentLocationSlots[i].transform);
+                Assert.IsTrue(InstrumentSlots.Count > i);
+                Instantiate<GameObject>(instrumentToPlace.gameObject, InstrumentSlots[i].transform);
                 instrumentToPlace.gameObject.transform.localPosition = new Vector3();
             }
             ++i;
