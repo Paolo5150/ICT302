@@ -42,6 +42,30 @@ public class SessionManager
         return m_currentSession;
     }
 
+    private Session SelectInstrumentPositionSession()
+    {
+        //Will create a session manager
+        Session session = new Session(GenerateID());
+        List<InstrumentPositionTask> allTasks = new List<InstrumentPositionTask>();
+
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        {
+            if (tag != Instrument.INSTRUMENT_TAG.NONE)
+            {
+                allTasks.Add(new InstrumentPositionTask(tag));
+            }
+        }
+
+        while (allTasks.Count > 0)
+        {
+            int i = UnityEngine.Random.Range(0, allTasks.Count);
+            session.AddTask(allTasks[i]);
+            allTasks.Remove(allTasks[i]);
+        }
+
+        return session;
+    }
+
     private Session SelectByNameSession()
     {
         //Will create a session manager
