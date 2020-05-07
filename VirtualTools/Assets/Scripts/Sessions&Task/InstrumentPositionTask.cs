@@ -14,9 +14,14 @@ public class InstrumentPositionTask : Task
     /// </summary>
     Instrument.INSTRUMENT_TAG m_correctInstrument;
 
-    public InstrumentPositionTask(string procedureName, GameObject correctInstrumentPositionSlot)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="procedureName">name of the procedure this task is for</param>
+    /// <param name="tag"></param>
+    public InstrumentPositionTask(string procedureName, Instrument.INSTRUMENT_TAG tag)
     {
-        m_correctInstrumentPositionSlot = correctInstrumentPositionSlot;
+        m_correctInstrumentPositionSlot = InstrumentPositionTaskLocManager.GetSlotForInstrument(tag);
         instructions.Add("New task: position the instruments for a <b><u>" + procedureName + "</u></b>");
     }
 
