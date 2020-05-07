@@ -53,12 +53,13 @@ public class GameManager : MonoBehaviour
             Player.Instance.FreezePlayer(true);
             GUIManager.Instance.GetMainCanvas().DogSpeak("Quitting...");
 
-            if (!SessionManager.Instance.GetCurrentSession().sessionResults.completed)
-                SessionManager.Instance.GetCurrentSession().sessionResults.Log_SimulationClosedPrematurely();
+
 
             //Wait until data is pushed to server before quitting
-            if(SessionManager.Instance.GetCurrentSession() != null && assessmentMode)
-            {               
+            if(SessionManager.Instance.GetCurrentSession() != null)
+            {
+                if (!SessionManager.Instance.GetCurrentSession().sessionResults.completed)
+                    SessionManager.Instance.GetCurrentSession().sessionResults.Log_SimulationClosedPrematurely();
 
                 string json = SessionManager.Instance.CreateJSONString(SessionManager.Instance.GetCurrentSession());
                 WWWForm form = SessionManager.Instance.GetSessionForm(json);
@@ -104,13 +105,11 @@ public class GameManager : MonoBehaviour
 
         if (!order.Equals(""))
         {
-            UnityEngine.Debug.Log("Order is ok");
             InstrumentLocManager.Instance.PlaceInstrumentsInOrder(order);
         }
         else
         {
-            UnityEngine.Debug.Log("Order is NOT ok");
-
+            // Read insturment order
             List<Instrument.INSTRUMENT_TAG> allTags = new List<Instrument.INSTRUMENT_TAG>();
 
             foreach(Instrument.INSTRUMENT_TAG tag in Enum.GetValues(typeof(Instrument.INSTRUMENT_TAG)))
@@ -137,6 +136,16 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.HasKey("AssessmentMode"))
         {
             assessmentMode = PlayerPrefs.GetInt("AssessmentMode") == 1;
+        }
+
+        //If assessment mode, do not allow screen selection
+        if(assessmentMode)
+        {
+            GUIManager.Instance.GetMainCanvas().HideSceneSelectionGUI();
+
+            //Read which mode they will be assessed on
+            SessionManager.Instance.CreateSelectByPurposeSession();
+
         }
     }
 

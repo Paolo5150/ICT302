@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class MainCanvas : MonoBehaviour
 {
+    private GameObject m_dogPanel;
+    private GameObject m_controlPanel;
     private GameObject m_dog;
     private GameObject m_controlHints;
     private GameObject m_escapeMenu;
@@ -22,6 +24,8 @@ public class MainCanvas : MonoBehaviour
 
     public void Init()
     {
+        m_dogPanel = GameObject.Find("DogPanel");
+        m_controlPanel = GameObject.Find("ControlsHintPanel"); 
         m_dog = GameObject.Find("Dog");
         m_controlHints = GameObject.Find("ControlsHint");
         m_escapeMenu = GameObject.Find("EscapeMenu");
@@ -36,10 +40,12 @@ public class MainCanvas : MonoBehaviour
         m_retriesText = m_results.transform.Find("Retries").GetComponent<Text>();
 
 
-
+        m_dogPanel.SetActive(false);
+        m_controlPanel.SetActive(false);
         m_results.SetActive(false);
         m_dog.SetActive(false);
         m_controlHints.SetActive(false);
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -56,6 +62,7 @@ public class MainCanvas : MonoBehaviour
 
     public void SetHintActive(bool active)
     {
+        m_controlPanel.SetActive(active);
         m_controlHints.SetActive(active);
     }
 
@@ -68,6 +75,7 @@ public class MainCanvas : MonoBehaviour
     public void SetDogEnabled(bool enabled)
     {
         m_dog.SetActive(enabled);
+        m_dogPanel.SetActive(enabled);
     }
 
     private IEnumerator PopUpMessage(float seconds, string text)
@@ -79,6 +87,12 @@ public class MainCanvas : MonoBehaviour
     public void DogPopUp(float seconds, string text)
     {
         StartCoroutine(PopUpMessage(seconds, text));
+    }
+
+    public void HideSceneSelectionGUI()
+    {
+        m_sceneSelector.SetActive(false);
+        m_escapeMenu.SetActive(false);
     }
 
     private IEnumerator InstructionSequence(string[] instructions, Action action)

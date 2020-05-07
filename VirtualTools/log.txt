@@ -249,3 +249,101 @@ Stack trace:
 11:48 AM - Send login form
 11:48 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
 11:48 AM - ID: 127114814
+8:40 PM - Login START
+8:40 PM - Send login form
+8:40 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+8:40 PM - ID: 127204055
+5:38 PM - Login START
+6:58 PM - Login START
+7:00 PM - Login START
+7:00 PM - Send login form
+7:00 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:00 PM - ID: 12819028
+7:00 PM - Just about to send request, 12819028
+7:00 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+7:00 PM - Session recorded, id 12819028
+7:00 PM - Reply{"Log_0":"7:00 PM - Session starts","Log_1":"7:00 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"7:00 PM - Simulation closed prematurely"}<br />
+<b>Warning</b>:  mysqli_stmt::bind_param(): Number of elements in type definition string doesn't match number of bind variables in <b>D:\xampp\htdocs\ICT302-WebApp\server\recordSession.php</b> on line <b>48</b><br />
+{"Data":{},"Status":"ok"}
+7:00 PM - Quitting now
+7:00 PM - Login START
+7:01 PM - Send login form
+7:01 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:01 PM - ID: 1281916
+7:01 PM - Just about to send request, 1281916
+7:01 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+7:01 PM - Session recorded, id 1281916
+7:01 PM - Reply{"Log_0":"7:01 PM - Session starts","Log_1":"7:01 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"7:01 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+7:01 PM - Quitting now
+7:02 PM - Login START
+7:02 PM - Send login form
+7:02 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:02 PM - ID: 12819219
+7:02 PM - Just about to send request, 12819219
+7:02 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+7:02 PM - Session recorded, id 12819219
+7:02 PM - Reply{"Log_0":"7:02 PM - Session starts","Log_1":"7:02 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_2":"7:02 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+7:02 PM - Quitting now
+7:09 PM - Login START
+7:09 PM - Login START
+7:09 PM - Send login form
+7:09 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:34 PM - Login START
+7:34 PM - Send login form
+7:34 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:35 PM - Login START
+7:35 PM - Send login form
+7:35 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:36 PM - ID: 12819361
+7:42 PM - Login START
+7:42 PM - Send login form
+7:42 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:42 PM - ID: 128194244
+7:44 PM - Login START
+7:44 PM - Send login form
+7:44 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:44 PM - ID: 128194428
+7:44 PM - Login START
+7:44 PM - Send login form
+7:44 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:44 PM - ID: 128194453
+7:44 PM - Just about to send request, 128194453
+7:44 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+7:44 PM - Session recorded, id 128194453
+7:44 PM - Reply{"Log_0":"7:44 PM - Session starts","Log_1":"7:44 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"7:44 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+7:44 PM - Quitting now
+8:51 PM - ID: 128205145
+8:52 PM - Just about to send request, 128205145
+8:52 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+8:52 PM - Session recorded, id 128205145
+8:52 PM - Reply{"Log_0":"8:51 PM - Session starts","Log_1":"8:51 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"8:52 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+8:52 PM - Quitting now
+8:52 PM - ID: 128205226
+8:54 PM - ID: 128205454
+8:58 PM - ID: 128205816
+9:00 PM - ID: 12821011
+9:00 PM - Just about to send request, 12821011
+9:00 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+9:02 PM - ID: 12821252
+9:03 PM - Just about to send request, 12821252
+9:03 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+9:04 PM - ID: 1282147
+9:04 PM - Just about to send request, 1282147
+9:04 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+9:04 PM - Session recorded, id 1282147
+9:04 PM - Reply{"Log_0":"9:04 PM - Session starts","Log_1":"9:04 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_2":"9:04 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+9:04 PM - Quitting now
+9:05 PM - ID: 12821531
+9:07 PM - Exporting session, id 12821531
+9:07 PM - Just about to send request, 12821531
+9:07 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+9:07 PM - Session recorded, id 12821531
+9:07 PM - Reply{"Log_0":"9:05 PM - Session starts","Log_1":"9:05 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"9:05 PM - Correctly selected by name Suture Scissor","Log_3":"9:05 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_4":"9:06 PM - Correctly selected by name Addson-Brown Forceps","Log_5":"9:06 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_6":"9:06 PM - Correctly selected by name Rochester Carmalt Forceps","Log_7":"9:06 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_8":"9:06 PM - Correctly selected by name Scalpel","Log_9":"9:06 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_10":"9:06 PM - Correctly selected by name Mayo Scissor","Log_11":"9:07 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_12":"9:07 PM - Correctly selected by name Towel Clamps","Log_13":"9:07 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_14":"9:07 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_15":"9:07 PM - New task: pick up a <b><u>Metzembaum Scissor<\/u><\/b>","Log_16":"9:07 PM - Correctly selected by name Metzembaum Scissor","Log_17":"9:07 PM - Session ends"}{"Data":{},"Status":"ok"}
+9:07 PM - Just about to send request, 12821531
+9:07 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+9:07 PM - Session recorded, id 12821531
+9:07 PM - Reply{"Log_0":"9:05 PM - Session starts","Log_1":"9:05 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"9:05 PM - Correctly selected by name Suture Scissor","Log_3":"9:05 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_4":"9:06 PM - Correctly selected by name Addson-Brown Forceps","Log_5":"9:06 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_6":"9:06 PM - Correctly selected by name Rochester Carmalt Forceps","Log_7":"9:06 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_8":"9:06 PM - Correctly selected by name Scalpel","Log_9":"9:06 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_10":"9:06 PM - Correctly selected by name Mayo Scissor","Log_11":"9:07 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_12":"9:07 PM - Correctly selected by name Towel Clamps","Log_13":"9:07 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_14":"9:07 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_15":"9:07 PM - New task: pick up a <b><u>Metzembaum Scissor<\/u><\/b>","Log_16":"9:07 PM - Correctly selected by name Metzembaum Scissor","Log_17":"9:07 PM - Session ends"}{"Data":{},"Status":"ok"}
+9:07 PM - Quitting now
+9:30 PM - ID: 128213030
+9:30 PM - Just about to send request, 128213030
+9:30 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
