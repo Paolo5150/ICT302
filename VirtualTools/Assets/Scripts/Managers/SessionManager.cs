@@ -11,6 +11,8 @@ public class SessionManager
     private static SessionManager m_instance;
     private List<Session> m_sessionsRun;
     private Session m_currentSession;
+    [SerializeField]
+    private List<GameObject> m_instrumentPositionSlots;
 
     public static SessionManager Instance
     {
@@ -52,7 +54,7 @@ public class SessionManager
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
             {
-                allTasks.Add(new InstrumentPositionTask(tag));
+                allTasks.Add(new InstrumentPositionTask("Spay procedure", tag));
             }
         }
 
@@ -154,6 +156,18 @@ public class SessionManager
         return idLong;
     }
 
+    /// <summary>
+    /// Called when the student confirms they've finished positioning instruments for an
+    /// InstrumentPositionTask
+    /// </summary>
+    private void OnConfirmInstrumentPositions()
+    {
+    }
+
+    /// <summary>
+    /// Only for SelectByName or SelectByPurpose Task
+    /// </summary>
+    /// <param name="instrumentTag"></param>
     private void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag)
     {
         if(m_currentSession != null)

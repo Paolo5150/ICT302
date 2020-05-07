@@ -5,46 +5,42 @@ using UnityEngine;
 public class InstrumentPositionTask : Task
 {
     /// <summary>
-    /// Gameobjects representing locations where instruments can be placed for the task.
+    /// Gameobject representing position where instrument should be placed for this task.
     /// </summary>
-    List<Instrument> InstrumentPositionSlots { get; set; }
-    private string m_procedureName;
-    private List<Instrument.INSTRUMENT_TAG> m_correctInstrumentPositions;
-    public List<Instrument.INSTRUMENT_TAG> ActualInstrumentPositions
-    {
-        get
-        {
-            List<Instrument.INSTRUMENT_TAG> positions = new List<Instrument.INSTRUMENT_TAG>();
-            foreach (var slot in InstrumentPositionSlots)
-            {
-                positions.Add(slot.instrumentTag);
-            }
-            return positions;
-        }
-    }
+    GameObject m_correctInstrumentPositionSlot;
 
-    public InstrumentPositionTask(string procedureName, List<Instrument.INSTRUMENT_TAG> correctInstrumentPositions)
-    {
-        m_procedureName = procedureName;
-        m_correctInstrumentPositions = correctInstrumentPositions;
+    /// <summary>
+    /// The correct instrument to go in that position
+    /// </summary>
+    Instrument.INSTRUMENT_TAG m_correctInstrument;
 
-        instructions.Add("New task: position the instruments for a <b><u>" + "INSERT PROCEDURE NAME HERE" + "</u></b>");
+    public InstrumentPositionTask(string procedureName, GameObject correctInstrumentPositionSlot)
+    {
+        m_correctInstrumentPositionSlot = correctInstrumentPositionSlot;
+        instructions.Add("New task: position the instruments for a <b><u>" + procedureName + "</u></b>");
     }
 
     public override STATUS Evaluate(Instrument.INSTRUMENT_TAG instrumentTag, Session session)
     {
-        if (m_instrumentToSelect == instrumentTag)
+        var instrumentInSlot = m_correctInstrumentPositionSlot.GetComponentInChildren<Instrument>();
+        if(instrumentInSlot == null)
         {
-            taskStatus = STATUS.COMPLETED_SUCCESS;
-            session.sessionResults.Log_CorrectlySelectedInstrumentByName(m_instrumentToSelect);
+            session.sessionResults.Log_FailedToPositionInstrument(m_correctInstrument, Instrument.INSTRUMENT_TAG.NONE);
+            taskStatus = STATUS.COMPLETED_FAIL;
         }
         else
         {
-            session.sessionResults.Log_FailedToSelectByName(m_instrumentToSelect, instrumentTag);
-
-            taskStatus = STATUS.COMPLETED_FAIL;
+            if (instrumentInSlot.instrumentTag != m_correctInstrument)
+            {
+                session.sessionResults.Log_FailedToPositionInstrument(m_correctInstrument, instrumentInSlot.instrumentTag);
+                taskStatus = STATUS.COMPLETED_FAIL;
+            }
+            else
+            {
+                taskStatus = STATUS.COMPLETED_SUCCESS;
+                session.sessionResults.Log_CorrectlyPositionedInstrument(m_correctInstrument);
+            }
         }
-
         return taskStatus;
     }
 }

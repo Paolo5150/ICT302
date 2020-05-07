@@ -17,4 +17,12 @@ public class SessionTypeSelector : MonoBehaviour
 		GUIManager.Instance.GetMainCanvas().SetEscapeMenu(false);
 		GUIManager.Instance.GetMainCanvas().SetSceneSelector(false);
 	}
+
+	public void BeginSelectInstrumentPositionSession()
+	{
+		SessionManager.Instance.CreateSelectByPurposeSession();
+		GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
+		GUIManager.Instance.GetMainCanvas().SetEscapeMenu(false);
+		GUIManager.Instance.GetMainCanvas().SetSceneSelector(false);
+	}
 }
