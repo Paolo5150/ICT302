@@ -12,6 +12,7 @@ public class SessionResults
     public int retries;
     public bool completed = false;
     public List<string> logs;
+    public bool isAssessed = false;
 
     public SessionResults()
     {

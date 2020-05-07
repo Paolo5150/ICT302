@@ -96,8 +96,9 @@ public class SessionManager
     {
         Session session = SelectByNameSession();
         m_sessionsRun.Add(session);
-
+        
         m_currentSession = session;
+        m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
         Player.Instance.FreezePlayer(true);
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Hi, I'm your assistant! Left click to dismiss my messages" }, () => {
             Player.Instance.FreezePlayer(true);
@@ -112,6 +113,8 @@ public class SessionManager
         m_sessionsRun.Add(session);
 
         m_currentSession = session;
+        m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
+
         Player.Instance.FreezePlayer(true);
 
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Hi, I'm your assistant! Left click to dismiss my messages" }, () => {
@@ -209,6 +212,8 @@ public class SessionManager
         }
 
         obj.AddField("Retries", s.sessionResults.retries);
+        obj.AddField("IsAssessed", s.sessionResults.isAssessed);
+
 
         JSONObject logs = new JSONObject();
         int counter = 0;
@@ -309,8 +314,7 @@ public class SessionManager
     }
     public void ExportResults(Session s)
     {
-        SaveToFile();
-        if(s != null && s.HasStarted() && GameManager.Instance.IsAssessmentMode())
+        if(s != null && s.HasStarted())
         {
             Logger.LogToFile("Exporting session, id " + m_currentSession.GetID());
             
