@@ -284,3 +284,31 @@ Stack trace:
 7:02 PM - Session recorded, id 12819219
 7:02 PM - Reply{"Log_0":"7:02 PM - Session starts","Log_1":"7:02 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_2":"7:02 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
 7:02 PM - Quitting now
+7:09 PM - Login START
+7:09 PM - Login START
+7:09 PM - Send login form
+7:09 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:34 PM - Login START
+7:34 PM - Send login form
+7:34 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:35 PM - Login START
+7:35 PM - Send login form
+7:35 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:36 PM - ID: 12819361
+7:42 PM - Login START
+7:42 PM - Send login form
+7:42 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:42 PM - ID: 128194244
+7:44 PM - Login START
+7:44 PM - Send login form
+7:44 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:44 PM - ID: 128194428
+7:44 PM - Login START
+7:44 PM - Send login form
+7:44 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:44 PM - ID: 128194453
+7:44 PM - Just about to send request, 128194453
+7:44 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+7:44 PM - Session recorded, id 128194453
+7:44 PM - Reply{"Log_0":"7:44 PM - Session starts","Log_1":"7:44 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"7:44 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+7:44 PM - Quitting now

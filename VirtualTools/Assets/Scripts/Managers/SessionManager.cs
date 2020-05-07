@@ -100,10 +100,23 @@ public class SessionManager
         m_currentSession = session;
         m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
         Player.Instance.FreezePlayer(true);
-        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Hi, I'm your assistant! Left click to dismiss my messages" }, () => {
-            Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
+            "Hi, I'm your assistant! Left click to dismiss my messages",
+            "In this scenario, you are required to select intruments by a their name."}, () => {
 
-            m_currentSession.Start();
+            if (GameManager.Instance.IsAssessmentMode())
+            {
+                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
+                    m_currentSession.Start();
+                    Player.Instance.FreezePlayer(true);
+
+                });
+            }
+            else
+                {
+                    Player.Instance.FreezePlayer(true);
+                    m_currentSession.Start();
+                }
         });
     }
 
@@ -117,11 +130,25 @@ public class SessionManager
 
         Player.Instance.FreezePlayer(true);
 
-        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Hi, I'm your assistant! Left click to dismiss my messages" }, () => {
-            Player.Instance.FreezePlayer(false);
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
+            "Hi, I'm your assistant! Left click to dismiss my messages",
+            "In this scenario, you are required to select intruments by a descriptioni of their purpose." }, () => {
 
-            m_currentSession.Start();
-        });
+            if(GameManager.Instance.IsAssessmentMode())
+            {
+                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
+                    m_currentSession.Start();
+                    Player.Instance.FreezePlayer(false);
+
+                });
+            }
+            else
+                {
+                    m_currentSession.Start();
+                    Player.Instance.FreezePlayer(false);
+
+                }
+            });
     }
     
     private long GenerateID()

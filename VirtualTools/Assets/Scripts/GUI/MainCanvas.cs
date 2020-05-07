@@ -81,6 +81,12 @@ public class MainCanvas : MonoBehaviour
         StartCoroutine(PopUpMessage(seconds, text));
     }
 
+    public void HideSceneSelectionGUI()
+    {
+        m_sceneSelector.SetActive(false);
+        m_escapeMenu.SetActive(false);
+    }
+
     private IEnumerator InstructionSequence(string[] instructions, Action action)
     {
         yield return new WaitForSeconds(0.2f);
