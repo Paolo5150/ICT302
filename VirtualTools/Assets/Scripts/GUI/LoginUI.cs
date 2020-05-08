@@ -110,7 +110,7 @@ public class LoginUI : MonoBehaviour
         },
         
         () => {
-            dogText.text = "An error occurred :)";
+            dogText.text = "An error occurred. Please try again later.";
             m_loginButton.gameObject.SetActive(true);
         },
         ()=> {
