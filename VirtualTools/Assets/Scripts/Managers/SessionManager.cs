@@ -132,7 +132,7 @@ public class SessionManager
 
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
             "Hi, I'm your assistant! Left click to dismiss my messages",
-            "In this scenario, you are required to select intruments by a descriptioni of their purpose." }, () => {
+            "In this scenario, you are required to select intruments by a description of their purpose." }, () => {
 
             if(GameManager.Instance.IsAssessmentMode())
             {
