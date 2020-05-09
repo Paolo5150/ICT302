@@ -13,6 +13,8 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_controlHints;
     private GameObject m_escapeMenu;
     private GameObject m_sceneSelector;
+    private GameObject m_assessmentModePanel;
+
 
     private GameObject m_results;
     private Text m_nameText;
@@ -21,6 +23,8 @@ public class MainCanvas : MonoBehaviour
     private Text m_startText;
     private Text m_endText;
     private Text m_retriesText;
+    private Text m_linkText;
+    private TextMeshProUGUI m_logsText;
 
     public void Init()
     {
@@ -30,6 +34,7 @@ public class MainCanvas : MonoBehaviour
         m_controlHints = GameObject.Find("ControlsHint");
         m_escapeMenu = GameObject.Find("EscapeMenu");
         m_sceneSelector = GameObject.Find("SceneSelector");
+        m_assessmentModePanel = GameObject.Find("AssessmentModePanel");
 
         m_results = GameObject.Find("ResultsPanel");
         m_nameText = m_results.transform.Find("Name").GetComponent<Text>();
@@ -38,6 +43,10 @@ public class MainCanvas : MonoBehaviour
         m_startText = m_results.transform.Find("StartTime").GetComponent<Text>();
         m_endText = m_results.transform.Find("EndTime").GetComponent<Text>();
         m_retriesText = m_results.transform.Find("Retries").GetComponent<Text>();
+        m_linkText = m_results.transform.Find("Link").GetComponent<Text>();
+        m_logsText = GameObject.Find("LogsText").GetComponent<TextMeshProUGUI>();
+        if (m_logsText == null)
+            Debug.Log("FFFFUUUCCCKKK");
 
 
         m_dogPanel.SetActive(false);
@@ -45,7 +54,9 @@ public class MainCanvas : MonoBehaviour
         m_results.SetActive(false);
         m_dog.SetActive(false);
         m_controlHints.SetActive(false);
-        
+        m_assessmentModePanel.SetActive(false);
+
+
     }
     // Start is called before the first frame update
     void Start()
@@ -60,6 +71,10 @@ public class MainCanvas : MonoBehaviour
         
     }
 
+    public void SetAssessmentModePanel(bool on)
+    {
+        m_assessmentModePanel.SetActive(on);
+    }
     public void SetHintActive(bool active)
     {
         m_controlPanel.SetActive(active);
@@ -139,21 +154,37 @@ public class MainCanvas : MonoBehaviour
         SetSceneSelector(m_escapeMenu.activeSelf); //Hide or show the scene selector depending on whether the escape menu is hidden or shown, respectively
     }
 
-    public void DisplayResults(bool success, string name, string studentNumber, string date, string startTime, string endTime, int retries)
+    public void DisplayResults(string name, string studentNumber, SessionResults results)
     {
+        m_controlHints.SetActive(false);
+        m_assessmentModePanel.SetActive(false);
+
         m_results.SetActive(true);
 
-        if (success)
+        if (results.completed)
             m_results.transform.GetChild(0).GetComponent<Text>().text = "Success!";
         else
             m_results.transform.GetChild(0).GetComponent<Text>().text = "Failed";
 
         m_nameText.text = name;
         m_studentNumberText.text = studentNumber;
-        m_dateText.text = date;
-        m_startText.text = startTime;
-        m_endText.text = endTime;
-        m_retriesText.text = "" +  retries; //LAziest int->string conversion ever
+        m_dateText.text = "Date: " + results.date.ToShortDateString();
+        m_startText.text = "Start Time: " + results.startTime.ToShortTimeString();
+        m_endText.text = "End Time: " + results.endTime.ToShortTimeString();
+        m_retriesText.text = "Errors: " + results.retries; //LAziest int->string conversion ever
+
+        m_logsText.text = "";
+        m_logsText.richText = true;
+        foreach (string log in results.logs)
+        {
+            if (log.Contains("Failed"))
+                m_logsText.text += "<color=red>" + log + "</color>\n";
+        }
+
+        if (m_logsText.text.Equals(""))
+            m_logsText.text = "No errors made.";
+
+        m_linkText.text = "See the full report at: " + NetworkManager.Instance.currentServer;
 
     }
 

@@ -359,3 +359,196 @@ Stack trace:
 4:58 PM - Send login form
 4:58 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
 4:58 PM - ID: 129165833
+12:12 PM - Login START
+12:13 PM - Send login form
+12:13 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+12:13 PM - Login START
+12:13 PM - Send login form
+12:13 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+12:13 PM - ID: 130121346
+12:14 PM - Login START
+12:14 PM - Send login form
+12:14 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:14 PM - ID: 130121452
+12:15 PM - Exporting session, id 130121452
+12:15 PM - Just about to send request, 130121452
+12:15 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:15 PM - Session recorded, id 130121452
+12:15 PM - Reply{"Log_0":"12:14 PM - Session starts","Log_1":"12:14 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"12:14 PM - Correctly selected by name Suture Scissor","Log_3":"12:14 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"12:15 PM - Correctly selected by name Scalpel","Log_5":"12:15 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"12:15 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"12:15 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_8":"12:15 PM - Correctly selected by name Mayo Scissor","Log_9":"12:15 PM - Session ends"}{"Data":{},"Status":"ok"}
+12:18 PM - Login START
+12:18 PM - Send login form
+12:18 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:18 PM - ID: 130121811
+12:19 PM - Login START
+12:19 PM - Send login form
+12:19 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:19 PM - ID: 130121932
+12:21 PM - Login START
+12:21 PM - Send login form
+12:21 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:21 PM - ID: 130122134
+12:22 PM - Login START
+12:22 PM - Send login form
+12:22 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:23 PM - Login START
+12:23 PM - Send login form
+12:23 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:23 PM - ID: 130122323
+12:26 PM - Login START
+12:26 PM - Send login form
+12:26 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:26 PM - ID: 130122615
+12:27 PM - Login START
+12:27 PM - Send login form
+12:27 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:27 PM - ID: 130122728
+12:27 PM - Exporting session, id 130122728
+12:27 PM - Just about to send request, 130122728
+12:27 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:27 PM - Session recorded, id 130122728
+12:27 PM - Reply{"Log_0":"12:27 PM - Session starts","Log_1":"12:27 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"12:27 PM - Correctly selected by name Mayo Scissor","Log_3":"12:27 PM - Session ends"}{"Data":{},"Status":"ok"}
+12:29 PM - Login START
+12:29 PM - Send login form
+12:29 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:29 PM - ID: 130122912
+12:29 PM - Exporting session, id 130122912
+12:29 PM - Just about to send request, 130122912
+12:29 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:29 PM - Session recorded, id 130122912
+12:29 PM - Reply{"Log_0":"12:29 PM - Session starts","Log_1":"12:29 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"12:29 PM - Correctly selected by name Mayo Scissor","Log_3":"12:29 PM - Session ends"}{"Data":{},"Status":"ok"}
+12:29 PM - Login START
+12:29 PM - Send login form
+12:29 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:29 PM - ID: 130122948
+12:29 PM - Exporting session, id 130122948
+12:29 PM - Just about to send request, 130122948
+12:29 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:29 PM - Session recorded, id 130122948
+12:29 PM - Reply{"Log_0":"12:29 PM - Session starts","Log_1":"12:29 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"12:29 PM - Correctly selected by name Mayo Scissor","Log_3":"12:29 PM - Session ends"}{"Data":{},"Status":"ok"}
+12:30 PM - Login START
+12:30 PM - Send login form
+12:30 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:30 PM - ID: 130123016
+12:30 PM - Exporting session, id 130123016
+12:30 PM - Just about to send request, 130123016
+12:30 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:30 PM - Session recorded, id 130123016
+12:30 PM - Reply{"Log_0":"12:30 PM - Session starts","Log_1":"12:30 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"12:30 PM - Correctly selected by name Mayo Scissor","Log_3":"12:30 PM - Session ends"}{"Data":{},"Status":"ok"}
+12:33 PM - Login START
+12:33 PM - Send login form
+12:33 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:33 PM - ID: 130123345
+12:33 PM - Just about to send request, 130123345
+12:33 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:33 PM - Session recorded, id 130123345
+12:33 PM - Reply{"Log_0":"12:33 PM - Session starts","Log_1":"12:33 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"12:33 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+12:33 PM - Quitting now
+12:34 PM - Login START
+12:34 PM - Send login form
+12:34 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:34 PM - ID: 130123424
+12:34 PM - Exporting session, id 130123424
+12:34 PM - Just about to send request, 130123424
+12:34 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:34 PM - Session recorded, id 130123424
+12:34 PM - Reply{"Log_0":"12:34 PM - Session starts","Log_1":"12:34 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_2":"12:34 PM - Failed to select by name Mayo Hegar Needle Driver. Selected: Scalpel","Log_3":"12:34 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"12:34 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_5":"12:34 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_6":"12:34 PM - Correctly selected by name Scalpel","Log_7":"12:34 PM - Session ends"}{"Data":{},"Status":"ok"}
+12:36 PM - Login START
+12:36 PM - Send login form
+12:36 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:36 PM - ID: 130123613
+12:36 PM - Exporting session, id 130123613
+12:36 PM - Just about to send request, 130123613
+12:36 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:36 PM - Session recorded, id 130123613
+12:36 PM - Reply{"Log_0":"12:36 PM - Session starts","Log_1":"12:36 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_2":"12:36 PM - Failed to select by name Mayo Hegar Needle Driver. Selected: Scalpel","Log_3":"12:36 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"12:36 PM - Correctly selected by name Scalpel","Log_5":"12:36 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"12:36 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"12:36 PM - Session ends"}{"Data":{},"Status":"ok"}
+12:37 PM - Login START
+12:37 PM - Send login form
+12:37 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:37 PM - ID: 130123711
+12:37 PM - Exporting session, id 130123711
+12:37 PM - Just about to send request, 130123711
+12:37 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:37 PM - Session recorded, id 130123711
+12:37 PM - Reply{"Log_0":"12:37 PM - Session starts","Log_1":"12:37 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"12:37 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"12:37 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"12:37 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_5":"12:37 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_6":"12:37 PM - Correctly selected by name Scalpel","Log_7":"12:37 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:07 PM - Login START
+1:07 PM - Send login form
+1:07 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:07 PM - ID: 13013733
+1:07 PM - Exporting session, id 13013733
+1:07 PM - Just about to send request, 13013733
+1:07 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:07 PM - Session recorded, id 13013733
+1:07 PM - Reply{"Log_0":"1:07 PM - Session starts","Log_1":"1:07 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:07 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:07 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"1:07 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_5":"1:07 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_6":"1:07 PM - Correctly selected by name Scalpel","Log_7":"1:07 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:08 PM - Login START
+1:08 PM - Send login form
+1:08 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:08 PM - ID: 13013818
+1:08 PM - Exporting session, id 13013818
+1:08 PM - Just about to send request, 13013818
+1:08 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:08 PM - Session recorded, id 13013818
+1:08 PM - Reply{"Log_0":"1:08 PM - Session starts","Log_1":"1:08 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:08 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:08 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"1:08 PM - Correctly selected by name Scalpel","Log_5":"1:08 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"1:08 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"1:08 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:10 PM - Login START
+1:10 PM - Send login form
+1:10 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:10 PM - ID: 130131041
+1:10 PM - Exporting session, id 130131041
+1:10 PM - Just about to send request, 130131041
+1:10 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:10 PM - Session recorded, id 130131041
+1:10 PM - Reply{"Log_0":"1:10 PM - Session starts","Log_1":"1:10 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:10 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:10 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"1:10 PM - Failed to select by name Mayo Hegar Needle Driver. Selected: Scalpel","Log_5":"1:10 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"1:10 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"1:10 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_8":"1:10 PM - Correctly selected by name Scalpel","Log_9":"1:10 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:15 PM - Login START
+1:15 PM - Send login form
+1:15 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:15 PM - ID: 130131550
+1:16 PM - Exporting session, id 130131550
+1:16 PM - Just about to send request, 130131550
+1:16 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:16 PM - Session recorded, id 130131550
+1:16 PM - Reply{"Log_0":"1:15 PM - Session starts","Log_1":"1:15 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:15 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:15 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"1:15 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_5":"1:15 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_6":"1:16 PM - Correctly selected by name Scalpel","Log_7":"1:16 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:17 PM - Login START
+1:17 PM - Send login form
+1:17 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:17 PM - ID: 13013177
+1:17 PM - Exporting session, id 13013177
+1:17 PM - Just about to send request, 13013177
+1:17 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:17 PM - Session recorded, id 13013177
+1:17 PM - Reply{"Log_0":"1:17 PM - Session starts","Log_1":"1:17 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:17 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:17 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"1:17 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_5":"1:17 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_6":"1:17 PM - Correctly selected by name Scalpel","Log_7":"1:17 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:19 PM - Login START
+1:19 PM - Send login form
+1:19 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:19 PM - ID: 130131944
+1:19 PM - Exporting session, id 130131944
+1:19 PM - Just about to send request, 130131944
+1:19 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:19 PM - Session recorded, id 130131944
+1:19 PM - Reply{"Log_0":"1:19 PM - Session starts","Log_1":"1:19 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:19 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:19 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"1:19 PM - Correctly selected by name Scalpel","Log_5":"1:19 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"1:19 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"1:19 PM - Session ends"}{"Data":{},"Status":"ok"}
+2:07 PM - ID: 13014746
+2:07 PM - Login START
+2:07 PM - Send login form
+2:07 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+2:07 PM - ID: 13014759
+2:08 PM - Exporting session, id 13014759
+2:08 PM - Just about to send request, 13014759
+2:08 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+2:08 PM - Session recorded, id 13014759
+2:08 PM - Reply{"Log_0":"2:08 PM - Session starts","Log_1":"2:08 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"2:08 PM - Failed to select by purpose Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"2:08 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_4":"2:08 PM - Correctly selected by purpose Scalpel","Log_5":"2:08 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"2:08 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"2:08 PM - Session ends"}{"Data":{},"Status":"ok"}
+2:08 PM - ID: 13014817
+3:14 PM - Login START
+3:14 PM - Send login form
+3:14 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+3:14 PM - ID: 130151456
+3:15 PM - Just about to send request, 130151456
+3:15 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+3:15 PM - Session recorded, id 130151456
+3:15 PM - Reply{"Log_0":"3:15 PM - Session starts","Log_1":"3:15 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"3:15 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+3:15 PM - Quitting now
+3:16 PM - Login START
+3:16 PM - Send login form
+3:16 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+3:16 PM - ID: 130151656
+3:17 PM - Login START
+3:18 PM - Send login form
+3:18 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+3:18 PM - ID: 13015185
