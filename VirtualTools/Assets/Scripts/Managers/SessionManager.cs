@@ -117,6 +117,67 @@ public class SessionManager
         return session;
     }
 
+    private Session ComboSession()
+    {
+        //Will create a session manager
+        Session session = new Session(GenerateID());
+        //Randomize? From external file?
+        List<Task> allTasks = new List<Task>();
+
+        System.Random r = new System.Random();
+
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        {
+            if (tag != Instrument.INSTRUMENT_TAG.NONE)
+            {
+                if(r.Next(100) > 50)
+                    allTasks.Add(new InstrumentSelectByPurpose(tag));
+                else
+                    allTasks.Add(new InstrumentSelectByNameTask(tag));
+
+            }
+        }
+
+        while (allTasks.Count > 0)
+        {
+            int i = UnityEngine.Random.Range(0, allTasks.Count);
+            session.AddTask(allTasks[i]);
+            allTasks.Remove(allTasks[i]);
+        }
+
+        return session;
+    }
+
+
+    public void CreateComboSession()
+    {
+        Session session = ComboSession();
+        m_sessionsRun.Add(session);
+
+        m_currentSession = session;
+        m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
+        Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
+            "Hi, I'm your assistant! Left click to dismiss my messages",
+        "In this session, you are required to select instruments...",
+        "...some by name, some by their purpose."}, () => {
+
+                if (GameManager.Instance.IsAssessmentMode())
+                {
+                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
+                        m_currentSession.Start();
+                        Player.Instance.FreezePlayer(true);
+
+                    });
+                }
+                else
+                {
+                    Player.Instance.FreezePlayer(true);
+                    m_currentSession.Start();
+                }
+            });
+    }
+
     public void CreateSelectByNameSession()
     {
         Session session = SelectByNameSession();
@@ -157,7 +218,7 @@ public class SessionManager
 
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
             "Hi, I'm your assistant! Left click to dismiss my messages",
-            "In this scenario, you are required to select intruments by a descriptioni of their purpose." }, () => {
+            "In this scenario, you are required to select intruments by a description of their purpose." }, () => {
 
             if(GameManager.Instance.IsAssessmentMode())
             {
