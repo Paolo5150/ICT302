@@ -13,6 +13,7 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_controlHints;
     private GameObject m_escapeMenu;
     private GameObject m_sceneSelector;
+    private GameObject m_assessmentModePanel;
 
 
     private GameObject m_results;
@@ -33,6 +34,7 @@ public class MainCanvas : MonoBehaviour
         m_controlHints = GameObject.Find("ControlsHint");
         m_escapeMenu = GameObject.Find("EscapeMenu");
         m_sceneSelector = GameObject.Find("SceneSelector");
+        m_assessmentModePanel = GameObject.Find("AssessmentModePanel");
 
         m_results = GameObject.Find("ResultsPanel");
         m_nameText = m_results.transform.Find("Name").GetComponent<Text>();
@@ -52,7 +54,9 @@ public class MainCanvas : MonoBehaviour
         m_results.SetActive(false);
         m_dog.SetActive(false);
         m_controlHints.SetActive(false);
-        
+        m_assessmentModePanel.SetActive(false);
+
+
     }
     // Start is called before the first frame update
     void Start()
@@ -67,6 +71,10 @@ public class MainCanvas : MonoBehaviour
         
     }
 
+    public void SetAssessmentModePanel(bool on)
+    {
+        m_assessmentModePanel.SetActive(on);
+    }
     public void SetHintActive(bool active)
     {
         m_controlPanel.SetActive(active);
@@ -149,6 +157,7 @@ public class MainCanvas : MonoBehaviour
     public void DisplayResults(string name, string studentNumber, SessionResults results)
     {
         m_controlHints.SetActive(false);
+        m_assessmentModePanel.SetActive(false);
 
         m_results.SetActive(true);
 

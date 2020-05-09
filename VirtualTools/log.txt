@@ -535,3 +535,20 @@ Stack trace:
 2:08 PM - Session recorded, id 13014759
 2:08 PM - Reply{"Log_0":"2:08 PM - Session starts","Log_1":"2:08 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"2:08 PM - Failed to select by purpose Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"2:08 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_4":"2:08 PM - Correctly selected by purpose Scalpel","Log_5":"2:08 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"2:08 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"2:08 PM - Session ends"}{"Data":{},"Status":"ok"}
 2:08 PM - ID: 13014817
+3:14 PM - Login START
+3:14 PM - Send login form
+3:14 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+3:14 PM - ID: 130151456
+3:15 PM - Just about to send request, 130151456
+3:15 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+3:15 PM - Session recorded, id 130151456
+3:15 PM - Reply{"Log_0":"3:15 PM - Session starts","Log_1":"3:15 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"3:15 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+3:15 PM - Quitting now
+3:16 PM - Login START
+3:16 PM - Send login form
+3:16 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+3:16 PM - ID: 130151656
+3:17 PM - Login START
+3:18 PM - Send login form
+3:18 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+3:18 PM - ID: 13015185

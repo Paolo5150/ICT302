@@ -346,7 +346,6 @@ public class SessionManager
 
         //GUIManager.Instance.GetMainCanvas().DisplayResults(completed, name, studentNumber, date, startDateString, endDateString, retries);
         GUIManager.Instance.GetMainCanvas().DisplayResults(name, studentNumber, s.sessionResults);
-
     }
 
     public WWWForm GetSessionForm(string json)
