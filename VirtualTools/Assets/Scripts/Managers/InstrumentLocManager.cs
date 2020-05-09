@@ -48,7 +48,7 @@ public class InstrumentLocManager : MonoBehaviour
     /// <summary>
     /// Order the instruments in the order given by the string.
     /// </summary>
-    /// <param name="instruments">String representing a list of instruments tags. Each one must be unique. 
+    /// <param name="instruments">String representing a list of instruments tags.
     /// Number of instruments in the list must be <= than the number of InstrumentLocationSlots.</param>
     public void PlaceInstrumentsInOrder(string instrumentsString)
     {
@@ -63,7 +63,7 @@ public class InstrumentLocManager : MonoBehaviour
     /// <summary>
     /// Order the instruments. (internal method)
     /// </summary>
-    /// <param name="instruments">List of instruments. Each one must be unique. 
+    /// <param name="instruments">List of instruments.
     /// Must not be larger in size than the number of InstrumentLocationSlots.</param>
     public void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
     {

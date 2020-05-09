@@ -39,18 +39,9 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
     public List<InstrumentPositionTaskSlot> InstrumentSlots { get; set; }
 
     /// <summary>
-    /// Instrument monobehaviours for instrument gameobjects in the scene that will be moved to the correct scene location.
+    /// Order the expected instruments in each slot in the order given by the string.
     /// </summary>
-    [SerializeField]
-    List<Instrument> InstrumentGameObjects;
-
-
-    public static List<Instrument.INSTRUMENT_TAG> CurrentInstrumentOrder { get; set; }
-
-    /// <summary>
-    /// Order the instruments in the order given by the string.
-    /// </summary>
-    /// <param name="instruments">String representing a list of instruments tags. Each one must be unique. 
+    /// <param name="instruments">String representing a list of instruments tags.
     /// Number of instruments in the list must be <= than the number of InstrumentLocationSlots.</param>
     public void PlaceInstrumentsInOrder(string instrumentsString)
     {
@@ -63,12 +54,13 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
         PlaceInstrumentsInOrder(instrumentTags);
     }
     /// <summary>
-    /// Order the instruments. (internal method)
+    /// Order the expected instruments in each slot. (internal method)
     /// </summary>
-    /// <param name="instruments">List of instruments. Each one must be unique. 
+    /// <param name="instruments">List of instruments.
     /// Must not be larger in size than the number of InstrumentLocationSlots.</param>
     public void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
     {
+        /*
         CurrentInstrumentOrder = instrumentsOrder;
         int i = 0;
         foreach(Instrument.INSTRUMENT_TAG instrument in instrumentsOrder)
@@ -86,6 +78,7 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
             }
             ++i;
         }
+        */
     }
 
     // Start is called before the first frame update
