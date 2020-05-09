@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class MainCanvas : MonoBehaviour
 {
+    private GameObject m_connectPanel;
     private GameObject m_dogPanel;
     private GameObject m_controlPanel;
     private GameObject m_dog;
@@ -15,6 +16,7 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_sceneSelector;
 
     private GameObject m_results;
+    private Text m_connectText;
     private Text m_nameText;
     private Text m_studentNumberText;
     private Text m_dateText;
@@ -24,14 +26,16 @@ public class MainCanvas : MonoBehaviour
 
     public void Init()
     {
+        m_connectPanel = GameObject.Find("ConnectPanel");
         m_dogPanel = GameObject.Find("DogPanel");
         m_controlPanel = GameObject.Find("ControlsHintPanel"); 
         m_dog = GameObject.Find("Dog");
         m_controlHints = GameObject.Find("ControlsHint");
         m_escapeMenu = GameObject.Find("EscapeMenu");
         m_sceneSelector = GameObject.Find("SceneSelector");
-
         m_results = GameObject.Find("ResultsPanel");
+
+        m_connectText = m_connectPanel.transform.Find("ConnectText").GetComponent<Text>();
         m_nameText = m_results.transform.Find("Name").GetComponent<Text>();
         m_studentNumberText = m_results.transform.Find("StudentNumber").GetComponent<Text>();
         m_dateText = m_results.transform.Find("Date").GetComponent<Text>();
@@ -39,7 +43,7 @@ public class MainCanvas : MonoBehaviour
         m_endText = m_results.transform.Find("EndTime").GetComponent<Text>();
         m_retriesText = m_results.transform.Find("Retries").GetComponent<Text>();
 
-
+        m_connectPanel.SetActive(false);
         m_dogPanel.SetActive(false);
         m_controlPanel.SetActive(false);
         m_results.SetActive(false);
@@ -59,7 +63,10 @@ public class MainCanvas : MonoBehaviour
     {
         
     }
-
+    public void SetConnectHintActive(bool active)
+    {
+        m_connectPanel.SetActive(active);
+    }
     public void SetHintActive(bool active)
     {
         m_controlPanel.SetActive(active);
@@ -141,6 +148,7 @@ public class MainCanvas : MonoBehaviour
 
     public void DisplayResults(bool success, string name, string studentNumber, string date, string startTime, string endTime, int retries)
     {
+        SetConnectHintActive(true);
         m_results.SetActive(true);
 
         if (success)

@@ -359,3 +359,9 @@ Stack trace:
 4:58 PM - Send login form
 4:58 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
 4:58 PM - ID: 129165833
+12:48 PM - ID: 130124816
+12:49 PM - Exporting session, id 130124816
+12:49 PM - Just about to send request, 130124816
+12:49 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+12:49 PM - Session recorded, id 130124816
+12:49 PM - Reply{"Log_0":"12:48 PM - Session starts","Log_1":"12:48 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"12:48 PM - Correctly selected by name Mayo Scissor","Log_3":"12:48 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_4":"12:48 PM - Correctly selected by name Suture Scissor","Log_5":"12:48 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_6":"12:48 PM - Correctly selected by name Towel Clamps","Log_7":"12:48 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_8":"12:48 PM - Correctly selected by name Addson-Brown Forceps","Log_9":"12:48 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_10":"12:48 PM - Correctly selected by name Scalpel","Log_11":"12:49 PM - New task: pick up a <b><u>Metzembaum Scissor<\/u><\/b>","Log_12":"12:49 PM - Correctly selected by name Metzembaum Scissor","Log_13":"12:49 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_14":"12:49 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_15":"12:49 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_16":"12:49 PM - Correctly selected by name Rochester Carmalt Forceps","Log_17":"12:49 PM - Session ends"}{"Data":{},"Status":"ok"}
