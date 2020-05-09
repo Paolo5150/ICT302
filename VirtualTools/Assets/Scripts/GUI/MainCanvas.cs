@@ -14,6 +14,7 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_escapeMenu;
     private GameObject m_sceneSelector;
 
+
     private GameObject m_results;
     private Text m_nameText;
     private Text m_studentNumberText;
@@ -21,6 +22,7 @@ public class MainCanvas : MonoBehaviour
     private Text m_startText;
     private Text m_endText;
     private Text m_retriesText;
+    private TextMeshProUGUI m_logsText;
 
     public void Init()
     {
@@ -38,6 +40,9 @@ public class MainCanvas : MonoBehaviour
         m_startText = m_results.transform.Find("StartTime").GetComponent<Text>();
         m_endText = m_results.transform.Find("EndTime").GetComponent<Text>();
         m_retriesText = m_results.transform.Find("Retries").GetComponent<Text>();
+        m_logsText = GameObject.Find("LogsText").GetComponent<TextMeshProUGUI>();
+        if (m_logsText == null)
+            Debug.Log("FFFFUUUCCCKKK");
 
 
         m_dogPanel.SetActive(false);
@@ -154,6 +159,35 @@ public class MainCanvas : MonoBehaviour
         m_startText.text = startTime;
         m_endText.text = endTime;
         m_retriesText.text = "" +  retries; //LAziest int->string conversion ever
+
+    }
+
+    public void DisplayResults(string name, string studentNumber, SessionResults results)
+    {
+        m_results.SetActive(true);
+
+        if (results.completed)
+            m_results.transform.GetChild(0).GetComponent<Text>().text = "Success!";
+        else
+            m_results.transform.GetChild(0).GetComponent<Text>().text = "Failed";
+
+        m_nameText.text = name;
+        m_studentNumberText.text = studentNumber;
+        m_dateText.text = results.date.ToShortDateString();
+        m_startText.text = results.startTime.ToShortTimeString();
+        m_endText.text = results.endTime.ToShortTimeString();
+        m_retriesText.text = "" + results.retries; //LAziest int->string conversion ever
+
+        m_logsText.text = "";
+        m_logsText.richText = true;
+        foreach (string log in results.logs)
+        {
+            if (log.Contains("Failed"))
+                m_logsText.text += "<color=red>" + log + "</color>";
+        }
+
+        if (m_logsText.text.Equals(""))
+            m_logsText.text = "No errors made.";
 
     }
 

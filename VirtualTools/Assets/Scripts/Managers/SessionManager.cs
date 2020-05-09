@@ -344,7 +344,9 @@ public class SessionManager
         string endDateString = s.sessionResults.endTime.ToShortTimeString();
         int retries = s.sessionResults.retries;
 
-        GUIManager.Instance.GetMainCanvas().DisplayResults(completed, name, studentNumber, date, startDateString, endDateString, retries);
+        //GUIManager.Instance.GetMainCanvas().DisplayResults(completed, name, studentNumber, date, startDateString, endDateString, retries);
+        GUIManager.Instance.GetMainCanvas().DisplayResults(name, studentNumber, s.sessionResults);
+
     }
 
     public WWWForm GetSessionForm(string json)
