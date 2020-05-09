@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using System.Threading;
 using System;
+using System.Linq;
 
 public class SessionManager
 {
@@ -74,7 +75,7 @@ public class SessionManager
         Session session = new Session(GenerateID());
         //Randomize? From external file?
         List<InstrumentSelectByNameTask> allTasks = new List<InstrumentSelectByNameTask>();
-        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct<Instrument.INSTRUMENT_TAG>())
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
             {
@@ -99,7 +100,7 @@ public class SessionManager
         //Randomize? From external file?
         List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
 
-        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct<Instrument.INSTRUMENT_TAG>())
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
             {
