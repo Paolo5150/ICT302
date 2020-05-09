@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8670678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.671, y: 1.114, z: -1.2799366}
+  m_LocalPosition: {x: -2.671, y: 1.143, z: -1.2799366}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 446510651}
@@ -3706,8 +3706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d13bc78235f4840a771135c8e7bae1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Material: {fileID: 2100000, guid: e4942f02d8ecc984093e0081b20253f9, type: 2}
-  MaterialSelected: {fileID: 2100000, guid: f270d43c0b849ce4f9b0509f3f51f7d4, type: 2}
   InstrumentSlots:
   - {fileID: 1948299625}
   - {fileID: 470690623}

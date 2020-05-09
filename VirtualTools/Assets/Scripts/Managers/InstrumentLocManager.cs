@@ -93,7 +93,7 @@ public class InstrumentLocManager : MonoBehaviour
         
     }
 
-    internal void PlaceInstrument(Instrument.INSTRUMENT_TAG instrument, GameObject parent)
+    public void PlaceInstrument(Instrument.INSTRUMENT_TAG instrument, GameObject parent)
     {
         // Get the instrument with each tag in the instrument gameobject list.
         // Also ensure there's no repeated instruments in the template list.
@@ -102,6 +102,7 @@ public class InstrumentLocManager : MonoBehaviour
         Instrument instrumentToPlace = taggedGameObjects[0];
         var obj = Instantiate<GameObject>(instrumentToPlace.gameObject);
         obj.transform.position = parent.transform.position;
+        obj.transform.localScale = instrumentToPlace.transform.localScale;
         /*,
             parent.transform.position,
             instrumentToPlace.transform.rotation,

@@ -23,30 +23,11 @@ public class InstrumentPositionTaskSlot : MonoBehaviour
         }
     }
 
-    /*
-
     private void Start()
     {
-        for (int i = 0; i < GetComponent<Renderer>().materials.Length; i++)
+        foreach (Material mat in GetComponent<Renderer>().materials)
         {
-            GetComponent<Renderer>().materials[i] = InstrumentPositionTaskLocManager.Instance.Material;
+            mat.color = new Color(1, 1, 1, 0.5f);
         }
     }
-
-    public void OnPointing()
-    {
-        for (int i = 0; i < GetComponent<Renderer>().materials.Length; i++)
-        {
-            GetComponent<Renderer>().materials[i] = InstrumentPositionTaskLocManager.Instance.MaterialSelected;
-        }
-    }
-
-    public void OnReleasedPointing()
-    {
-        for (int i = 0; i < GetComponent<Renderer>().materials.Length; i++)
-        {
-            GetComponent<Renderer>().materials[i] = InstrumentPositionTaskLocManager.Instance.Material;
-        }
-    }
-    */
 }
