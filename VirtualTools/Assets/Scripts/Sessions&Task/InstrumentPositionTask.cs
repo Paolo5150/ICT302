@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class InstrumentPositionTask : Task
 {
-    Instrument.INSTRUMENT_TAG m_selectedInstrument;
-
     /// <summary>
     /// 
     /// </summary>
@@ -48,6 +46,8 @@ public class InstrumentPositionTask : Task
 
     internal void SetSelectedInstrument(Instrument.INSTRUMENT_TAG instrumentTag)
     {
-        throw new NotImplementedException();
+        Player.Instance.SelectedInstrumentToPlace = instrumentTag;
+        Debug.Log("Selected instrument " + Instrument.GetName(instrumentTag));
+
     }
 }

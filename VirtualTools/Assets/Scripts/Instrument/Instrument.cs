@@ -31,38 +31,21 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
         originalRotation = transform.rotation;
     }
 
-
-    public void OnPointing()
-
+        public void OnPointing()
     {
-    
-	foreach(Material mat in GetComponent<Renderer>().materials)
-    
-	{
-	
-		mat.color = Color.green;
-
-    	}
-    
+        foreach (Material mat in GetComponent<Renderer>().materials)
+        {
+            mat.color = Color.green;
+        }
     }
-
-    
 
     public void OnReleasedPointing()
-    
     {
-        
-	foreach(Material mat in GetComponent<Renderer>().materials)
-
-	{
-            
-		mat.color = Color.white;
-        
-	}
-        
-    
+        foreach (Material mat in GetComponent<Renderer>().materials)
+        {
+            mat.color = Color.white;
+        }
     }
-   
 
     public static string GetName(INSTRUMENT_TAG tag)
     {
@@ -84,8 +67,10 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
                 return "Suture Scissor";
             case INSTRUMENT_TAG.TOWEL_CLAMPS:
                 return "Towel Clamps";
+            case INSTRUMENT_TAG.NONE:
+                return "None";
             default:
-                throw new System.Exception("Purpose description for instrument tag " + tag + " does not exist.");
+                throw new System.Exception("Name for instrument tag " + tag + " does not exist.");
         }
     }
     public static INSTRUMENT_TAG GetInstrumentTagFromString(string str)

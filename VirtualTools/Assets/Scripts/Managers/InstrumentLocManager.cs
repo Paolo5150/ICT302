@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -73,16 +74,8 @@ public class InstrumentLocManager : MonoBehaviour
         {
             if(instrument != Instrument.INSTRUMENT_TAG.NONE)
             {
-                // Get the instrument with each tag in the instrument gameobject list.
-                // Also ensure there's no repeated instruments gameobjects.
-                List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
-            	Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
-                Instrument instrumentToPlace = taggedGameObjects[0];
                 Assert.IsTrue(InstrumentLocationSlots.Count > i);
-                Instantiate<GameObject>(instrumentToPlace.gameObject,
-                    InstrumentLocationSlots[i].transform.position,
-                    instrumentToPlace.transform.rotation,
-                    InstrumentLocationSlots[i].transform);
+                PlaceInstrument(instrument, InstrumentLocationSlots[i]);
             }
             ++i;
         }
@@ -98,5 +91,21 @@ public class InstrumentLocManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    internal void PlaceInstrument(Instrument.INSTRUMENT_TAG instrument, GameObject parent)
+    {
+        // Get the instrument with each tag in the instrument gameobject list.
+        // Also ensure there's no repeated instruments in the template list.
+        List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
+        Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
+        Instrument instrumentToPlace = taggedGameObjects[0];
+        var obj = Instantiate<GameObject>(instrumentToPlace.gameObject);
+        obj.transform.position = parent.transform.position;
+        /*,
+            parent.transform.position,
+            instrumentToPlace.transform.rotation,
+            parent.transform);
+        obj.transform.s = instrumentToPlace.transform.localScale;*/
     }
 }

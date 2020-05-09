@@ -36,14 +36,9 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
     /// <summary>
     /// Gameobjects representing slots where instruments can be placed.
     /// </summary>
-    public List<InstrumentPositionTaskSlot> InstrumentSlots { get; set; }
-
-    /// <summary>
-    /// Order the expected instruments in each slot in the order given by the string.
-    /// </summary>
-    /// <param name="instruments">String representing a list of instruments tags.
-    /// Number of instruments in the list must be <= than the number of InstrumentLocationSlots.</param>
-    public void PlaceInstrumentsInOrder(string instrumentsString)
+    public List<InstrumentPositionTaskSlot> InstrumentSlots;
+    
+    public void PlaceDesiredSlotsInOrder(string instrumentsString)
     {
         string[] instrumentsSplit = instrumentsString.Split(',');
         List<Instrument.INSTRUMENT_TAG> instrumentTags = new List<Instrument.INSTRUMENT_TAG>();
@@ -51,39 +46,24 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
         {
             instrumentTags.Add(Instrument.GetInstrumentTagFromString(instrumentTagString));
         }
-        PlaceInstrumentsInOrder(instrumentTags);
+        PlaceDesiredSlotsInOrder(instrumentTags);
     }
-    /// <summary>
-    /// Order the expected instruments in each slot. (internal method)
-    /// </summary>
-    /// <param name="instruments">List of instruments.
-    /// Must not be larger in size than the number of InstrumentLocationSlots.</param>
-    public void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
+    
+    public void PlaceDesiredSlotsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
     {
-        /*
-        CurrentInstrumentOrder = instrumentsOrder;
         int i = 0;
-        foreach(Instrument.INSTRUMENT_TAG instrument in instrumentsOrder)
+        foreach (Instrument.INSTRUMENT_TAG instrument in instrumentsOrder)
         {
-            if(instrument != Instrument.INSTRUMENT_TAG.NONE)
-            {
-                // Get the instrument with each tag in the instrument gameobject list.
-                // Also ensure there's no repeated instruments gameobjects.
-                List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
-            	Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
-                Instrument instrumentToPlace = taggedGameObjects[0];
-                Assert.IsTrue(InstrumentSlots.Count > i);
-                Instantiate<GameObject>(instrumentToPlace.gameObject, InstrumentSlots[i].transform);
-                instrumentToPlace.gameObject.transform.localPosition = new Vector3();
-            }
+            Assert.IsTrue(InstrumentSlots.Count > i);
+            InstrumentSlots[i].CorrectInstrument = instrumentsOrder[i];
             ++i;
         }
-        */
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        PlaceDesiredSlotsInOrder("Scalpel,Scalpel,Scalpel,Scalpel");
 
     }
 
