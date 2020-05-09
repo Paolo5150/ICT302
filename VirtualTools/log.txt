@@ -488,3 +488,39 @@ Stack trace:
 1:08 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
 1:08 PM - Session recorded, id 13013818
 1:08 PM - Reply{"Log_0":"1:08 PM - Session starts","Log_1":"1:08 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:08 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:08 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"1:08 PM - Correctly selected by name Scalpel","Log_5":"1:08 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"1:08 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"1:08 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:10 PM - Login START
+1:10 PM - Send login form
+1:10 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:10 PM - ID: 130131041
+1:10 PM - Exporting session, id 130131041
+1:10 PM - Just about to send request, 130131041
+1:10 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:10 PM - Session recorded, id 130131041
+1:10 PM - Reply{"Log_0":"1:10 PM - Session starts","Log_1":"1:10 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:10 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:10 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"1:10 PM - Failed to select by name Mayo Hegar Needle Driver. Selected: Scalpel","Log_5":"1:10 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"1:10 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"1:10 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_8":"1:10 PM - Correctly selected by name Scalpel","Log_9":"1:10 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:15 PM - Login START
+1:15 PM - Send login form
+1:15 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:15 PM - ID: 130131550
+1:16 PM - Exporting session, id 130131550
+1:16 PM - Just about to send request, 130131550
+1:16 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:16 PM - Session recorded, id 130131550
+1:16 PM - Reply{"Log_0":"1:15 PM - Session starts","Log_1":"1:15 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:15 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:15 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"1:15 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_5":"1:15 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_6":"1:16 PM - Correctly selected by name Scalpel","Log_7":"1:16 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:17 PM - Login START
+1:17 PM - Send login form
+1:17 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:17 PM - ID: 13013177
+1:17 PM - Exporting session, id 13013177
+1:17 PM - Just about to send request, 13013177
+1:17 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:17 PM - Session recorded, id 13013177
+1:17 PM - Reply{"Log_0":"1:17 PM - Session starts","Log_1":"1:17 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:17 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:17 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"1:17 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_5":"1:17 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_6":"1:17 PM - Correctly selected by name Scalpel","Log_7":"1:17 PM - Session ends"}{"Data":{},"Status":"ok"}
+1:19 PM - Login START
+1:19 PM - Send login form
+1:19 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+1:19 PM - ID: 130131944
+1:19 PM - Exporting session, id 130131944
+1:19 PM - Just about to send request, 130131944
+1:19 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+1:19 PM - Session recorded, id 130131944
+1:19 PM - Reply{"Log_0":"1:19 PM - Session starts","Log_1":"1:19 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:19 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:19 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"1:19 PM - Correctly selected by name Scalpel","Log_5":"1:19 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"1:19 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"1:19 PM - Session ends"}{"Data":{},"Status":"ok"}
