@@ -524,3 +524,14 @@ Stack trace:
 1:19 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
 1:19 PM - Session recorded, id 130131944
 1:19 PM - Reply{"Log_0":"1:19 PM - Session starts","Log_1":"1:19 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"1:19 PM - Failed to select by name Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"1:19 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"1:19 PM - Correctly selected by name Scalpel","Log_5":"1:19 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"1:19 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"1:19 PM - Session ends"}{"Data":{},"Status":"ok"}
+2:07 PM - ID: 13014746
+2:07 PM - Login START
+2:07 PM - Send login form
+2:07 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+2:07 PM - ID: 13014759
+2:08 PM - Exporting session, id 13014759
+2:08 PM - Just about to send request, 13014759
+2:08 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+2:08 PM - Session recorded, id 13014759
+2:08 PM - Reply{"Log_0":"2:08 PM - Session starts","Log_1":"2:08 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"2:08 PM - Failed to select by purpose Scalpel. Selected: Mayo Hegar Needle Driver","Log_3":"2:08 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_4":"2:08 PM - Correctly selected by purpose Scalpel","Log_5":"2:08 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"2:08 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_7":"2:08 PM - Session ends"}{"Data":{},"Status":"ok"}
+2:08 PM - ID: 13014817
