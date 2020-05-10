@@ -365,3 +365,68 @@ Stack trace:
 12:49 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
 12:49 PM - Session recorded, id 130124816
 12:49 PM - Reply{"Log_0":"12:48 PM - Session starts","Log_1":"12:48 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"12:48 PM - Correctly selected by name Mayo Scissor","Log_3":"12:48 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_4":"12:48 PM - Correctly selected by name Suture Scissor","Log_5":"12:48 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_6":"12:48 PM - Correctly selected by name Towel Clamps","Log_7":"12:48 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_8":"12:48 PM - Correctly selected by name Addson-Brown Forceps","Log_9":"12:48 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_10":"12:48 PM - Correctly selected by name Scalpel","Log_11":"12:49 PM - New task: pick up a <b><u>Metzembaum Scissor<\/u><\/b>","Log_12":"12:49 PM - Correctly selected by name Metzembaum Scissor","Log_13":"12:49 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_14":"12:49 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_15":"12:49 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_16":"12:49 PM - Correctly selected by name Rochester Carmalt Forceps","Log_17":"12:49 PM - Session ends"}{"Data":{},"Status":"ok"}
+7:52 AM - ID: 1317524
+7:52 AM - ID: 1317527
+7:52 AM - ID: 1317528
+7:52 AM - ID: 1317528
+7:52 AM - ID: 1317528
+7:52 AM - ID: 13175210
+7:52 AM - ID: 13175210
+7:52 AM - ID: 13175211
+7:52 AM - ID: 13175212
+8:00 AM - ID: 1318057
+8:01 AM - Exporting session, id 1318057
+8:01 AM - Just about to send request, 1318057
+8:01 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+8:01 AM - Failed to upload results, id 1318057
+8:01 AM - Network error Request timeout
+8:01 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 1
+8:01 AM - Just about to send request, 1318057
+8:01 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+8:02 AM - Failed to upload results, id 1318057
+8:02 AM - Network error Request timeout
+8:02 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 2
+8:06 AM - ID: 1318634
+8:25 AM - ID: 13182545
+8:25 AM - Just about to send request, 13182545
+8:25 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+8:28 AM - ID: 1318281
+8:28 AM - Just about to send request, 1318281
+8:28 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+8:28 AM - Session recorded, id 1318281
+8:28 AM - Reply{"Log_0":"8:28 AM - Session starts","Log_1":"8:28 AM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_2":"8:28 AM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+8:28 AM - Quitting now
+8:31 AM - ID: 13183121
+8:31 AM - Just about to send request, 13183121
+8:31 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+8:31 AM - Session recorded, id 13183121
+8:31 AM - Reply{"Log_0":"8:31 AM - Session starts","Log_1":"8:31 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"8:31 AM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+8:31 AM - Quitting now
+8:33 AM - ID: 13183331
+8:42 AM - ID: 13184258
+8:43 AM - Just about to send request, 13184258
+8:43 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+8:49 AM - ID: 13184923
+8:55 AM - ID: 13185531
+8:55 AM - Just about to send request, 13185531
+8:55 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+9:11 AM - ID: 13191151
+9:18 AM - ID: 13191844
+9:19 AM - Just about to send request, 13191844
+9:19 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+9:19 AM - Failed to upload results, id 13191844
+9:19 AM - Network error Cannot resolve destination host
+9:19 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 1
+9:19 AM - Failed to upload results, id 13191844
+9:19 AM - Network error Cannot resolve destination host
+9:19 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 2
+9:19 AM - Failed to upload results, id 13191844
+9:19 AM - Network error Cannot resolve destination host
+9:19 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 3
+9:19 AM - Failed to upload results, id 13191844
+9:19 AM - Network error Cannot resolve destination host
+9:19 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 4
+9:19 AM - Failed to upload results, id 13191844
+9:19 AM - Network error Cannot resolve destination host
+9:19 AM - Finished send form coroutine
+9:19 AM - Quitting now

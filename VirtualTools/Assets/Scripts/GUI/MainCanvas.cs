@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class MainCanvas : MonoBehaviour
 {
+    private Text m_connectText;
     private GameObject m_connectPanel;
     private GameObject m_dogPanel;
     private GameObject m_controlPanel;
@@ -14,9 +15,9 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_controlHints;
     private GameObject m_escapeMenu;
     private GameObject m_sceneSelector;
-
+    private bool m_internetGSent;
     private GameObject m_results;
-    private Text m_connectText;
+    
     private Text m_nameText;
     private Text m_studentNumberText;
     private Text m_dateText;
@@ -26,7 +27,8 @@ public class MainCanvas : MonoBehaviour
 
     public void Init()
     {
-        m_connectPanel = GameObject.Find("ConnectPanel");
+        m_internetGSent = false;
+        m_connectPanel = GameObject.Find("ConnectPanel");    
         m_dogPanel = GameObject.Find("DogPanel");
         m_controlPanel = GameObject.Find("ControlsHintPanel"); 
         m_dog = GameObject.Find("Dog");
@@ -61,12 +63,9 @@ public class MainCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StartCoroutine(CheckConnect());
     }
-    public void SetConnectHintActive(bool active)
-    {
-        m_connectPanel.SetActive(active);
-    }
+    
     public void SetHintActive(bool active)
     {
         m_controlPanel.SetActive(active);
@@ -85,6 +84,29 @@ public class MainCanvas : MonoBehaviour
         m_dogPanel.SetActive(enabled);
     }
 
+    private IEnumerator CheckConnect()
+	{
+	   
+        if(Application.internetReachability == NetworkReachability.NotReachable)
+        {
+			string t;
+            t = "Sorry you do not have connection, please check your internet.";    
+            m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
+            m_connectPanel.SetActive(true);
+            m_internetGSent = false;
+
+        }
+        else if(m_internetGSent == false)
+        {
+			string t;
+            t = "You are connected and online.";
+            m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
+            m_connectPanel.SetActive(true);
+            m_internetGSent =  true;
+            yield return new WaitForSeconds(5.0f);
+            m_connectPanel.SetActive(false);
+        }
+    }
     private IEnumerator PopUpMessage(float seconds, string text)
     {
         DogSpeak(text);
@@ -148,7 +170,7 @@ public class MainCanvas : MonoBehaviour
 
     public void DisplayResults(bool success, string name, string studentNumber, string date, string startTime, string endTime, int retries)
     {
-        SetConnectHintActive(true);
+        
         m_results.SetActive(true);
 
         if (success)
