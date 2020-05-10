@@ -14,9 +14,12 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_escapeMenu;
     private GameObject m_sceneSelector;
     private GameObject m_assessmentModePanel;
-
-
-    private GameObject m_results;
+	private GameObject m_connectPanel;
+	
+	private bool m_internetGSent;
+    
+	private GameObject m_results;
+	private Text m_connectText;
     private Text m_nameText;
     private Text m_studentNumberText;
     private Text m_dateText;
@@ -28,6 +31,8 @@ public class MainCanvas : MonoBehaviour
 
     public void Init()
     {
+		m_internetGSent = false;
+        m_connectPanel = GameObject.Find("ConnectPanel"); 
         m_dogPanel = GameObject.Find("DogPanel");
         m_controlPanel = GameObject.Find("ControlsHintPanel"); 
         m_dog = GameObject.Find("Dog");
@@ -37,6 +42,8 @@ public class MainCanvas : MonoBehaviour
         m_assessmentModePanel = GameObject.Find("AssessmentModePanel");
 
         m_results = GameObject.Find("ResultsPanel");
+		
+		m_connectText = m_connectPanel.transform.Find("ConnectText").GetComponent<Text>();
         m_nameText = m_results.transform.Find("Name").GetComponent<Text>();
         m_studentNumberText = m_results.transform.Find("StudentNumber").GetComponent<Text>();
         m_dateText = m_results.transform.Find("Date").GetComponent<Text>();
@@ -48,7 +55,7 @@ public class MainCanvas : MonoBehaviour
         if (m_logsText == null)
             Debug.Log("FFFFUUUCCCKKK");
 
-
+		m_connectPanel.SetActive(false);
         m_dogPanel.SetActive(false);
         m_controlPanel.SetActive(false);
         m_results.SetActive(false);
@@ -68,7 +75,7 @@ public class MainCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        StartCoroutine(CheckConnect());
     }
 
     public void SetAssessmentModePanel(bool on)
@@ -92,7 +99,30 @@ public class MainCanvas : MonoBehaviour
         m_dog.SetActive(enabled);
         m_dogPanel.SetActive(enabled);
     }
+	
+	private IEnumerator CheckConnect()
+	{
+	   
+        if(Application.internetReachability == NetworkReachability.NotReachable)
+        {
+			string t;
+            t = "Sorry you do not have connection, please check your internet.";    
+            m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
+            m_connectPanel.SetActive(true);
+            m_internetGSent = false;
 
+        }
+        else if(m_internetGSent == false)
+        {
+			string t;
+            t = "You are connected and online.";
+            m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
+            m_connectPanel.SetActive(true);
+            m_internetGSent =  true;
+            yield return new WaitForSeconds(3.0f);
+            m_connectPanel.SetActive(false);
+        }
+    }
     private IEnumerator PopUpMessage(float seconds, string text)
     {
         DogSpeak(text);
