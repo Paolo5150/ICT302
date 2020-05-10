@@ -136,7 +136,7 @@ public class MainCanvas : MonoBehaviour
 				string t;
 				t = "You are connected and online.";
 				m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
-				m_connectPanel.SetActive(true);
+				//m_connectPanel.SetActive(true);
 				m_internetGSent =  true;
 				yield return new WaitForSeconds(5.0f);
 				m_connectPanel.SetActive(false);
