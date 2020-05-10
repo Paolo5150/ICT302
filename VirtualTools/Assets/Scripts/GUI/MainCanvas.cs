@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class MainCanvas : MonoBehaviour
 {
+	private Text m_connectText;
+	private GameObject m_connectPanel;
     private GameObject m_dogPanel;
     private GameObject m_controlPanel;
     private GameObject m_dog;
@@ -16,6 +18,7 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_assessmentModePanel;
 
 
+	
     private GameObject m_results;
     private Text m_nameText;
     private Text m_studentNumberText;
@@ -28,6 +31,8 @@ public class MainCanvas : MonoBehaviour
 
     public void Init()
     {
+		
+		m_connectPanel = GameObject.Find("ConnectPanel");
         m_dogPanel = GameObject.Find("DogPanel");
         m_controlPanel = GameObject.Find("ControlsHintPanel"); 
         m_dog = GameObject.Find("Dog");
@@ -37,6 +42,8 @@ public class MainCanvas : MonoBehaviour
         m_assessmentModePanel = GameObject.Find("AssessmentModePanel");
 
         m_results = GameObject.Find("ResultsPanel");
+		
+		m_connectText = m_connectPanel.transform.Find("ConnectText").GetComponent<Text>();
         m_nameText = m_results.transform.Find("Name").GetComponent<Text>();
         m_studentNumberText = m_results.transform.Find("StudentNumber").GetComponent<Text>();
         m_dateText = m_results.transform.Find("Date").GetComponent<Text>();
@@ -48,7 +55,7 @@ public class MainCanvas : MonoBehaviour
         if (m_logsText == null)
             Debug.Log("FFFFUUUCCCKKK");
 
-
+		m_connectPanel.SetActive(false);
         m_dogPanel.SetActive(false);
         m_controlPanel.SetActive(false);
         m_results.SetActive(false);
@@ -61,7 +68,7 @@ public class MainCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(CheckConnect());
         
     }
 
@@ -109,7 +116,34 @@ public class MainCanvas : MonoBehaviour
         m_sceneSelector.SetActive(false);
         m_escapeMenu.SetActive(false);
     }
+	private IEnumerator CheckConnect()
+	{
+	    bool loopBool = true;
+		while (loopBool)
+		{
+			yield return new WaitForSeconds(3.0f);
+			if(Application.internetReachability == NetworkReachability.NotReachable)
+			{
+				string t;
+				t = "Sorry you do not have connection, please check your internet.";    
+				m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
+				m_connectPanel.SetActive(true);
+				
 
+			}
+			else 
+			{
+				string t;
+				t = "You are connected and online.";
+				m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
+				//m_connectPanel.SetActive(true);
+				
+				yield return new WaitForSeconds(5.0f);
+				m_connectPanel.SetActive(false);
+			}
+			
+		}
+    }
     private IEnumerator InstructionSequence(string[] instructions, Action action)
     {
         yield return new WaitForSeconds(0.2f);
