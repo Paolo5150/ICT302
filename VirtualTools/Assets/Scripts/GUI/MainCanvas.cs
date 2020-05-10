@@ -17,7 +17,7 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_sceneSelector;
     private GameObject m_assessmentModePanel;
 
-	private bool m_internetGSent;
+
 	
     private GameObject m_results;
     private Text m_nameText;
@@ -31,7 +31,7 @@ public class MainCanvas : MonoBehaviour
 
     public void Init()
     {
-		m_internetGSent = false;
+		
 		m_connectPanel = GameObject.Find("ConnectPanel");
         m_dogPanel = GameObject.Find("DogPanel");
         m_controlPanel = GameObject.Find("ControlsHintPanel"); 
@@ -128,16 +128,16 @@ public class MainCanvas : MonoBehaviour
 				t = "Sorry you do not have connection, please check your internet.";    
 				m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
 				m_connectPanel.SetActive(true);
-				m_internetGSent = false;
+				
 
 			}
-			else if(m_internetGSent == false)
+			else 
 			{
 				string t;
 				t = "You are connected and online.";
 				m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
 				//m_connectPanel.SetActive(true);
-				m_internetGSent =  true;
+				
 				yield return new WaitForSeconds(5.0f);
 				m_connectPanel.SetActive(false);
 			}
