@@ -68,14 +68,14 @@ public class MainCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(CheckConnect());
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(CheckConnect());
+        
     }
 
     public void SetAssessmentModePanel(bool on)
@@ -118,26 +118,31 @@ public class MainCanvas : MonoBehaviour
     }
 	private IEnumerator CheckConnect()
 	{
-	   
-        if(Application.internetReachability == NetworkReachability.NotReachable)
-        {
-			string t;
-            t = "Sorry you do not have connection, please check your internet.";    
-            m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
-            m_connectPanel.SetActive(true);
-            m_internetGSent = false;
+	    bool loopBool = true;
+		while (loopBool)
+		{
+			yield return new WaitForSeconds(3.0f);
+			if(Application.internetReachability == NetworkReachability.NotReachable)
+			{
+				string t;
+				t = "Sorry you do not have connection, please check your internet.";    
+				m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
+				m_connectPanel.SetActive(true);
+				m_internetGSent = false;
 
-        }
-        else if(m_internetGSent == false)
-        {
-			string t;
-            t = "You are connected and online.";
-            m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
-            m_connectPanel.SetActive(true);
-            m_internetGSent =  true;
-            yield return new WaitForSeconds(5.0f);
-            m_connectPanel.SetActive(false);
-        }
+			}
+			else if(m_internetGSent == false)
+			{
+				string t;
+				t = "You are connected and online.";
+				m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
+				m_connectPanel.SetActive(true);
+				m_internetGSent =  true;
+				yield return new WaitForSeconds(5.0f);
+				m_connectPanel.SetActive(false);
+			}
+			
+		}
     }
     private IEnumerator InstructionSequence(string[] instructions, Action action)
     {
