@@ -103,10 +103,17 @@ public class InstrumentLocManager : MonoBehaviour
         var obj = Instantiate<GameObject>(instrumentToPlace.gameObject);
         obj.transform.position = parent.transform.position;
         obj.transform.localScale = instrumentToPlace.transform.localScale;
-        /*,
-            parent.transform.position,
-            instrumentToPlace.transform.rotation,
-            parent.transform);
-        obj.transform.s = instrumentToPlace.transform.localScale;*/
+        obj.transform.rotation = new Quaternion();
+        obj.transform.parent = parent.transform;
+    }
+
+    public void MoveInstrument(GameObject instrument, GameObject parent)
+    {
+        instrument.transform.parent = parent.transform;
+    }
+    public void MoveInstrumentToPlayer(GameObject instrument, GameObject parent)
+    {
+        instrument.transform.parent = parent.transform;
+        instrument.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.1f;
     }
 }

@@ -22,15 +22,17 @@ public class Player : MonoBehaviour
     private InstrumentPositionTaskSlot m_currentlyPointingInstrumentPositionTaskSlot;
     public bool m_pickingEnabled;
     public bool m_viewingEnabled;
-    private Instrument.INSTRUMENT_TAG m_selectedInstrumentToPlace = Instrument.INSTRUMENT_TAG.NONE;
-    public Instrument.INSTRUMENT_TAG SelectedInstrumentToPlace {
+    private Instrument m_selectedInstrumentToPlace = null;
+    public Instrument SelectedInstrumentToPlace {
         get
         {
             return m_selectedInstrumentToPlace;
         }
         set
         {
+            SetPlayerMode(PlayerMode.PICKING);
             m_selectedInstrumentToPlace = value;
+            Player.Instance.FreezePlayer(false);
         }
     } // Current instrument selected (only for a InstrumentPositionTask)
 
@@ -129,15 +131,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlacingMode();
-
         ProcessInput();
 
         switch (m_playerMode)
         {
             case PlayerMode.PICKING:
                 GUIManager.Instance.GetMainCanvas().SetHintActive(false);
-                if (m_selectedInstrumentToPlace != Instrument.INSTRUMENT_TAG.NONE)
+                if (m_selectedInstrumentToPlace != null)
                 {
                     PlacingMode();
                 }
@@ -186,16 +186,17 @@ public class Player : MonoBehaviour
     private void PlacingMode()
     {
         UpdatePointingInstrumentPositionTaskSlot();
-        
-        if(m_currentlyPointingInstrumentPositionTaskSlot != null)
+
+        // Resolve placing of held insrtument
+        if (m_currentlyPointingInstrumentPositionTaskSlot != null)
         {
-            // Place instrument here if there is not already one here.
+            // Place instrument where the player is looking if there is not already one here.
             if (Input.GetButtonDown("Fire1") && m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument == Instrument.INSTRUMENT_TAG.NONE)
             {
-                m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace;
-                InstrumentLocManager.Instance.PlaceInstrument(SelectedInstrumentToPlace, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
-                Debug.Log("Placed " + Instrument.GetName(SelectedInstrumentToPlace));
-                SelectedInstrumentToPlace = Instrument.INSTRUMENT_TAG.NONE;
+                m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
+                InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
+                Debug.Log("Placed " + Instrument.GetName(SelectedInstrumentToPlace.instrumentTag));
+                SelectedInstrumentToPlace = null;
                 SetPlayerMode(PlayerMode.PICKING);
             }
         }
@@ -226,7 +227,10 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
-
+                m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
+                // Todo only do these if the session type is positioning.
+                SelectedInstrumentToPlace = m_currentlyPointingInstrument;
+                InstrumentLocManager.Instance.MoveInstrumentToPlayer(SelectedInstrumentToPlace.gameObject, this.gameObject);
             }
             // Put item back
             if (Input.GetButtonDown("Fire2"))
@@ -234,6 +238,7 @@ public class Player : MonoBehaviour
                 StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
                 m_currentlyPointingInstrument.gameObject.transform.rotation = m_currentlyPointingInstrument.originalRotation;
                 SetPlayerMode(PlayerMode.PICKING);
+                m_currentlyPointingInstrument.GetComponent<Collider>().enabled = true;
             }
         }       
     }

@@ -63,7 +63,7 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlaceDesiredSlotsInOrder("Scalpel,Scalpel,Scalpel,Scalpel");
+        PlaceDesiredSlotsInOrder("Scalpel,Scalpel,Scalpel,Scalpel,Scalpel,Scalpel,Scalpel,Scalpel");
 
     }
 

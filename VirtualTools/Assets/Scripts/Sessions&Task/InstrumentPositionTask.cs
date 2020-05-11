@@ -44,10 +44,4 @@ public class InstrumentPositionTask : Task
         return taskStatus;
     }
 
-    internal void SetSelectedInstrument(Instrument.INSTRUMENT_TAG instrumentTag)
-    {
-        Player.Instance.SelectedInstrumentToPlace = instrumentTag;
-        Debug.Log("Selected instrument " + Instrument.GetName(instrumentTag));
-
-    }
 }

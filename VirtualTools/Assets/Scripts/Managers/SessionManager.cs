@@ -247,6 +247,7 @@ public class SessionManager : MonoBehaviour
         m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
 
         Player.Instance.FreezePlayer(true);
+        Player.Instance.SelectedInstrumentToPlace = null;
 
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
             "Hi, I'm your assistant! Left click to dismiss my messages",
@@ -295,13 +296,6 @@ public class SessionManager : MonoBehaviour
         {
             // If current task is to position the instruments, select the chosen instrument.
             InstrumentPositionTask instrumentPositionTask = m_currentSession.GetCurrentTask() as InstrumentPositionTask;
-            if(instrumentPositionTask != null)
-            {
-                instrumentPositionTask.SetSelectedInstrument(instrumentTag);
-                Player.Instance.ResetItemAndPlayerToFree();
-                Player.Instance.FreezePlayer(false);
-                Player.Instance.SetPickingEnabled(true);
-            }
 
             // If current task is to select by name or purpose, evaluate the task outcome.
             if (m_currentSession.GetCurrentTask() is InstrumentSelectByNameTask || 
