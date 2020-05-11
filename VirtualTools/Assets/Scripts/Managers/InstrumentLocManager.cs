@@ -110,10 +110,14 @@ public class InstrumentLocManager : MonoBehaviour
     public void MoveInstrument(GameObject instrument, GameObject parent)
     {
         instrument.transform.parent = parent.transform;
+        instrument.transform.position = parent.transform.position;
+        //instrument.transform.localScale = instrumentToPlace.transform.localScale;
+        instrument.transform.rotation = new Quaternion();
+
     }
     public void MoveInstrumentToPlayer(GameObject instrument, GameObject parent)
     {
         instrument.transform.parent = parent.transform;
-        instrument.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.1f;
+        instrument.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.3f;
     }
 }
