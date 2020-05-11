@@ -52,8 +52,6 @@ public class MainCanvas : MonoBehaviour
         m_retriesText = m_results.transform.Find("Retries").GetComponent<Text>();
         m_linkText = m_results.transform.Find("Link").GetComponent<Text>();
         m_logsText = GameObject.Find("LogsText").GetComponent<TextMeshProUGUI>();
-        if (m_logsText == null)
-            Debug.Log("FFFFUUUCCCKKK");
 
 		m_connectPanel.SetActive(false);
         m_dogPanel.SetActive(false);
@@ -218,7 +216,7 @@ public class MainCanvas : MonoBehaviour
         if (m_logsText.text.Equals(""))
             m_logsText.text = "No errors made.";
 
-        m_linkText.text = "See the full report at: " + NetworkManager.Instance.currentServer;
+        m_linkText.text = "See the full report at: " + NetworkManager.REMOTE_SERVER_ADDRESS;
 
     }
 
