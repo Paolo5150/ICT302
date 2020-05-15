@@ -26,14 +26,14 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
     // Start is called before the first frame update
     void Start()
     {
-        m_renderer = GetComponent<MeshRenderer>();
+        m_renderer = GetComponentInChildren<MeshRenderer>();
         originalPosition = transform.position;
         originalRotation = transform.rotation;
     }
 
-        public void OnPointing()
+    public void OnPointing()
     {
-        foreach (Material mat in GetComponent<Renderer>().materials)
+        foreach (Material mat in GetComponentInChildren<Renderer>().materials)
         {
             mat.color = Color.green;
         }
@@ -41,7 +41,7 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
 
     public void OnReleasedPointing()
     {
-        foreach (Material mat in GetComponent<Renderer>().materials)
+        foreach (Material mat in GetComponentInChildren<Renderer>().materials)
         {
             mat.color = Color.white;
         }

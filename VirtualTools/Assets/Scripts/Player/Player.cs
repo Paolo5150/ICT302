@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
     public float itemViewMovementSpeed = 50.0f;
     public float itemViewMovementLimitRange = 50.0f;
     public GameObject m_zoomViewSpot;
-
-
+    public GameObject m_endMenu;
+    
     private InstrumentSelector m_instrumentSelector;
     private FirstPersonController m_firstPersonController;
     private Instrument m_currentlyPointingInstrument;
@@ -119,6 +119,20 @@ public class Player : MonoBehaviour
         m_playerMode = mode;
     }
 
+    public void ShowEndMenu()
+    {
+        m_endMenu.SetActive(true);
+        Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
+    }
+
+    public void HideEndMenu()
+    {
+        m_endMenu.SetActive(false);
+        Player.Instance.FreezePlayer(false);
+        GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
+    }
+
     private void ProcessInput()
     {
         if (Input.GetAxis("Cancel") == 1)
@@ -126,12 +140,27 @@ public class Player : MonoBehaviour
             Player.Instance.FreezePlayer(true);
             GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
         }
+
+        // TODO needs change for controller support!!!
+        if (Input.GetKeyDown(KeyCode.Return) && SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
+        {
+            if (!m_endMenu.activeSelf)
+            {
+                ShowEndMenu();
+            }
+            else
+            {
+                HideEndMenu();
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         ProcessInput();
+
+        UpdatePointingInstrumentPositionTaskSlot();
 
         switch (m_playerMode)
         {
@@ -185,8 +214,6 @@ public class Player : MonoBehaviour
 
     private void PlacingMode()
     {
-        UpdatePointingInstrumentPositionTaskSlot();
-
         // Resolve placing of held insrtument
         if (m_currentlyPointingInstrumentPositionTaskSlot != null)
         {
@@ -228,9 +255,11 @@ public class Player : MonoBehaviour
             {
                 instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
                 m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
-                // Todo only do these if the session type is positioning.
-                SelectedInstrumentToPlace = m_currentlyPointingInstrument;
-                InstrumentLocManager.Instance.MoveInstrumentToPlayer(SelectedInstrumentToPlace.gameObject, this.gameObject);
+                if(SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
+                {
+                    SelectedInstrumentToPlace = m_currentlyPointingInstrument;
+                    InstrumentLocManager.Instance.MoveInstrumentToPlayer(SelectedInstrumentToPlace.gameObject, this.gameObject);
+                }
             }
             // Put item back
             if (Input.GetButtonDown("Fire2"))
@@ -247,11 +276,12 @@ public class Player : MonoBehaviour
     {
         InstrumentPositionTaskSlot slot = m_instrumentSelector.GetInstrumentPositionTaskSlotRaycastFromCamera(raycastLength);
         // If I'm looking at an intrument and it's not the one i was already looking at
-        if (slot != null && slot != m_currentlyPointingInstrumentPositionTaskSlot)
+        if (m_selectedInstrumentToPlace != null && slot != null && slot != m_currentlyPointingInstrumentPositionTaskSlot)
         {
             if (m_currentlyPointingInstrumentPositionTaskSlot != null)
+            {
                 m_currentlyPointingInstrumentPositionTaskSlot.OnReleasedPointing();
-
+            }
             slot.OnPointing();
             m_currentlyPointingInstrumentPositionTaskSlot = slot;
         }

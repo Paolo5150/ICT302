@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 1512161541875655529}
   - component: {fileID: 7613124433410939231}
   - component: {fileID: 4223190340502660518}
-  - component: {fileID: 5874649017309788699}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Rochester Carmalt Forceps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2496998817826050426}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 5326187233620941838}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -180, z: 0}
 --- !u!33 &7613124433410939231
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -80,19 +79,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5874649017309788699
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2496998817826050426}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.86, y: 5.26, z: 1.48}
-  m_Center: {x: -0.18833414, y: 0.15834278, z: 0.099891126}
 --- !u!1 &9201191353581874717
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,8 +88,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5326187233620941838}
-  - component: {fileID: 7583250013219598802}
-  m_Layer: 0
+  - component: {fileID: 2071385072}
+  - component: {fileID: 2071385071}
+  m_Layer: 8
   m_Name: Rochester Carmalt Forceps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +112,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7583250013219598802
+--- !u!65 &2071385072
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9201191353581874717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.1, z: 0.3}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2071385071
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

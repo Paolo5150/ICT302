@@ -511,9 +511,11 @@ public class SessionManager : MonoBehaviour
     /// <summary>
     /// Evaluate the task, used for InstrumentPositionTask
     /// </summary>
-    public void EvaluateTask()
+    public void EndMenu_ClickYes()
     {
-        // Passes None instrument because we don't use this parameter.
+        Player.Instance.HideEndMenu();
+
+        // Passes None instrument because we don't use this parameter for an InstrumentPositionTask.
         m_currentSession.GetCurrentTask().Evaluate(Instrument.INSTRUMENT_TAG.NONE, m_currentSession);
 
         //If this is reached there are no tasks left (write to report here?)
@@ -524,6 +526,14 @@ public class SessionManager : MonoBehaviour
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
         DisplayResults(m_currentSession);
         ExportResults(m_currentSession);
+    }
+    
+    /// <summary>
+    /// Used for InstrumentPositionTask
+    /// </summary>
+    public void EndMenu_ClickNo()
+    {
+        Player.Instance.HideEndMenu();
     }
 
 }

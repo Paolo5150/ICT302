@@ -9,9 +9,12 @@ public class InstrumentPositionTaskSlot : MonoBehaviour
 
     public void OnPointing()
     {
-        foreach (Material mat in GetComponent<Renderer>().materials)
+        if(CurrentInstrument == Instrument.INSTRUMENT_TAG.NONE)
         {
-            mat.color = new Color(0, 1, 0, 0.5f);
+            foreach (Material mat in GetComponent<Renderer>().materials)
+            {
+                mat.color = new Color(0, 1, 0, 0.5f);
+            }
         }
     }
 
