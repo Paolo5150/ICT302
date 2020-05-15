@@ -79,8 +79,8 @@ public class SessionResults
     private bool m_isStarted;    
     private long m_id;
     private String m_sessionName;
-
     public SessionResults sessionResults;
+    public string[] instructions { get; set; }
 
     public Session(long id)
     {
@@ -124,11 +124,27 @@ public class SessionResults
         if(!m_isStarted)
         {
             m_isStarted = true;
-            m_currentTask = tasks[0];
-            sessionResults.startTime = DateTime.Now;
-            sessionResults.date = DateTime.Today;
-            sessionResults.Log_SessionStart();
-            StartCurrentTask();
+
+            GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, () => {
+
+                if (GameManager.Instance.IsAssessmentMode())
+                {
+                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
+
+                        m_currentTask = tasks[0];
+                        sessionResults.startTime = DateTime.Now;
+                        sessionResults.date = DateTime.Today;
+                        sessionResults.Log_SessionStart();
+                        StartCurrentTask();
+
+                    });
+                }            
+
+            });
+
+
+
+            
         }
     }
 

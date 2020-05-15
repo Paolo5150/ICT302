@@ -4,7 +4,7 @@ public class SessionTypeSelector : MonoBehaviour
 {
 	public void BeginSelectByNameSession()
 	{
-		SessionManager.Instance.CreateSelectByNameSession();
+		SessionManager.Instance.StartSelectByNameSession();
 		GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
 		GUIManager.Instance.GetMainCanvas().SetEscapeMenu(false);
 		GUIManager.Instance.GetMainCanvas().SetSceneSelector(false);
@@ -12,7 +12,7 @@ public class SessionTypeSelector : MonoBehaviour
 
 	public void BeginSelectByPurposeSession()
 	{
-		SessionManager.Instance.CreateSelectByPurposeSession();
+		SessionManager.Instance.StartSelectByPurposeSession();
 		GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
 		GUIManager.Instance.GetMainCanvas().SetEscapeMenu(false);
 		GUIManager.Instance.GetMainCanvas().SetSceneSelector(false);
@@ -20,7 +20,7 @@ public class SessionTypeSelector : MonoBehaviour
 
 	public void BeginSelectInstrumentPositionSession()
 	{
-		SessionManager.Instance.CreateInstrumentPositioningSession();
+		SessionManager.Instance.StartInstrumentPositioningSession();
 		GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
 		GUIManager.Instance.GetMainCanvas().SetEscapeMenu(false);
 		GUIManager.Instance.GetMainCanvas().SetSceneSelector(false);

@@ -705,7 +705,8 @@ MonoBehaviour:
 
     Right Stick - rotate camera
 
-    A - Pick up/confirm instrument
+    A - Pick up/confirm
+    instrument
 
     B - Put instrument back
 
@@ -1179,7 +1180,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2021600556}
   m_Direction: 2
   m_Value: 1.0000001
-  m_Size: 0.3237604
+  m_Size: 0.32376042
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2216,7 +2217,7 @@ RectTransform:
   m_Children:
   - {fileID: 1452935738020663562}
   m_Father: {fileID: 1452935738757697057}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -3486,7 +3487,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<b>Left click/(A) button:</b>   select
 
-    <b>Right click/(B) button:</b> put back'
+    <b>Right click/(B) button:</b>
+    put back'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3617,7 +3619,7 @@ RectTransform:
   m_Children:
   - {fileID: 1396427122}
   m_Father: {fileID: 1452935738757697057}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4188,7 +4190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fc76d251cee7541aa98dfe9862b860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  server: 1
+  server: 0
   currentServer: 
 --- !u!114 &922758314
 MonoBehaviour:
@@ -4743,7 +4745,7 @@ RectTransform:
   - {fileID: 1117060237}
   - {fileID: 72595652}
   m_Father: {fileID: 1452935738757697057}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6030,7 +6032,7 @@ RectTransform:
   - {fileID: 1664847897}
   - {fileID: 1120371358}
   m_Father: {fileID: 1452935738757697057}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6116,7 +6118,7 @@ RectTransform:
   m_Children:
   - {fileID: 825693558}
   m_Father: {fileID: 1452935738757697057}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -7031,11 +7033,13 @@ MonoBehaviour:
 
     Mouse movement - rotate camera
 
-    Left Click - Pick up/confirm instrument
+    Left
+    Click - Pick up/confirm instrument
 
     Right Click - Put instrument back
 
-    Escape - Quit'
+    Escape
+    - Quit'
 --- !u!222 &1544250945
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7735,11 +7739,12 @@ MonoBehaviour:
     session types on the right.
 
 
-    Follow the prompts in the upper-left hand corner to complete a task.
+    Follow the prompts in the upper-left hand corner
+    to complete a task.
 
 
-    Once all tasks have been completed the session will end and your results will
-    be displayed and uploaded.'
+    Once all tasks have been completed the session will
+    end and your results will be displayed and uploaded.'
 --- !u!222 &1714132299
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8216,7 +8221,7 @@ RectTransform:
   - {fileID: 1964811641}
   - {fileID: 863764170}
   m_Father: {fileID: 1452935738757697057}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8334,7 +8339,7 @@ RectTransform:
   m_Children:
   - {fileID: 963829369}
   m_Father: {fileID: 1452935738757697057}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8553,8 +8558,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Are you sure you would like to confirm your instrument positioning and end
-    the training session?
+  m_Text: Are you sure you would like to confirm your instrument positioning and
+    end the training session?
 --- !u!222 &1964811644
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9734,7 +9739,7 @@ RectTransform:
   - {fileID: 765860879}
   - {fileID: 522619479}
   m_Father: {fileID: 1452935738757697057}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

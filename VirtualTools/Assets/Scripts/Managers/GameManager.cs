@@ -137,6 +137,7 @@ public class GameManager : MonoBehaviour
         {
             assessmentMode = PlayerPrefs.GetInt("AssessmentMode") == 1;
         }
+        
 
         //If assessment mode, do not allow screen selection
         if(assessmentMode)
@@ -145,7 +146,7 @@ public class GameManager : MonoBehaviour
             GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(true);
 
             //Read which mode they will be assessed on
-            SessionManager.Instance.CreateSelectByNameSession();
+            SessionManager.Instance.StartSelectByNameSession();
 
         }
     }

@@ -602,3 +602,29 @@ Stack trace:
 6:12 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
 6:12 PM - Session recorded, id 132181243
 6:12 PM - Reply{"Log_0":"6:12 PM - Session starts","Log_1":"6:12 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"6:12 PM - Correctly selected by name Suture Scissor","Log_3":"6:12 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"6:12 PM - Correctly selected by name Mayo Scissor","Log_5":"6:12 PM - Session ends"}{"Data":{},"Status":"ok"}
+9:20 PM - Login START
+9:21 PM - Login START
+9:21 PM - Send login form
+9:21 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:21 PM - ID: 136212127
+9:22 PM - Login START
+9:22 PM - Send login form
+9:22 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:22 PM - ID: 136212215
+9:23 PM - Login START
+9:23 PM - Send login form
+9:23 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:23 PM - ID: 136212319
+9:23 PM - Just about to send request, 136212319
+9:23 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+9:23 PM - Session recorded, id 136212319
+9:23 PM - Reply{"Log_0":"9:23 PM - Session starts","Log_1":"9:23 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_2":"9:23 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+9:23 PM - Quitting now
+9:23 PM - Login START
+9:23 PM - Send login form
+9:23 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:23 PM - ID: 136212357
+9:24 PM - Login START
+9:24 PM - Send login form
+9:24 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:24 PM - ID: 136212458

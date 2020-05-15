@@ -43,12 +43,15 @@ public class SessionManager : MonoBehaviour
         return m_currentSession;
     }
 
-    private Session SelectInstrumentPositionSession()
+    private Session GenerateSelectInstrumentPositionSession()
     {
-        //Will create a session manager
         Session session = new Session(GenerateID());
         List<InstrumentPositionTask> allTasks = new List<InstrumentPositionTask>();
         session.SetSessionName("Instrument Positioning");
+        session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
+        session.instructions = new string[] { "In this scenario, you are required to place the instruments on the tray in the correct order." };
+
+        m_sessionsRun.Add(session);
 
         foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder)
         {
@@ -68,13 +71,17 @@ public class SessionManager : MonoBehaviour
         return session;
     }
 
-    private Session SelectByNameSession()
+    private Session GenerateSelectByNameSession()
     {
-        //Will create a session manager
         Session session = new Session(GenerateID());
-        //Randomize? From external file?
         List<InstrumentSelectByNameTask> allTasks = new List<InstrumentSelectByNameTask>();
         session.SetSessionName("Select By Name");
+        session.instructions = new string[] { "In this scenario, you are required to select intruments by their name." };
+
+        session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
+
+        m_sessionsRun.Add(session);
+
         foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
@@ -93,13 +100,15 @@ public class SessionManager : MonoBehaviour
         return session;
     }
 
-    private Session SelectByPurposeSession()
+    private Session GenerateSelectByPurposeSession()
     {
-        //Will create a session manager
         Session session = new Session(GenerateID());
-        //Randomize? From external file?
         List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
         session.SetSessionName("Select By Purpose");
+        session.instructions = new string[] { "In this scenario, you are required to select intruments by a description of their purpose." };
+        session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
+
+        m_sessionsRun.Add(session);
 
         foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
@@ -121,93 +130,38 @@ public class SessionManager : MonoBehaviour
 
 
   
-    public void CreateSelectByNameSession()
+    public void StartSelectByNameSession()
     {
-        Session session = SelectByNameSession();
-        m_sessionsRun.Add(session);
+        Session session = GenerateSelectByNameSession();
         
         m_currentSession = session;
-        m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
         Player.Instance.FreezePlayer(true);
-        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
-            "Hi, I'm your assistant! Left click to dismiss my messages",
-            "In this scenario, you are required to select intruments by a their name."}, () => {
-
-            if (GameManager.Instance.IsAssessmentMode())
-            {
-                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
-                    m_currentSession.Start();
-                    Player.Instance.FreezePlayer(true);
-
-                });
-            }
-            else
-                {
-                    Player.Instance.FreezePlayer(true);
-                    m_currentSession.Start();
-                }
-        });
+        m_currentSession.Start();
     }
 
-    public void CreateSelectByPurposeSession()
+    public void StartSelectByPurposeSession()
     {
-        Session session = SelectByPurposeSession();
-        m_sessionsRun.Add(session);
+        Session session = GenerateSelectByPurposeSession();
 
         m_currentSession = session;
         m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
 
         Player.Instance.FreezePlayer(true);
-
-        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
-            "Hi, I'm your assistant! Left click to dismiss my messages",
-            "In this scenario, you are required to select intruments by a description of their purpose." }, () => {
-
-            if(GameManager.Instance.IsAssessmentMode())
-            {
-                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
-                    m_currentSession.Start();
-                    Player.Instance.FreezePlayer(false);
-
-                });
-            }
-            else
-                {
-                    m_currentSession.Start();
-                    Player.Instance.FreezePlayer(false);
-
-                }
-            });
+        m_currentSession.Start();
+        
     }
     
-    public void CreateInstrumentPositioningSession()
+    public void StartInstrumentPositioningSession()
     {
-        Session session = SelectInstrumentPositionSession();
-        m_sessionsRun.Add(session);
+        Session session = GenerateSelectInstrumentPositionSession();
 
         m_currentSession = session;
         m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
 
         Player.Instance.FreezePlayer(true);
         Player.Instance.SelectedInstrumentToPlace = null;
-
-        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
-            "Hi, I'm your assistant! Left click to dismiss my messages",
-            "In this scenario, you are required to position instruments on the tray for a surgery." }, () => {
-
-                if (GameManager.Instance.IsAssessmentMode())
-                {
-                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
-                        m_currentSession.Start();
-                        Player.Instance.FreezePlayer(false);
-                    });
-                }
-                else
-                {
-                    m_currentSession.Start();
-                    Player.Instance.FreezePlayer(false);
-                }
-            });
+        m_currentSession.Start();
+        
     }
 
     private long GenerateID()
