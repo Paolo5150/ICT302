@@ -10,7 +10,7 @@ using System.Linq;
 public class SessionManager : MonoBehaviour
 {
     private static SessionManager m_instance;
-    private List<Session> m_sessionsRun;
+    private List<Session> m_allSessions;
     private Session m_currentSession;
 
     public static SessionManager Instance
@@ -33,7 +33,7 @@ public class SessionManager : MonoBehaviour
 
     private SessionManager()
     {
-        m_sessionsRun = new List<Session>();
+        m_allSessions = new List<Session>();
         Player.instrumentSelectedEvent += OnInstrumentSelected;
 
     }
@@ -43,7 +43,7 @@ public class SessionManager : MonoBehaviour
         return m_currentSession;
     }
 
-    private Session GenerateSelectInstrumentPositionSession()
+    public Session GenerateSelectInstrumentPositionSession()
     {
         Session session = new Session(GenerateID());
         List<InstrumentPositionTask> allTasks = new List<InstrumentPositionTask>();
@@ -51,7 +51,7 @@ public class SessionManager : MonoBehaviour
         session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
         session.instructions = new string[] { "In this scenario, you are required to place the instruments on the tray in the correct order." };
 
-        m_sessionsRun.Add(session);
+        m_allSessions.Add(session);
 
         foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder)
         {
@@ -71,7 +71,7 @@ public class SessionManager : MonoBehaviour
         return session;
     }
 
-    private Session GenerateSelectByNameSession()
+    public Session GenerateSelectByNameSession()
     {
         Session session = new Session(GenerateID());
         List<InstrumentSelectByNameTask> allTasks = new List<InstrumentSelectByNameTask>();
@@ -80,7 +80,7 @@ public class SessionManager : MonoBehaviour
 
         session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
 
-        m_sessionsRun.Add(session);
+        m_allSessions.Add(session);
 
         foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
@@ -100,7 +100,7 @@ public class SessionManager : MonoBehaviour
         return session;
     }
 
-    private Session GenerateSelectByPurposeSession()
+    public Session GenerateSelectByPurposeSession()
     {
         Session session = new Session(GenerateID());
         List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
@@ -108,7 +108,7 @@ public class SessionManager : MonoBehaviour
         session.instructions = new string[] { "In this scenario, you are required to select intruments by a description of their purpose." };
         session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
 
-        m_sessionsRun.Add(session);
+        m_allSessions.Add(session);
 
         foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
@@ -128,6 +128,12 @@ public class SessionManager : MonoBehaviour
         return session;
     } 
 
+    public void StartSessionSequence()
+    {
+        m_currentSession = m_allSessions[0];
+        Player.Instance.FreezePlayer(true);
+        m_currentSession.Start();
+    }
     public void StartSessionByType(Session.SESSION_TYPE type)
     {
         Session session = null;
@@ -189,7 +195,8 @@ public class SessionManager : MonoBehaviour
 
     private long GenerateID()
     {
-        string id = "" +  DateTime.Today.DayOfYear  + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
+        System.Random r = new System.Random();
+        string id = "" +  DateTime.Today.DayOfYear  + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + m_allSessions.Count + r.Next(10000);
 
         long idLong = long.Parse(id);
        // Debug.Log("ID: " + idLong);
@@ -236,15 +243,8 @@ public class SessionManager : MonoBehaviour
                         // Next task
                         if (!m_currentSession.NextTask())
                         {
-                            //If this is reached there are no tasks left (write to report here?)
-                            Player.Instance.SetPickingEnabled(false);
-                            GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
-                            m_currentSession.End();
-                            Player.Instance.FreezePlayer(true);
-                            GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
-                            DisplayResults(m_currentSession);
-                            ExportResults(m_currentSession);
 
+                            CompleteCurrentSession();
                         }
                     });
                 }
@@ -266,6 +266,43 @@ public class SessionManager : MonoBehaviour
             }
 
         }
+        
+    }
+
+    public void NextSession()
+    {
+        GUIManager.Instance.GetMainCanvas().HideResultPanel();
+        int index = m_allSessions.IndexOf(m_currentSession);
+
+        m_currentSession =  m_allSessions[index + 1];
+        m_currentSession.Start();
+    }
+
+    public void CompleteCurrentSession()
+    {
+        //If this is reached there are no tasks left (write to report here?)
+        Player.Instance.SetPickingEnabled(false);
+        GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
+        m_currentSession.End();
+        Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
+
+        if(m_currentSession.sessionResults.isAssessed)
+        {
+            int index = m_allSessions.IndexOf(m_currentSession);
+            GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(index < m_allSessions.Count);
+            GUIManager.Instance.GetMainCanvas().EnableRetryBtn(false);
+        }
+        else
+        {
+            GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(false);
+            GUIManager.Instance.GetMainCanvas().EnableRetryBtn(true);
+        }
+
+        ExportResults(m_currentSession);
+        DisplayResults(m_currentSession);
+
+     
         
     }
 

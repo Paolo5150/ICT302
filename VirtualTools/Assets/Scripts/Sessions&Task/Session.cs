@@ -125,7 +125,7 @@ public class SessionResults
         if(!m_isStarted)
         {
             m_isStarted = true;
-
+            Player.Instance.ResetPosition();
             GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, () => {
 
                 if (GameManager.Instance.IsAssessmentMode())
@@ -140,7 +140,14 @@ public class SessionResults
 
                     });
                 }            
-
+                else
+                {
+                    m_currentTask = tasks[0];
+                    sessionResults.startTime = DateTime.Now;
+                    sessionResults.date = DateTime.Today;
+                    sessionResults.Log_SessionStart();
+                    StartCurrentTask();
+                }
             });
 
 

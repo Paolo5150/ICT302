@@ -16,7 +16,9 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_escapeMenu;
     private GameObject m_sceneSelector;
     private GameObject m_assessmentModePanel;
-
+    private GameObject m_retryButton;
+    private GameObject m_exitButton;
+    private GameObject m_nextSessionButton;
 
 	
     private GameObject m_results;
@@ -51,6 +53,11 @@ public class MainCanvas : MonoBehaviour
         m_endText = m_results.transform.Find("EndTime").GetComponent<Text>();
         m_retriesText = m_results.transform.Find("Retries").GetComponent<Text>();
         m_linkText = m_results.transform.Find("Link").GetComponent<Text>();
+
+        m_exitButton = m_results.transform.Find("Quit Button").gameObject;
+        m_retryButton = m_results.transform.Find("Retry Button").gameObject;
+        m_nextSessionButton = m_results.transform.Find("Next Button").gameObject;
+
         m_logsText = GameObject.Find("LogsText").GetComponent<TextMeshProUGUI>();
 
 		m_connectPanel.SetActive(false);
@@ -60,6 +67,7 @@ public class MainCanvas : MonoBehaviour
         m_dog.SetActive(false);
         m_controlHints.SetActive(false);
         m_assessmentModePanel.SetActive(false);
+        
 
 
     }
@@ -86,6 +94,15 @@ public class MainCanvas : MonoBehaviour
         m_controlHints.SetActive(active);
     }
 
+    public void EnableNextSessionBtn(bool enable)
+    {
+        m_nextSessionButton.SetActive(enable);
+    }
+
+    public void EnableRetryBtn(bool enable)
+    {
+        m_retryButton.SetActive(enable);
+    }
     public void DogSpeak(string text)
     {
         SetDogEnabled(true);
@@ -218,6 +235,11 @@ public class MainCanvas : MonoBehaviour
 
         m_linkText.text = "See the full report at: " + NetworkManager.REMOTE_SERVER_ADDRESS;
 
+    }
+
+    public void HideResultPanel()
+    {
+        m_results.SetActive(false);
     }
 
     public bool GetResultsPanelEnabled()

@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public bool m_pickingEnabled;
     public bool m_viewingEnabled;
     private Instrument m_selectedInstrumentToPlace = null;
+
+    private Vector3 m_startingPosition = new Vector3(1.2f,1.5f,-5.2f);
     public Instrument SelectedInstrumentToPlace {
         get
         {
@@ -89,6 +91,7 @@ public class Player : MonoBehaviour
         m_viewingEnabled = true;
     }
 
+
     public void FreezePlayer(bool freeze)
     {
         GetComponent<FirstPersonController>().enabled = !freeze;
@@ -117,6 +120,12 @@ public class Player : MonoBehaviour
                 break;
         }
         m_playerMode = mode;
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = m_startingPosition;
+        transform.rotation = Quaternion.identity;
     }
 
     public void ShowEndMenu()
@@ -253,9 +262,9 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
-                m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
                 if(SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
                 {
+                m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
                     SelectedInstrumentToPlace = m_currentlyPointingInstrument;
                     InstrumentLocManager.Instance.MoveInstrumentToPlayer(SelectedInstrumentToPlace.gameObject, this.gameObject);
                 }
