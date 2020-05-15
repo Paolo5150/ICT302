@@ -111,7 +111,6 @@ public class InstrumentLocManager : MonoBehaviour
     {
         instrument.transform.parent = parent.transform;
         instrument.transform.position = parent.transform.position;
-        //instrument.transform.localScale = instrumentToPlace.transform.localScale;
         instrument.transform.rotation = new Quaternion();
 
     }

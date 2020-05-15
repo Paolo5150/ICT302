@@ -12,8 +12,6 @@ public class SessionManager : MonoBehaviour
     private static SessionManager m_instance;
     private List<Session> m_sessionsRun;
     private Session m_currentSession;
-    [SerializeField]
-    //private List<GameObject> m_instrumentPositionSlots;
 
     public static SessionManager Instance
     {

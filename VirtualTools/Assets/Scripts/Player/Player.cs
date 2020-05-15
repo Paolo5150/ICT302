@@ -137,8 +137,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetAxis("Cancel") == 1)
         {
-            Player.Instance.FreezePlayer(true);
-            GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
+            GameManager.Instance.Quit();
         }
 
         // TODO needs change for controller support!!!
