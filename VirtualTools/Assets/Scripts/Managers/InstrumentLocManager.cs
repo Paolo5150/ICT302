@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -38,18 +39,17 @@ public class InstrumentLocManager : MonoBehaviour
     List<GameObject> InstrumentLocationSlots;
 
     /// <summary>
-    /// Instrument monobehaviours for instrument gameobjects in the scene that will be moved to the correct scene location.
+    /// Instrument monobehaviours for instrument gameobjects in the scene that will be instantiated in the correct scene location.
     /// </summary>
     [SerializeField]
     List<Instrument> InstrumentGameObjects;
-
 
     public static List<Instrument.INSTRUMENT_TAG> CurrentInstrumentOrder { get; set; }
 
     /// <summary>
     /// Order the instruments in the order given by the string.
     /// </summary>
-    /// <param name="instruments">String representing a list of instruments tags. Each one must be unique. 
+    /// <param name="instruments">String representing a list of instruments tags.
     /// Number of instruments in the list must be <= than the number of InstrumentLocationSlots.</param>
     public void PlaceInstrumentsInOrder(string instrumentsString)
     {
@@ -64,7 +64,7 @@ public class InstrumentLocManager : MonoBehaviour
     /// <summary>
     /// Order the instruments. (internal method)
     /// </summary>
-    /// <param name="instruments">List of instruments. Each one must be unique. 
+    /// <param name="instruments">List of instruments.
     /// Must not be larger in size than the number of InstrumentLocationSlots.</param>
     public void PlaceInstrumentsInOrder(List<Instrument.INSTRUMENT_TAG> instrumentsOrder)
     {
@@ -74,19 +74,8 @@ public class InstrumentLocManager : MonoBehaviour
         {
             if(instrument != Instrument.INSTRUMENT_TAG.NONE)
             {
-                // Get the instrument with each tag in the instrument gameobject list.
-                // Also ensure there's no repeated instruments gameobjects.
-                List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
-            	Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
-                Instrument instrumentToMove = taggedGameObjects[0];
-                // Ensure there's no repeats of the current item in the ordered list that was sent through.
-            	List<Instrument.INSTRUMENT_TAG> instrumentRepeatedTags = instrumentsOrder.FindAll(b => b == instrument);
-            	Assert.AreEqual(instrumentRepeatedTags.Count, 1, "Duplicate INSTRUMENT_TAG in the instrumentsOrder parameter");
-                // Place the instrument gameobject in the desired location and unhide it
                 Assert.IsTrue(InstrumentLocationSlots.Count > i);
-                instrumentToMove.gameObject.transform.SetParent(InstrumentLocationSlots[i].transform);
-                instrumentToMove.gameObject.transform.localPosition = new Vector3();
-                instrumentToMove.gameObject.SetActive(true);
+                PlaceInstrument(instrument, InstrumentLocationSlots[i]);
             }
             ++i;
         }
@@ -102,5 +91,32 @@ public class InstrumentLocManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PlaceInstrument(Instrument.INSTRUMENT_TAG instrument, GameObject parent)
+    {
+        // Get the instrument with each tag in the instrument gameobject list.
+        // Also ensure there's no repeated instruments in the template list.
+        List<Instrument> taggedGameObjects = InstrumentGameObjects.FindAll(a => a.instrumentTag == instrument);
+        Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
+        Instrument instrumentToPlace = taggedGameObjects[0];
+        var obj = Instantiate<GameObject>(instrumentToPlace.gameObject);
+        obj.transform.position = parent.transform.position;
+        obj.transform.localScale = instrumentToPlace.transform.localScale;
+        obj.transform.rotation = new Quaternion();
+        obj.transform.parent = parent.transform;
+    }
+
+    public void MoveInstrument(GameObject instrument, GameObject parent)
+    {
+        instrument.transform.parent = parent.transform;
+        instrument.transform.position = parent.transform.position;
+        instrument.transform.rotation = new Quaternion();
+
+    }
+    public void MoveInstrumentToPlayer(GameObject instrument, GameObject parent)
+    {
+        instrument.transform.parent = parent.transform;
+        instrument.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.3f;
     }
 }

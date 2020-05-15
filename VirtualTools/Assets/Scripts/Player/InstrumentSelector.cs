@@ -24,7 +24,7 @@ public class InstrumentSelector
         m_raycastingCamera = camera;
     }
 
-    public Instrument RaycastFromCamera(float raycastLength)
+    public Instrument GetInstrumentRaycastFromCamera(float raycastLength)
     {
         Instrument toReturn = null;
         if(m_raycastingCamera != null)
@@ -39,6 +39,25 @@ public class InstrumentSelector
                 // If an object on layer Instrument was hit, it must be inheriting "IInstrumentSelectable"
                 Instrument instrument = objectHit.gameObject.GetComponent<Instrument>();
                 toReturn = instrument;   
+            }
+        }
+        return toReturn;
+    }
+
+    public InstrumentPositionTaskSlot GetInstrumentPositionTaskSlotRaycastFromCamera(float raycastLength)
+    {
+        InstrumentPositionTaskSlot toReturn = null;
+        if (m_raycastingCamera != null)
+        {
+            RaycastHit hit;
+            Ray ray = new Ray(m_raycastingCamera.transform.position, m_raycastingCamera.transform.forward);
+
+            if (Physics.Raycast(ray, out hit, raycastLength, m_layerMask))
+            {
+                Transform objectHit = hit.transform;
+
+                InstrumentPositionTaskSlot instrument = objectHit.gameObject.GetComponent<InstrumentPositionTaskSlot>();
+                toReturn = instrument;
             }
         }
         return toReturn;

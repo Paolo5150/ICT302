@@ -41,9 +41,19 @@ public class SessionResults
         logs.Add(DateTime.Now.ToShortTimeString() + " - Failed to select by name " + Instrument.GetName(toSelectinstrumentTag) + ". Selected: " + Instrument.GetName(selectedInstrumentTag));
     }
 
+    internal void Log_FailedToPositionInstrument(Instrument.INSTRUMENT_TAG correctInstrumentTag, Instrument.INSTRUMENT_TAG actualInstrumentTag)
+    {
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Incorrectly placed " + Instrument.GetName(actualInstrumentTag) + " where the " + Instrument.GetName(correctInstrumentTag) + " should have gone.");
+    }
+
     public void Log_FailedToSelectByPurpose(Instrument.INSTRUMENT_TAG toSelectinstrumentTag, Instrument.INSTRUMENT_TAG selectedInstrumentTag)
     {
         logs.Add(DateTime.Now.ToShortTimeString() + " - Failed to select by purpose " + Instrument.GetName(toSelectinstrumentTag) + ". Selected: " + Instrument.GetName(selectedInstrumentTag));
+    }
+
+    internal void Log_CorrectlyPositionedInstrument(Instrument.INSTRUMENT_TAG instrumentTag)
+    {
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Correctly placed " + Instrument.GetName(instrumentTag));
     }
 
     public void Log_CorrectlySelectedInstrumentByPurpose(Instrument.INSTRUMENT_TAG instrumentTag)

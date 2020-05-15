@@ -14,13 +14,27 @@ public class Player : MonoBehaviour
     public float itemViewMovementSpeed = 50.0f;
     public float itemViewMovementLimitRange = 50.0f;
     public GameObject m_zoomViewSpot;
-
-
+    public GameObject m_endMenu;
+    
     private InstrumentSelector m_instrumentSelector;
     private FirstPersonController m_firstPersonController;
     private Instrument m_currentlyPointingInstrument;
+    private InstrumentPositionTaskSlot m_currentlyPointingInstrumentPositionTaskSlot;
     public bool m_pickingEnabled;
     public bool m_viewingEnabled;
+    private Instrument m_selectedInstrumentToPlace = null;
+    public Instrument SelectedInstrumentToPlace {
+        get
+        {
+            return m_selectedInstrumentToPlace;
+        }
+        set
+        {
+            SetPlayerMode(PlayerMode.PICKING);
+            m_selectedInstrumentToPlace = value;
+            Player.Instance.FreezePlayer(false);
+        }
+    } // Current instrument selected (only for a InstrumentPositionTask)
 
     public enum PlayerMode
     {
@@ -97,7 +111,6 @@ public class Player : MonoBehaviour
         {
             case PlayerMode.PICKING:
                 m_firstPersonController.enabled = true;
-
                 break;
             case PlayerMode.VIEWING:                    
                 m_firstPersonController.enabled = false;
@@ -106,11 +119,38 @@ public class Player : MonoBehaviour
         m_playerMode = mode;
     }
 
+    public void ShowEndMenu()
+    {
+        m_endMenu.SetActive(true);
+        Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
+    }
+
+    public void HideEndMenu()
+    {
+        m_endMenu.SetActive(false);
+        Player.Instance.FreezePlayer(false);
+        GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
+    }
+
     private void ProcessInput()
     {
         if (Input.GetAxis("Cancel") == 1)
         {
             GameManager.Instance.Quit();
+        }
+
+        // TODO needs change for controller support!!!
+        if (Input.GetKeyDown(KeyCode.Return) && SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
+        {
+            if (!m_endMenu.activeSelf)
+            {
+                ShowEndMenu();
+            }
+            else
+            {
+                HideEndMenu();
+            }
         }
     }
 
@@ -119,17 +159,24 @@ public class Player : MonoBehaviour
     {
         ProcessInput();
 
+        UpdatePointingInstrumentPositionTaskSlot();
+
         switch (m_playerMode)
         {
             case PlayerMode.PICKING:
-                PickingMode();
                 GUIManager.Instance.GetMainCanvas().SetHintActive(false);
-
+                if (m_selectedInstrumentToPlace != null)
+                {
+                    PlacingMode();
+                }
+                else
+                {
+                    PickingMode();
+                }
                 break;
             case PlayerMode.VIEWING:
                 ViewMode();
                 GUIManager.Instance.GetMainCanvas().SetHintActive(true);
-
                 break;
         }
     }
@@ -164,6 +211,23 @@ public class Player : MonoBehaviour
         SetPlayerMode(PlayerMode.PICKING);
     }
 
+    private void PlacingMode()
+    {
+        // Resolve placing of held insrtument
+        if (m_currentlyPointingInstrumentPositionTaskSlot != null)
+        {
+            // Place instrument where the player is looking if there is not already one here.
+            if (Input.GetButtonDown("Fire1") && m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument == Instrument.INSTRUMENT_TAG.NONE)
+            {
+                m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
+                InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
+                Debug.Log("Placed " + Instrument.GetName(SelectedInstrumentToPlace.instrumentTag));
+                SelectedInstrumentToPlace = null;
+                SetPlayerMode(PlayerMode.PICKING);
+            }
+        }
+    }
+
     private void ViewMode()
     {
         if(m_currentlyPointingInstrument != null && m_viewingEnabled)
@@ -189,7 +253,12 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
-
+                m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
+                if(SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
+                {
+                    SelectedInstrumentToPlace = m_currentlyPointingInstrument;
+                    InstrumentLocManager.Instance.MoveInstrumentToPlayer(SelectedInstrumentToPlace.gameObject, this.gameObject);
+                }
             }
             // Put item back
             if (Input.GetButtonDown("Fire2"))
@@ -197,14 +266,37 @@ public class Player : MonoBehaviour
                 StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
                 m_currentlyPointingInstrument.gameObject.transform.rotation = m_currentlyPointingInstrument.originalRotation;
                 SetPlayerMode(PlayerMode.PICKING);
+                m_currentlyPointingInstrument.GetComponent<Collider>().enabled = true;
             }
         }       
     }
 
+    private void UpdatePointingInstrumentPositionTaskSlot()
+    {
+        InstrumentPositionTaskSlot slot = m_instrumentSelector.GetInstrumentPositionTaskSlotRaycastFromCamera(raycastLength);
+        // If I'm looking at an intrument and it's not the one i was already looking at
+        if (m_selectedInstrumentToPlace != null && slot != null && slot != m_currentlyPointingInstrumentPositionTaskSlot)
+        {
+            if (m_currentlyPointingInstrumentPositionTaskSlot != null)
+            {
+                m_currentlyPointingInstrumentPositionTaskSlot.OnReleasedPointing();
+            }
+            slot.OnPointing();
+            m_currentlyPointingInstrumentPositionTaskSlot = slot;
+        }
+        else if (slot == null) // If no hit
+        {
+            if (m_currentlyPointingInstrumentPositionTaskSlot != null)
+            {
+                m_currentlyPointingInstrumentPositionTaskSlot.OnReleasedPointing();
+                m_currentlyPointingInstrumentPositionTaskSlot = null;
+            }
+        }
+    }
 
     private void UpdatePointingInstrument()
     {
-        Instrument instrument = m_instrumentSelector.RaycastFromCamera(raycastLength);
+        Instrument instrument = m_instrumentSelector.GetInstrumentRaycastFromCamera(raycastLength);
         // If I'm looking at an intrument and it's not the one i was already looking at
         if (instrument != null && instrument != m_currentlyPointingInstrument)
         {

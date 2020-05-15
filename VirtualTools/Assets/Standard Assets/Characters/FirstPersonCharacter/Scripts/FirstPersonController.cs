@@ -42,6 +42,22 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+        public bool AllowMouseLook = true;
+
+        private static FirstPersonController m_instance;
+        public static FirstPersonController Instance
+        {
+            get
+            {
+                if (m_instance == null)
+                {
+                    m_instance = FindObjectOfType<FirstPersonController>();
+                }
+
+                return m_instance;
+            }
+        }
+
         // Use this for initialization
         private void Start()
         {
@@ -204,7 +220,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");
-
             bool waswalking = m_IsWalking;
 
 #if !MOBILE_INPUT

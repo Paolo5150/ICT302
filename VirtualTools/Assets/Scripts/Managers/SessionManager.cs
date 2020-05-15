@@ -5,8 +5,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 using System.Threading;
 using System;
+using System.Linq;
 
-public class SessionManager
+public class SessionManager : MonoBehaviour
 {
     private static SessionManager m_instance;
     private List<Session> m_sessionsRun;
@@ -18,7 +19,7 @@ public class SessionManager
         {
             if (m_instance == null)
             {
-                m_instance = new SessionManager();
+                m_instance = FindObjectOfType<SessionManager>();
             }
 
             return m_instance;
@@ -42,6 +43,31 @@ public class SessionManager
         return m_currentSession;
     }
 
+    private Session SelectInstrumentPositionSession()
+    {
+        //Will create a session manager
+        Session session = new Session(GenerateID());
+        List<InstrumentPositionTask> allTasks = new List<InstrumentPositionTask>();
+        session.SetSessionName("Instrument Positioning");
+
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        {
+            if (tag != Instrument.INSTRUMENT_TAG.NONE)
+            {
+                allTasks.Add(new InstrumentPositionTask("Spay procedure"));
+            }
+        }
+
+        while (allTasks.Count > 0)
+        {
+            int i = UnityEngine.Random.Range(0, allTasks.Count);
+            session.AddTask(allTasks[i]);
+            allTasks.Remove(allTasks[i]);
+        }
+
+        return session;
+    }
+
     private Session SelectByNameSession()
     {
         //Will create a session manager
@@ -49,7 +75,7 @@ public class SessionManager
         //Randomize? From external file?
         List<InstrumentSelectByNameTask> allTasks = new List<InstrumentSelectByNameTask>();
         session.SetSessionName("Select By Name");
-        foreach(var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
             {
@@ -75,7 +101,7 @@ public class SessionManager
         List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
         session.SetSessionName("Select By Purpose");
 
-        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
             {
@@ -154,6 +180,36 @@ public class SessionManager
             });
     }
     
+    public void CreateInstrumentPositioningSession()
+    {
+        Session session = SelectInstrumentPositionSession();
+        m_sessionsRun.Add(session);
+
+        m_currentSession = session;
+        m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
+
+        Player.Instance.FreezePlayer(true);
+        Player.Instance.SelectedInstrumentToPlace = null;
+
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
+            "Hi, I'm your assistant! Left click to dismiss my messages",
+            "In this scenario, you are required to position instruments on the tray for a surgery." }, () => {
+
+                if (GameManager.Instance.IsAssessmentMode())
+                {
+                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
+                        m_currentSession.Start();
+                        Player.Instance.FreezePlayer(false);
+                    });
+                }
+                else
+                {
+                    m_currentSession.Start();
+                    Player.Instance.FreezePlayer(false);
+                }
+            });
+    }
+
     private long GenerateID()
     {
         string id = "" +  DateTime.Today.DayOfYear  + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second;
@@ -164,52 +220,74 @@ public class SessionManager
         return idLong;
     }
 
+    /// <summary>
+    /// Called when the student confirms they've finished positioning instruments for an
+    /// InstrumentPositionTask
+    /// </summary>
+    private void OnConfirmInstrumentPositions()
+    {
+    }
+
+    /// <summary>
+    /// Only for SelectByName or SelectByPurpose Task
+    /// </summary>
+    /// <param name="instrumentTag"></param>
     private void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag)
     {
-        if(m_currentSession != null)
+        if (m_currentSession != null)
         {
-            Task.STATUS status = m_currentSession.GetCurrentTask().Evaluate(instrumentTag, m_currentSession);
+            // If current task is to position the instruments, select the chosen instrument.
+            InstrumentPositionTask instrumentPositionTask = m_currentSession.GetCurrentTask() as InstrumentPositionTask;
 
-            if (status == Task.STATUS.COMPLETED_SUCCESS)
+            // If current task is to select by name or purpose, evaluate the task outcome.
+            if (m_currentSession.GetCurrentTask() is InstrumentSelectByNameTask || 
+                m_currentSession.GetCurrentTask() is InstrumentSelectByPurpose)
             {
+                Task.STATUS status = m_currentSession.GetCurrentTask().Evaluate(instrumentTag, m_currentSession);
 
-                Player.Instance.FreezePlayer(true);
-                
+                if (status == Task.STATUS.COMPLETED_SUCCESS)
+                {
 
-                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Nicely done!" }, () => {
-                    Player.Instance.ResetItemAndPlayerToFree();
-                    Player.Instance.FreezePlayer(false);
-                    Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                    Player.Instance.FreezePlayer(true);
 
-                    // Next task
-                    if (!m_currentSession.NextTask())
-                    {
-                        //If this is reached there are no tasks left (write to report here?)
-                        Player.Instance.SetPickingEnabled(false);
-                        GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
-                        m_currentSession.End();
-                        Player.Instance.FreezePlayer(true);
-                        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
-                        DisplayResults(m_currentSession);
-                        ExportResults(m_currentSession);
-                         
-                    }
-                });
+
+                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Nicely done!" }, () => {
+                        Player.Instance.ResetItemAndPlayerToFree();
+                        Player.Instance.FreezePlayer(false);
+                        Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+
+                        // Next task
+                        if (!m_currentSession.NextTask())
+                        {
+                            //If this is reached there are no tasks left (write to report here?)
+                            Player.Instance.SetPickingEnabled(false);
+                            GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
+                            m_currentSession.End();
+                            Player.Instance.FreezePlayer(true);
+                            GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
+                            DisplayResults(m_currentSession);
+                            ExportResults(m_currentSession);
+
+                        }
+                    });
+                }
+                else
+                {
+                    Player.Instance.FreezePlayer(true);
+                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Oh no, wrong item!" }, () => {
+                        Player.Instance.ResetItemAndPlayerToFree();
+                        Player.Instance.FreezePlayer(false);
+                        Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                        m_currentSession.sessionResults.retries++;
+                        // Restart session
+                        m_currentSession.NextTask();
+
+                    });
+
+                }
+
             }
-            else
-            {
-                Player.Instance.FreezePlayer(true);
-                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Oh no, wrong item!" }, () => {
-                    Player.Instance.ResetItemAndPlayerToFree();
-                    Player.Instance.FreezePlayer(false);
-                    Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-                    m_currentSession.sessionResults.retries++;
-                    // Restart session
-                    m_currentSession.NextTask();
 
-                });
-
-            }
         }
         
     }
@@ -343,6 +421,7 @@ public class SessionManager
         }
          
     }
+
     public void ExportResults(Session s)
     {
         if(s != null && s.HasStarted())
@@ -369,6 +448,34 @@ public class SessionManager
                 }
                 );
         }
-        }
+    }
+
+    /// <summary>
+    /// Evaluate the task, used for InstrumentPositionTask
+    /// </summary>
+    public void EndMenu_ClickYes()
+    {
+        Player.Instance.HideEndMenu();
+
+        // Passes None instrument because we don't use this parameter for an InstrumentPositionTask.
+        m_currentSession.GetCurrentTask().Evaluate(Instrument.INSTRUMENT_TAG.NONE, m_currentSession);
+
+        //If this is reached there are no tasks left (write to report here?)
+        Player.Instance.SetPickingEnabled(false);
+        GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
+        m_currentSession.End();
+        Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
+        DisplayResults(m_currentSession);
+        ExportResults(m_currentSession);
+    }
+    
+    /// <summary>
+    /// Used for InstrumentPositionTask
+    /// </summary>
+    public void EndMenu_ClickNo()
+    {
+        Player.Instance.HideEndMenu();
+    }
 
 }
