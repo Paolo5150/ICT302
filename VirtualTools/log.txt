@@ -552,3 +552,53 @@ Stack trace:
 3:18 PM - Send login form
 3:18 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
 3:18 PM - ID: 13015185
+7:24 PM - Login START
+7:24 PM - Send login form
+7:24 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:24 PM - ID: 130192455
+7:25 PM - Just about to send request, 130192455
+7:25 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+7:25 PM - Session recorded, id 130192455
+7:25 PM - Reply{"Log_0":"7:25 PM - Session starts","Log_1":"7:25 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"7:25 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+7:25 PM - Quitting now
+6:07 PM - Login START
+6:07 PM - Send login form
+6:07 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:07 PM - ID: 13218729
+6:07 PM - Exporting session, id 13218729
+6:07 PM - Just about to send request, 13218729
+6:07 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:07 PM - Session recorded, id 13218729
+6:07 PM - Reply{"Log_0":"6:07 PM - Session starts","Log_1":"6:07 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"6:07 PM - Correctly selected by name Suture Scissor","Log_3":"6:07 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"6:07 PM - Correctly selected by name Mayo Scissor","Log_5":"6:07 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:07 PM - Just about to send request, 13218729
+6:07 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:07 PM - Session recorded, id 13218729
+6:07 PM - Reply{"Log_0":"6:07 PM - Session starts","Log_1":"6:07 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"6:07 PM - Correctly selected by name Suture Scissor","Log_3":"6:07 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"6:07 PM - Correctly selected by name Mayo Scissor","Log_5":"6:07 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:07 PM - Quitting now
+6:10 PM - Login START
+6:10 PM - Send login form
+6:10 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:10 PM - ID: 132181035
+6:10 PM - Exporting session, id 132181035
+6:10 PM - Just about to send request, 132181035
+6:10 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:10 PM - Session recorded, id 132181035
+6:10 PM - Reply{"Log_0":"6:10 PM - Session starts","Log_1":"6:10 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"6:10 PM - Correctly selected by name Suture Scissor","Log_3":"6:10 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"6:10 PM - Correctly selected by name Mayo Scissor","Log_5":"6:10 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:11 PM - Login START
+6:11 PM - Send login form
+6:11 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:11 PM - ID: 132181119
+6:11 PM - Exporting session, id 132181119
+6:11 PM - Just about to send request, 132181119
+6:11 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:11 PM - Session recorded, id 132181119
+6:11 PM - Reply{"Log_0":"6:11 PM - Session starts","Log_1":"6:11 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"6:11 PM - Failed to select by name Mayo Scissor. Selected: Suture Scissor","Log_3":"6:11 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"6:11 PM - Correctly selected by name Mayo Scissor","Log_5":"6:11 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_6":"6:11 PM - Correctly selected by name Suture Scissor","Log_7":"6:11 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:12 PM - Login START
+6:12 PM - Send login form
+6:12 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+6:12 PM - ID: 132181243
+6:12 PM - Exporting session, id 132181243
+6:12 PM - Just about to send request, 132181243
+6:12 PM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+6:12 PM - Session recorded, id 132181243
+6:12 PM - Reply{"Log_0":"6:12 PM - Session starts","Log_1":"6:12 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_2":"6:12 PM - Correctly selected by name Suture Scissor","Log_3":"6:12 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"6:12 PM - Correctly selected by name Mayo Scissor","Log_5":"6:12 PM - Session ends"}{"Data":{},"Status":"ok"}

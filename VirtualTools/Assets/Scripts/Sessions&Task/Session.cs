@@ -78,6 +78,7 @@ public class SessionResults
     private Task m_currentTask;
     private bool m_isStarted;    
     private long m_id;
+    private String m_sessionName;
 
     public SessionResults sessionResults;
 
@@ -90,7 +91,15 @@ public class SessionResults
     }
 
 
+    public String GetSessionName()
+    {
+        return m_sessionName;
+    }
 
+    public void SetSessionName(string name)
+    {
+        m_sessionName = name;
+    }
     public bool HasStarted()
     {
         return m_isStarted;
