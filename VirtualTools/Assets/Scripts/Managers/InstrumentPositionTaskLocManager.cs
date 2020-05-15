@@ -54,7 +54,7 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
         int i = 0;
         foreach (Instrument.INSTRUMENT_TAG instrument in instrumentsOrder)
         {
-            Assert.IsTrue(InstrumentSlots.Count > i);
+            Assert.IsTrue(InstrumentSlots.Count > i,"Number of slots in the scene is less than the number of slots being configured");
             InstrumentSlots[i].CorrectInstrument = instrumentsOrder[i];
             ++i;
         }
@@ -63,8 +63,7 @@ public class InstrumentPositionTaskLocManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PlaceDesiredSlotsInOrder("Scalpel,Scalpel,Scalpel,Scalpel,Scalpel,Scalpel,Scalpel,Scalpel");
-
+        PlaceDesiredSlotsInOrder("Scalpel,Addson-Brown Forceps,Metzembaum Scissors,Mayo Scissors,Suture Scissors,Mayo Hegar Needle Driver,Rochester Carmalt Forceps,Towel Clamps");
     }
 
     // Update is called once per frame
