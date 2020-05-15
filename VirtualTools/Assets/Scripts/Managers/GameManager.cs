@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviour
             GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(true);
 
             //Read which mode they will be assessed on
-            SessionManager.Instance.StartSelectByNameSession();
+            SessionManager.Instance.StartSessionByType(Session.SESSION_TYPE.SELECT_BY_NAME);
 
         }
     }

@@ -72,7 +72,8 @@ public class SessionResults
     }
 }
     public class Session
-{
+    {
+   
     public List<Task> tasks;
 
     private Task m_currentTask;
@@ -215,5 +216,12 @@ public class SessionResults
     {
       
     }
-  
+
+    public enum SESSION_TYPE
+    {
+        SELECT_BY_NAME,
+        SELECT_BY_PURPOSE,
+        INSTRUMENT_LAYOUT
+    }
+
 }

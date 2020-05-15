@@ -628,3 +628,7 @@ Stack trace:
 9:24 PM - Send login form
 9:24 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
 9:24 PM - ID: 136212458
+9:31 PM - Login START
+9:31 PM - Send login form
+9:31 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:31 PM - ID: 136213121

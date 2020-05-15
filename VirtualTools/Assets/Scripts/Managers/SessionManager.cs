@@ -128,18 +128,41 @@ public class SessionManager : MonoBehaviour
         return session;
     } 
 
+    public void StartSessionByType(Session.SESSION_TYPE type)
+    {
+        Session session = null;
+        switch(type)
+        {
+            case Session.SESSION_TYPE.INSTRUMENT_LAYOUT:
+                session = GenerateSelectInstrumentPositionSession();
+                break;
 
+            case Session.SESSION_TYPE.SELECT_BY_NAME:
+                session = GenerateSelectByNameSession();
+                break;
+
+            case Session.SESSION_TYPE.SELECT_BY_PURPOSE:
+                session = GenerateSelectByPurposeSession();
+                break;
+
+
+        }
+
+        m_currentSession = session;
+        Player.Instance.FreezePlayer(true);
+        m_currentSession.Start();
+    }
   
-    public void StartSelectByNameSession()
+   /* public void StartSelectByNameSession()
     {
         Session session = GenerateSelectByNameSession();
         
         m_currentSession = session;
         Player.Instance.FreezePlayer(true);
         m_currentSession.Start();
-    }
+    }*/
 
-    public void StartSelectByPurposeSession()
+   /* public void StartSelectByPurposeSession()
     {
         Session session = GenerateSelectByPurposeSession();
 
@@ -149,9 +172,9 @@ public class SessionManager : MonoBehaviour
         Player.Instance.FreezePlayer(true);
         m_currentSession.Start();
         
-    }
+    }*/
     
-    public void StartInstrumentPositioningSession()
+   /* public void StartInstrumentPositioningSession()
     {
         Session session = GenerateSelectInstrumentPositionSession();
 
@@ -162,7 +185,7 @@ public class SessionManager : MonoBehaviour
         Player.Instance.SelectedInstrumentToPlace = null;
         m_currentSession.Start();
         
-    }
+    }*/
 
     private long GenerateID()
     {

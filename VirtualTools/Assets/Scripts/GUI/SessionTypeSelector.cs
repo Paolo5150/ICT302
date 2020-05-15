@@ -4,7 +4,7 @@ public class SessionTypeSelector : MonoBehaviour
 {
 	public void BeginSelectByNameSession()
 	{
-		SessionManager.Instance.StartSelectByNameSession();
+        SessionManager.Instance.StartSessionByType(Session.SESSION_TYPE.SELECT_BY_NAME);
 		GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
 		GUIManager.Instance.GetMainCanvas().SetEscapeMenu(false);
 		GUIManager.Instance.GetMainCanvas().SetSceneSelector(false);
@@ -12,16 +12,16 @@ public class SessionTypeSelector : MonoBehaviour
 
 	public void BeginSelectByPurposeSession()
 	{
-		SessionManager.Instance.StartSelectByPurposeSession();
-		GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
+        SessionManager.Instance.StartSessionByType(Session.SESSION_TYPE.SELECT_BY_PURPOSE);
+        GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
 		GUIManager.Instance.GetMainCanvas().SetEscapeMenu(false);
 		GUIManager.Instance.GetMainCanvas().SetSceneSelector(false);
 	}
 
 	public void BeginSelectInstrumentPositionSession()
 	{
-		SessionManager.Instance.StartInstrumentPositioningSession();
-		GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
+        SessionManager.Instance.StartSessionByType(Session.SESSION_TYPE.INSTRUMENT_LAYOUT);
+        GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
 		GUIManager.Instance.GetMainCanvas().SetEscapeMenu(false);
 		GUIManager.Instance.GetMainCanvas().SetSceneSelector(false);
 	}
