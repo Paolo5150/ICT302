@@ -403,7 +403,7 @@ public class SessionManager : MonoBehaviour
         return obj.ToString();
     }
 
-    public void DisplayResults(Session s)
+    public void DisplayResults(Session s, bool isPause = false)
     {
         string name, studentNumber;
 
@@ -426,7 +426,7 @@ public class SessionManager : MonoBehaviour
             studentNumber = GameManager.Instance.MockStudentNumber;
 
 
-        GUIManager.Instance.GetMainCanvas().DisplayResults(name, studentNumber, s.sessionResults);
+        GUIManager.Instance.GetMainCanvas().DisplayResults(name, studentNumber, s.sessionResults, isPause);
     }
 
     public WWWForm GetSessionForm(string json)
@@ -582,7 +582,7 @@ public class SessionManager : MonoBehaviour
                     GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(false);
                     GUIManager.Instance.GetMainCanvas().EnableResumeBtn(true);
                     GUIManager.Instance.GetMainCanvas().SetResultsPanelTitle("Session paused");
-                    DisplayResults(m_currentSession);
+                    DisplayResults(m_currentSession,true);
                     Player.Instance.FreezePlayer(true);
                     m_isCurrentSessionPaused = true;
                 }

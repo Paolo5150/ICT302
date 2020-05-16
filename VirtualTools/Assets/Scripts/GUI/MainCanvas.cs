@@ -216,7 +216,7 @@ public class MainCanvas : MonoBehaviour
         SetSceneSelector(m_escapeMenu.activeSelf); //Hide or show the scene selector depending on whether the escape menu is hidden or shown, respectively
     }
 
-    public void DisplayResults(string name, string studentNumber, SessionResults results)
+    public void DisplayResults(string name, string studentNumber, SessionResults results, bool isPause = false)
     {
         m_controlHints.SetActive(false);
         m_assessmentModePanel.SetActive(false);
@@ -238,6 +238,10 @@ public class MainCanvas : MonoBehaviour
 
         if (m_logsText.text.Equals(""))
             m_logsText.text = "No errors made.";
+
+        if(isPause && GameManager.Instance.IsAssessmentMode())
+            m_logsText.text = "Not available while the session is running.";
+
 
         m_linkText.text = "See the full report at: " + NetworkManager.REMOTE_SERVER_ADDRESS;
 

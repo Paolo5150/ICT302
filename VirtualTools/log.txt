@@ -1533,3 +1533,33 @@ Stack trace:
 5:29 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
 5:29 PM - Session recorded, id 1371728461953
 5:29 PM - Reply{"Log_0":"5:29 PM - Session starts","Log_1":"5:29 PM - New task: pick up the best instrument for <b><u>Joining drapes to patient<\/u><\/b>","Log_2":"5:29 PM - Correctly selected by purpose Towel Clamps","Log_3":"5:29 PM - New task: pick up the best instrument for <b><u>Extension of abdominal wall incisions<\/u><\/b>","Log_4":"5:29 PM - Correctly selected by purpose Mayo Scissor","Log_5":"5:29 PM - Session ends"}{"Data":{},"Status":"ok"}
+5:35 PM - Login START
+5:35 PM - Send login form
+5:35 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:35 PM - ID: 13717351405251
+5:35 PM - ID: 13717351415251
+5:35 PM - ID: 13717351428839
+5:35 PM - Exporting session, id 13717351405251
+5:35 PM - Just about to send request, 13717351405251
+5:35 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:35 PM - Session recorded, id 13717351405251
+5:35 PM - Reply{"Log_0":"5:35 PM - Session starts","Log_1":"5:35 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_2":"5:35 PM - Correctly selected by name Towel Clamps","Log_3":"5:35 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"5:35 PM - Correctly selected by name Mayo Scissor","Log_5":"5:35 PM - Session ends"}{"Data":{},"Status":"ok"}
+5:35 PM - Exporting session, id 13717351415251
+5:35 PM - Just about to send request, 13717351415251
+5:35 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:35 PM - Session recorded, id 13717351415251
+5:35 PM - Reply{"Log_0":"5:35 PM - Session starts","Log_1":"5:35 PM - New task: pick up the best instrument for <b><u>Extension of abdominal wall incisions<\/u><\/b>","Log_2":"5:35 PM - Failed to select by purpose Mayo Scissor. Selected: Towel Clamps","Log_3":"5:35 PM - New task: pick up the best instrument for <b><u>Extension of abdominal wall incisions<\/u><\/b>","Log_4":"5:35 PM - Correctly selected by purpose Mayo Scissor","Log_5":"5:35 PM - New task: pick up the best instrument for <b><u>Joining drapes to patient<\/u><\/b>","Log_6":"5:35 PM - Correctly selected by purpose Towel Clamps","Log_7":"5:35 PM - Session ends"}{"Data":{},"Status":"ok"}
+5:36 PM - Exporting session, id 13717351428839
+5:36 PM - Just about to send request, 13717351428839
+5:36 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:36 PM - Session recorded, id 13717351428839
+5:36 PM - Reply{"Log_0":"5:35 PM - Session starts","Log_1":"5:35 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"5:35 PM - Correctly placed Mayo Scissor","Log_3":"5:36 PM - Correctly placed Towel Clamps","Log_4":"5:36 PM - Session ends"}{"Data":{},"Status":"ok"}
+5:36 PM - Login START
+5:36 PM - Send login form
+5:36 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:36 PM - ID: 13717363604880
+5:36 PM - Just about to send request, 13717363604880
+5:36 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:36 PM - Session recorded, id 13717363604880
+5:36 PM - Reply{"Log_0":"5:36 PM - Session starts","Log_1":"5:36 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"5:36 PM - Failed to select by name Mayo Scissor. Selected: Towel Clamps","Log_3":"5:36 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"5:36 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+5:36 PM - Quitting now
