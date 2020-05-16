@@ -180,7 +180,7 @@ public class MainCanvas : MonoBehaviour
         while(index < instructions.Length)
         {
             DogSpeak(instructions[index]);
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !SessionManager.Instance.IsSessionPaused())
             {
                 index++;
                 if (index >= instructions.Length) break;

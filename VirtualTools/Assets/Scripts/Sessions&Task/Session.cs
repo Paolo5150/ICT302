@@ -78,7 +78,7 @@ public class SessionResults
     public List<Task> tasks;
     public SESSION_TYPE sessionType { get; set; }
     private Task m_currentTask;
-    private bool m_isStarted;    
+    private bool m_isStarted = false;    
     private long m_id;
     private String m_sessionName;
     public SessionResults sessionResults;
@@ -125,7 +125,8 @@ public class SessionResults
     {
         if(!m_isStarted)
         {
-            m_isStarted = true;
+
+            Player.Instance.FreezePlayer(true);
             Player.Instance.ResetPosition();
             GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, () => {
 
@@ -138,6 +139,8 @@ public class SessionResults
                         sessionResults.startTime = DateTime.Now;
                         sessionResults.date = DateTime.Today;
                         sessionResults.Log_SessionStart();
+                        m_isStarted = true;
+
                         StartCurrentTask();
 
                     });
@@ -148,6 +151,8 @@ public class SessionResults
                     sessionResults.startTime = DateTime.Now;
                     sessionResults.date = DateTime.Today;
                     sessionResults.Log_SessionStart();
+                    m_isStarted = true;
+
                     StartCurrentTask();
                 }
             });

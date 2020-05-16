@@ -556,7 +556,7 @@ public class SessionManager : MonoBehaviour
 
         GUIManager.Instance.GetMainCanvas().EnableResumeBtn(false);
         GUIManager.Instance.GetMainCanvas().HideResultPanel();
-        if (Player.Instance.GetPlayerMode() == Player.PlayerMode.PICKING)
+        if (Player.Instance.GetPlayerMode() == Player.PlayerMode.PICKING && m_currentSession.HasStarted())
             Player.Instance.FreezePlayer(false);
         m_isCurrentSessionPaused = false;
     }
@@ -594,7 +594,7 @@ public class SessionManager : MonoBehaviour
                 else
                 {
                     GUIManager.Instance.GetMainCanvas().HideResultPanel();
-                    if (Player.Instance.GetPlayerMode() == Player.PlayerMode.PICKING)
+                    if (Player.Instance.GetPlayerMode() == Player.PlayerMode.PICKING && m_currentSession.HasStarted())
                         Player.Instance.FreezePlayer(false);
                     m_isCurrentSessionPaused = false;
                 }
