@@ -226,6 +226,7 @@ public class Player : MonoBehaviour
             {
                 m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
                 InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
+                SessionManager.Instance.OnInstrumentPlaced(SelectedInstrumentToPlace.instrumentTag, m_currentlyPointingInstrumentPositionTaskSlot);
                 Debug.Log("Placed " + Instrument.GetName(SelectedInstrumentToPlace.instrumentTag));
                 SelectedInstrumentToPlace = null;
                 SetPlayerMode(PlayerMode.PICKING);
@@ -260,7 +261,7 @@ public class Player : MonoBehaviour
                 instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
                 if(SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
                 {
-                m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
+                    m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
                     SelectedInstrumentToPlace = m_currentlyPointingInstrument;
                     InstrumentLocManager.Instance.MoveInstrumentToPlayer(SelectedInstrumentToPlace.gameObject, this.gameObject);
                 }

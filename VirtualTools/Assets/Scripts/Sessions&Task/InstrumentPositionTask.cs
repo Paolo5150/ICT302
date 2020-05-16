@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class InstrumentPositionTask : Task
 {
+
+    private InstrumentPositionTaskSlot m_slot;
+
+    public InstrumentPositionTaskSlot GetSlot()
+    {
+        return m_slot;
+    }
     /// <summary>
     /// 
     /// </summary>
@@ -15,33 +22,34 @@ public class InstrumentPositionTask : Task
         instructions.Add("New task: position the instruments for a <b><u>" + procedureName + "</u></b>");
     }
 
-    public override STATUS Evaluate(Instrument.INSTRUMENT_TAG instrumentTag, Session session)
+    public InstrumentPositionTask(InstrumentPositionTaskSlot slot)
+    {
+        instructions.Add("New task: position the instruments for a <b><u>Spay dog</u></b>");
+
+        m_slot = slot;
+    }
+
+   /* public override STATUS Evaluate(Instrument.INSTRUMENT_TAG instrumentTag, Session session)
     {
         taskStatus = STATUS.COMPLETED_SUCCESS;
 
-        foreach (var instrumentSlot in InstrumentPositionTaskLocManager.Instance.InstrumentSlots)
+        if (instrumentTag != m_slot.CorrectInstrument)
         {
-            if (instrumentSlot.CurrentInstrument == Instrument.INSTRUMENT_TAG.NONE)
-            {
-                session.sessionResults.Log_FailedToPositionInstrument(instrumentSlot.CorrectInstrument, Instrument.INSTRUMENT_TAG.NONE);
-                taskStatus = STATUS.COMPLETED_FAIL;
-            }
-            else
-            {
-                if (instrumentSlot.CurrentInstrument != instrumentSlot.CorrectInstrument)
-                {
-                    session.sessionResults.Log_FailedToPositionInstrument(instrumentSlot.CorrectInstrument, instrumentSlot.CurrentInstrument);
-                    taskStatus = STATUS.COMPLETED_FAIL;
-                }
-                else
-                {
-                    session.sessionResults.Log_CorrectlyPositionedInstrument(instrumentSlot.CorrectInstrument);
-                }
-            }
+            session.sessionResults.Log_FailedToPositionInstrument(m_slot.CorrectInstrument, instrumentTag);
+            taskStatus = STATUS.COMPLETED_FAIL;
+        }
+        else
+        {
+            session.sessionResults.Log_CorrectlyPositionedInstrument(instrumentTag);
         }
 
 
         return taskStatus;
+    }*/
+
+    public override STATUS Evaluate(params object[] list)
+    {
+        return STATUS.COMPLETED_SUCCESS;
     }
 
 }

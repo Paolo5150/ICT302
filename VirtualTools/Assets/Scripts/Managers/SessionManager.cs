@@ -50,16 +50,25 @@ public class SessionManager : MonoBehaviour
         Session session = new Session(GenerateID());
         List<InstrumentPositionTask> allTasks = new List<InstrumentPositionTask>();
         session.SetSessionName("Instrument Positioning");
+        session.sessionType = Session.SESSION_TYPE.INSTRUMENT_POSITIONING;
         session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
         session.instructions = new string[] { "In this scenario, you are required to place the instruments on the tray in the correct order." };
 
         m_allSessions.Add(session);
 
-        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder)
+        foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
             {
-                allTasks.Add(new InstrumentPositionTask("Spay procedure"));
+                foreach(InstrumentPositionTaskSlot slot in InstrumentPositionTaskLocManager.Instance.InstrumentSlots)
+                {
+                    if(slot.CorrectInstrument == tag)
+                    {
+                        allTasks.Add(new InstrumentPositionTask(slot));
+                        break;
+                    }
+
+                }
             }
         }
 
@@ -78,6 +87,8 @@ public class SessionManager : MonoBehaviour
         Session session = new Session(GenerateID());
         List<InstrumentSelectByNameTask> allTasks = new List<InstrumentSelectByNameTask>();
         session.SetSessionName("Select By Name");
+        session.sessionType = Session.SESSION_TYPE.SELECT_BY_NAME;
+
         session.instructions = new string[] { "In this scenario, you are required to select intruments by their name." };
 
         session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
@@ -107,6 +118,8 @@ public class SessionManager : MonoBehaviour
         Session session = new Session(GenerateID());
         List<InstrumentSelectByPurpose> allTasks = new List<InstrumentSelectByPurpose>();
         session.SetSessionName("Select By Purpose");
+        session.sessionType = Session.SESSION_TYPE.SELECT_BY_PURPOSE;
+
         session.instructions = new string[] { "In this scenario, you are required to select intruments by a description of their purpose." };
         session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
 
@@ -141,7 +154,7 @@ public class SessionManager : MonoBehaviour
         Session session = null;
         switch(type)
         {
-            case Session.SESSION_TYPE.INSTRUMENT_LAYOUT:
+            case Session.SESSION_TYPE.INSTRUMENT_POSITIONING:
                 session = GenerateSelectInstrumentPositionSession();
                 break;
 
@@ -269,6 +282,36 @@ public class SessionManager : MonoBehaviour
 
         }
         
+    }
+
+    public void OnInstrumentPlaced(Instrument.INSTRUMENT_TAG instrumentTag, InstrumentPositionTaskSlot slot)
+    {
+       /*if (m_currentSession != null)
+        {
+            // If current task is to position the instruments, select the chosen instrument.
+            InstrumentPositionTask instrumentPositionTask = null;
+
+            //Find the task related to slot
+            foreach(InstrumentPositionTask t in m_currentSession.tasks)
+            {
+                if (t.GetSlot() == slot)
+                    instrumentPositionTask = t;
+            }
+
+            Task.STATUS status = instrumentPositionTask.Evaluate()
+
+            if (status == Task.STATUS.COMPLETED_SUCCESS)
+            {
+                GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Correct placement");
+            }
+            else
+            {
+                GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Wrong placement");
+
+
+            }
+
+        }*/
     }
 
     public void NextSession()
@@ -433,12 +476,26 @@ public class SessionManager : MonoBehaviour
          
     }
 
+                
+    public void ReadFinalInstrumentPositioning()
+    {
+        Debug.Log("Correct instruments");
+
+        foreach (var slot in InstrumentPositionTaskLocManager.Instance.InstrumentSlots)
+        {
+            Debug.Log(slot.CorrectInstrument.ToString());
+        }
+    }
+
     public void ExportResults(Session s)
     {
         if(s != null && s.HasStarted())
         {
             Logger.LogToFile("Exporting session, id " + m_currentSession.GetID());
-            
+
+
+            if (m_currentSession.sessionType == Session.SESSION_TYPE.INSTRUMENT_POSITIONING)
+                ReadFinalInstrumentPositioning();
             //Send to server
 
             string json = CreateJSONString(s);
@@ -484,6 +541,8 @@ public class SessionManager : MonoBehaviour
     // Called by BUI
     public void ResumeSession()
     {
+        GUIManager.Instance.ConfigureCursor(false, CursorLockMode.None);
+
         GUIManager.Instance.GetMainCanvas().EnableResumeBtn(false);
         GUIManager.Instance.GetMainCanvas().HideResultPanel();
         Player.Instance.FreezePlayer(false);
@@ -511,6 +570,8 @@ public class SessionManager : MonoBehaviour
                 if (!m_isCurrentSessionPaused)
                 {
                     //Hide next session button, just in case
+                    GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
+
                     GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(false);
                     GUIManager.Instance.GetMainCanvas().EnableResumeBtn(true);
                     GUIManager.Instance.GetMainCanvas().SetResultsPanelTitle("Session paused");
