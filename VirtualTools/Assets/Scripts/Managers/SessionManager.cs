@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Threading;
 using System;
 using System.Linq;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class SessionManager : MonoBehaviour
 {
@@ -172,41 +173,8 @@ public class SessionManager : MonoBehaviour
         m_currentSession = session;
         Player.Instance.FreezePlayer(true);
         m_currentSession.Start();
-    }
-  
-   /* public void StartSelectByNameSession()
-    {
-        Session session = GenerateSelectByNameSession();
-        
-        m_currentSession = session;
-        Player.Instance.FreezePlayer(true);
-        m_currentSession.Start();
-    }*/
+    } 
 
-   /* public void StartSelectByPurposeSession()
-    {
-        Session session = GenerateSelectByPurposeSession();
-
-        m_currentSession = session;
-        m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
-
-        Player.Instance.FreezePlayer(true);
-        m_currentSession.Start();
-        
-    }*/
-    
-   /* public void StartInstrumentPositioningSession()
-    {
-        Session session = GenerateSelectInstrumentPositionSession();
-
-        m_currentSession = session;
-        m_currentSession.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
-
-        Player.Instance.FreezePlayer(true);
-        Player.Instance.SelectedInstrumentToPlace = null;
-        m_currentSession.Start();
-        
-    }*/
 
     private long GenerateID()
     {
@@ -307,8 +275,20 @@ public class SessionManager : MonoBehaviour
             else
             {
                 GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Wrong placement");
+            }
 
+            bool allGood = true;
+            //Check if all slots are ok
+            foreach (InstrumentPositionTask t in m_currentSession.tasks)
+            {
+                if (t.GetSlot().CurrentInstrument != t.GetSlot().CorrectInstrument)
+                    allGood = false;
+            }
 
+            if (allGood)
+            {
+
+                CompleteCurrentSession();
             }
 
         }
@@ -326,9 +306,8 @@ public class SessionManager : MonoBehaviour
     public void CompleteCurrentSession()
     {
         //If this is reached there are no tasks left (write to report here?)
-        Player.Instance.SetPickingEnabled(false);
+       // Player.Instance.SetPickingEnabled(false);
         m_currentSession.End();
-        Player.Instance.FreezePlayer(true);
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
 
         if(m_currentSession.sessionResults.isAssessed)
@@ -349,7 +328,8 @@ public class SessionManager : MonoBehaviour
         GUIManager.Instance.GetMainCanvas().SetResultsPanelTitle("Session complete");
 
         DisplayResults(m_currentSession);     
-        
+        Player.Instance.FreezePlayer(true);
+
     }
 
     public void OnQuit()

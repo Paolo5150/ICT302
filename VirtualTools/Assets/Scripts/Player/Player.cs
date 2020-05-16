@@ -94,7 +94,8 @@ public class Player : MonoBehaviour
 
     public void FreezePlayer(bool freeze)
     {
-        GetComponent<FirstPersonController>().enabled = !freeze;
+        //GetComponent<FirstPersonController>().enabled = !freeze;
+        m_firstPersonController.enabled = !freeze;
         enabled = !freeze;
     }
 
@@ -226,10 +227,10 @@ public class Player : MonoBehaviour
             {
                 m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
                 InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
-                SessionManager.Instance.OnInstrumentPlaced(SelectedInstrumentToPlace.instrumentTag, m_currentlyPointingInstrumentPositionTaskSlot);
                 Debug.Log("Placed " + Instrument.GetName(SelectedInstrumentToPlace.instrumentTag));
-                SelectedInstrumentToPlace = null;
                 SetPlayerMode(PlayerMode.PICKING);
+                SessionManager.Instance.OnInstrumentPlaced(SelectedInstrumentToPlace.instrumentTag, m_currentlyPointingInstrumentPositionTaskSlot);
+                SelectedInstrumentToPlace = null;
             }
         }
     }
@@ -322,8 +323,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetMovementEnabled(bool enabled)
-    {
-        m_firstPersonController.enabled = enabled;
-    }
+
 }
