@@ -1793,3 +1793,19 @@ Stack trace:
 7:28 PM - ID: 1371928603449
 7:28 PM - ID: 1371928613449
 7:28 PM - ID: 1371928621813
+9:15 PM - Login START
+9:15 PM - Send login form
+9:15 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+9:15 PM - ID: 1372115570688
+9:15 PM - ID: 13721155719052
+9:15 PM - ID: 13721155729052
+9:16 PM - Exporting session, id 1372115570688
+9:16 PM - Just about to send request, 1372115570688
+9:16 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+9:16 PM - Session recorded, id 1372115570688
+9:16 PM - Reply{"Log_0":"9:15 PM - Session starts","Log_1":"9:15 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_2":"9:16 PM - Correctly selected by name Towel Clamps","Log_3":"9:16 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"9:16 PM - Correctly selected by name Mayo Scissor","Log_5":"9:16 PM - Session ends"}{"Data":{},"Status":"ok"}
+9:16 PM - Exporting session, id 13721155719052
+9:16 PM - Just about to send request, 13721155719052
+9:16 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+9:16 PM - Session recorded, id 13721155719052
+9:16 PM - Reply{"Log_0":"9:16 PM - Session starts","Log_1":"9:16 PM - New task: pick up the best instrument for <b><u>Extension of abdominal wall incisions<\/u><\/b>","Log_2":"9:16 PM - Correctly selected by purpose Mayo Scissor","Log_3":"9:16 PM - New task: pick up the best instrument for <b><u>Joining drapes to patient<\/u><\/b>","Log_4":"9:16 PM - Correctly selected by purpose Towel Clamps","Log_5":"9:16 PM - Session ends"}{"Data":{},"Status":"ok"}

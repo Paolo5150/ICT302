@@ -96,8 +96,7 @@ public class Player : MonoBehaviour
     {
         //GetComponent<FirstPersonController>().enabled = !freeze;
         m_firstPersonController.enabled = !freeze;
-        Debug.Log("Player can move: " + m_firstPersonController.enabled);
-        //enabled = !freeze;
+        enabled = !freeze;
     }
 
     public void SetPickingEnabled(bool enabled)
