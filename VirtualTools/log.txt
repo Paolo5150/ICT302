@@ -1500,3 +1500,36 @@ Stack trace:
 4:53 PM - Login START
 4:53 PM - Send login form
 4:53 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:21 PM - Login START
+5:21 PM - Send login form
+5:21 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:27 PM - Login START
+5:28 PM - Send login form
+5:28 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:28 PM - ID: 13717281009235
+5:28 PM - Exporting session, id 13717281009235
+5:28 PM - Just about to send request, 13717281009235
+5:28 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:28 PM - Session recorded, id 13717281009235
+5:28 PM - Reply{"Log_0":"5:28 PM - Session starts","Log_1":"5:28 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"5:28 PM - Correctly selected by name Mayo Scissor","Log_3":"5:28 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_4":"5:28 PM - Correctly selected by name Towel Clamps","Log_5":"5:28 PM - Session ends"}{"Data":{},"Status":"ok"}
+5:28 PM - Just about to send request, 13717281009235
+5:28 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:28 PM - Session recorded, id 13717281009235
+5:28 PM - Reply{"Log_0":"5:28 PM - Session starts","Log_1":"5:28 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"5:28 PM - Correctly selected by name Mayo Scissor","Log_3":"5:28 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_4":"5:28 PM - Correctly selected by name Towel Clamps","Log_5":"5:28 PM - Session ends"}{"Data":{},"Status":"ok"}
+5:28 PM - Quitting now
+5:28 PM - Login START
+5:28 PM - Send login form
+5:28 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:28 PM - ID: 13717284607365
+5:28 PM - ID: 1371728461953
+5:28 PM - ID: 1371728462953
+5:29 PM - Exporting session, id 13717284607365
+5:29 PM - Just about to send request, 13717284607365
+5:29 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:29 PM - Session recorded, id 13717284607365
+5:29 PM - Reply{"Log_0":"5:28 PM - Session starts","Log_1":"5:28 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_2":"5:28 PM - Failed to select by name Towel Clamps. Selected: Mayo Scissor","Log_3":"5:28 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_4":"5:29 PM - Correctly selected by name Towel Clamps","Log_5":"5:29 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_6":"5:29 PM - Correctly selected by name Mayo Scissor","Log_7":"5:29 PM - Session ends"}{"Data":{},"Status":"ok"}
+5:29 PM - Exporting session, id 1371728461953
+5:29 PM - Just about to send request, 1371728461953
+5:29 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:29 PM - Session recorded, id 1371728461953
+5:29 PM - Reply{"Log_0":"5:29 PM - Session starts","Log_1":"5:29 PM - New task: pick up the best instrument for <b><u>Joining drapes to patient<\/u><\/b>","Log_2":"5:29 PM - Correctly selected by purpose Towel Clamps","Log_3":"5:29 PM - New task: pick up the best instrument for <b><u>Extension of abdominal wall incisions<\/u><\/b>","Log_4":"5:29 PM - Correctly selected by purpose Mayo Scissor","Log_5":"5:29 PM - Session ends"}{"Data":{},"Status":"ok"}

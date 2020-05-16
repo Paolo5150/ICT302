@@ -217,32 +217,59 @@ public class SessionManager : MonoBehaviour
 
                     Player.Instance.FreezePlayer(true);
 
+                    if(!GameManager.Instance.IsAssessmentMode())
+                    {
+                        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Nicely done!" }, () => {
+                            Player.Instance.ResetItemAndPlayerToFree();
+                            Player.Instance.FreezePlayer(false);
+                            Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
 
-                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Nicely done!" }, () => {
-                        Player.Instance.ResetItemAndPlayerToFree();
-                        Player.Instance.FreezePlayer(false);
-                        Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                            // Next task
+                            if (!m_currentSession.NextTask())
+                                CompleteCurrentSession();
+                        });
+                    }
+                    else
+                    {
+                        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "The item was selected." }, () => {
+                            Player.Instance.ResetItemAndPlayerToFree();
+                            Player.Instance.FreezePlayer(false);
+                            Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
 
-                        // Next task
-                        if (!m_currentSession.NextTask())
-                        {
-
-                            CompleteCurrentSession();
-                        }
-                    });
+                            // Next task
+                            if (!m_currentSession.NextTask())
+                                CompleteCurrentSession();
+                        });
+                    }
+                    
                 }
                 else
                 {
                     Player.Instance.FreezePlayer(true);
-                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Oh no, wrong item!" }, () => {
-                        Player.Instance.ResetItemAndPlayerToFree();
-                        Player.Instance.FreezePlayer(false);
-                        Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-                        m_currentSession.sessionResults.retries++;
-                        // Restart session
-                        m_currentSession.NextTask();
+                    if(!GameManager.Instance.IsAssessmentMode())
+                    {
+                        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Oh no, wrong item!" }, () => {
+                            Player.Instance.ResetItemAndPlayerToFree();
+                            Player.Instance.FreezePlayer(false);
+                            Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                            m_currentSession.sessionResults.retries++;
+                            // Restart session
+                            m_currentSession.NextTask();
 
-                    });
+                        });
+                    }
+                    else
+                    {
+                        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "The item was selected." }, () => {
+                            Player.Instance.ResetItemAndPlayerToFree();
+                            Player.Instance.FreezePlayer(false);
+                            Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                            m_currentSession.sessionResults.retries++;
+                            // Restart session
+                            m_currentSession.NextTask();
+                        });
+                    }
+                   
 
                 }
 
@@ -268,11 +295,11 @@ public class SessionManager : MonoBehaviour
 
             Task.STATUS status = instrumentPositionTask.Evaluate(instrumentTag, slot,m_currentSession);
 
-            if (status == Task.STATUS.COMPLETED_SUCCESS)
+            if (status == Task.STATUS.COMPLETED_SUCCESS && !GameManager.Instance.IsAssessmentMode())
             {
                 GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Correct placement");
             }
-            else
+            else if(status == Task.STATUS.COMPLETED_FAIL && !GameManager.Instance.IsAssessmentMode())
             {
                 GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Wrong placement");
             }
