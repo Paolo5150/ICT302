@@ -64,7 +64,7 @@ public class SessionManager : MonoBehaviour
                 {
                     if(slot.CorrectInstrument == tag)
                     {
-                        allTasks.Add(new InstrumentPositionTask(slot));
+                        allTasks.Add(new InstrumentPositionTask(slot, tag));
                         break;
                     }
 
@@ -286,7 +286,7 @@ public class SessionManager : MonoBehaviour
 
     public void OnInstrumentPlaced(Instrument.INSTRUMENT_TAG instrumentTag, InstrumentPositionTaskSlot slot)
     {
-       /*if (m_currentSession != null)
+       if (m_currentSession != null)
         {
             // If current task is to position the instruments, select the chosen instrument.
             InstrumentPositionTask instrumentPositionTask = null;
@@ -294,11 +294,11 @@ public class SessionManager : MonoBehaviour
             //Find the task related to slot
             foreach(InstrumentPositionTask t in m_currentSession.tasks)
             {
-                if (t.GetSlot() == slot)
+                if (t.m_instrument == instrumentTag)
                     instrumentPositionTask = t;
             }
 
-            Task.STATUS status = instrumentPositionTask.Evaluate()
+            Task.STATUS status = instrumentPositionTask.Evaluate(instrumentTag, slot,m_currentSession);
 
             if (status == Task.STATUS.COMPLETED_SUCCESS)
             {
@@ -311,7 +311,7 @@ public class SessionManager : MonoBehaviour
 
             }
 
-        }*/
+        }
     }
 
     public void NextSession()

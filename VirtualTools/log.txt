@@ -1300,3 +1300,24 @@ Stack trace:
 2:45 PM - Session recorded, id 13714445405665
 2:45 PM - Reply{"Log_0":"2:44 PM - Session starts","Log_1":"2:44 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"2:44 PM - Failed to select by name Mayo Scissor. Selected: Towel Clamps","Log_3":"2:45 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"2:45 PM - Correctly selected by name Mayo Scissor","Log_5":"2:45 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_6":"2:45 PM - Correctly selected by name Towel Clamps","Log_7":"2:45 PM - Session ends"}{"Data":{},"Status":"ok"}
 2:45 PM - Quitting now
+2:56 PM - Login START
+2:56 PM - Send login form
+2:56 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+2:56 PM - ID: 1371456803330
+2:57 PM - Login START
+2:57 PM - Send login form
+2:57 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+2:57 PM - ID: 13714572304649
+2:58 PM - Login START
+2:58 PM - Send login form
+2:58 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+2:58 PM - ID: 13714583806633
+2:59 PM - Login START
+2:59 PM - Send login form
+2:59 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+2:59 PM - ID: 13714592405724
+2:59 PM - Just about to send request, 13714592405724
+2:59 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+2:59 PM - Session recorded, id 13714592405724
+2:59 PM - Reply{"Log_0":"2:59 PM - Session starts","Log_1":"2:59 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"2:59 PM - Failed to place instrument, put Mayo Scissor where the Suture Scissor should have gone.","Log_3":"2:59 PM - Failed to place instrument, put Towel Clamps where the Mayo Scissor should have gone.","Log_4":"2:59 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+2:59 PM - Quitting now

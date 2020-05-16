@@ -56,10 +56,6 @@ public class SessionResults
         logs.Add(DateTime.Now.ToShortTimeString() + " - Correctly placed " + Instrument.GetName(instrumentTag));
     }
 
-    public void Log_FailedToPositionedInstrument(Instrument.INSTRUMENT_TAG instrumentTag)
-    {
-        logs.Add(DateTime.Now.ToShortTimeString() + " - Failed to place " + Instrument.GetName(instrumentTag));
-    }
 
     public void Log_CorrectlySelectedInstrumentByPurpose(Instrument.INSTRUMENT_TAG instrumentTag)
     {
