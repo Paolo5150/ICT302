@@ -15,7 +15,6 @@ public class SessionManager : MonoBehaviour
     private Session m_currentSession;
     private bool m_isCurrentSessionPaused = false;
     private bool m_previousCancelButtonStatus = false;
-
     public static SessionManager Instance
     {
         get
@@ -321,6 +320,11 @@ public class SessionManager : MonoBehaviour
         }
     }
 
+    public bool IsSessionPaused()
+    {
+        return m_isCurrentSessionPaused;
+    }
+
     public void NextSession()
     {
         GUIManager.Instance.GetMainCanvas().HideResultPanel();
@@ -545,14 +549,15 @@ public class SessionManager : MonoBehaviour
         ExportResults(m_currentSession);*/
     }
 
-    // Called by BUI
+    // Called by GUI
     public void ResumeSession()
     {
         GUIManager.Instance.ConfigureCursor(false, CursorLockMode.None);
 
         GUIManager.Instance.GetMainCanvas().EnableResumeBtn(false);
         GUIManager.Instance.GetMainCanvas().HideResultPanel();
-        Player.Instance.FreezePlayer(false);
+        if (Player.Instance.GetPlayerMode() == Player.PlayerMode.PICKING)
+            Player.Instance.FreezePlayer(false);
         m_isCurrentSessionPaused = false;
     }
     public void Update()
@@ -589,7 +594,8 @@ public class SessionManager : MonoBehaviour
                 else
                 {
                     GUIManager.Instance.GetMainCanvas().HideResultPanel();
-                    Player.Instance.FreezePlayer(false);
+                    if (Player.Instance.GetPlayerMode() == Player.PlayerMode.PICKING)
+                        Player.Instance.FreezePlayer(false);
                     m_isCurrentSessionPaused = false;
                 }
             }

@@ -4269,7 +4269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fc76d251cee7541aa98dfe9862b860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  server: 1
+  server: 0
   currentServer: 
 --- !u!114 &922758314
 MonoBehaviour:

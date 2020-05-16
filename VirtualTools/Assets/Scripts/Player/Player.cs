@@ -96,7 +96,8 @@ public class Player : MonoBehaviour
     {
         //GetComponent<FirstPersonController>().enabled = !freeze;
         m_firstPersonController.enabled = !freeze;
-        enabled = !freeze;
+        Debug.Log("Player can move: " + m_firstPersonController.enabled);
+        //enabled = !freeze;
     }
 
     public void SetPickingEnabled(bool enabled)
@@ -109,7 +110,11 @@ public class Player : MonoBehaviour
         m_viewingEnabled = enabled;
     }
 
-    private void SetPlayerMode(PlayerMode mode)
+    public PlayerMode GetPlayerMode()
+    {
+        return m_playerMode;
+    }
+    public void SetPlayerMode(PlayerMode mode)
     {
         switch(mode)
         {
@@ -132,14 +137,14 @@ public class Player : MonoBehaviour
     public void ShowEndMenu()
     {
         m_endMenu.SetActive(true);
-        Player.Instance.FreezePlayer(true);
+        //Player.Instance.FreezePlayer(true);
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
     }
 
     public void HideEndMenu()
     {
         m_endMenu.SetActive(false);
-        Player.Instance.FreezePlayer(false);
+       // Player.Instance.FreezePlayer(false);
         GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
     }
 
@@ -163,28 +168,31 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessInput();
-
-        UpdatePointingInstrumentPositionTaskSlot();
-
-        switch (m_playerMode)
+        //ProcessInput();
+        if(!SessionManager.Instance.IsSessionPaused())
         {
-            case PlayerMode.PICKING:
-                GUIManager.Instance.GetMainCanvas().SetHintActive(false);
-                if (m_selectedInstrumentToPlace != null)
-                {
-                    PlacingMode();
-                }
-                else
-                {
-                    PickingMode();
-                }
-                break;
-            case PlayerMode.VIEWING:
-                ViewMode();
-                GUIManager.Instance.GetMainCanvas().SetHintActive(true);
-                break;
+            UpdatePointingInstrumentPositionTaskSlot();
+
+            switch (m_playerMode)
+            {
+                case PlayerMode.PICKING:
+                    GUIManager.Instance.GetMainCanvas().SetHintActive(false);
+                    if (m_selectedInstrumentToPlace != null)
+                    {
+                        PlacingMode();
+                    }
+                    else
+                    {
+                        PickingMode();
+                    }
+                    break;
+                case PlayerMode.VIEWING:
+                    ViewMode();
+                    GUIManager.Instance.GetMainCanvas().SetHintActive(true);
+                    break;
+            }
         }
+      
     }
 
     private void PickingMode()
@@ -229,8 +237,9 @@ public class Player : MonoBehaviour
                 InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
                 Debug.Log("Placed " + Instrument.GetName(SelectedInstrumentToPlace.instrumentTag));
                 SetPlayerMode(PlayerMode.PICKING);
-                SessionManager.Instance.OnInstrumentPlaced(SelectedInstrumentToPlace.instrumentTag, m_currentlyPointingInstrumentPositionTaskSlot);
                 SelectedInstrumentToPlace = null;
+                //Leave this as last statement
+                SessionManager.Instance.OnInstrumentPlaced(m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument, m_currentlyPointingInstrumentPositionTaskSlot);
             }
         }
     }
@@ -322,6 +331,4 @@ public class Player : MonoBehaviour
             }
         }
     }
-
-
 }

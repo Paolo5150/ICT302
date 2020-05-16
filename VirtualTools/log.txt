@@ -1563,3 +1563,144 @@ Stack trace:
 5:36 PM - Session recorded, id 13717363604880
 5:36 PM - Reply{"Log_0":"5:36 PM - Session starts","Log_1":"5:36 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"5:36 PM - Failed to select by name Mayo Scissor. Selected: Towel Clamps","Log_3":"5:36 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"5:36 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
 5:36 PM - Quitting now
+6:20 PM - Login START
+6:20 PM - Send login form
+6:20 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:20 PM - ID: 13718202508375
+6:20 PM - Exporting session, id 13718202508375
+6:20 PM - Just about to send request, 13718202508375
+6:20 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:20 PM - Session recorded, id 13718202508375
+6:20 PM - Reply{"Log_0":"6:20 PM - Session starts","Log_1":"6:20 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:20 PM - Correctly placed Mayo Scissor","Log_3":"6:20 PM - Correctly placed Towel Clamps","Log_4":"6:20 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:21 PM - Login START
+6:21 PM - Send login form
+6:21 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:22 PM - ID: 1371822004060
+6:22 PM - Exporting session, id 1371822004060
+6:22 PM - Just about to send request, 1371822004060
+6:22 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:22 PM - Session recorded, id 1371822004060
+6:22 PM - Reply{"Log_0":"6:22 PM - Session starts","Log_1":"6:22 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:22 PM - Correctly placed Mayo Scissor","Log_3":"6:22 PM - Correctly placed Towel Clamps","Log_4":"6:22 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:22 PM - Login START
+6:22 PM - Send login form
+6:22 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:22 PM - ID: 13718224203597
+6:22 PM - Exporting session, id 13718224203597
+6:22 PM - Just about to send request, 13718224203597
+6:22 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:22 PM - Session recorded, id 13718224203597
+6:22 PM - Reply{"Log_0":"6:22 PM - Session starts","Log_1":"6:22 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:22 PM - Correctly placed Mayo Scissor","Log_3":"6:22 PM - Correctly placed Towel Clamps","Log_4":"6:22 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:23 PM - Login START
+6:23 PM - Send login form
+6:23 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:23 PM - ID: 1371823490684
+6:24 PM - Exporting session, id 1371823490684
+6:24 PM - Just about to send request, 1371823490684
+6:24 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:24 PM - Session recorded, id 1371823490684
+6:24 PM - Reply{"Log_0":"6:23 PM - Session starts","Log_1":"6:23 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:23 PM - Correctly placed Mayo Scissor","Log_3":"6:24 PM - Correctly placed Towel Clamps","Log_4":"6:24 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:24 PM - Login START
+6:24 PM - Send login form
+6:24 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:24 PM - ID: 13718245905372
+6:25 PM - Exporting session, id 13718245905372
+6:25 PM - Just about to send request, 13718245905372
+6:25 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:25 PM - Session recorded, id 13718245905372
+6:25 PM - Reply{"Log_0":"6:24 PM - Session starts","Log_1":"6:25 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"6:25 PM - Correctly selected by name Mayo Scissor","Log_3":"6:25 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_4":"6:25 PM - Correctly selected by name Towel Clamps","Log_5":"6:25 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:26 PM - Login START
+6:26 PM - Send login form
+6:26 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:26 PM - ID: 13718262608252
+6:26 PM - Exporting session, id 13718262608252
+6:26 PM - Just about to send request, 13718262608252
+6:26 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:26 PM - Session recorded, id 13718262608252
+6:26 PM - Reply{"Log_0":"6:26 PM - Session starts","Log_1":"6:26 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:26 PM - Correctly placed Mayo Scissor","Log_3":"6:26 PM - Correctly placed Towel Clamps","Log_4":"6:26 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:27 PM - Login START
+6:27 PM - Send login form
+6:27 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:27 PM - ID: 13718272905262
+6:28 PM - Exporting session, id 13718272905262
+6:28 PM - Just about to send request, 13718272905262
+6:28 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:28 PM - Session recorded, id 13718272905262
+6:28 PM - Reply{"Log_0":"6:27 PM - Session starts","Log_1":"6:27 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:27 PM - Correctly placed Mayo Scissor","Log_3":"6:28 PM - Correctly placed Towel Clamps","Log_4":"6:28 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:28 PM - Login START
+6:28 PM - Send login form
+6:28 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:28 PM - ID: 13718285806682
+6:29 PM - Exporting session, id 13718285806682
+6:29 PM - Just about to send request, 13718285806682
+6:29 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:30 PM - Session recorded, id 13718285806682
+6:30 PM - Reply{"Log_0":"6:29 PM - Session starts","Log_1":"6:29 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:29 PM - Correctly placed Mayo Scissor","Log_3":"6:29 PM - Correctly placed Towel Clamps","Log_4":"6:29 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:34 PM - Login START
+6:34 PM - Send login form
+6:34 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:34 PM - ID: 13718341406215
+6:34 PM - Exporting session, id 13718341406215
+6:34 PM - Just about to send request, 13718341406215
+6:34 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:34 PM - Session recorded, id 13718341406215
+6:34 PM - Reply{"Log_0":"6:34 PM - Session starts","Log_1":"6:34 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:34 PM - Correctly placed Mayo Scissor","Log_3":"6:34 PM - Correctly placed Towel Clamps","Log_4":"6:34 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:34 PM - Login START
+6:34 PM - Send login form
+6:34 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:34 PM - ID: 13718345803004
+6:39 PM - Login START
+6:39 PM - Send login form
+6:39 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:39 PM - ID: 13718392002311
+6:40 PM - Login START
+6:41 PM - Send login form
+6:41 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:41 PM - ID: 1371841608651
+6:41 PM - ID: 13718415303390
+6:46 PM - Login START
+6:46 PM - Send login form
+6:46 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:46 PM - ID: 13718465803630
+6:49 PM - Login START
+6:49 PM - Send login form
+6:49 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:49 PM - ID: 1371849100618
+6:49 PM - Login START
+6:49 PM - Send login form
+6:49 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:49 PM - ID: 1371849590592
+6:50 PM - Login START
+6:50 PM - Send login form
+6:50 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:51 PM - ID: 1371851001113
+6:51 PM - ID: 13718511608465
+6:52 PM - Login START
+6:52 PM - Send login form
+6:52 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:52 PM - ID: 13718524905611
+6:53 PM - Login START
+6:53 PM - Send login form
+6:53 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:53 PM - ID: 1371853410155
+6:54 PM - Login START
+6:54 PM - Send login form
+6:54 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:54 PM - ID: 1371854310860
+6:55 PM - Login START
+6:55 PM - Send login form
+6:55 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:55 PM - ID: 13718551002796
+6:56 PM - Login START
+6:56 PM - Send login form
+6:56 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:56 PM - ID: 13718565706835
+6:57 PM - Exporting session, id 13718565706835
+6:57 PM - Just about to send request, 13718565706835
+6:57 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:57 PM - Session recorded, id 13718565706835
+6:57 PM - Reply{"Log_0":"6:56 PM - Session starts","Log_1":"6:56 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:57 PM - Correctly placed Mayo Scissor","Log_3":"6:57 PM - Correctly placed Towel Clamps","Log_4":"6:57 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:57 PM - Just about to send request, 13718565706835
+6:57 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:57 PM - Session recorded, id 13718565706835
+6:57 PM - Reply{"Log_0":"6:56 PM - Session starts","Log_1":"6:56 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:57 PM - Correctly placed Mayo Scissor","Log_3":"6:57 PM - Correctly placed Towel Clamps","Log_4":"6:57 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:57 PM - Quitting now
