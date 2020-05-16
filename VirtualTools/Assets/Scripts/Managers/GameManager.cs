@@ -143,7 +143,6 @@ public class GameManager : MonoBehaviour
         if(assessmentMode)
         {
             GUIManager.Instance.GetMainCanvas().HideSceneSelectionGUI();
-            GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(true);
 
             //Read which mode they will be assessed on
             SessionManager.Instance.GenerateSelectByNameSession();

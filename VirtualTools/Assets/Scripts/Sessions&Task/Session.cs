@@ -131,6 +131,7 @@ public class SessionResults
                 if (GameManager.Instance.IsAssessmentMode())
                 {
                     GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
+                        GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(true);
 
                         m_currentTask = tasks[0];
                         sessionResults.startTime = DateTime.Now;

@@ -12,6 +12,8 @@ public class SessionManager : MonoBehaviour
     private static SessionManager m_instance;
     private List<Session> m_allSessions;
     private Session m_currentSession;
+    private bool m_isCurrentSessionPaused = false;
+    private bool m_previousCancelButtonStatus = false;
 
     public static SessionManager Instance
     {
@@ -282,7 +284,6 @@ public class SessionManager : MonoBehaviour
     {
         //If this is reached there are no tasks left (write to report here?)
         Player.Instance.SetPickingEnabled(false);
-        GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
         m_currentSession.End();
         Player.Instance.FreezePlayer(true);
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
@@ -300,9 +301,11 @@ public class SessionManager : MonoBehaviour
         }
 
         ExportResults(m_currentSession);
-        DisplayResults(m_currentSession);
 
-     
+        GUIManager.Instance.GetMainCanvas().EnableResumeBtn(false);
+        GUIManager.Instance.GetMainCanvas().SetResultsPanelTitle("Session complete");
+
+        DisplayResults(m_currentSession);     
         
     }
 
@@ -372,13 +375,7 @@ public class SessionManager : MonoBehaviour
         else
             studentNumber = GameManager.Instance.MockStudentNumber;
 
-        bool completed = s.sessionResults.completed;
-        string date = s.sessionResults.date.ToShortDateString();
-        string startDateString = s.sessionResults.startTime.ToShortTimeString();
-        string endDateString = s.sessionResults.endTime.ToShortTimeString();
-        int retries = s.sessionResults.retries;
 
-        //GUIManager.Instance.GetMainCanvas().DisplayResults(completed, name, studentNumber, date, startDateString, endDateString, retries);
         GUIManager.Instance.GetMainCanvas().DisplayResults(name, studentNumber, s.sessionResults);
     }
 
@@ -475,15 +472,67 @@ public class SessionManager : MonoBehaviour
         m_currentSession.GetCurrentTask().Evaluate(Instrument.INSTRUMENT_TAG.NONE, m_currentSession);
 
         //If this is reached there are no tasks left (write to report here?)
-        Player.Instance.SetPickingEnabled(false);
-        GUIManager.Instance.GetMainCanvas().DogPopUp(5.0f, "SESSION COMPLETE!");
+        CompleteCurrentSession();
+        /*Player.Instance.SetPickingEnabled(false);
         m_currentSession.End();
         Player.Instance.FreezePlayer(true);
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
         DisplayResults(m_currentSession);
-        ExportResults(m_currentSession);
+        ExportResults(m_currentSession);*/
     }
-    
+
+    // Called by BUI
+    public void ResumeSession()
+    {
+        GUIManager.Instance.GetMainCanvas().EnableResumeBtn(false);
+        GUIManager.Instance.GetMainCanvas().HideResultPanel();
+        Player.Instance.FreezePlayer(false);
+        m_isCurrentSessionPaused = false;
+    }
+    public void Update()
+    {
+        if (Input.GetAxis("Cancel") == 1 && !m_currentSession.sessionResults.completed)
+        {
+            //Disable retry option when assessment mode...? Ye why not
+            if(GameManager.Instance.IsAssessmentMode())
+            {
+                GUIManager.Instance.GetMainCanvas().EnableRetryBtn(false);
+            }
+            else
+            {
+                GUIManager.Instance.GetMainCanvas().EnableRetryBtn(true);
+
+            }
+
+            if (!m_previousCancelButtonStatus)
+            {
+                m_previousCancelButtonStatus = true;
+
+                if (!m_isCurrentSessionPaused)
+                {
+                    //Hide next session button, just in case
+                    GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(false);
+                    GUIManager.Instance.GetMainCanvas().EnableResumeBtn(true);
+                    GUIManager.Instance.GetMainCanvas().SetResultsPanelTitle("Session paused");
+                    DisplayResults(m_currentSession);
+                    Player.Instance.FreezePlayer(true);
+                    m_isCurrentSessionPaused = true;
+                }
+                else
+                {
+                    GUIManager.Instance.GetMainCanvas().HideResultPanel();
+                    Player.Instance.FreezePlayer(false);
+                    m_isCurrentSessionPaused = false;
+                }
+            }
+        }
+        else
+            m_previousCancelButtonStatus = false;
+
+
+
+    }
+
     /// <summary>
     /// Used for InstrumentPositionTask
     /// </summary>

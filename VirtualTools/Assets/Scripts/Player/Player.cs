@@ -144,11 +144,7 @@ public class Player : MonoBehaviour
 
     private void ProcessInput()
     {
-        if (Input.GetAxis("Cancel") == 1)
-        {
-            GameManager.Instance.Quit();
-        }
-
+       
         // TODO needs change for controller support!!!
         if (Input.GetKeyDown(KeyCode.Return) && SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
         {
