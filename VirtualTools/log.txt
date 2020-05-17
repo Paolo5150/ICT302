@@ -1809,3 +1809,6 @@ Stack trace:
 9:16 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
 9:16 PM - Session recorded, id 13721155719052
 9:16 PM - Reply{"Log_0":"9:16 PM - Session starts","Log_1":"9:16 PM - New task: pick up the best instrument for <b><u>Extension of abdominal wall incisions<\/u><\/b>","Log_2":"9:16 PM - Correctly selected by purpose Mayo Scissor","Log_3":"9:16 PM - New task: pick up the best instrument for <b><u>Joining drapes to patient<\/u><\/b>","Log_4":"9:16 PM - Correctly selected by purpose Towel Clamps","Log_5":"9:16 PM - Session ends"}{"Data":{},"Status":"ok"}
+8:41 AM - ID: 1388414701815
+8:41 AM - ID: 1388414713766
+8:41 AM - ID: 1388414723766
