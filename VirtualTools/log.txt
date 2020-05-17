@@ -1968,3 +1968,31 @@ Stack trace:
 11:32 AM - ID: 13811324806335
 11:32 AM - ID: 13811324819923
 11:32 AM - ID: 13811324829923
+11:34 AM - Login START
+11:34 AM - Send login form
+11:34 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:34 AM - ID: 1381134290919
+11:34 AM - ID: 13811342914507
+11:34 AM - ID: 13811342924507
+11:34 AM - Just about to send request, 1381134290919
+11:34 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:34 AM - Session recorded, id 1381134290919
+11:34 AM - Reply{"Log_0":"11:34 AM - Session starts","Log_1":"11:34 AM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"11:34 AM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+11:34 AM - Quitting now
+11:34 AM - Login START
+11:34 AM - Send login form
+11:34 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:34 AM - ID: 13811345108250
+11:41 AM - Login START
+11:41 AM - Send login form
+11:41 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+11:41 AM - ID: 13811412401513
+11:44 AM - Login START
+11:44 AM - Login START
+11:44 AM - Send login form
+11:44 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+11:45 AM - ID: 1381145107335
+11:46 AM - Login START
+11:46 AM - Send login form
+11:46 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+11:46 AM - ID: 13811462208949

@@ -241,6 +241,17 @@ public class Player : MonoBehaviour
                 SessionManager.Instance.OnInstrumentPlaced(m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument, m_currentlyPointingInstrumentPositionTaskSlot);
             }
         }
+
+        // Put instrument back
+       /* if (Input.GetButtonDown("Fire2") )
+        {
+            StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
+            m_currentlyPointingInstrument.gameObject.transform.rotation = m_currentlyPointingInstrument.originalRotation;
+            SetPlayerMode(PlayerMode.PICKING);
+            m_currentlyPointingInstrument.GetComponent<Collider>().enabled = true;
+            SelectedInstrumentToPlace = null;
+
+        }*/
     }
 
     private void ViewMode()
