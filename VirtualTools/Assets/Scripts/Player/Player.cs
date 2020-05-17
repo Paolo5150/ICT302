@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     public bool m_pickingEnabled;
     public bool m_viewingEnabled;
     private Instrument m_selectedInstrumentToPlace = null;
+
+    private Vector3 m_startingPosition = new Vector3(1.2f,1.5f,-5.2f);
     public Instrument SelectedInstrumentToPlace {
         get
         {
@@ -89,9 +91,11 @@ public class Player : MonoBehaviour
         m_viewingEnabled = true;
     }
 
+
     public void FreezePlayer(bool freeze)
     {
-        GetComponent<FirstPersonController>().enabled = !freeze;
+        //GetComponent<FirstPersonController>().enabled = !freeze;
+        m_firstPersonController.enabled = !freeze;
         enabled = !freeze;
     }
 
@@ -105,7 +109,11 @@ public class Player : MonoBehaviour
         m_viewingEnabled = enabled;
     }
 
-    private void SetPlayerMode(PlayerMode mode)
+    public PlayerMode GetPlayerMode()
+    {
+        return m_playerMode;
+    }
+    public void SetPlayerMode(PlayerMode mode)
     {
         switch(mode)
         {
@@ -119,27 +127,29 @@ public class Player : MonoBehaviour
         m_playerMode = mode;
     }
 
+    public void ResetPosition()
+    {
+        transform.position = m_startingPosition;
+        transform.rotation = Quaternion.identity;
+    }
+
     public void ShowEndMenu()
     {
         m_endMenu.SetActive(true);
-        Player.Instance.FreezePlayer(true);
+        //Player.Instance.FreezePlayer(true);
         GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
     }
 
     public void HideEndMenu()
     {
         m_endMenu.SetActive(false);
-        Player.Instance.FreezePlayer(false);
+       // Player.Instance.FreezePlayer(false);
         GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
     }
 
     private void ProcessInput()
     {
-        if (Input.GetAxis("Cancel") == 1)
-        {
-            GameManager.Instance.Quit();
-        }
-
+       
         // TODO needs change for controller support!!!
         if (Input.GetKeyDown(KeyCode.Return) && SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
         {
@@ -157,28 +167,31 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessInput();
-
-        UpdatePointingInstrumentPositionTaskSlot();
-
-        switch (m_playerMode)
+        //ProcessInput();
+        if(!SessionManager.Instance.IsSessionPaused())
         {
-            case PlayerMode.PICKING:
-                GUIManager.Instance.GetMainCanvas().SetHintActive(false);
-                if (m_selectedInstrumentToPlace != null)
-                {
-                    PlacingMode();
-                }
-                else
-                {
-                    PickingMode();
-                }
-                break;
-            case PlayerMode.VIEWING:
-                ViewMode();
-                GUIManager.Instance.GetMainCanvas().SetHintActive(true);
-                break;
+            UpdatePointingInstrumentPositionTaskSlot();
+
+            switch (m_playerMode)
+            {
+                case PlayerMode.PICKING:
+                    GUIManager.Instance.GetMainCanvas().SetHintActive(false);
+                    if (m_selectedInstrumentToPlace != null)
+                    {
+                        PlacingMode();
+                    }
+                    else
+                    {
+                        PickingMode();
+                    }
+                    break;
+                case PlayerMode.VIEWING:
+                    ViewMode();
+                    GUIManager.Instance.GetMainCanvas().SetHintActive(true);
+                    break;
+            }
         }
+      
     }
 
     private void PickingMode()
@@ -222,8 +235,10 @@ public class Player : MonoBehaviour
                 m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
                 InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
                 Debug.Log("Placed " + Instrument.GetName(SelectedInstrumentToPlace.instrumentTag));
-                SelectedInstrumentToPlace = null;
                 SetPlayerMode(PlayerMode.PICKING);
+                SelectedInstrumentToPlace = null;
+                //Leave this as last statement
+                SessionManager.Instance.OnInstrumentPlaced(m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument, m_currentlyPointingInstrumentPositionTaskSlot);
             }
         }
     }
@@ -253,9 +268,9 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
-                m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
                 if(SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
                 {
+                    m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
                     SelectedInstrumentToPlace = m_currentlyPointingInstrument;
                     InstrumentLocManager.Instance.MoveInstrumentToPlayer(SelectedInstrumentToPlace.gameObject, this.gameObject);
                 }
@@ -314,10 +329,5 @@ public class Player : MonoBehaviour
                 m_currentlyPointingInstrument = null;
             }
         }
-    }
-
-    public void SetMovementEnabled(bool enabled)
-    {
-        m_firstPersonController.enabled = enabled;
     }
 }

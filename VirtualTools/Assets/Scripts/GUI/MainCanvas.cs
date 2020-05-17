@@ -16,16 +16,18 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_escapeMenu;
     private GameObject m_sceneSelector;
     private GameObject m_assessmentModePanel;
-
+    private GameObject m_retryButton;
+    private GameObject m_exitButton;
+    private GameObject m_nextSessionButton;
+    private GameObject m_resumeButton;
 
 	
     private GameObject m_results;
     private Text m_nameText;
+    private Text m_titleText;
     private Text m_studentNumberText;
     private Text m_dateText;
     private Text m_startText;
-    private Text m_endText;
-    private Text m_retriesText;
     private Text m_linkText;
     private TextMeshProUGUI m_logsText;
 
@@ -43,15 +45,20 @@ public class MainCanvas : MonoBehaviour
 
         m_results = GameObject.Find("ResultsPanel");
 		
-		m_connectText = m_connectPanel.transform.Find("ConnectText").GetComponent<Text>();
-        m_nameText = m_results.transform.Find("Name").GetComponent<Text>();
-        m_studentNumberText = m_results.transform.Find("StudentNumber").GetComponent<Text>();
-        m_dateText = m_results.transform.Find("Date").GetComponent<Text>();
-        m_startText = m_results.transform.Find("StartTime").GetComponent<Text>();
-        m_endText = m_results.transform.Find("EndTime").GetComponent<Text>();
-        m_retriesText = m_results.transform.Find("Retries").GetComponent<Text>();
-        m_linkText = m_results.transform.Find("Link").GetComponent<Text>();
+        m_titleText = m_results.transform.Find("Title").GetComponent<Text>();
+        m_nameText = m_results.transform.Find("StudentInfo").transform.Find("Name").GetComponent<Text>();
+        m_studentNumberText = m_results.transform.Find("StudentInfo").transform.Find("StudentNumber").GetComponent<Text>();
+        m_dateText = m_results.transform.Find("StudentInfo").transform.Find("Date").GetComponent<Text>();
+        m_startText = m_results.transform.Find("StudentInfo").transform.Find("StartTime").GetComponent<Text>();
+
+        m_exitButton = m_results.transform.Find("Quit Button").gameObject;
+        m_retryButton = m_results.transform.Find("Retry Button").gameObject;
+        m_nextSessionButton = m_results.transform.Find("Next Button").gameObject;
+        m_resumeButton = m_results.transform.Find("Resume Button").gameObject;
+
         m_logsText = GameObject.Find("LogsText").GetComponent<TextMeshProUGUI>();
+        m_linkText = m_results.transform.Find("Link").GetComponent<Text>();
+		m_connectText = m_connectPanel.transform.Find("ConnectText").GetComponent<Text>();
 
 		m_connectPanel.SetActive(false);
         m_dogPanel.SetActive(false);
@@ -60,6 +67,10 @@ public class MainCanvas : MonoBehaviour
         m_dog.SetActive(false);
         m_controlHints.SetActive(false);
         m_assessmentModePanel.SetActive(false);
+        m_nextSessionButton.SetActive(false);
+        m_resumeButton.SetActive(false);
+
+
 
 
     }
@@ -86,6 +97,25 @@ public class MainCanvas : MonoBehaviour
         m_controlHints.SetActive(active);
     }
 
+    public void SetResultsPanelTitle(string msg)
+    {
+        m_titleText.text = msg;
+    }
+
+    public void EnableNextSessionBtn(bool enable)
+    {
+        m_nextSessionButton.SetActive(enable);
+    }
+
+    public void EnableResumeBtn(bool enable)
+    {
+        m_resumeButton.SetActive(enable);
+    }
+
+    public void EnableRetryBtn(bool enable)
+    {
+        m_retryButton.SetActive(enable);
+    }
     public void DogSpeak(string text)
     {
         SetDogEnabled(true);
@@ -150,7 +180,7 @@ public class MainCanvas : MonoBehaviour
         while(index < instructions.Length)
         {
             DogSpeak(instructions[index]);
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") && !SessionManager.Instance.IsSessionPaused())
             {
                 index++;
                 if (index >= instructions.Length) break;
@@ -175,6 +205,11 @@ public class MainCanvas : MonoBehaviour
         m_escapeMenu.SetActive(enabled);
     }
 
+    public void EnableExitButton(bool enable)
+    {
+        m_exitButton.SetActive(enable);
+    }
+
     public void SetSceneSelector(bool enabled)
     {
         m_sceneSelector.SetActive(enabled);
@@ -186,24 +221,17 @@ public class MainCanvas : MonoBehaviour
         SetSceneSelector(m_escapeMenu.activeSelf); //Hide or show the scene selector depending on whether the escape menu is hidden or shown, respectively
     }
 
-    public void DisplayResults(string name, string studentNumber, SessionResults results)
+    public void DisplayResults(string name, string studentNumber, SessionResults results, bool isPause = false)
     {
         m_controlHints.SetActive(false);
         m_assessmentModePanel.SetActive(false);
 
         m_results.SetActive(true);
 
-        if (results.completed)
-            m_results.transform.GetChild(0).GetComponent<Text>().text = "Success!";
-        else
-            m_results.transform.GetChild(0).GetComponent<Text>().text = "Failed";
-
         m_nameText.text = name;
         m_studentNumberText.text = studentNumber;
         m_dateText.text = "Date: " + results.date.ToShortDateString();
         m_startText.text = "Start Time: " + results.startTime.ToShortTimeString();
-        m_endText.text = "End Time: " + results.endTime.ToShortTimeString();
-        m_retriesText.text = "Errors: " + results.retries; //LAziest int->string conversion ever
 
         m_logsText.text = "";
         m_logsText.richText = true;
@@ -216,8 +244,17 @@ public class MainCanvas : MonoBehaviour
         if (m_logsText.text.Equals(""))
             m_logsText.text = "No errors made.";
 
+        if(isPause && GameManager.Instance.IsAssessmentMode())
+            m_logsText.text = "Not available while the session is running.";
+
+
         m_linkText.text = "See the full report at: " + NetworkManager.REMOTE_SERVER_ADDRESS;
 
+    }
+
+    public void HideResultPanel()
+    {
+        m_results.SetActive(false);
     }
 
     public bool GetResultsPanelEnabled()

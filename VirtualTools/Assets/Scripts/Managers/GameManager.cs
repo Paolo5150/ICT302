@@ -61,6 +61,9 @@ public class GameManager : MonoBehaviour
                 if (!SessionManager.Instance.GetCurrentSession().sessionResults.completed)
                     SessionManager.Instance.GetCurrentSession().sessionResults.Log_SimulationClosedPrematurely();
 
+                if (SessionManager.Instance.GetCurrentSession().sessionType == Session.SESSION_TYPE.INSTRUMENT_POSITIONING)
+                    SessionManager.Instance.ReadFinalInstrumentPositioning();
+
                 string json = SessionManager.Instance.CreateJSONString(SessionManager.Instance.GetCurrentSession());
                 WWWForm form = SessionManager.Instance.GetSessionForm(json);
                 Logger.LogToFile("Just about to send request, " + SessionManager.Instance.GetCurrentSession().GetID());
@@ -137,15 +140,19 @@ public class GameManager : MonoBehaviour
         {
             assessmentMode = PlayerPrefs.GetInt("AssessmentMode") == 1;
         }
+        
 
         //If assessment mode, do not allow screen selection
         if(assessmentMode)
         {
             GUIManager.Instance.GetMainCanvas().HideSceneSelectionGUI();
-            GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(true);
 
             //Read which mode they will be assessed on
-            SessionManager.Instance.CreateSelectByNameSession();
+            SessionManager.Instance.GenerateSelectByNameSession();
+            SessionManager.Instance.GenerateSelectByPurposeSession();
+            SessionManager.Instance.GenerateSelectInstrumentPositionSession();
+
+            SessionManager.Instance.StartSessionSequence();
 
         }
     }

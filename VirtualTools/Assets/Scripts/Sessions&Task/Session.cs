@@ -41,9 +41,9 @@ public class SessionResults
         logs.Add(DateTime.Now.ToShortTimeString() + " - Failed to select by name " + Instrument.GetName(toSelectinstrumentTag) + ". Selected: " + Instrument.GetName(selectedInstrumentTag));
     }
 
-    internal void Log_FailedToPositionInstrument(Instrument.INSTRUMENT_TAG correctInstrumentTag, Instrument.INSTRUMENT_TAG actualInstrumentTag)
+    public void Log_FailedToPositionInstrument(Instrument.INSTRUMENT_TAG correctInstrumentTag, Instrument.INSTRUMENT_TAG actualInstrumentTag)
     {
-        logs.Add(DateTime.Now.ToShortTimeString() + " - Incorrectly placed " + Instrument.GetName(actualInstrumentTag) + " where the " + Instrument.GetName(correctInstrumentTag) + " should have gone.");
+        logs.Add(DateTime.Now.ToShortTimeString() + " - Failed to place instrument, put " + Instrument.GetName(actualInstrumentTag) + " where the " + Instrument.GetName(correctInstrumentTag) + " should have gone.");
     }
 
     public void Log_FailedToSelectByPurpose(Instrument.INSTRUMENT_TAG toSelectinstrumentTag, Instrument.INSTRUMENT_TAG selectedInstrumentTag)
@@ -51,10 +51,11 @@ public class SessionResults
         logs.Add(DateTime.Now.ToShortTimeString() + " - Failed to select by purpose " + Instrument.GetName(toSelectinstrumentTag) + ". Selected: " + Instrument.GetName(selectedInstrumentTag));
     }
 
-    internal void Log_CorrectlyPositionedInstrument(Instrument.INSTRUMENT_TAG instrumentTag)
+    public void Log_CorrectlyPositionedInstrument(Instrument.INSTRUMENT_TAG instrumentTag)
     {
         logs.Add(DateTime.Now.ToShortTimeString() + " - Correctly placed " + Instrument.GetName(instrumentTag));
     }
+
 
     public void Log_CorrectlySelectedInstrumentByPurpose(Instrument.INSTRUMENT_TAG instrumentTag)
     {
@@ -72,15 +73,16 @@ public class SessionResults
     }
 }
     public class Session
-{
+    {
+   
     public List<Task> tasks;
-
+    public SESSION_TYPE sessionType { get; set; }
     private Task m_currentTask;
-    private bool m_isStarted;    
+    private bool m_isStarted = false;    
     private long m_id;
     private String m_sessionName;
-
     public SessionResults sessionResults;
+    public string[] instructions { get; set; }
 
     public Session(long id)
     {
@@ -123,12 +125,41 @@ public class SessionResults
     {
         if(!m_isStarted)
         {
-            m_isStarted = true;
-            m_currentTask = tasks[0];
-            sessionResults.startTime = DateTime.Now;
-            sessionResults.date = DateTime.Today;
-            sessionResults.Log_SessionStart();
-            StartCurrentTask();
+
+            Player.Instance.FreezePlayer(true);
+            Player.Instance.ResetPosition();
+            GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, () => {
+
+                if (GameManager.Instance.IsAssessmentMode())
+                {
+                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
+                        GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(true);
+
+                        m_currentTask = tasks[0];
+                        sessionResults.startTime = DateTime.Now;
+                        sessionResults.date = DateTime.Today;
+                        sessionResults.Log_SessionStart();
+                        m_isStarted = true;
+
+                        StartCurrentTask();
+
+                    });
+                }            
+                else
+                {
+                    m_currentTask = tasks[0];
+                    sessionResults.startTime = DateTime.Now;
+                    sessionResults.date = DateTime.Today;
+                    sessionResults.Log_SessionStart();
+                    m_isStarted = true;
+
+                    StartCurrentTask();
+                }
+            });
+
+
+
+            
         }
     }
 
@@ -199,5 +230,12 @@ public class SessionResults
     {
       
     }
-  
+
+    public enum SESSION_TYPE
+    {
+        SELECT_BY_NAME,
+        SELECT_BY_PURPOSE,
+        INSTRUMENT_POSITIONING
+    }
+
 }
