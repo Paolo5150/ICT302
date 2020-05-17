@@ -347,13 +347,11 @@ public class SessionManager : MonoBehaviour
             if(index < m_allSessions.Count - 1)
             {
                 GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(true);
-                GUIManager.Instance.GetMainCanvas().EnableExitButton(false);
             }
             else
             {
                 {
                     GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(false);
-                    GUIManager.Instance.GetMainCanvas().EnableExitButton(true);
                 }
             }
             GUIManager.Instance.GetMainCanvas().EnableRetryBtn(false);
@@ -585,6 +583,7 @@ public class SessionManager : MonoBehaviour
             else
             {
                 GUIManager.Instance.GetMainCanvas().EnableRetryBtn(true);
+
 
             }
 
