@@ -121,32 +121,17 @@ public class SessionResults
         tasks.Add(task);
     }
 
-    public void Start()
+    private void StartSession()
     {
-        if(!m_isStarted)
-        {
+        Player.Instance.FreezePlayer(true);
+        Player.Instance.ResetPosition();
+        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, () => {
 
-            Player.Instance.FreezePlayer(true);
-            Player.Instance.ResetPosition();
-            GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, () => {
+            if (GameManager.Instance.IsAssessmentMode())
+            {
+                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
+                    GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(true);
 
-                if (GameManager.Instance.IsAssessmentMode())
-                {
-                    GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
-                        GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(true);
-
-                        m_currentTask = tasks[0];
-                        sessionResults.startTime = DateTime.Now;
-                        sessionResults.date = DateTime.Today;
-                        sessionResults.Log_SessionStart();
-                        m_isStarted = true;
-
-                        StartCurrentTask();
-
-                    });
-                }            
-                else
-                {
                     m_currentTask = tasks[0];
                     sessionResults.startTime = DateTime.Now;
                     sessionResults.date = DateTime.Today;
@@ -154,12 +139,47 @@ public class SessionResults
                     m_isStarted = true;
 
                     StartCurrentTask();
-                }
-            });
 
+                });
+            }
+            else
+            {
+                m_currentTask = tasks[0];
+                sessionResults.startTime = DateTime.Now;
+                sessionResults.date = DateTime.Today;
+                sessionResults.Log_SessionStart();
+                m_isStarted = true;
 
+                StartCurrentTask();
+            }
+        });
+    }
 
-            
+    public void Start()
+    {
+        if(!m_isStarted)
+        {
+            int firstBoot = PlayerPrefs.GetInt("FirstBoot", 1);
+            if(firstBoot == 1 && !GameManager.Instance.IsAssessmentMode())
+            {
+                PlayerPrefs.SetInt("FirstBoot", 0);
+                Player.Instance.FreezePlayer(true);
+                Player.Instance.ResetPosition();
+                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
+                    "Hi, I'm you assistant! Press the fire button to dismiss my messages.",
+                    "Move the player using the keys WASD on your keyboard. Use the mouse to look around.",
+                    "Use the fire button to interact with instruments, more control hints will appear as you go.",
+                    "The session will start now!"
+                }, () => {
+
+                    StartSession();
+              
+                });
+            } 
+            else
+            {
+                StartSession();
+            }
         }
     }
 

@@ -1891,3 +1891,80 @@ Stack trace:
 9:09 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
 9:09 AM - Session recorded, id 138991603642
 9:09 AM - Reply{"Log_0":"9:09 AM - Session starts","Log_1":"9:09 AM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_2":"9:09 AM - Correctly selected by name Towel Clamps","Log_3":"9:09 AM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"9:09 AM - Correctly selected by name Mayo Scissor","Log_5":"9:09 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:09 AM - Login START
+11:10 AM - Login START
+11:10 AM - Send login form
+11:10 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+11:10 AM - ID: 13811101407614
+11:10 AM - ID: 13811101415978
+11:10 AM - ID: 13811101429566
+11:10 AM - Login START
+11:10 AM - Send login form
+11:10 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+11:10 AM - ID: 13811105701371
+11:10 AM - ID: 13811105714959
+11:10 AM - ID: 13811105723323
+11:11 AM - Just about to send request, 13811105701371
+11:11 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/recordSession.php, attempt: 0
+11:11 AM - Session recorded, id 13811105701371
+11:11 AM - Reply{"Log_0":"11:11 AM - Session starts","Log_1":"11:11 AM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"11:11 AM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+11:11 AM - Quitting now
+11:11 AM - Login START
+11:11 AM - Send login form
+11:11 AM - Sending to: https://unreckoned-worry.000webhostapp.com/server/login.php, attempt: 0
+11:11 AM - ID: 138111122033
+11:11 AM - ID: 13811112213621
+11:11 AM - ID: 13811112227209
+11:11 AM - Login START
+11:11 AM - Send login form
+11:11 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:11 AM - ID: 13811115906702
+11:12 AM - ID: 1381112606474
+11:16 AM - Login START
+11:16 AM - Send login form
+11:16 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:16 AM - ID: 13811161307000
+11:21 AM - Login START
+11:21 AM - Send login form
+11:21 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:21 AM - ID: 13811214603089
+11:23 AM - Login START
+11:23 AM - Send login form
+11:23 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:23 AM - ID: 1381123380695
+11:24 AM - Login START
+11:24 AM - Send login form
+11:24 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:24 AM - ID: 13811241609632
+11:25 AM - Just about to send request, 13811241609632
+11:25 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:25 AM - Session recorded, id 13811241609632
+11:25 AM - Reply{"Log_0":"11:24 AM - Session starts","Log_1":"11:24 AM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_2":"11:25 AM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+11:25 AM - Quitting now
+11:27 AM - Login START
+11:27 AM - Send login form
+11:27 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:27 AM - ID: 1381127530263
+11:28 AM - Login START
+11:28 AM - Send login form
+11:28 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:28 AM - ID: 13811281201978
+11:28 AM - Login START
+11:28 AM - Send login form
+11:28 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:28 AM - ID: 13811285803685
+11:30 AM - Login START
+11:30 AM - Send login form
+11:30 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:30 AM - ID: 13811302405868
+11:30 AM - Just about to send request, 13811302405868
+11:30 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:30 AM - Session recorded, id 13811302405868
+11:30 AM - Reply{"Log_0":"11:30 AM - Session starts","Log_1":"11:30 AM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_2":"11:30 AM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+11:30 AM - Quitting now
+11:32 AM - Login START
+11:32 AM - Send login form
+11:32 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:32 AM - ID: 13811324806335
+11:32 AM - ID: 13811324819923
+11:32 AM - ID: 13811324829923

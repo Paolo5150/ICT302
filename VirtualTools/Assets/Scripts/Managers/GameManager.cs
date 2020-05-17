@@ -53,8 +53,6 @@ public class GameManager : MonoBehaviour
             Player.Instance.FreezePlayer(true);
             GUIManager.Instance.GetMainCanvas().DogSpeak("Quitting...");
 
-
-
             //Wait until data is pushed to server before quitting
             if(SessionManager.Instance.GetCurrentSession() != null)
             {
@@ -155,6 +153,8 @@ public class GameManager : MonoBehaviour
             SessionManager.Instance.StartSessionSequence();
 
         }
+
+
     }
 
     // Update is called once per frame

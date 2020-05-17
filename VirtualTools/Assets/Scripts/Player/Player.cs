@@ -247,6 +247,21 @@ public class Player : MonoBehaviour
     {
         if(m_currentlyPointingInstrument != null && m_viewingEnabled)
         {
+            int tutorial = PlayerPrefs.GetInt("ViewTutorial", 1);
+            if(tutorial == 1 && !GameManager.Instance.IsAssessmentMode())
+            {
+                PlayerPrefs.SetInt("ViewTutorial", 0);
+                FreezePlayer(true);
+                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
+                    "You can now inspect the instrument",
+                    "Use WASD and the mouse again to move and rotate the instrument",
+                    "Press the fire button to confirm your selection",
+                    "If you don't want to select this instrument, you can place it back by pressing the secondary button"
+                }, () => {
+                    enabled = true;
+
+                });
+            }
 
             m_currentlyPointingInstrument.OnReleasedPointing();
             // Manipulate object being viewed
@@ -320,6 +335,22 @@ public class Player : MonoBehaviour
 
             instrument.OnPointing();
             m_currentlyPointingInstrument = instrument;
+
+            //Tutorial
+            int firstBoot = PlayerPrefs.GetInt("PointTutorial", 1);
+            if(firstBoot == 1 && !GameManager.Instance.IsAssessmentMode())
+            {
+                PlayerPrefs.SetInt("PointTutorial", 0);
+                FreezePlayer(true);
+                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
+                    "As you can see, the instrument has turned green!",
+                    "That means that you can pick it up!",
+                    "To do that, just press the fire button"
+                }, () => {
+                    FreezePlayer(false);
+
+                });
+            }
         }
         else if (instrument == null) // If no hit
         {
