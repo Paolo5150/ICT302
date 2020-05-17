@@ -2037,3 +2037,13 @@ Stack trace:
 3:02 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
 3:02 PM - Session recorded, id 138152412722
 3:02 PM - Reply{"Log_0":"3:02 PM - Session starts","Log_1":"3:02 PM - New task: pick up the best instrument for <b><u>Extension of abdominal wall incisions<\/u><\/b>","Log_2":"3:02 PM - Correctly selected by purpose Mayo Scissor","Log_3":"3:02 PM - New task: pick up the best instrument for <b><u>Joining drapes to patient<\/u><\/b>","Log_4":"3:02 PM - Correctly selected by purpose Towel Clamps","Log_5":"3:02 PM - Session ends"}{"Data":{},"Status":"ok"}
+4:33 PM - Login START
+4:33 PM - Send login form
+4:33 PM - Sending to: http://vegas.murdoch.edu.au/vinst/server/login.php, attempt: 0
+4:33 PM - ID: 13816331505772
+4:33 PM - Just about to send request, 13816331505772
+4:33 PM - Sending to: http://vegas.murdoch.edu.au/vinst/server/recordSession.php, attempt: 0
+4:33 PM - Session recorded, id 13816331505772
+4:33 PM - Reply{"Log_0":"4:33 PM - Session starts","Log_1":"4:33 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_2":"4:33 PM - Correctly selected by name Towel Clamps","Log_3":"4:33 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"4:33 PM - Failed to select by name Scalpel. Selected: Addson-Brown Forceps","Log_5":"4:33 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+4:33 PM - Quitting now
+4:33 PM - Login START

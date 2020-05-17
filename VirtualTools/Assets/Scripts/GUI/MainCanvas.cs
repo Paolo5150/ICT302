@@ -249,9 +249,9 @@ public class MainCanvas : MonoBehaviour
             m_logsText.text = "Not available while the session is running.";
 
 
-        m_linkText.text = "See the full report at: " + NetworkManager.REMOTE_SERVER_ADDRESS;
+        m_linkText.text = "See the full report at: http://vegas.murdoch.edu.au/vinst/";
 
-        if(m_resumeButton.activeInHierarchy)
+        if (m_resumeButton.activeInHierarchy)
             GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(m_resumeButton);
         else if(m_exitButton.activeInHierarchy)
             GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(m_exitButton);

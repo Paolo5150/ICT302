@@ -6,8 +6,7 @@ using UnityEngine.Networking;
 public class NetworkManager : MonoBehaviour
 {
 
-    public static string REMOTE_SERVER_ADDRESS = "https://unreckoned-worry.000webhostapp.com/server/";
-    //public const string REMOTE_SERVER_ADDRESS = "http://virtualinstruments.unaux.com/server/";
+    public const string REMOTE_SERVER_ADDRESS = "http://vegas.murdoch.edu.au/vinst/server/";
     public static string LOCAL_SERVER_ADDRESS = "http://localhost/ICT302-WebApp/server/";
 
     private static NetworkManager m_instance;
