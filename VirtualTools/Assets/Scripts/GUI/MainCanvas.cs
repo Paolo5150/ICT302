@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MainCanvas : MonoBehaviour
@@ -249,6 +250,13 @@ public class MainCanvas : MonoBehaviour
 
 
         m_linkText.text = "See the full report at: " + NetworkManager.REMOTE_SERVER_ADDRESS;
+
+        if(m_resumeButton.activeInHierarchy)
+            GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(m_resumeButton);
+        else if(m_exitButton.activeInHierarchy)
+            GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(m_exitButton);
+        else if (m_nextSessionButton.activeInHierarchy)
+            GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(m_nextSessionButton);
 
     }
 
