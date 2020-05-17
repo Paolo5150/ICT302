@@ -344,7 +344,18 @@ public class SessionManager : MonoBehaviour
         if(m_currentSession.sessionResults.isAssessed)
         {
             int index = m_allSessions.IndexOf(m_currentSession);
-            GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(index < m_allSessions.Count);
+            if(index < m_allSessions.Count - 1)
+            {
+                GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(true);
+                GUIManager.Instance.GetMainCanvas().EnableExitButton(false);
+            }
+            else
+            {
+                {
+                    GUIManager.Instance.GetMainCanvas().EnableNextSessionBtn(false);
+                    GUIManager.Instance.GetMainCanvas().EnableExitButton(true);
+                }
+            }
             GUIManager.Instance.GetMainCanvas().EnableRetryBtn(false);
         }
         else

@@ -205,6 +205,11 @@ public class MainCanvas : MonoBehaviour
         m_escapeMenu.SetActive(enabled);
     }
 
+    public void EnableExitButton(bool enable)
+    {
+        m_exitButton.SetActive(enable);
+    }
+
     public void SetSceneSelector(bool enabled)
     {
         m_sceneSelector.SetActive(enabled);
