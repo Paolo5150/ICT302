@@ -552,12 +552,14 @@ public class SessionManager : MonoBehaviour
     // Called by GUI
     public void ResumeSession()
     {
-        GUIManager.Instance.ConfigureCursor(false, CursorLockMode.None);
+        GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
 
         GUIManager.Instance.GetMainCanvas().EnableResumeBtn(false);
         GUIManager.Instance.GetMainCanvas().HideResultPanel();
         if (Player.Instance.GetPlayerMode() == Player.PlayerMode.PICKING && m_currentSession.HasStarted())
             Player.Instance.FreezePlayer(false);
+        else
+            Player.Instance.enabled = true;
         m_isCurrentSessionPaused = false;
     }
     public void Update()
@@ -594,8 +596,7 @@ public class SessionManager : MonoBehaviour
                 else
                 {
                     GUIManager.Instance.GetMainCanvas().HideResultPanel();
-                    if (Player.Instance.GetPlayerMode() == Player.PlayerMode.PICKING && m_currentSession.HasStarted())
-                        Player.Instance.FreezePlayer(false);
+                    ResumeSession();
                     m_isCurrentSessionPaused = false;
                 }
             }

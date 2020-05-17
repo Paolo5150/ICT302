@@ -1812,3 +1812,59 @@ Stack trace:
 8:41 AM - ID: 1388414701815
 8:41 AM - ID: 1388414713766
 8:41 AM - ID: 1388414723766
+8:42 AM - ID: 1388421203127
+8:42 AM - ID: 1388421216715
+8:42 AM - ID: 1388421326715
+8:42 AM - ID: 1388423902978
+8:42 AM - ID: 1388423916566
+8:42 AM - ID: 1388423926566
+8:42 AM - Login START
+8:42 AM - Send login form
+8:42 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+8:42 AM - ID: 1388425601203
+8:42 AM - ID: 1388425614791
+8:42 AM - ID: 1388425624791
+8:43 AM - Login START
+8:43 AM - Send login form
+8:43 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+8:43 AM - ID: 1388432309036
+8:43 AM - ID: 1388432319036
+8:43 AM - ID: 1388432322624
+8:44 AM - Just about to send request, 1388432309036
+8:44 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+8:44 AM - Session recorded, id 1388432309036
+8:44 AM - Reply{"Log_0":"8:43 AM - Session starts","Log_1":"8:43 AM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_2":"8:44 AM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+8:44 AM - Quitting now
+8:44 AM - Login START
+8:44 AM - Send login form
+8:44 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+8:44 AM - ID: 1388442109863
+8:44 AM - ID: 1388442118227
+8:44 AM - ID: 1388442128227
+8:44 AM - Login START
+8:44 AM - Login START
+8:44 AM - Send login form
+8:44 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+8:44 AM - ID: 13884458053
+8:44 AM - ID: 1388445813641
+8:44 AM - ID: 1388445823641
+8:46 AM - Login START
+8:46 AM - Send login form
+8:46 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+8:46 AM - ID: 1388464305586
+8:46 AM - ID: 1388464319174
+8:46 AM - ID: 1388464327538
+8:47 AM - Login START
+8:47 AM - Send login form
+8:47 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+8:47 AM - ID: 1388474002476
+8:47 AM - ID: 1388475203721
+8:48 AM - Login START
+8:48 AM - Send login form
+8:48 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+8:48 AM - ID: 1388482901403
+8:48 AM - Just about to send request, 1388482901403
+8:48 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+8:48 AM - Session recorded, id 1388482901403
+8:48 AM - Reply{"Log_0":"8:48 AM - Session starts","Log_1":"8:48 AM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"8:48 AM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+8:48 AM - Quitting now
