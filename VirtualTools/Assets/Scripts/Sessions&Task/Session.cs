@@ -232,6 +232,14 @@ public class SessionResults
     {
         m_currentTask.taskStatus = Task.STATUS.INSTRUCTING;
 
+        bool isInstrumentPositionTask = m_currentTask is InstrumentPositionTask;
+
+        foreach (InstrumentPositionTaskSlot slot in InstrumentPositionTaskLocManager.Instance.InstrumentSlots)
+        {
+            // hide all all the slots if not used for this task type, unhide if used
+            slot.GetComponentInChildren<MeshRenderer>().enabled = isInstrumentPositionTask;
+        }
+
         Player.Instance.FreezePlayer(true);
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(m_currentTask.instructions.ToArray(), () => {
             Player.Instance.FreezePlayer(false);

@@ -101,10 +101,7 @@ public class InstrumentLocManager : MonoBehaviour
         Assert.AreEqual(taggedGameObjects.Count, 1, "Duplicate INSTRUMENT_TAG in the InstrumentGameObjects");
         Instrument instrumentToPlace = taggedGameObjects[0];
         var obj = Instantiate<GameObject>(instrumentToPlace.gameObject);
-        obj.transform.position = parent.transform.position;
-        obj.transform.localScale = instrumentToPlace.transform.localScale;
-        obj.transform.rotation = new Quaternion();
-        obj.transform.parent = parent.transform;
+        MoveInstrument(obj, parent);
     }
 
     public void MoveInstrument(GameObject instrument, GameObject parent)
@@ -112,11 +109,13 @@ public class InstrumentLocManager : MonoBehaviour
         instrument.transform.parent = parent.transform;
         instrument.transform.position = parent.transform.position;
         instrument.transform.rotation = new Quaternion();
-
+        instrument.transform.localScale = new Vector3(1 / parent.transform.localScale.x, 1 / parent.transform.localScale.y, 1 / parent.transform.localScale.z);
     }
     public void MoveInstrumentToPlayer(GameObject instrument, GameObject parent)
     {
         instrument.transform.parent = parent.transform;
         instrument.transform.position = Camera.main.transform.position + Camera.main.transform.forward * 0.3f;
+        instrument.transform.rotation = new Quaternion();
+        instrument.transform.localScale = new Vector3(1 / parent.transform.localScale.x, 1 / parent.transform.localScale.y, 1 / parent.transform.localScale.z);
     }
 }

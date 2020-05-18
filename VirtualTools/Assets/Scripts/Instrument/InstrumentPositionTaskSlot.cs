@@ -11,7 +11,7 @@ public class InstrumentPositionTaskSlot : MonoBehaviour
     {
         if(CurrentInstrument == Instrument.INSTRUMENT_TAG.NONE)
         {
-            foreach (Material mat in GetComponent<Renderer>().materials)
+            foreach (Material mat in GetComponentInChildren<Renderer>().materials)
             {
                 mat.color = new Color(0, 1, 0, 0.5f);
             }
@@ -20,7 +20,7 @@ public class InstrumentPositionTaskSlot : MonoBehaviour
 
     public void OnReleasedPointing()
     {
-        foreach (Material mat in GetComponent<Renderer>().materials)
+        foreach (Material mat in GetComponentInChildren<Renderer>().materials)
         {
             mat.color = new Color(1,1,1,0.5f);
         }
@@ -28,7 +28,7 @@ public class InstrumentPositionTaskSlot : MonoBehaviour
 
     private void Start()
     {
-        foreach (Material mat in GetComponent<Renderer>().materials)
+        foreach (Material mat in GetComponentInChildren<Renderer>().materials)
         {
             mat.color = new Color(1, 1, 1, 0.5f);
         }
