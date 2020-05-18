@@ -137,6 +137,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Metzembaum scissors
       objectReference: {fileID: 0}
+    - target: {fileID: 8732274693700442075, guid: ac3a0e81f72a37b4dadc899b1cab7204,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 405d12bf79971f048b855bca21426cc8, type: 2}
+    - target: {fileID: 8732274693700442075, guid: ac3a0e81f72a37b4dadc899b1cab7204,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 37f3b29ea07cb4d419ca3d02ca3fed9c, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac3a0e81f72a37b4dadc899b1cab7204, type: 3}
 --- !u!4 &6106867321824329135 stripped
