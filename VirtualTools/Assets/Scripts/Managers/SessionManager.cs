@@ -67,7 +67,6 @@ public class SessionManager : MonoBehaviour
                         allTasks.Add(new InstrumentPositionTask(slot, tag));
                         break;
                     }
-
                 }
             }
         }

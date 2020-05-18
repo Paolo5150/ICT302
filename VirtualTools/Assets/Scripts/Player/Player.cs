@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public delegate void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag);
     public static event OnInstrumentSelected instrumentSelectedEvent;
 
-    public float raycastLength = 10.0f;
+    public const float RaycastLength = 2.0f;
     public Color selectableOutlineColor = Color.white;
     public float itemViewRotationSpeed = 50.0f;
     public float itemViewMovementSpeed = 50.0f;
@@ -224,6 +224,18 @@ public class Player : MonoBehaviour
         SetPlayerMode(PlayerMode.PICKING);
     }
 
+    private void PlaceInstrument()
+    {
+        m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
+        InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, 
+            m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
+        m_currentlyPointingInstrumentPositionTaskSlot.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+        SetPlayerMode(PlayerMode.PICKING);
+        SelectedInstrumentToPlace = null;
+        SessionManager.Instance.CheckIfInstrumentPositionSessionComplete();
+
+    }
+
     private void PlacingMode()
     {
         // Resolve placing of held insrtument
@@ -235,22 +247,13 @@ public class Player : MonoBehaviour
                 bool correctPlace = SessionManager.Instance.OnInstrumentPlaced(SelectedInstrumentToPlace.instrumentTag, m_currentlyPointingInstrumentPositionTaskSlot);
                 if(GameManager.Instance.IsAssessmentMode())
                 {
-                    m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
-                    InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
-                    SetPlayerMode(PlayerMode.PICKING);
-                    SelectedInstrumentToPlace = null;
-                    SessionManager.Instance.CheckIfInstrumentPositionSessionComplete();
+                    PlaceInstrument();
                 }
                 else
                 {
                     if(correctPlace)
                     {
-                        m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
-                        InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
-                        SetPlayerMode(PlayerMode.PICKING);
-                        SelectedInstrumentToPlace = null;
-                        SessionManager.Instance.CheckIfInstrumentPositionSessionComplete();
-
+                        PlaceInstrument();
                     }
                 }
                 
@@ -329,7 +332,7 @@ public class Player : MonoBehaviour
 
     private void UpdatePointingInstrumentPositionTaskSlot()
     {
-        InstrumentPositionTaskSlot slot = m_instrumentSelector.GetInstrumentPositionTaskSlotRaycastFromCamera(raycastLength);
+        InstrumentPositionTaskSlot slot = m_instrumentSelector.GetInstrumentPositionTaskSlotRaycastFromCamera(RaycastLength);
         // If I'm looking at an intrument and it's not the one i was already looking at
         if (m_selectedInstrumentToPlace != null && slot != null && slot != m_currentlyPointingInstrumentPositionTaskSlot)
         {
@@ -352,7 +355,7 @@ public class Player : MonoBehaviour
 
     private void UpdatePointingInstrument()
     {
-        Instrument instrument = m_instrumentSelector.GetInstrumentRaycastFromCamera(raycastLength);
+        Instrument instrument = m_instrumentSelector.GetInstrumentRaycastFromCamera(RaycastLength);
         // If I'm looking at an intrument and it's not the one i was already looking at
         if (instrument != null && instrument != m_currentlyPointingInstrument)
         {

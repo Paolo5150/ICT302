@@ -52,7 +52,7 @@ public class InstrumentSelector
             RaycastHit hit;
             Ray ray = new Ray(m_raycastingCamera.transform.position, m_raycastingCamera.transform.forward);
 
-            if (Physics.Raycast(ray, out hit, raycastLength, m_layerMask))
+            if (Physics.Raycast(ray, out hit, raycastLength, LayerMask.GetMask("InstrumentPosTaskSlot")))
             {
                 Transform objectHit = hit.transform;
 
