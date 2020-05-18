@@ -252,8 +252,8 @@ public class SessionManager : MonoBehaviour
                             Player.Instance.FreezePlayer(false);
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
                             m_currentSession.sessionResults.retries++;
-                            // Restart session
-                            m_currentSession.NextTask();
+                            if (!m_currentSession.NextTask())
+                                CompleteCurrentSession();
 
                         });
                     }
@@ -264,8 +264,8 @@ public class SessionManager : MonoBehaviour
                             Player.Instance.FreezePlayer(false);
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
                             m_currentSession.sessionResults.retries++;
-                            // Restart session
-                            m_currentSession.NextTask();
+                            if (!m_currentSession.NextTask())
+                                CompleteCurrentSession();
                         });
                     }
                    
@@ -278,7 +278,7 @@ public class SessionManager : MonoBehaviour
         
     }
 
-    public void OnInstrumentPlaced(Instrument.INSTRUMENT_TAG instrumentTag, InstrumentPositionTaskSlot slot)
+    public bool OnInstrumentPlaced(Instrument.INSTRUMENT_TAG instrumentTag, InstrumentPositionTaskSlot slot)
     {
        if (m_currentSession != null)
         {
@@ -293,16 +293,45 @@ public class SessionManager : MonoBehaviour
             }
 
             Task.STATUS status = instrumentPositionTask.Evaluate(instrumentTag, slot,m_currentSession);
-
+            bool success = false;
             if (status == Task.STATUS.COMPLETED_SUCCESS && !GameManager.Instance.IsAssessmentMode())
             {
                 GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Correct placement");
+                success = true;
             }
             else if(status == Task.STATUS.COMPLETED_FAIL && !GameManager.Instance.IsAssessmentMode())
             {
                 GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Wrong placement");
             }
 
+           
+
+            return success;
+        }
+        return false;
+    }
+
+    public void CheckIfInstrumentPositionSessionComplete()
+    {
+        if (GameManager.Instance.IsAssessmentMode())
+        {
+            bool allGood = true;
+            int counter = 0;
+            //Check if all slots are ok
+            foreach (InstrumentPositionTask t in m_currentSession.tasks)
+            {
+                foreach(var slot in InstrumentPositionTaskLocManager.Instance.InstrumentSlots)
+                {
+                    if (slot.CurrentInstrument == t.m_instrument)
+                        counter++;
+                }
+            }
+
+            if (counter == m_currentSession.tasks.Count)
+                CompleteCurrentSession();
+        }
+        else
+        {
             bool allGood = true;
             //Check if all slots are ok
             foreach (InstrumentPositionTask t in m_currentSession.tasks)
@@ -312,11 +341,7 @@ public class SessionManager : MonoBehaviour
             }
 
             if (allGood)
-            {
-
                 CompleteCurrentSession();
-            }
-
         }
     }
 

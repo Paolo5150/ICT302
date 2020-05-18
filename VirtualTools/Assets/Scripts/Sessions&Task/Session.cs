@@ -213,7 +213,7 @@ public class SessionResults
 
     public bool NextTask()
     {
-        if(m_currentTask.taskStatus == Task.STATUS.COMPLETED_SUCCESS)
+        if(m_currentTask.taskStatus == Task.STATUS.COMPLETED_SUCCESS || GameManager.Instance.IsAssessmentMode())
         {
             int indexOfCurrent = tasks.IndexOf(m_currentTask);
             tasks.RemoveAt(indexOfCurrent);

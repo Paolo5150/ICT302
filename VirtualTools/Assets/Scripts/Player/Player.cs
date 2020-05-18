@@ -232,13 +232,28 @@ public class Player : MonoBehaviour
             // Place instrument where the player is looking if there is not already one here.
             if (Input.GetButtonDown("Fire1") && m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument == Instrument.INSTRUMENT_TAG.NONE)
             {
-                m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
-                InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
-                Debug.Log("Placed " + Instrument.GetName(SelectedInstrumentToPlace.instrumentTag));
-                SetPlayerMode(PlayerMode.PICKING);
-                SelectedInstrumentToPlace = null;
-                //Leave this as last statement
-                SessionManager.Instance.OnInstrumentPlaced(m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument, m_currentlyPointingInstrumentPositionTaskSlot);
+                bool correctPlace = SessionManager.Instance.OnInstrumentPlaced(SelectedInstrumentToPlace.instrumentTag, m_currentlyPointingInstrumentPositionTaskSlot);
+                if(GameManager.Instance.IsAssessmentMode())
+                {
+                    m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
+                    InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
+                    SetPlayerMode(PlayerMode.PICKING);
+                    SelectedInstrumentToPlace = null;
+                    SessionManager.Instance.CheckIfInstrumentPositionSessionComplete();
+                }
+                else
+                {
+                    if(correctPlace)
+                    {
+                        m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
+                        InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
+                        SetPlayerMode(PlayerMode.PICKING);
+                        SelectedInstrumentToPlace = null;
+                        SessionManager.Instance.CheckIfInstrumentPositionSessionComplete();
+
+                    }
+                }
+                
             }
         }
 
