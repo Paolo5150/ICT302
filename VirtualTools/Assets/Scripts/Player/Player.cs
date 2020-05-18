@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public delegate void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag);
     public static event OnInstrumentSelected instrumentSelectedEvent;
 
-    public float raycastLength = 150.0f;
+    public float raycastLength = 10.0f;
     public Color selectableOutlineColor = Color.white;
     public float itemViewRotationSpeed = 50.0f;
     public float itemViewMovementSpeed = 50.0f;
