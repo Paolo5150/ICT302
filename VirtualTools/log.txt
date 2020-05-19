@@ -2250,3 +2250,10 @@ Stack trace:
 10:12 PM - ID: 13922123914402
 10:12 PM - ID: 13922123924402
 2:03 PM - ID: 1401431007447
+2:12 PM - ID: 14014123008484
+2:14 PM - ID: 14014142005466
+2:14 PM - Just about to send request, 14014142005466
+2:14 PM - Sending to: http://vegas.murdoch.edu.au/vinst/server/recordSession.php, attempt: 0
+2:14 PM - Session recorded, id 14014142005466
+2:14 PM - Reply{"Log_0":"2:14 PM - Session starts","Log_1":"2:14 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_2":"2:14 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+2:14 PM - Quitting now
