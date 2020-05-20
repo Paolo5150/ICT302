@@ -2360,6 +2360,7 @@ GameObject:
   - component: {fileID: 443214026}
   - component: {fileID: 443214028}
   - component: {fileID: 443214027}
+  - component: {fileID: 443214029}
   m_Layer: 5
   m_Name: DogPanel
   m_TagString: Untagged
@@ -2423,6 +2424,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443214025}
   m_CullTransparentMesh: 0
+--- !u!95 &443214029
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 443214025}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c55ee97561d8c664fa4c20c19447f6c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &446510650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4304,7 +4324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9fc76d251cee7541aa98dfe9862b860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  server: 1
+  server: 0
   currentServer: 
 --- !u!114 &922758314
 MonoBehaviour:

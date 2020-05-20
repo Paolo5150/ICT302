@@ -131,6 +131,7 @@ public class MainCanvas : MonoBehaviour
 
     private IEnumerator PopUpMessage(float seconds, string text)
     {
+        
         DogSpeak(text);
         yield return new WaitForSeconds(seconds);
         SetDogEnabled(false);
@@ -198,6 +199,7 @@ public class MainCanvas : MonoBehaviour
 
     public void DogInstructionSequence(string[] instructions, Action action)
     {
+        m_dogPanel.GetComponent<Animator>().SetTrigger("Start");
         StartCoroutine(InstructionSequence(instructions, action));
     }
 

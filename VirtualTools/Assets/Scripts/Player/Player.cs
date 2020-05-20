@@ -288,6 +288,7 @@ public class Player : MonoBehaviour
                     "If you don't want to select this instrument, you can place it back by pressing the secondary button"
                 }, () => {
                     enabled = true;
+                    GUIManager.Instance.GetMainCanvas().DogSpeak(SessionManager.Instance.GetCurrentSession().GetCurrentTask().instructions[0]);
 
                 });
             }
@@ -317,6 +318,23 @@ public class Player : MonoBehaviour
                     m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
                     SelectedInstrumentToPlace = m_currentlyPointingInstrument;
                     InstrumentLocManager.Instance.MoveInstrumentToPlayer(SelectedInstrumentToPlace.gameObject, this.gameObject);
+
+                    //Tutorial
+                    int dropTutorial = PlayerPrefs.GetInt("DropTutorial", 1);
+                    if (dropTutorial == 1 && !GameManager.Instance.IsAssessmentMode())
+                    {
+                        PlayerPrefs.SetInt("DropTutorial", 0);
+                        FreezePlayer(true);
+                        GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
+                    "You can now place the instrument in the slots on the tray",
+                    "The instrument MUST go in a specific order!",
+                    "To drop the intrument, just press the fire button"
+                }, () => {
+                    FreezePlayer(false);
+                    GUIManager.Instance.GetMainCanvas().DogSpeak(SessionManager.Instance.GetCurrentSession().GetCurrentTask().instructions[0]);
+
+                });
+                    }
                 }
             }
             // Put item back
@@ -366,17 +384,19 @@ public class Player : MonoBehaviour
             m_currentlyPointingInstrument = instrument;
 
             //Tutorial
-            int firstBoot = PlayerPrefs.GetInt("PointTutorial", 1);
-            if(firstBoot == 1 && !GameManager.Instance.IsAssessmentMode())
+            int pointTutorial = PlayerPrefs.GetInt("PointTutorial", 1);
+            if(pointTutorial == 1 && !GameManager.Instance.IsAssessmentMode())
             {
+                
                 PlayerPrefs.SetInt("PointTutorial", 0);
                 FreezePlayer(true);
                 GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "As you can see, the instrument has turned green!",
                     "That means that you can pick it up!",
-                    "To do that, just press the fire button"
+                    "To do that, just press the fire button",
                 }, () => {
                     FreezePlayer(false);
+                    GUIManager.Instance.GetMainCanvas().DogSpeak(SessionManager.Instance.GetCurrentSession().GetCurrentTask().instructions[0]);
 
                 });
             }
