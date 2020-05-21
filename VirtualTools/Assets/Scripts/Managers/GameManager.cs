@@ -138,7 +138,7 @@ public class GameManager : MonoBehaviour
         {
             assessmentMode = PlayerPrefs.GetInt("AssessmentMode") == 1;
         }
-        assessmentMode = false;
+        //assessmentMode = false;
 
         //If assessment mode, do not allow screen selection
         if (assessmentMode)

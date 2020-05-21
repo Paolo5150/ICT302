@@ -176,7 +176,7 @@ public class MainCanvas : MonoBehaviour
     }
     private IEnumerator InstructionSequence(string[] instructions, Action action)
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.05f);
 
         int index = 0;
         while(index < instructions.Length)

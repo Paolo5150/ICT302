@@ -2313,3 +2313,48 @@ Stack trace:
 5:55 PM - ID: 14117553326019
 5:56 PM - ID: 14117562706387
 7:49 PM - ID: 1411949301519
+7:59 PM - ID: 14119594404751
+8:00 PM - ID: 1412003204998
+8:02 PM - ID: 14120200845
+4:56 PM - Login START
+4:56 PM - Send login form
+4:56 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+4:56 PM - ID: 14216565807511
+4:57 PM - Just about to send request, 14216565807511
+4:57 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+4:57 PM - Session recorded, id 14216565807511
+4:57 PM - Reply{"Log_0":"4:57 PM - Session starts","Log_1":"4:57 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_2":"4:57 PM - Failed to select by name Towel Clamps. Selected: Metzembaum Scissor","Log_3":"4:57 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_4":"4:57 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+4:57 PM - Quitting now
+5:06 PM - Login START
+5:06 PM - Send login form
+5:06 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:07 PM - ID: 1421773207383
+5:08 PM - Just about to send request, 1421773207383
+5:08 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:08 PM - Session recorded, id 1421773207383
+5:08 PM - Reply{"Log_0":"5:08 PM - Session starts","Log_1":"5:08 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"5:08 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+5:08 PM - Quitting now
+5:08 PM - Login START
+5:08 PM - Send login form
+5:08 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:08 PM - ID: 1421784705497
+5:14 PM - Exporting session, id 1421784705497
+5:14 PM - Just about to send request, 1421784705497
+5:14 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:14 PM - Session recorded, id 1421784705497
+5:14 PM - Reply{"Log_0":"5:09 PM - Session starts","Log_1":"5:09 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"5:13 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Addson-Brown Forceps","Log_3":"5:13 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_4":"5:13 PM - Correctly selected by name Towel Clamps","Log_5":"5:13 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_6":"5:13 PM - Failed to select by name Scalpel. Selected: Suture Scissor","Log_7":"5:13 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_8":"5:13 PM - Correctly selected by name Rochester Carmalt Forceps","Log_9":"5:13 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_10":"5:13 PM - Correctly selected by name Suture Scissor","Log_11":"5:13 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_12":"5:13 PM - Correctly selected by name Addson-Brown Forceps","Log_13":"5:14 PM - New task: pick up a <b><u>Metzembaum Scissor<\/u><\/b>","Log_14":"5:14 PM - Correctly selected by name Metzembaum Scissor","Log_15":"5:14 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_16":"5:14 PM - Correctly selected by name Mayo Scissor","Log_17":"5:14 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_18":"5:14 PM - Correctly selected by name Scalpel","Log_19":"5:14 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_20":"5:14 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_21":"5:14 PM - Session ends"}{"Data":{},"Status":"ok"}
+5:14 PM - Just about to send request, 1421784705497
+5:14 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+5:14 PM - Session recorded, id 1421784705497
+5:14 PM - Reply{"Log_0":"5:09 PM - Session starts","Log_1":"5:09 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"5:13 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Addson-Brown Forceps","Log_3":"5:13 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_4":"5:13 PM - Correctly selected by name Towel Clamps","Log_5":"5:13 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_6":"5:13 PM - Failed to select by name Scalpel. Selected: Suture Scissor","Log_7":"5:13 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_8":"5:13 PM - Correctly selected by name Rochester Carmalt Forceps","Log_9":"5:13 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_10":"5:13 PM - Correctly selected by name Suture Scissor","Log_11":"5:13 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_12":"5:13 PM - Correctly selected by name Addson-Brown Forceps","Log_13":"5:14 PM - New task: pick up a <b><u>Metzembaum Scissor<\/u><\/b>","Log_14":"5:14 PM - Correctly selected by name Metzembaum Scissor","Log_15":"5:14 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_16":"5:14 PM - Correctly selected by name Mayo Scissor","Log_17":"5:14 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_18":"5:14 PM - Correctly selected by name Scalpel","Log_19":"5:14 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_20":"5:14 PM - Correctly selected by name Mayo Hegar Needle Driver","Log_21":"5:14 PM - Session ends"}{"Data":{},"Status":"ok"}
+5:14 PM - Quitting now
+5:14 PM - Login START
+5:14 PM - Send login form
+5:14 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:16 PM - Login START
+5:16 PM - Login START
+5:16 PM - Send login form
+5:16 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+5:17 PM - Login START
+5:17 PM - Send login form
+5:17 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
