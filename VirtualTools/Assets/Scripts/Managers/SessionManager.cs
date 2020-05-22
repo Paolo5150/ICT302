@@ -298,9 +298,12 @@ public class SessionManager : MonoBehaviour
                 GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Correct placement");
                 success = true;
             }
-            else if(status == Task.STATUS.COMPLETED_FAIL && !GameManager.Instance.IsAssessmentMode())
+            else if(status == Task.STATUS.COMPLETED_FAIL)
             {
-                GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Wrong placement");
+                if (!GameManager.Instance.IsAssessmentMode())
+                    GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Wrong placement");
+
+                m_currentSession.sessionResults.retries++;
             }
 
            
@@ -314,7 +317,6 @@ public class SessionManager : MonoBehaviour
     {
         if (GameManager.Instance.IsAssessmentMode())
         {
-            bool allGood = true;
             int counter = 0;
             //Check if all slots are ok
             foreach (InstrumentPositionTask t in m_currentSession.tasks)

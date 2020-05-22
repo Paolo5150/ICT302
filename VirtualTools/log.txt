@@ -2379,3 +2379,106 @@ Stack trace:
 3:00 PM - ID: 1431502305735
 3:00 PM - ID: 1431502314099
 3:00 PM - ID: 1431502324099
+3:04 PM - Login START
+3:04 PM - Send login form
+3:04 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:04 PM - ID: 1431542105300
+3:04 PM - ID: 1431542118888
+3:04 PM - ID: 1431542127251
+3:04 PM - Login START
+3:05 PM - Send login form
+3:05 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:05 PM - ID: 1431551402144
+3:05 PM - Login START
+3:05 PM - Send login form
+3:05 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:05 PM - ID: 1431555709664
+3:06 PM - Just about to send request, 1431555709664
+3:06 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:06 PM - Session recorded, id 1431555709664
+3:06 PM - Reply{"Log_0":"3:06 PM - Session starts","Log_1":"3:06 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"3:06 PM - Failed to place instrument, put Scalpel where the Mayo Scissor should have gone.","Log_3":"3:06 PM - Failed to place instrument, put Scalpel where the Metzembaum Scissor should have gone.","Log_4":"3:06 PM - Failed to place instrument, put Scalpel where the Addson-Brown Forceps should have gone.","Log_5":"3:06 PM - Correctly placed Scalpel","Log_6":"3:06 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+3:06 PM - Quitting now
+3:07 PM - Login START
+3:07 PM - Send login form
+3:07 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:07 PM - ID: 143157903415
+3:07 PM - ID: 143157911779
+3:07 PM - ID: 143157921779
+3:07 PM - Exporting session, id 143157903415
+3:07 PM - Just about to send request, 143157903415
+3:07 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:07 PM - Session recorded, id 143157903415
+3:07 PM - Reply{"Log_0":"3:07 PM - Session starts","Log_1":"3:07 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"3:07 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Towel Clamps","Log_3":"3:07 PM - New task: pick up a <b><u>Metzembaum Scissor<\/u><\/b>","Log_4":"3:07 PM - Failed to select by name Metzembaum Scissor. Selected: Towel Clamps","Log_5":"3:07 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_6":"3:07 PM - Failed to select by name Mayo Hegar Needle Driver. Selected: Towel Clamps","Log_7":"3:07 PM - New task: pick up a <b><u>Addson-Brown Forceps<\/u><\/b>","Log_8":"3:07 PM - Failed to select by name Addson-Brown Forceps. Selected: Towel Clamps","Log_9":"3:07 PM - New task: pick up a <b><u>Suture Scissor<\/u><\/b>","Log_10":"3:07 PM - Failed to select by name Suture Scissor. Selected: Towel Clamps","Log_11":"3:07 PM - New task: pick up a <b><u>Mayo Scissor<\/u><\/b>","Log_12":"3:07 PM - Failed to select by name Mayo Scissor. Selected: Towel Clamps","Log_13":"3:07 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_14":"3:07 PM - Failed to select by name Scalpel. Selected: Towel Clamps","Log_15":"3:07 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_16":"3:07 PM - Correctly selected by name Towel Clamps","Log_17":"3:07 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:07 PM - Exporting session, id 143157911779
+3:07 PM - Just about to send request, 143157911779
+3:07 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:07 PM - Session recorded, id 143157911779
+3:07 PM - Reply{"Log_0":"3:07 PM - Session starts","Log_1":"3:07 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"3:07 PM - Failed to select by purpose Scalpel. Selected: Towel Clamps","Log_3":"3:07 PM - New task: pick up the best instrument for <b><u>Extension of abdominal wall incisions<\/u><\/b>","Log_4":"3:07 PM - Failed to select by purpose Mayo Scissor. Selected: Towel Clamps","Log_5":"3:07 PM - New task: pick up the best instrument for <b><u>Cutting of suture<\/u><\/b>","Log_6":"3:07 PM - Failed to select by purpose Suture Scissor. Selected: Towel Clamps","Log_7":"3:07 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_8":"3:07 PM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Towel Clamps","Log_9":"3:07 PM - New task: pick up the best instrument for <b><u>Suturing, placement of ligatures<\/u><\/b>","Log_10":"3:07 PM - Failed to select by purpose Mayo Hegar Needle Driver. Selected: Towel Clamps","Log_11":"3:07 PM - New task: pick up the best instrument for <b><u>Traction and manipulation of tissues.<\/u><\/b>","Log_12":"3:07 PM - Failed to select by purpose Addson-Brown Forceps. Selected: Towel Clamps","Log_13":"3:07 PM - New task: pick up the best instrument for <b><u>Blunt dissection of subcutaneous tissues<\/u><\/b>","Log_14":"3:07 PM - Failed to select by purpose Metzembaum Scissor. Selected: Towel Clamps","Log_15":"3:07 PM - New task: pick up the best instrument for <b><u>Joining drapes to patient<\/u><\/b>","Log_16":"3:07 PM - Correctly selected by purpose Towel Clamps","Log_17":"3:07 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:08 PM - Exporting session, id 143157921779
+3:08 PM - Just about to send request, 143157921779
+3:08 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:08 PM - Session recorded, id 143157921779
+3:08 PM - Reply{"Log_0":"3:07 PM - Session starts","Log_1":"3:07 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"3:07 PM - Correctly placed Mayo Scissor","Log_3":"3:07 PM - Failed to place instrument, put Suture Scissor where the Addson-Brown Forceps should have gone.","Log_4":"3:07 PM - Failed to place instrument, put Mayo Hegar Needle Driver where the Metzembaum Scissor should have gone.","Log_5":"3:07 PM - Failed to place instrument, put Scalpel where the Suture Scissor should have gone.","Log_6":"3:07 PM - Failed to place instrument, put Addson-Brown Forceps where the Mayo Hegar Needle Driver should have gone.","Log_7":"3:07 PM - Failed to place instrument, put Metzembaum Scissor where the Rochester Carmalt Forceps should have gone.","Log_8":"3:08 PM - Failed to place instrument, put Towel Clamps where the Scalpel should have gone.","Log_9":"3:08 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Towel Clamps should have gone.","Log_10":"3:08 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:08 PM - Just about to send request, 143157921779
+3:08 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:08 PM - Session recorded, id 143157921779
+3:08 PM - Reply{"Log_0":"3:07 PM - Session starts","Log_1":"3:07 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"3:07 PM - Correctly placed Mayo Scissor","Log_3":"3:07 PM - Failed to place instrument, put Suture Scissor where the Addson-Brown Forceps should have gone.","Log_4":"3:07 PM - Failed to place instrument, put Mayo Hegar Needle Driver where the Metzembaum Scissor should have gone.","Log_5":"3:07 PM - Failed to place instrument, put Scalpel where the Suture Scissor should have gone.","Log_6":"3:07 PM - Failed to place instrument, put Addson-Brown Forceps where the Mayo Hegar Needle Driver should have gone.","Log_7":"3:07 PM - Failed to place instrument, put Metzembaum Scissor where the Rochester Carmalt Forceps should have gone.","Log_8":"3:08 PM - Failed to place instrument, put Towel Clamps where the Scalpel should have gone.","Log_9":"3:08 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Towel Clamps should have gone.","Log_10":"3:08 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:08 PM - Quitting now
+3:09 PM - Login START
+3:09 PM - Send login form
+3:09 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:09 PM - ID: 1431594502827
+3:09 PM - ID: 1431594511191
+3:09 PM - ID: 1431594521191
+3:10 PM - Login START
+3:10 PM - Send login form
+3:10 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:10 PM - ID: 14315103005232
+3:10 PM - ID: 14315103018820
+3:10 PM - ID: 14315103028820
+3:10 PM - Exporting session, id 14315103005232
+3:10 PM - Just about to send request, 14315103005232
+3:10 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:10 PM - Session recorded, id 14315103005232
+3:10 PM - Reply{"Log_0":"3:10 PM - Session starts","Log_1":"3:10 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"3:10 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"3:10 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"3:10 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"3:10 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:10 PM - Exporting session, id 14315103018820
+3:10 PM - Just about to send request, 14315103018820
+3:10 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:10 PM - Session recorded, id 14315103018820
+3:10 PM - Reply{"Log_0":"3:10 PM - Session starts","Log_1":"3:10 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"3:10 PM - Failed to select by purpose Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"3:10 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_4":"3:10 PM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"3:10 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:10 PM - Exporting session, id 14315103028820
+3:10 PM - Just about to send request, 14315103028820
+3:10 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:10 PM - Session recorded, id 14315103028820
+3:10 PM - Reply{"Log_0":"3:10 PM - Session starts","Log_1":"3:10 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"3:10 PM - Failed to place instrument, put Scalpel where the Addson-Brown Forceps should have gone.","Log_3":"3:10 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Towel Clamps should have gone.","Log_4":"3:10 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:10 PM - Just about to send request, 14315103028820
+3:10 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:10 PM - Session recorded, id 14315103028820
+3:10 PM - Reply{"Log_0":"3:10 PM - Session starts","Log_1":"3:10 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"3:10 PM - Failed to place instrument, put Scalpel where the Addson-Brown Forceps should have gone.","Log_3":"3:10 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Towel Clamps should have gone.","Log_4":"3:10 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:10 PM - Quitting now
+3:12 PM - Login START
+3:12 PM - Send login form
+3:12 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:12 PM - ID: 1431512390333
+3:12 PM - ID: 14315123913921
+3:12 PM - ID: 14315123922284
+3:12 PM - Exporting session, id 1431512390333
+3:12 PM - Just about to send request, 1431512390333
+3:12 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:12 PM - Session recorded, id 1431512390333
+3:12 PM - Reply{"Log_0":"3:12 PM - Session starts","Log_1":"3:12 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"3:12 PM - Correctly selected by name Scalpel","Log_3":"3:12 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"3:12 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"3:12 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:12 PM - Exporting session, id 14315123913921
+3:12 PM - Just about to send request, 14315123913921
+3:12 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:12 PM - Session recorded, id 14315123913921
+3:12 PM - Reply{"Log_0":"3:12 PM - Session starts","Log_1":"3:12 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"3:12 PM - Failed to select by purpose Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"3:12 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_4":"3:12 PM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"3:12 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:13 PM - Exporting session, id 14315123922284
+3:13 PM - Just about to send request, 14315123922284
+3:13 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:13 PM - Session recorded, id 14315123922284
+3:13 PM - Reply{"Log_0":"3:12 PM - Session starts","Log_1":"3:12 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"3:12 PM - Correctly placed Scalpel","Log_3":"3:13 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Towel Clamps should have gone.","Log_4":"3:13 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:13 PM - Just about to send request, 14315123922284
+3:13 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:13 PM - Session recorded, id 14315123922284
+3:13 PM - Reply{"Log_0":"3:12 PM - Session starts","Log_1":"3:12 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"3:12 PM - Correctly placed Scalpel","Log_3":"3:13 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Towel Clamps should have gone.","Log_4":"3:13 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:13 PM - Quitting now
