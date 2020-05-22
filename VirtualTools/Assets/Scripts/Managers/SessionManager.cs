@@ -250,7 +250,7 @@ public class SessionManager : MonoBehaviour
                             Player.Instance.ResetItemAndPlayerToFree();
                             Player.Instance.FreezePlayer(false);
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-                            m_currentSession.sessionResults.retries++;
+                            m_currentSession.sessionResults.errors++;
                             if (!m_currentSession.NextTask())
                                 CompleteCurrentSession();
 
@@ -262,7 +262,7 @@ public class SessionManager : MonoBehaviour
                             Player.Instance.ResetItemAndPlayerToFree();
                             Player.Instance.FreezePlayer(false);
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-                            m_currentSession.sessionResults.retries++;
+                            m_currentSession.sessionResults.errors++;
                             if (!m_currentSession.NextTask())
                                 CompleteCurrentSession();
                         });
@@ -303,7 +303,7 @@ public class SessionManager : MonoBehaviour
                 if (!GameManager.Instance.IsAssessmentMode())
                     GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Wrong placement");
 
-                m_currentSession.sessionResults.retries++;
+                m_currentSession.sessionResults.errors++;
             }
 
            
@@ -425,7 +425,7 @@ public class SessionManager : MonoBehaviour
             obj.AddField("EndTime", s.sessionResults.endTime.ToShortTimeString() + " (Incomplete)");
         }
 
-        obj.AddField("Retries", s.sessionResults.retries);
+        obj.AddField("Retries", s.sessionResults.errors);
         obj.AddField("IsAssessed", s.sessionResults.isAssessed);
 
 

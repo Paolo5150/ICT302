@@ -9,7 +9,7 @@ public class SessionResults
     public DateTime startTime;
     public DateTime endTime;
     public DateTime date;
-    public int retries;
+    public int errors;
     public bool completed = false;
     public List<string> logs;
     public bool isAssessed = false;

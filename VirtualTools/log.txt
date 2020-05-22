@@ -2482,3 +2482,22 @@ Stack trace:
 3:13 PM - Session recorded, id 14315123922284
 3:13 PM - Reply{"Log_0":"3:12 PM - Session starts","Log_1":"3:12 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"3:12 PM - Correctly placed Scalpel","Log_3":"3:13 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Towel Clamps should have gone.","Log_4":"3:13 PM - Session ends"}{"Data":{},"Status":"ok"}
 3:13 PM - Quitting now
+3:23 PM - Login START
+3:23 PM - Send login form
+3:23 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:25 PM - Login START
+3:25 PM - Send login form
+3:25 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:25 PM - ID: 14315251902720
+3:25 PM - ID: 14315251916308
+3:25 PM - ID: 14315251926308
+3:25 PM - Exporting session, id 14315251902720
+3:25 PM - Just about to send request, 14315251902720
+3:25 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:25 PM - Session recorded, id 14315251902720
+3:25 PM - Reply{"Log_0":"3:25 PM - Session starts","Log_1":"3:25 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"3:25 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"3:25 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"3:25 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"3:25 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:25 PM - Just about to send request, 14315251902720
+3:25 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+3:25 PM - Session recorded, id 14315251902720
+3:25 PM - Reply{"Log_0":"3:25 PM - Session starts","Log_1":"3:25 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"3:25 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"3:25 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"3:25 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"3:25 PM - Session ends"}{"Data":{},"Status":"ok"}
+3:25 PM - Quitting now
