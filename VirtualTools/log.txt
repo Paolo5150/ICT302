@@ -2358,3 +2358,24 @@ Stack trace:
 5:17 PM - Login START
 5:17 PM - Send login form
 5:17 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+2:59 PM - Login START
+2:59 PM - Send login form
+2:59 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+2:59 PM - Network error Cannot connect to destination host
+2:59 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 1
+2:59 PM - Network error Cannot connect to destination host
+2:59 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 2
+2:59 PM - Network error Cannot connect to destination host
+2:59 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 3
+2:59 PM - Network error Cannot connect to destination host
+2:59 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 4
+2:59 PM - Network error Cannot connect to destination host
+2:59 PM - Finished send form coroutine
+2:59 PM - Send login form
+2:59 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:00 PM - Login START
+3:00 PM - Send login form
+3:00 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+3:00 PM - ID: 1431502305735
+3:00 PM - ID: 1431502314099
+3:00 PM - ID: 1431502324099

@@ -134,11 +134,7 @@ public class GameManager : MonoBehaviour
             InstrumentLocManager.Instance.PlaceInstrumentsInOrder(allTags);
         }
 
-        if (PlayerPrefs.HasKey("AssessmentMode"))
-        {
-            assessmentMode = PlayerPrefs.GetInt("AssessmentMode") == 1;
-        }
-        //assessmentMode = false;
+        assessmentMode = PlayerPrefs.GetInt("AssessmentMode", 0) == 1;
 
         //If assessment mode, do not allow screen selection
         if (assessmentMode)
