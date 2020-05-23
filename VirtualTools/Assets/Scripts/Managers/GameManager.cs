@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public string MockStudentNumber; //TODO: remove this
     private bool m_isQuitting = false; //Used when the user presses the cancel axis to mimic GetButtonDown
     private bool assessmentMode;
+    public bool WillShowTutorials { set; get; }
+
     public static GameManager Instance
     {
         get
@@ -135,24 +137,37 @@ public class GameManager : MonoBehaviour
         }
 
         assessmentMode = PlayerPrefs.GetInt("AssessmentMode", 0) == 1;
+        GUIManager.Instance.GetMainCanvas().SetSceneSelectionGUIOn(false);
+        GUIManager.Instance.GetMainCanvas().SetShowTutorialsPanelOn(true);
+       
+    }
 
+    public void SetTurorialFlags(bool show)
+    {
+        WillShowTutorials = show;
+        Player.Instance.SetTutorialsFlags(!show);
+    }
+
+    public void ShowTutorialsCallback(bool show)
+    {
+        GUIManager.Instance.GetMainCanvas().SetShowTutorialsPanelOn(false);
+        SetTurorialFlags(show);
         //If assessment mode, do not allow screen selection
         if (assessmentMode)
         {
-            GUIManager.Instance.GetMainCanvas().HideSceneSelectionGUI();
-
             //Read which mode they will be assessed on
             SessionManager.Instance.GenerateSelectByNameSession();
             SessionManager.Instance.GenerateSelectByPurposeSession();
             SessionManager.Instance.GenerateSelectInstrumentPositionSession();
 
             SessionManager.Instance.StartSessionSequence();
+        }
+        else
+        {
+            GUIManager.Instance.GetMainCanvas().SetSceneSelectionGUIOn(true);
 
         }
-
-
     }
-
     // Update is called once per frame
     void Update()
     {

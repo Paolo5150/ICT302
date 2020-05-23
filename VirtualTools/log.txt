@@ -2501,3 +2501,590 @@ Stack trace:
 3:25 PM - Session recorded, id 14315251902720
 3:25 PM - Reply{"Log_0":"3:25 PM - Session starts","Log_1":"3:25 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"3:25 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"3:25 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"3:25 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"3:25 PM - Session ends"}{"Data":{},"Status":"ok"}
 3:25 PM - Quitting now
+6:01 PM - Login START
+6:01 PM - Send login form
+6:01 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:01 PM - ID: 1431812608487
+6:01 PM - ID: 1431812618487
+6:01 PM - ID: 1431812622075
+6:01 PM - Exporting session, id 1431812608487
+6:01 PM - Just about to send request, 1431812608487
+6:01 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:01 PM - Session recorded, id 1431812608487
+6:01 PM - Reply{"Log_0":"6:01 PM - Session starts","Log_1":"6:01 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"6:01 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"6:01 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"6:01 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"6:01 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:01 PM - Exporting session, id 1431812618487
+6:01 PM - Just about to send request, 1431812618487
+6:01 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:01 PM - Session recorded, id 1431812618487
+6:01 PM - Reply{"Log_0":"6:01 PM - Session starts","Log_1":"6:01 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_2":"6:01 PM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:01 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_4":"6:01 PM - Failed to select by purpose Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:01 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:02 PM - Login START
+6:02 PM - Send login form
+6:02 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:02 PM - ID: 1431825203036
+6:02 PM - ID: 1431825216624
+6:02 PM - ID: 1431825226624
+6:03 PM - Exporting session, id 1431825203036
+6:03 PM - Just about to send request, 1431825203036
+6:03 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:03 PM - Session recorded, id 1431825203036
+6:03 PM - Reply{"Log_0":"6:02 PM - Session starts","Log_1":"6:02 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"6:02 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:02 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"6:03 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:03 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:03 PM - Exporting session, id 1431825216624
+6:03 PM - Just about to send request, 1431825216624
+6:03 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:03 PM - Session recorded, id 1431825216624
+6:03 PM - Reply{"Log_0":"6:03 PM - Session starts","Log_1":"6:03 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_2":"6:03 PM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:03 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_4":"6:03 PM - Failed to select by purpose Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:03 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:03 PM - Login START
+6:04 PM - Send login form
+6:04 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:04 PM - ID: 143184408880
+6:04 PM - ID: 143184412468
+6:04 PM - ID: 143184422468
+6:04 PM - Exporting session, id 143184408880
+6:04 PM - Just about to send request, 143184408880
+6:04 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:04 PM - Session recorded, id 143184408880
+6:04 PM - Reply{"Log_0":"6:04 PM - Session starts","Log_1":"6:04 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"6:04 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:04 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"6:04 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:04 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:04 PM - Exporting session, id 143184412468
+6:04 PM - Just about to send request, 143184412468
+6:04 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:04 PM - Session recorded, id 143184412468
+6:04 PM - Reply{"Log_0":"6:04 PM - Session starts","Log_1":"6:04 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_2":"6:04 PM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:04 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_4":"6:04 PM - Failed to select by purpose Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:04 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:05 PM - Login START
+6:05 PM - Send login form
+6:05 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:05 PM - ID: 1431852209720
+6:05 PM - ID: 1431852213308
+6:05 PM - ID: 1431852323308
+6:05 PM - Exporting session, id 1431852209720
+6:05 PM - Just about to send request, 1431852209720
+6:05 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:05 PM - Session recorded, id 1431852209720
+6:05 PM - Reply{"Log_0":"6:05 PM - Session starts","Log_1":"6:05 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"6:05 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:05 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"6:05 PM - Correctly selected by name Scalpel","Log_5":"6:05 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:05 PM - Exporting session, id 1431852213308
+6:05 PM - Just about to send request, 1431852213308
+6:05 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:05 PM - Session recorded, id 1431852213308
+6:05 PM - Reply{"Log_0":"6:05 PM - Session starts","Log_1":"6:05 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"6:05 PM - Correctly selected by purpose Scalpel","Log_3":"6:05 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_4":"6:05 PM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"6:05 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:05 PM - Exporting session, id 1431852323308
+6:05 PM - Just about to send request, 1431852323308
+6:05 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:05 PM - Session recorded, id 1431852323308
+6:05 PM - Reply{"Log_0":"6:05 PM - Session starts","Log_1":"6:05 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:05 PM - Failed to place instrument, put Scalpel where the Metzembaum Scissor should have gone.","Log_3":"6:05 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Addson-Brown Forceps should have gone.","Log_4":"6:05 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:06 PM - Login START
+6:07 PM - Send login form
+6:07 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:07 PM - ID: 143187205591
+6:07 PM - ID: 143187219179
+6:07 PM - ID: 143187229179
+6:07 PM - Login START
+6:07 PM - Send login form
+6:07 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:07 PM - ID: 1431873804102
+6:08 PM - Exporting session, id 1431873804102
+6:08 PM - Just about to send request, 1431873804102
+6:08 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:08 PM - Session recorded, id 1431873804102
+6:08 PM - Reply{"Log_0":"6:07 PM - Session starts","Log_1":"6:07 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"6:07 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Addson-Brown Forceps should have gone.","Log_3":"6:07 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Metzembaum Scissor should have gone.","Log_4":"6:07 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Mayo Scissor should have gone.","Log_5":"6:07 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Suture Scissor should have gone.","Log_6":"6:07 PM - Failed to place instrument, put Rochester Carmalt Forceps where the Mayo Hegar Needle Driver should have gone.","Log_7":"6:07 PM - Correctly placed Rochester Carmalt Forceps","Log_8":"6:08 PM - Correctly placed Scalpel","Log_9":"6:08 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:10 PM - Login START
+6:10 PM - Send login form
+6:10 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:10 PM - ID: 14318105308067
+6:10 PM - ID: 14318105311655
+6:10 PM - ID: 143181053219
+6:11 PM - Exporting session, id 14318105308067
+6:11 PM - Just about to send request, 14318105308067
+6:11 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:11 PM - Session recorded, id 14318105308067
+6:11 PM - Reply{"Log_0":"6:10 PM - Session starts","Log_1":"6:10 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"6:11 PM - Correctly selected by name Scalpel","Log_3":"6:11 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"6:11 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"6:11 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:11 PM - Exporting session, id 14318105311655
+6:11 PM - Just about to send request, 14318105311655
+6:11 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:11 PM - Session recorded, id 14318105311655
+6:11 PM - Reply{"Log_0":"6:11 PM - Session starts","Log_1":"6:11 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_2":"6:11 PM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:11 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_4":"6:11 PM - Failed to select by purpose Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:11 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:25 PM - Login START
+6:25 PM - Send login form
+6:25 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:25 PM - ID: 1431825806313
+6:25 PM - ID: 1431825816313
+6:25 PM - ID: 1431825829901
+6:25 PM - Exporting session, id 1431825806313
+6:25 PM - Just about to send request, 1431825806313
+6:25 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:25 PM - Session recorded, id 1431825806313
+6:25 PM - Reply{"Log_0":"6:25 PM - Session starts","Log_1":"6:25 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"6:25 PM - Correctly selected by name Scalpel","Log_3":"6:25 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"6:25 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"6:25 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:25 PM - Exporting session, id 1431825816313
+6:25 PM - Just about to send request, 1431825816313
+6:25 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:25 PM - Session recorded, id 1431825816313
+6:25 PM - Reply{"Log_0":"6:25 PM - Session starts","Log_1":"6:25 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_2":"6:25 PM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:25 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_4":"6:25 PM - Failed to select by purpose Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:25 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:29 PM - Login START
+6:29 PM - Send login form
+6:29 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:30 PM - Login START
+6:30 PM - Send login form
+6:30 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:30 PM - ID: 14318303107221
+6:30 PM - ID: 14318303115585
+6:30 PM - ID: 14318303129173
+6:31 PM - Login START
+6:31 PM - Send login form
+6:31 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:31 PM - ID: 1431831906856
+6:31 PM - ID: 143183191444
+6:31 PM - ID: 1431831928807
+6:35 PM - Login START
+6:35 PM - Send login form
+6:35 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:36 PM - ID: 1431836204280
+6:36 PM - ID: 1431836217868
+6:36 PM - ID: 1431836227868
+6:36 PM - Exporting session, id 1431836204280
+6:36 PM - Just about to send request, 1431836204280
+6:36 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:36 PM - Session recorded, id 1431836204280
+6:36 PM - Reply{"Log_0":"6:36 PM - Session starts","Log_1":"6:36 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"6:36 PM - Correctly selected by name Scalpel","Log_3":"6:36 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"6:36 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"6:36 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:39 PM - Login START
+6:39 PM - Send login form
+6:39 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:40 PM - ID: 1431840007608
+6:40 PM - ID: 1431840011196
+6:40 PM - ID: 1431840029559
+6:40 PM - Exporting session, id 1431840007608
+6:40 PM - Just about to send request, 1431840007608
+6:40 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:40 PM - Session recorded, id 1431840007608
+6:40 PM - Reply{"Log_0":"6:40 PM - Session starts","Log_1":"6:40 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"6:40 PM - Correctly selected by name Scalpel","Log_3":"6:40 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"6:40 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"6:40 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:44 PM - Login START
+6:44 PM - Send login form
+6:44 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:44 PM - ID: 14318443204288
+6:44 PM - ID: 14318443212652
+6:44 PM - ID: 14318443222652
+6:44 PM - Exporting session, id 14318443204288
+6:44 PM - Just about to send request, 14318443204288
+6:44 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:44 PM - Session recorded, id 14318443204288
+6:44 PM - Reply{"Log_0":"6:44 PM - Session starts","Log_1":"6:44 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"6:44 PM - Correctly selected by name Scalpel","Log_3":"6:44 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"6:44 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"6:44 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:46 PM - Login START
+6:46 PM - Send login form
+6:46 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:46 PM - ID: 14318465908420
+6:46 PM - ID: 14318465918420
+6:46 PM - ID: 14318465926784
+6:47 PM - Exporting session, id 14318465908420
+6:47 PM - Just about to send request, 14318465908420
+6:47 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:47 PM - Session recorded, id 14318465908420
+6:47 PM - Reply{"Log_0":"6:47 PM - Session starts","Log_1":"6:47 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"6:47 PM - Correctly selected by name Scalpel","Log_3":"6:47 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"6:47 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"6:47 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:49 PM - Login START
+6:49 PM - Send login form
+6:49 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:49 PM - ID: 14318491503816
+6:49 PM - ID: 14318491512180
+6:49 PM - ID: 14318491522180
+6:49 PM - Exporting session, id 14318491503816
+6:49 PM - Just about to send request, 14318491503816
+6:49 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:49 PM - Session recorded, id 14318491503816
+6:49 PM - Reply{"Log_0":"6:49 PM - Session starts","Log_1":"6:49 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"6:49 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:49 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"6:49 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:49 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:49 PM - Exporting session, id 14318491512180
+6:49 PM - Just about to send request, 14318491512180
+6:49 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:49 PM - Session recorded, id 14318491512180
+6:49 PM - Reply{"Log_0":"6:49 PM - Session starts","Log_1":"6:49 PM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"6:49 PM - Correctly selected by purpose Scalpel","Log_3":"6:49 PM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_4":"6:49 PM - Correctly selected by purpose Rochester Carmalt Forceps","Log_5":"6:49 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:50 PM - Login START
+6:50 PM - Send login form
+6:50 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:50 PM - ID: 14318505904016
+6:50 PM - ID: 14318505914016
+6:50 PM - ID: 14318505922380
+6:51 PM - Login START
+6:51 PM - Send login form
+6:51 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:51 PM - ID: 14318512406375
+6:51 PM - ID: 14318512419963
+6:51 PM - ID: 14318512423551
+6:51 PM - Exporting session, id 14318512406375
+6:51 PM - Just about to send request, 14318512406375
+6:51 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:51 PM - Session recorded, id 14318512406375
+6:51 PM - Reply{"Log_0":"6:51 PM - Session starts","Log_1":"6:51 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"6:51 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:51 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"6:51 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:51 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:53 PM - Login START
+6:53 PM - Send login form
+6:53 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:53 PM - ID: 14318533103492
+6:53 PM - ID: 14318533119032
+6:53 PM - ID: 14318533122620
+6:54 PM - Login START
+6:54 PM - Send login form
+6:54 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:54 PM - ID: 14318543502313
+6:54 PM - ID: 14318543515901
+6:54 PM - ID: 14318543525901
+6:55 PM - Exporting session, id 14318543502313
+6:55 PM - Just about to send request, 14318543502313
+6:55 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:55 PM - Session recorded, id 14318543502313
+6:55 PM - Reply{"Log_0":"6:54 PM - Session starts","Log_1":"6:54 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"6:55 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"6:55 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"6:55 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"6:55 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:55 PM - Just about to send request, 14318543502313
+6:55 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:55 PM - Session recorded, id 14318543502313
+6:55 PM - Reply{"Log_0":"6:54 PM - Session starts","Log_1":"6:54 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"6:55 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"6:55 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"6:55 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"6:55 PM - Session ends"}{"Data":{},"Status":"ok"}
+6:55 PM - Quitting now
+6:56 PM - Login START
+6:56 PM - Send login form
+6:56 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+6:56 PM - ID: 14318564608777
+6:56 PM - ID: 14318564618777
+6:56 PM - ID: 14318564622365
+6:57 PM - Exporting session, id 14318564608777
+6:57 PM - Just about to send request, 14318564608777
+6:57 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+6:57 PM - Session recorded, id 14318564608777
+6:57 PM - Reply{"Log_0":"6:56 PM - Session starts","Log_1":"6:56 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"6:57 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"6:57 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"6:57 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"6:57 PM - Session ends"}{"Data":{},"Status":"ok"}
+7:01 PM - Login START
+7:01 PM - Send login form
+7:01 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:01 PM - ID: 1431912006297
+7:01 PM - ID: 1431912014661
+7:01 PM - ID: 1431912024661
+7:01 PM - Exporting session, id 1431912006297
+7:01 PM - Just about to send request, 1431912006297
+7:01 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+7:01 PM - Session recorded, id 1431912006297
+7:01 PM - Reply{"Log_0":"7:01 PM - Session starts","Log_1":"7:01 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"7:01 PM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"7:01 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"7:01 PM - Correctly selected by name Scalpel","Log_5":"7:01 PM - Session ends"}{"Data":{},"Status":"ok"}
+7:03 PM - ID: 1431933805531
+7:03 PM - ID: 1431933819119
+7:03 PM - ID: 1431933827483
+7:03 PM - Login START
+7:03 PM - Send login form
+7:03 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:03 PM - ID: 1431935903070
+7:04 PM - Exporting session, id 1431935903070
+7:04 PM - Just about to send request, 1431935903070
+7:04 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+7:04 PM - Session recorded, id 1431935903070
+7:04 PM - Reply{"Log_0":"7:04 PM - Session starts","Log_1":"7:04 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"7:04 PM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"7:04 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"7:04 PM - Correctly selected by name Scalpel","Log_5":"7:04 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_6":"7:04 PM - Correctly selected by name Rochester Carmalt Forceps","Log_7":"7:04 PM - Session ends"}{"Data":{},"Status":"ok"}
+7:36 PM - Login START
+7:36 PM - Send login form
+7:36 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+7:36 PM - ID: 14319363801562
+7:36 PM - Just about to send request, 14319363801562
+7:36 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+7:36 PM - Session recorded, id 14319363801562
+7:36 PM - Reply{"Log_0":"7:36 PM - Session starts","Log_1":"7:36 PM - New task: position the instruments for a <b><u>Spay dog<\/u><\/b>","Log_2":"7:36 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+7:36 PM - Quitting now
+10:05 AM - Login START
+10:05 AM - Send login form
+10:05 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:12 AM - Login START
+10:12 AM - Send login form
+10:12 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:16 AM - Login START
+10:16 AM - Send login form
+10:16 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:16 AM - ID: 14410162204768
+10:18 AM - Login START
+10:18 AM - Send login form
+10:18 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:18 AM - ID: 14410181908798
+10:19 AM - Login START
+10:19 AM - Send login form
+10:19 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:19 AM - ID: 14410194609901
+10:21 AM - Login START
+10:21 AM - Send login form
+10:21 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:21 AM - ID: 1441021260232
+10:22 AM - Login START
+10:22 AM - Send login form
+10:22 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:22 AM - ID: 14410222205866
+10:22 AM - Login START
+10:22 AM - Send login form
+10:22 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:22 AM - ID: 14410225901662
+10:22 AM - ID: 14410225913614
+10:22 AM - ID: 1441022592790
+10:23 AM - Exporting session, id 14410225901662
+10:23 AM - Just about to send request, 14410225901662
+10:23 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:23 AM - Session recorded, id 14410225901662
+10:23 AM - Reply{"Log_0":"10:23 AM - Session starts","Log_1":"10:23 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"10:23 AM - Correctly selected by name Scalpel","Log_3":"10:23 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"10:23 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"10:23 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:24 AM - Login START
+10:24 AM - Send login form
+10:24 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:25 AM - ID: 14410251106109
+10:25 AM - ID: 14410251119697
+10:25 AM - ID: 14410251129697
+10:25 AM - Exporting session, id 14410251106109
+10:25 AM - Just about to send request, 14410251106109
+10:25 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:25 AM - Session recorded, id 14410251106109
+10:25 AM - Reply{"Log_0":"10:25 AM - Session starts","Log_1":"10:25 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"10:25 AM - Correctly selected by name Rochester Carmalt Forceps","Log_3":"10:25 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"10:25 AM - Correctly selected by name Scalpel","Log_5":"10:25 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:28 AM - Login START
+10:28 AM - Send login form
+10:28 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:28 AM - ID: 14410283601383
+10:28 AM - ID: 14410283614971
+10:28 AM - ID: 14410283628559
+10:28 AM - Exporting session, id 14410283601383
+10:28 AM - Just about to send request, 14410283601383
+10:28 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:28 AM - Session recorded, id 14410283601383
+10:28 AM - Reply{"Log_0":"10:28 AM - Session starts","Log_1":"10:28 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"10:28 AM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"10:28 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"10:28 AM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"10:28 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:30 AM - Login START
+10:30 AM - Send login form
+10:30 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:30 AM - ID: 1441030140351
+10:30 AM - ID: 14410301413939
+10:30 AM - ID: 14410301423939
+10:30 AM - Exporting session, id 1441030140351
+10:30 AM - Just about to send request, 1441030140351
+10:30 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:30 AM - Session recorded, id 1441030140351
+10:30 AM - Reply{"Log_0":"10:30 AM - Session starts","Log_1":"10:30 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"10:30 AM - Correctly selected by name Scalpel","Log_3":"10:30 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"10:30 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"10:30 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:31 AM - Login START
+10:31 AM - Send login form
+10:31 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:31 AM - ID: 14410311205430
+10:31 AM - ID: 14410311219018
+10:31 AM - ID: 14410311227382
+10:31 AM - Exporting session, id 14410311205430
+10:31 AM - Just about to send request, 14410311205430
+10:31 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:31 AM - Session recorded, id 14410311205430
+10:31 AM - Reply{"Log_0":"10:31 AM - Session starts","Log_1":"10:31 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"10:31 AM - Correctly selected by name Scalpel","Log_3":"10:31 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"10:31 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"10:31 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:32 AM - Login START
+10:32 AM - Send login form
+10:32 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:32 AM - ID: 14410321606901
+10:32 AM - ID: 14410321615264
+10:32 AM - ID: 14410321728852
+10:32 AM - Exporting session, id 14410321606901
+10:32 AM - Just about to send request, 14410321606901
+10:32 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:32 AM - Session recorded, id 14410321606901
+10:32 AM - Reply{"Log_0":"10:32 AM - Session starts","Log_1":"10:32 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"10:32 AM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"10:32 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"10:32 AM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"10:32 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:34 AM - Login START
+10:34 AM - Send login form
+10:34 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:34 AM - ID: 14410342703887
+10:34 AM - ID: 14410342717475
+10:34 AM - ID: 14410342727475
+10:34 AM - Exporting session, id 14410342703887
+10:34 AM - Just about to send request, 14410342703887
+10:34 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:34 AM - Session recorded, id 14410342703887
+10:34 AM - Reply{"Log_0":"10:34 AM - Session starts","Log_1":"10:34 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"10:34 AM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"10:34 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"10:34 AM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"10:34 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:35 AM - Login START
+10:36 AM - Send login form
+10:36 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:36 AM - ID: 1441036307172
+10:36 AM - ID: 144103631761
+10:36 AM - ID: 1441036324349
+10:37 AM - Login START
+10:37 AM - Send login form
+10:37 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:37 AM - ID: 14410371305416
+10:37 AM - ID: 14410371319004
+10:37 AM - ID: 14410371322592
+10:37 AM - Exporting session, id 14410371305416
+10:37 AM - Just about to send request, 14410371305416
+10:37 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:37 AM - Session recorded, id 14410371305416
+10:37 AM - Reply{"Log_0":"10:37 AM - Session starts","Log_1":"10:37 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"10:37 AM - Correctly selected by name Scalpel","Log_3":"10:37 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"10:37 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"10:37 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:39 AM - Login START
+10:39 AM - Send login form
+10:39 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:39 AM - ID: 14410395908995
+10:39 AM - ID: 14410395917359
+10:39 AM - ID: 1441039592947
+10:40 AM - Exporting session, id 14410395908995
+10:40 AM - Just about to send request, 14410395908995
+10:40 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:40 AM - Session recorded, id 14410395908995
+10:40 AM - Reply{"Log_0":"10:39 AM - Session starts","Log_1":"10:40 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"10:40 AM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"10:40 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"10:40 AM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_5":"10:40 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:40 AM - Login START
+10:40 AM - Send login form
+10:40 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:40 AM - ID: 14410405209886
+10:40 AM - ID: 14410405313474
+10:40 AM - ID: 14410405327062
+10:40 AM - Exporting session, id 14410405209886
+10:40 AM - Just about to send request, 14410405209886
+10:40 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:40 AM - Session recorded, id 14410405209886
+10:40 AM - Reply{"Log_0":"10:40 AM - Session starts","Log_1":"10:40 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"10:40 AM - Correctly selected by name Scalpel","Log_3":"10:40 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"10:40 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"10:40 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:41 AM - Login START
+10:41 AM - Send login form
+10:41 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:41 AM - ID: 14410411605549
+10:41 AM - ID: 14410411719137
+10:41 AM - ID: 14410411727501
+10:41 AM - Exporting session, id 14410411605549
+10:41 AM - Just about to send request, 14410411605549
+10:41 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+10:41 AM - Session recorded, id 14410411605549
+10:41 AM - Reply{"Log_0":"10:41 AM - Session starts","Log_1":"10:41 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"10:41 AM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"10:41 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"10:41 AM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"10:41 AM - Session ends"}{"Data":{},"Status":"ok"}
+10:42 AM - Login START
+10:42 AM - Send login form
+10:42 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:42 AM - ID: 14410422507413
+10:42 AM - ID: 14410422511001
+10:42 AM - ID: 14410422521001
+10:44 AM - Login START
+10:44 AM - Send login form
+10:44 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:44 AM - ID: 1441044350877
+10:44 AM - ID: 14410443519241
+10:44 AM - ID: 14410443522829
+10:45 AM - Login START
+10:45 AM - Send login form
+10:45 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:45 AM - ID: 14410454308455
+10:45 AM - ID: 14410454312043
+10:45 AM - ID: 14410454322043
+10:47 AM - Login START
+10:47 AM - Send login form
+10:47 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:48 AM - ID: 14410481209349
+10:48 AM - ID: 14410481211301
+10:48 AM - ID: 14410481221301
+10:52 AM - Login START
+10:52 AM - Send login form
+10:52 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:52 AM - ID: 14410525801288
+10:52 AM - ID: 14410525813239
+10:52 AM - ID: 14410525821603
+10:53 AM - Login START
+10:53 AM - Send login form
+10:53 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+10:53 AM - ID: 14410534007935
+10:53 AM - ID: 14410534019887
+10:53 AM - ID: 14410534129887
+10:55 AM - ID: 14410552806543
+10:55 AM - ID: 1441055281131
+10:55 AM - ID: 14410552823719
+10:57 AM - ID: 14410573401392
+10:57 AM - ID: 14410573414980
+10:57 AM - ID: 14410573423344
+10:58 AM - ID: 14410582302446
+10:58 AM - ID: 14410582316034
+10:58 AM - ID: 14410582329622
+11:02 AM - ID: 1441121502239
+11:02 AM - ID: 144112151603
+11:02 AM - ID: 144112152603
+11:04 AM - ID: 1441143802772
+11:04 AM - ID: 1441143816360
+11:04 AM - ID: 1441143824724
+11:20 AM - Login START
+11:20 AM - Send login form
+11:20 AM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+11:21 AM - ID: 1441121007929
+11:21 AM - ID: 1441121016293
+11:21 AM - ID: 1441121029881
+11:22 AM - ID: 14411221108822
+11:22 AM - ID: 14411221112411
+11:22 AM - ID: 1441122112774
+11:22 AM - Exporting session, id 14411221108822
+11:22 AM - Just about to send request, 14411221108822
+11:22 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:22 AM - Session recorded, id 14411221108822
+11:22 AM - Reply{"Log_0":"11:22 AM - Session starts","Log_1":"11:22 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"11:22 AM - Correctly selected by name Scalpel","Log_3":"11:22 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"11:22 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"11:22 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:22 AM - ID: 14411224603189
+11:22 AM - ID: 14411224616777
+11:22 AM - ID: 14411224626777
+11:22 AM - Exporting session, id 14411224603189
+11:22 AM - Just about to send request, 14411224603189
+11:22 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:22 AM - Session recorded, id 14411224603189
+11:22 AM - Reply{"Log_0":"11:22 AM - Session starts","Log_1":"11:22 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"11:22 AM - Correctly selected by name Scalpel","Log_3":"11:22 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"11:22 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"11:22 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:23 AM - ID: 14411233903655
+11:23 AM - ID: 14411233915607
+11:23 AM - ID: 14411233925607
+11:23 AM - Exporting session, id 14411233903655
+11:23 AM - Just about to send request, 14411233903655
+11:23 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:23 AM - Session recorded, id 14411233903655
+11:23 AM - Reply{"Log_0":"11:23 AM - Session starts","Log_1":"11:23 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"11:23 AM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"11:23 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"11:23 AM - Correctly selected by name Scalpel","Log_5":"11:23 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:24 AM - ID: 1441124410905
+11:24 AM - ID: 14411244112857
+11:24 AM - ID: 14411244122857
+11:24 AM - Exporting session, id 1441124410905
+11:24 AM - Just about to send request, 1441124410905
+11:24 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:24 AM - Session recorded, id 1441124410905
+11:24 AM - Reply{"Log_0":"11:24 AM - Session starts","Log_1":"11:24 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"11:24 AM - Correctly selected by name Scalpel","Log_3":"11:24 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"11:24 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"11:24 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:26 AM - ID: 14411261909698
+11:26 AM - ID: 14411261911650
+11:26 AM - ID: 14411261921650
+11:26 AM - Exporting session, id 14411261909698
+11:26 AM - Just about to send request, 14411261909698
+11:26 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:26 AM - Session recorded, id 14411261909698
+11:26 AM - Reply{"Log_0":"11:26 AM - Session starts","Log_1":"11:26 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"11:26 AM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"11:26 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"11:26 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"11:26 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:26 AM - ID: 14411265304305
+11:26 AM - ID: 14411265312669
+11:26 AM - ID: 14411265326257
+11:26 AM - Exporting session, id 14411265304305
+11:26 AM - Just about to send request, 14411265304305
+11:26 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:26 AM - Session recorded, id 14411265304305
+11:26 AM - Reply{"Log_0":"11:26 AM - Session starts","Log_1":"11:26 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"11:26 AM - Correctly selected by name Scalpel","Log_3":"11:26 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"11:26 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"11:26 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:28 AM - ID: 14411282104612
+11:28 AM - ID: 14411282118200
+11:28 AM - ID: 14411282128200
+11:28 AM - Exporting session, id 14411282104612
+11:28 AM - Just about to send request, 14411282104612
+11:28 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:28 AM - Session recorded, id 14411282104612
+11:28 AM - Reply{"Log_0":"11:28 AM - Session starts","Log_1":"11:28 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"11:28 AM - Failed to select by name Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"11:28 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"11:28 AM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"11:28 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:34 AM - ID: 14411341404367
+11:34 AM - ID: 14411341417955
+11:34 AM - ID: 14411341426319
+11:34 AM - Exporting session, id 14411341404367
+11:34 AM - Just about to send request, 14411341404367
+11:34 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:34 AM - Session recorded, id 14411341404367
+11:34 AM - Reply{"Log_0":"11:34 AM - Session starts","Log_1":"11:34 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"11:34 AM - Correctly selected by name Rochester Carmalt Forceps","Log_3":"11:34 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"11:34 AM - Correctly selected by name Scalpel","Log_5":"11:34 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:34 AM - ID: 14411344808974
+11:34 AM - ID: 14411344812562
+11:34 AM - ID: 1441134482926
+11:34 AM - Exporting session, id 14411344808974
+11:34 AM - Just about to send request, 14411344808974
+11:34 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:34 AM - Session recorded, id 14411344808974
+11:34 AM - Reply{"Log_0":"11:34 AM - Session starts","Log_1":"11:34 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"11:34 AM - Correctly selected by name Rochester Carmalt Forceps","Log_3":"11:34 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"11:34 AM - Correctly selected by name Scalpel","Log_5":"11:34 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:35 AM - ID: 14411353901250
+11:35 AM - ID: 14411353914838
+11:35 AM - ID: 14411353928426
+11:35 AM - ID: 14411355006082
+11:35 AM - ID: 14411355019670
+11:35 AM - ID: 14411355028034
+11:36 AM - ID: 14411362004723
+11:36 AM - ID: 14411362018311
+11:36 AM - ID: 14411362021900
+11:36 AM - Exporting session, id 14411362004723
+11:36 AM - Just about to send request, 14411362004723
+11:36 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:36 AM - Session recorded, id 14411362004723
+11:36 AM - Reply{"Log_0":"11:36 AM - Session starts","Log_1":"11:36 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"11:36 AM - Correctly selected by name Scalpel","Log_3":"11:36 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"11:36 AM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"11:36 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:36 AM - Exporting session, id 14411362018311
+11:36 AM - Just about to send request, 14411362018311
+11:36 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:36 AM - Session recorded, id 14411362018311
+11:36 AM - Reply{"Log_0":"11:36 AM - Session starts","Log_1":"11:36 AM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"11:36 AM - Correctly selected by purpose Scalpel","Log_3":"11:36 AM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_4":"11:36 AM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"11:36 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:37 AM - ID: 14411372209673
+11:37 AM - ID: 14411372218037
+11:37 AM - ID: 14411372228037
+11:37 AM - Exporting session, id 14411372209673
+11:37 AM - Just about to send request, 14411372209673
+11:37 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:37 AM - Session recorded, id 14411372209673
+11:37 AM - Reply{"Log_0":"11:37 AM - Session starts","Log_1":"11:37 AM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"11:37 AM - Failed to select by name Rochester Carmalt Forceps. Selected: Scalpel","Log_3":"11:37 AM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_4":"11:37 AM - Correctly selected by name Scalpel","Log_5":"11:37 AM - Session ends"}{"Data":{},"Status":"ok"}
+11:37 AM - Exporting session, id 14411372218037
+11:37 AM - Just about to send request, 14411372218037
+11:37 AM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+11:37 AM - Session recorded, id 14411372218037
+11:37 AM - Reply{"Log_0":"11:37 AM - Session starts","Log_1":"11:37 AM - New task: pick up the best instrument for <b><u>Skin and abdominal incision, transection of ligated pedicles<\/u><\/b>","Log_2":"11:37 AM - Failed to select by purpose Scalpel. Selected: Rochester Carmalt Forceps","Log_3":"11:37 AM - New task: pick up the best instrument for <b><u>Crushing of vascular pedicles<\/u><\/b>","Log_4":"11:37 AM - Failed to select by purpose Rochester Carmalt Forceps. Selected: Scalpel","Log_5":"11:37 AM - Session ends"}{"Data":{},"Status":"ok"}

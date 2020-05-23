@@ -354,6 +354,7 @@ public class SessionManager : MonoBehaviour
     public void NextSession()
     {
         GUIManager.Instance.GetMainCanvas().HideResultPanel();
+        Player.Instance.SetTutorialsFlags(!GameManager.Instance.WillShowTutorials);
         int index = m_allSessions.IndexOf(m_currentSession);
 
         m_currentSession =  m_allSessions[index + 1];

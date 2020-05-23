@@ -20,11 +20,15 @@ public class Player : MonoBehaviour
     private FirstPersonController m_firstPersonController;
     private Instrument m_currentlyPointingInstrument;
     private InstrumentPositionTaskSlot m_currentlyPointingInstrumentPositionTaskSlot;
-    public bool m_pickingEnabled;
-    public bool m_viewingEnabled;
+    private bool m_pickingEnabled;
+    private bool m_viewingEnabled;
     private Instrument m_selectedInstrumentToPlace = null;
 
-    private Vector3 m_startingPosition = new Vector3(1.2f,1.5f,-5.2f);
+    private bool m_pointingTutorialShown;
+    private bool m_inspectTutorialShown;
+    private bool m_dropTutorialShown;
+
+    private Vector3 m_startingPosition;
     public Instrument SelectedInstrumentToPlace {
         get
         {
@@ -73,6 +77,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         // Initialization is done in Init(), called by the game manager
+        m_startingPosition = transform.position;
     }
 
     public void Init()
@@ -130,7 +135,11 @@ public class Player : MonoBehaviour
     public void ResetPosition()
     {
         transform.position = m_startingPosition;
-        transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.Euler(0,0,0);
+        transform.localRotation = Quaternion.Euler(0,0,0);
+        m_firstPersonController.m_MouseLook.m_CameraTargetRot = Quaternion.Euler(20, 0, 0);
+        m_firstPersonController.m_MouseLook.m_CharacterTargetRot = Quaternion.Euler(0, 0, 0);
+        m_firstPersonController.SendMessage("Update");
     }
 
     public void ShowEndMenu()
@@ -259,27 +268,16 @@ public class Player : MonoBehaviour
                 
             }
         }
-
-        // Put instrument back
-       /* if (Input.GetButtonDown("Fire2") )
-        {
-            StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
-            m_currentlyPointingInstrument.gameObject.transform.rotation = m_currentlyPointingInstrument.originalRotation;
-            SetPlayerMode(PlayerMode.PICKING);
-            m_currentlyPointingInstrument.GetComponent<Collider>().enabled = true;
-            SelectedInstrumentToPlace = null;
-
-        }*/
     }
 
     private void ViewMode()
     {
         if(m_currentlyPointingInstrument != null && m_viewingEnabled)
         {
-            int tutorial = PlayerPrefs.GetInt("ViewTutorial", 1);
-            if(tutorial == 1 && !GameManager.Instance.IsAssessmentMode())
+
+            if(!m_inspectTutorialShown && GameManager.Instance.WillShowTutorials)
             {
-                PlayerPrefs.SetInt("ViewTutorial", 0);
+                m_inspectTutorialShown = true;
                 FreezePlayer(true);
                 GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "You can now inspect the instrument",
@@ -320,9 +318,9 @@ public class Player : MonoBehaviour
                     InstrumentLocManager.Instance.MoveInstrumentToPlayer(SelectedInstrumentToPlace.gameObject, this.gameObject);
 
                     //Tutorial
-                    int dropTutorial = PlayerPrefs.GetInt("DropTutorial", 1);
-                    if (dropTutorial == 1 && !GameManager.Instance.IsAssessmentMode())
+                    if (!m_dropTutorialShown && GameManager.Instance.WillShowTutorials)
                     {
+                        m_dropTutorialShown = true;
                         PlayerPrefs.SetInt("DropTutorial", 0);
                         FreezePlayer(true);
                         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
@@ -384,11 +382,10 @@ public class Player : MonoBehaviour
             m_currentlyPointingInstrument = instrument;
 
             //Tutorial
-            int pointTutorial = PlayerPrefs.GetInt("PointTutorial", 1);
-            if(pointTutorial == 1 && !GameManager.Instance.IsAssessmentMode())
+
+            if(!m_pointingTutorialShown && GameManager.Instance.WillShowTutorials)
             {
-                
-                PlayerPrefs.SetInt("PointTutorial", 0);
+                m_pointingTutorialShown = true;
                 FreezePlayer(true);
                 GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "As you can see, the instrument has turned green!",
@@ -409,5 +406,12 @@ public class Player : MonoBehaviour
                 m_currentlyPointingInstrument = null;
             }
         }
+    }
+
+    public void SetTutorialsFlags(bool show)
+    {
+        m_dropTutorialShown = show;
+        m_inspectTutorialShown = show;
+        m_pointingTutorialShown = show;
     }
 }
