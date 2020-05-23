@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -9,7 +10,7 @@ public class SessionResults
     public DateTime startTime;
     public DateTime endTime;
     public DateTime date;
-    public int retries;
+    public int errors;
     public bool completed = false;
     public List<string> logs;
     public bool isAssessed = false;
@@ -123,35 +124,19 @@ public class SessionResults
 
     private void StartSession()
     {
-        Player.Instance.FreezePlayer(true);
         Player.Instance.ResetPosition();
+        //Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(GameManager.Instance.IsAssessmentMode());
+
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(instructions, () => {
 
-            if (GameManager.Instance.IsAssessmentMode())
-            {
-                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "This is an assessment." }, () => {
-                    GUIManager.Instance.GetMainCanvas().SetAssessmentModePanel(true);
+            m_currentTask = tasks[0];
+            sessionResults.startTime = DateTime.Now;
+            sessionResults.date = DateTime.Today;
+            sessionResults.Log_SessionStart();
+            m_isStarted = true;
 
-                    m_currentTask = tasks[0];
-                    sessionResults.startTime = DateTime.Now;
-                    sessionResults.date = DateTime.Today;
-                    sessionResults.Log_SessionStart();
-                    m_isStarted = true;
-
-                    StartCurrentTask();
-
-                });
-            }
-            else
-            {
-                m_currentTask = tasks[0];
-                sessionResults.startTime = DateTime.Now;
-                sessionResults.date = DateTime.Today;
-                sessionResults.Log_SessionStart();
-                m_isStarted = true;
-
-                StartCurrentTask();
-            }
+            StartCurrentTask();
         });
     }
 
@@ -159,27 +144,22 @@ public class SessionResults
     {
         if(!m_isStarted)
         {
-            int firstBoot = PlayerPrefs.GetInt("FirstBoot", 1);
-            if(firstBoot == 1 && !GameManager.Instance.IsAssessmentMode())
+            GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
+            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
+            if (GameManager.Instance.WillShowTutorials)
             {
-                PlayerPrefs.SetInt("FirstBoot", 0);
-                Player.Instance.FreezePlayer(true);
-                Player.Instance.ResetPosition();
-                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
-                    "Hi, I'm you assistant! Press the fire button to dismiss my messages.",
+
+                string[] newInst = new string[] {"Hi, I'm you assistant! Press the fire button to dismiss my messages.",
                     "Move the player using the keys WASD on your keyboard. Use the mouse to look around.",
                     "Use the fire button to interact with instruments, more control hints will appear as you go.",
-                    "The session will start now!"
-                }, () => {
+                    "The session will start now!" };
 
-                    StartSession();
-              
-                });
-            } 
-            else
-            {
-                StartSession();
+                newInst = newInst.Concat(instructions).ToArray();
+                instructions = newInst;
+
             }
+
+            StartSession();          
         }
     }
 
@@ -230,6 +210,7 @@ public class SessionResults
 
     private void StartCurrentTask()
     {
+
         m_currentTask.taskStatus = Task.STATUS.INSTRUCTING;
 
         bool isInstrumentPositionTask = m_currentTask is InstrumentPositionTask;
@@ -241,8 +222,11 @@ public class SessionResults
         }
 
         Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
+
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(m_currentTask.instructions.ToArray(), () => {
             Player.Instance.FreezePlayer(false);
+
             Player.Instance.SetPickingEnabled(true);
             m_currentTask.taskStatus = Task.STATUS.STARTED;
             sessionResults.endTime = DateTime.Now;
@@ -250,6 +234,8 @@ public class SessionResults
 
             //Keep first instruction on screen
             GUIManager.Instance.GetMainCanvas().DogSpeak(m_currentTask.instructions[0]);
+            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
+
 
         });
     }

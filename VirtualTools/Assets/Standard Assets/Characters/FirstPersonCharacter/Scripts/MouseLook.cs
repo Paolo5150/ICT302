@@ -16,8 +16,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float smoothTime = 5f;
 
 
-        private Quaternion m_CharacterTargetRot;
-        private Quaternion m_CameraTargetRot;
+        public Quaternion m_CharacterTargetRot;
+        public Quaternion m_CameraTargetRot;
 
 
         public void Init(Transform character, Transform camera)
@@ -25,7 +25,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_CharacterTargetRot = character.localRotation;
             m_CameraTargetRot = camera.localRotation;
         }
-
+          
 
         public void LookRotation(Transform character, Transform camera)
         {

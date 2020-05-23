@@ -21,6 +21,9 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_exitButton;
     private GameObject m_nextSessionButton;
     private GameObject m_resumeButton;
+    private GameObject m_showTutorialsPanel;
+    private GameObject m_tutorialToggle;
+    private GameObject m_pauseIcon;
 
 	
     private GameObject m_results;
@@ -43,6 +46,10 @@ public class MainCanvas : MonoBehaviour
         m_escapeMenu = GameObject.Find("EscapeMenu");
         m_sceneSelector = GameObject.Find("SceneSelector");
         m_assessmentModePanel = GameObject.Find("AssessmentModePanel");
+        m_showTutorialsPanel = GameObject.Find("ShowTutorialsPanel");
+        m_tutorialToggle = GameObject.Find("TutorialToggle");
+        m_pauseIcon = GameObject.Find("PauseIcon");
+        m_tutorialToggle.GetComponent<Toggle>().onValueChanged.AddListener((bool value) => { GameManager.Instance.SetTurorialFlags(value); });
 
         m_results = GameObject.Find("ResultsPanel");
 		
@@ -70,6 +77,8 @@ public class MainCanvas : MonoBehaviour
         m_assessmentModePanel.SetActive(false);
         m_nextSessionButton.SetActive(false);
         m_resumeButton.SetActive(false);
+        m_showTutorialsPanel.SetActive(false);
+        m_pauseIcon.SetActive(false);
 
 
 
@@ -86,6 +95,18 @@ public class MainCanvas : MonoBehaviour
     void Update()
     {
         
+    }
+  
+    public void SetPauseIconOn(bool on)
+    {
+        m_pauseIcon.SetActive(on);
+    }
+    public void SetShowTutorialsPanelOn(bool on)
+    {
+        m_showTutorialsPanel.SetActive(on);
+        GameObject yesBtn = m_showTutorialsPanel.transform.Find("Yes").gameObject;
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(yesBtn);
+
     }
 
     public void SetAssessmentModePanel(bool on)
@@ -131,6 +152,7 @@ public class MainCanvas : MonoBehaviour
 
     private IEnumerator PopUpMessage(float seconds, string text)
     {
+        
         DogSpeak(text);
         yield return new WaitForSeconds(seconds);
         SetDogEnabled(false);
@@ -140,10 +162,10 @@ public class MainCanvas : MonoBehaviour
         StartCoroutine(PopUpMessage(seconds, text));
     }
 
-    public void HideSceneSelectionGUI()
+    public void SetSceneSelectionGUIOn(bool on)
     {
-        m_sceneSelector.SetActive(false);
-        m_escapeMenu.SetActive(false);
+        m_sceneSelector.SetActive(on);
+        m_escapeMenu.SetActive(on);
     }
 	private IEnumerator CheckConnect()
 	{
@@ -175,7 +197,7 @@ public class MainCanvas : MonoBehaviour
     }
     private IEnumerator InstructionSequence(string[] instructions, Action action)
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.05f);
 
         int index = 0;
         while(index < instructions.Length)
@@ -198,6 +220,8 @@ public class MainCanvas : MonoBehaviour
 
     public void DogInstructionSequence(string[] instructions, Action action)
     {
+        StopAllCoroutines();
+        m_dogPanel.GetComponent<Animator>().SetTrigger("Start");
         StartCoroutine(InstructionSequence(instructions, action));
     }
 
@@ -226,7 +250,7 @@ public class MainCanvas : MonoBehaviour
     {
         m_controlHints.SetActive(false);
         m_assessmentModePanel.SetActive(false);
-
+        m_tutorialToggle.GetComponent<Toggle>().isOn = GameManager.Instance.WillShowTutorials;
         m_results.SetActive(true);
 
         m_nameText.text = name;

@@ -201,6 +201,8 @@ public class SessionManager : MonoBehaviour
     {
         if (m_currentSession != null)
         {
+            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
+
             // If current task is to position the instruments, select the chosen instrument.
             InstrumentPositionTask instrumentPositionTask = m_currentSession.GetCurrentTask() as InstrumentPositionTask;
 
@@ -221,6 +223,7 @@ public class SessionManager : MonoBehaviour
                             Player.Instance.ResetItemAndPlayerToFree();
                             Player.Instance.FreezePlayer(false);
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
 
                             // Next task
                             if (!m_currentSession.NextTask())
@@ -233,6 +236,7 @@ public class SessionManager : MonoBehaviour
                             Player.Instance.ResetItemAndPlayerToFree();
                             Player.Instance.FreezePlayer(false);
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
 
                             // Next task
                             if (!m_currentSession.NextTask())
@@ -249,8 +253,10 @@ public class SessionManager : MonoBehaviour
                         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Oh no, wrong item!" }, () => {
                             Player.Instance.ResetItemAndPlayerToFree();
                             Player.Instance.FreezePlayer(false);
+                            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
+
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-                            m_currentSession.sessionResults.retries++;
+                            m_currentSession.sessionResults.errors++;
                             if (!m_currentSession.NextTask())
                                 CompleteCurrentSession();
 
@@ -262,7 +268,7 @@ public class SessionManager : MonoBehaviour
                             Player.Instance.ResetItemAndPlayerToFree();
                             Player.Instance.FreezePlayer(false);
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
-                            m_currentSession.sessionResults.retries++;
+                            m_currentSession.sessionResults.errors++;
                             if (!m_currentSession.NextTask())
                                 CompleteCurrentSession();
                         });
@@ -298,9 +304,12 @@ public class SessionManager : MonoBehaviour
                 GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Correct placement");
                 success = true;
             }
-            else if(status == Task.STATUS.COMPLETED_FAIL && !GameManager.Instance.IsAssessmentMode())
+            else if(status == Task.STATUS.COMPLETED_FAIL)
             {
-                GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Wrong placement");
+                if (!GameManager.Instance.IsAssessmentMode())
+                    GUIManager.Instance.GetMainCanvas().DogPopUp(2, "Wrong placement");
+
+                m_currentSession.sessionResults.errors++;
             }
 
            
@@ -314,7 +323,6 @@ public class SessionManager : MonoBehaviour
     {
         if (GameManager.Instance.IsAssessmentMode())
         {
-            bool allGood = true;
             int counter = 0;
             //Check if all slots are ok
             foreach (InstrumentPositionTask t in m_currentSession.tasks)
@@ -352,6 +360,7 @@ public class SessionManager : MonoBehaviour
     public void NextSession()
     {
         GUIManager.Instance.GetMainCanvas().HideResultPanel();
+        Player.Instance.SetTutorialsFlags(!GameManager.Instance.WillShowTutorials);
         int index = m_allSessions.IndexOf(m_currentSession);
 
         m_currentSession =  m_allSessions[index + 1];
@@ -423,7 +432,7 @@ public class SessionManager : MonoBehaviour
             obj.AddField("EndTime", s.sessionResults.endTime.ToShortTimeString() + " (Incomplete)");
         }
 
-        obj.AddField("Retries", s.sessionResults.retries);
+        obj.AddField("Retries", s.sessionResults.errors);
         obj.AddField("IsAssessed", s.sessionResults.isAssessed);
 
 
