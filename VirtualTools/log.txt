@@ -3162,3 +3162,17 @@ Stack trace:
 12:04 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
 12:04 PM - Session recorded, id 1441234309604
 12:04 PM - Reply{"Log_0":"12:03 PM - Session starts","Log_1":"12:03 PM - New task: pick up a <b><u>Scalpel<\/u><\/b>","Log_2":"12:04 PM - Correctly selected by name Scalpel","Log_3":"12:04 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_4":"12:04 PM - Correctly selected by name Rochester Carmalt Forceps","Log_5":"12:04 PM - Session ends"}{"Data":{},"Status":"ok"}
+12:12 PM - Login START
+12:12 PM - Send login form
+12:12 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:13 PM - Login START
+12:13 PM - Send login form
+12:13 PM - Sending to: http://localhost/ICT302-WebApp/server/login.php, attempt: 0
+12:13 PM - ID: 14412134807913
+12:13 PM - ID: 14412134811501
+12:13 PM - ID: 14412134825089
+12:13 PM - Just about to send request, 14412134807913
+12:13 PM - Sending to: http://localhost/ICT302-WebApp/server/recordSession.php, attempt: 0
+12:13 PM - Session recorded, id 14412134807913
+12:13 PM - Reply{"Log_0":"12:13 PM - Session starts","Log_1":"12:13 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"12:13 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+12:13 PM - Quitting now

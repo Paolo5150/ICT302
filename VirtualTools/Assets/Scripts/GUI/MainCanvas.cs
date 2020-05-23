@@ -104,6 +104,9 @@ public class MainCanvas : MonoBehaviour
     public void SetShowTutorialsPanelOn(bool on)
     {
         m_showTutorialsPanel.SetActive(on);
+        GameObject yesBtn = m_showTutorialsPanel.transform.Find("Yes").gameObject;
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(yesBtn);
+
     }
 
     public void SetAssessmentModePanel(bool on)
