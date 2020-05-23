@@ -23,6 +23,7 @@ public class MainCanvas : MonoBehaviour
     private GameObject m_resumeButton;
     private GameObject m_showTutorialsPanel;
     private GameObject m_tutorialToggle;
+    private GameObject m_pauseIcon;
 
 	
     private GameObject m_results;
@@ -47,6 +48,7 @@ public class MainCanvas : MonoBehaviour
         m_assessmentModePanel = GameObject.Find("AssessmentModePanel");
         m_showTutorialsPanel = GameObject.Find("ShowTutorialsPanel");
         m_tutorialToggle = GameObject.Find("TutorialToggle");
+        m_pauseIcon = GameObject.Find("PauseIcon");
         m_tutorialToggle.GetComponent<Toggle>().onValueChanged.AddListener((bool value) => { GameManager.Instance.SetTurorialFlags(value); });
 
         m_results = GameObject.Find("ResultsPanel");
@@ -76,6 +78,7 @@ public class MainCanvas : MonoBehaviour
         m_nextSessionButton.SetActive(false);
         m_resumeButton.SetActive(false);
         m_showTutorialsPanel.SetActive(false);
+        m_pauseIcon.SetActive(false);
 
 
 
@@ -94,7 +97,10 @@ public class MainCanvas : MonoBehaviour
         
     }
   
-
+    public void SetPauseIconOn(bool on)
+    {
+        m_pauseIcon.SetActive(on);
+    }
     public void SetShowTutorialsPanelOn(bool on)
     {
         m_showTutorialsPanel.SetActive(on);

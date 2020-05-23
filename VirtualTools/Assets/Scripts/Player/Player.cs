@@ -137,6 +137,7 @@ public class Player : MonoBehaviour
         transform.position = m_startingPosition;
         transform.rotation = Quaternion.Euler(0,0,0);
         transform.localRotation = Quaternion.Euler(0,0,0);
+        // Major hack to reset position
         m_firstPersonController.m_MouseLook.m_CameraTargetRot = Quaternion.Euler(20, 0, 0);
         m_firstPersonController.m_MouseLook.m_CharacterTargetRot = Quaternion.Euler(0, 0, 0);
         m_firstPersonController.SendMessage("Update");
@@ -279,6 +280,8 @@ public class Player : MonoBehaviour
             {
                 m_inspectTutorialShown = true;
                 FreezePlayer(true);
+                GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
+
                 GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "You can now inspect the instrument",
                     "Use WASD and the mouse again to move and rotate the instrument",
@@ -287,6 +290,7 @@ public class Player : MonoBehaviour
                 }, () => {
                     enabled = true;
                     GUIManager.Instance.GetMainCanvas().DogSpeak(SessionManager.Instance.GetCurrentSession().GetCurrentTask().instructions[0]);
+                    GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
 
                 });
             }
@@ -320,8 +324,8 @@ public class Player : MonoBehaviour
                     //Tutorial
                     if (!m_dropTutorialShown && GameManager.Instance.WillShowTutorials)
                     {
+                        GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
                         m_dropTutorialShown = true;
-                        PlayerPrefs.SetInt("DropTutorial", 0);
                         FreezePlayer(true);
                         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "You can now place the instrument in the slots on the tray",
@@ -329,6 +333,7 @@ public class Player : MonoBehaviour
                     "To drop the intrument, just press the fire button"
                 }, () => {
                     FreezePlayer(false);
+                    GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
                     GUIManager.Instance.GetMainCanvas().DogSpeak(SessionManager.Instance.GetCurrentSession().GetCurrentTask().instructions[0]);
 
                 });
@@ -387,12 +392,16 @@ public class Player : MonoBehaviour
             {
                 m_pointingTutorialShown = true;
                 FreezePlayer(true);
+                GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
+
                 GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "As you can see, the instrument has turned green!",
                     "That means that you can pick it up!",
                     "To do that, just press the fire button",
                 }, () => {
                     FreezePlayer(false);
+                    GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
+
                     GUIManager.Instance.GetMainCanvas().DogSpeak(SessionManager.Instance.GetCurrentSession().GetCurrentTask().instructions[0]);
 
                 });

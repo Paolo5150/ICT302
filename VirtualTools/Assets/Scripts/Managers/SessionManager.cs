@@ -201,6 +201,8 @@ public class SessionManager : MonoBehaviour
     {
         if (m_currentSession != null)
         {
+            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
+
             // If current task is to position the instruments, select the chosen instrument.
             InstrumentPositionTask instrumentPositionTask = m_currentSession.GetCurrentTask() as InstrumentPositionTask;
 
@@ -221,6 +223,7 @@ public class SessionManager : MonoBehaviour
                             Player.Instance.ResetItemAndPlayerToFree();
                             Player.Instance.FreezePlayer(false);
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
 
                             // Next task
                             if (!m_currentSession.NextTask())
@@ -233,6 +236,7 @@ public class SessionManager : MonoBehaviour
                             Player.Instance.ResetItemAndPlayerToFree();
                             Player.Instance.FreezePlayer(false);
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
+                            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
 
                             // Next task
                             if (!m_currentSession.NextTask())
@@ -249,6 +253,8 @@ public class SessionManager : MonoBehaviour
                         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Oh no, wrong item!" }, () => {
                             Player.Instance.ResetItemAndPlayerToFree();
                             Player.Instance.FreezePlayer(false);
+                            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
+
                             Player.Instance.SetPickingEnabled(false); // Will be set to true when the task start
                             m_currentSession.sessionResults.errors++;
                             if (!m_currentSession.NextTask())

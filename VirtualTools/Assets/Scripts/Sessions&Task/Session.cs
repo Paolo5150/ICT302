@@ -144,6 +144,7 @@ public class SessionResults
     {
         if(!m_isStarted)
         {
+            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
             if (GameManager.Instance.WillShowTutorials)
             {
 
@@ -208,6 +209,7 @@ public class SessionResults
 
     private void StartCurrentTask()
     {
+
         m_currentTask.taskStatus = Task.STATUS.INSTRUCTING;
 
         bool isInstrumentPositionTask = m_currentTask is InstrumentPositionTask;
@@ -218,7 +220,9 @@ public class SessionResults
             slot.GetComponentInChildren<MeshRenderer>().enabled = isInstrumentPositionTask;
         }
 
-        //Player.Instance.FreezePlayer(true);
+        Player.Instance.FreezePlayer(true);
+        GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
+
         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(m_currentTask.instructions.ToArray(), () => {
             Player.Instance.FreezePlayer(false);
 
@@ -229,6 +233,8 @@ public class SessionResults
 
             //Keep first instruction on screen
             GUIManager.Instance.GetMainCanvas().DogSpeak(m_currentTask.instructions[0]);
+            GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
+
 
         });
     }
