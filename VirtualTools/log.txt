@@ -3176,3 +3176,10 @@ Stack trace:
 12:13 PM - Session recorded, id 14412134807913
 12:13 PM - Reply{"Log_0":"12:13 PM - Session starts","Log_1":"12:13 PM - New task: pick up a <b><u>Rochester Carmalt Forceps<\/u><\/b>","Log_2":"12:13 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
 12:13 PM - Quitting now
+4:05 PM - ID: 1491655608620
+4:07 PM - Just about to send request, 1491655608620
+4:07 PM - Sending to: http://vegas.murdoch.edu.au/vinst/server/recordSession.php, attempt: 0
+4:07 PM - Session recorded, id 1491655608620
+4:07 PM - Reply{"Log_0":"4:05 PM - Session starts","Log_1":"4:05 PM - New task: pick up a <b><u>Towel Clamps<\/u><\/b>","Log_2":"4:06 PM - Failed to select by name Towel Clamps. Selected: Mayo Scissor","Log_3":"4:06 PM - New task: pick up a <b><u>Mayo Hegar Needle Driver<\/u><\/b>","Log_4":"4:07 PM - Simulation closed prematurely"}{"Data":{},"Status":"ok"}
+4:07 PM - Quitting now
+4:10 PM - ID: 14916102005103
