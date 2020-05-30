@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float itemViewMovementLimitRange = 50.0f;
     public GameObject m_zoomViewSpot;
     public GameObject m_endMenu;
-    
+
     private InstrumentSelector m_instrumentSelector;
     private FirstPersonController m_firstPersonController;
     private Instrument m_currentlyPointingInstrument;
@@ -29,7 +29,8 @@ public class Player : MonoBehaviour
     private bool m_dropTutorialShown;
 
     private Vector3 m_startingPosition;
-    public Instrument SelectedInstrumentToPlace {
+    public Instrument SelectedInstrumentToPlace
+    {
         get
         {
             return m_selectedInstrumentToPlace;
@@ -120,12 +121,12 @@ public class Player : MonoBehaviour
     }
     public void SetPlayerMode(PlayerMode mode)
     {
-        switch(mode)
+        switch (mode)
         {
             case PlayerMode.PICKING:
                 m_firstPersonController.enabled = true;
                 break;
-            case PlayerMode.VIEWING:                    
+            case PlayerMode.VIEWING:
                 m_firstPersonController.enabled = false;
                 break;
         }
@@ -135,8 +136,8 @@ public class Player : MonoBehaviour
     public void ResetPosition()
     {
         transform.position = m_startingPosition;
-        transform.rotation = Quaternion.Euler(0,0,0);
-        transform.localRotation = Quaternion.Euler(0,0,0);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
         // Major hack to reset position
         m_firstPersonController.m_MouseLook.m_CameraTargetRot = Quaternion.Euler(20, 0, 0);
         m_firstPersonController.m_MouseLook.m_CharacterTargetRot = Quaternion.Euler(0, 0, 0);
@@ -153,13 +154,13 @@ public class Player : MonoBehaviour
     public void HideEndMenu()
     {
         m_endMenu.SetActive(false);
-       // Player.Instance.FreezePlayer(false);
+        // Player.Instance.FreezePlayer(false);
         GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
     }
 
     private void ProcessInput()
     {
-       
+
         // TODO needs change for controller support!!!
         if (Input.GetKeyDown(KeyCode.Return) && SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
         {
@@ -178,7 +179,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         //ProcessInput();
-        if(!SessionManager.Instance.IsSessionPaused())
+        if (!SessionManager.Instance.IsSessionPaused())
         {
             UpdatePointingInstrumentPositionTaskSlot();
 
@@ -201,7 +202,7 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-      
+
     }
 
     private void PickingMode()
@@ -224,7 +225,7 @@ public class Player : MonoBehaviour
     public void ResetItemAndPlayerToFree()
     {
         // Put item back
-        if(m_currentlyPointingInstrument != null)
+        if (m_currentlyPointingInstrument != null)
         {
             StartCoroutine(m_instrumentSelector.LerpToPosition(m_currentlyPointingInstrument.gameObject, m_currentlyPointingInstrument.originalPosition));
             m_currentlyPointingInstrument.gameObject.transform.rotation = m_currentlyPointingInstrument.originalRotation;
@@ -237,7 +238,7 @@ public class Player : MonoBehaviour
     private void PlaceInstrument()
     {
         m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument = SelectedInstrumentToPlace.instrumentTag;
-        InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject, 
+        InstrumentLocManager.Instance.MoveInstrument(SelectedInstrumentToPlace.gameObject,
             m_currentlyPointingInstrumentPositionTaskSlot.gameObject);
         m_currentlyPointingInstrumentPositionTaskSlot.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
         SetPlayerMode(PlayerMode.PICKING);
@@ -255,28 +256,28 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1") && m_currentlyPointingInstrumentPositionTaskSlot.CurrentInstrument == Instrument.INSTRUMENT_TAG.NONE)
             {
                 bool correctPlace = SessionManager.Instance.OnInstrumentPlaced(SelectedInstrumentToPlace.instrumentTag, m_currentlyPointingInstrumentPositionTaskSlot);
-                if(GameManager.Instance.IsAssessmentMode())
+                if (GameManager.Instance.IsAssessmentMode())
                 {
                     PlaceInstrument();
                 }
                 else
                 {
-                    if(correctPlace)
+                    if (correctPlace)
                     {
                         PlaceInstrument();
                     }
                 }
-                
+
             }
         }
     }
 
     private void ViewMode()
     {
-        if(m_currentlyPointingInstrument != null && m_viewingEnabled)
+        if (m_currentlyPointingInstrument != null && m_viewingEnabled)
         {
 
-            if(!m_inspectTutorialShown && GameManager.Instance.WillShowTutorials)
+            if (!m_inspectTutorialShown && GameManager.Instance.WillShowTutorials)
             {
                 m_inspectTutorialShown = true;
                 FreezePlayer(true);
@@ -285,8 +286,10 @@ public class Player : MonoBehaviour
                 GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "You can now inspect the instrument",
                     "Use WASD and the mouse again to move and rotate the instrument",
-                    "Press the fire button to confirm your selection",
-                    "If you don't want to select this instrument, you can place it back by pressing the secondary button"
+                    "If you're using a gamepad, use the analog sticks",
+                    "Left click to confirm your selection (A button on gamepad)",
+                    "If you don't want to select this instrument, you can place it back by pressing the right mouse button",
+                    "If you're on a gamepad, use the B button to place the item back"
                 }, () => {
                     enabled = true;
                     GUIManager.Instance.GetMainCanvas().DogSpeak(SessionManager.Instance.GetCurrentSession().GetCurrentTask().instructions[0]);
@@ -299,7 +302,7 @@ public class Player : MonoBehaviour
             // Manipulate object being viewed
             m_currentlyPointingInstrument.gameObject.transform.Rotate(new Vector3(Input.GetAxis("Mouse Y"), -Input.GetAxis("Mouse X"), 0) * Time.deltaTime * itemViewRotationSpeed, Space.World);
 
-            Vector3 dir =  m_currentlyPointingInstrument.gameObject.transform.position - m_zoomViewSpot.transform.position;
+            Vector3 dir = m_currentlyPointingInstrument.gameObject.transform.position - m_zoomViewSpot.transform.position;
             float distance = dir.magnitude;
             if (distance < itemViewMovementLimitRange)
             {
@@ -315,7 +318,7 @@ public class Player : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
-                if(SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
+                if (SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
                 {
                     m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
                     SelectedInstrumentToPlace = m_currentlyPointingInstrument;
@@ -330,7 +333,7 @@ public class Player : MonoBehaviour
                         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "You can now place the instrument in the slots on the tray",
                     "The instrument MUST go in a specific order!",
-                    "To drop the intrument, just press the fire button"
+                    "To drop the intrument, just press the left mouse button (A button on gamepad)"
                 }, () => {
                     FreezePlayer(false);
                     GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
@@ -348,7 +351,7 @@ public class Player : MonoBehaviour
                 SetPlayerMode(PlayerMode.PICKING);
                 m_currentlyPointingInstrument.GetComponent<Collider>().enabled = true;
             }
-        }       
+        }
     }
 
     private void UpdatePointingInstrumentPositionTaskSlot()
@@ -388,7 +391,7 @@ public class Player : MonoBehaviour
 
             //Tutorial
 
-            if(!m_pointingTutorialShown && GameManager.Instance.WillShowTutorials)
+            if (!m_pointingTutorialShown && GameManager.Instance.WillShowTutorials)
             {
                 m_pointingTutorialShown = true;
                 FreezePlayer(true);
@@ -397,7 +400,7 @@ public class Player : MonoBehaviour
                 GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "As you can see, the instrument has turned green!",
                     "That means that you can pick it up!",
-                    "To do that, just press the fire button",
+                    "To do that, just press the left mouse button (A button on gamepad)",
                 }, () => {
                     FreezePlayer(false);
                     GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
