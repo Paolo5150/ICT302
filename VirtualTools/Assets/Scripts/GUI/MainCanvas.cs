@@ -12,8 +12,9 @@ public class MainCanvas : MonoBehaviour
 	private GameObject m_connectPanel;
     private GameObject m_dogPanel;
     private GameObject m_controlPanel;
+    private GameObject m_keyboardHints;
+    private GameObject m_gamepadHints;
     private GameObject m_dog;
-    private GameObject m_controlHints;
     private GameObject m_escapeMenu;
     private GameObject m_sceneSelector;
     private GameObject m_assessmentModePanel;
@@ -42,7 +43,8 @@ public class MainCanvas : MonoBehaviour
         m_dogPanel = GameObject.Find("DogPanel");
         m_controlPanel = GameObject.Find("ControlsHintPanel"); 
         m_dog = GameObject.Find("Dog");
-        m_controlHints = GameObject.Find("ControlsHint");
+        m_keyboardHints = m_controlPanel.transform.Find("KeyboardHints").gameObject;
+        m_gamepadHints = m_controlPanel.transform.Find("GamepadHints").gameObject;
         m_escapeMenu = GameObject.Find("EscapeMenu");
         m_sceneSelector = GameObject.Find("SceneSelector");
         m_assessmentModePanel = GameObject.Find("AssessmentModePanel");
@@ -73,7 +75,8 @@ public class MainCanvas : MonoBehaviour
         m_controlPanel.SetActive(false);
         m_results.SetActive(false);
         m_dog.SetActive(false);
-        m_controlHints.SetActive(false);
+        m_keyboardHints.SetActive(false);
+        m_gamepadHints.SetActive(false);
         m_assessmentModePanel.SetActive(false);
         m_nextSessionButton.SetActive(false);
         m_resumeButton.SetActive(false);
@@ -116,7 +119,26 @@ public class MainCanvas : MonoBehaviour
     public void SetHintActive(bool active)
     {
         m_controlPanel.SetActive(active);
-        m_controlHints.SetActive(active);
+
+        if (active)
+        {
+            if (GameManager.Instance.IsUsingKeyboard())
+            {
+                m_gamepadHints.SetActive(false);
+                m_keyboardHints.SetActive(true);
+            }
+            else
+            {
+                m_keyboardHints.SetActive(false);
+                m_gamepadHints.SetActive(true);
+            }
+        }
+        else
+        {
+            m_gamepadHints.SetActive(false);
+            m_keyboardHints.SetActive(false);
+        }
+        
     }
 
     public void SetResultsPanelTitle(string msg)
@@ -250,7 +272,8 @@ public class MainCanvas : MonoBehaviour
 
     public void DisplayResults(string name, string studentNumber, SessionResults results, bool isPause = false)
     {
-        m_controlHints.SetActive(false);
+        m_gamepadHints.SetActive(false);
+        m_keyboardHints.SetActive(false);
         m_assessmentModePanel.SetActive(false);
         m_tutorialToggle.GetComponent<Toggle>().isOn = GameManager.Instance.WillShowTutorials;
         m_results.SetActive(true);

@@ -203,8 +203,8 @@ public class GameManager : MonoBehaviour
 
 
         // mouse movement
-        if (Input.GetAxis("Mouse X") != 0.0f ||
-            Input.GetAxis("Mouse Y") != 0.0f)
+        if (Input.GetAxis("MouseOnlyX") != 0.0f ||
+            Input.GetAxis("MouseOnlyY") != 0.0f)
         {
             return true;
         }
@@ -246,6 +246,12 @@ public class GameManager : MonoBehaviour
 
         // joystick axis
         if (Input.GetAxis("GamepadY") != 0  || Input.GetAxis("GamepadX") != 0 )
+        {
+            return true;
+        }
+
+        if (Input.GetAxis("RightStickX") != 0.0f ||
+          Input.GetAxis("RightStickY") != 0.0f)
         {
             return true;
         }
