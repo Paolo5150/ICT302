@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
         else
             isKeyboard = isMouseKeyboard();
         
-        if(isKeyboard != prevIsKeyboard)
+       /* if(isKeyboard != prevIsKeyboard)
         {
             if(isKeyboard)
                 Debug.Log("Input changed to KEYBOARD");
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Input changed to GAMEPAD");
 
 
-        }
+        }*/
         prevIsKeyboard = isKeyboard;
     }
 
