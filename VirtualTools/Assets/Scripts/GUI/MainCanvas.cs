@@ -166,6 +166,8 @@ public class MainCanvas : MonoBehaviour
     {
         m_sceneSelector.SetActive(on);
         m_escapeMenu.SetActive(on);
+        GameObject selectByName = m_sceneSelector.transform.Find("SelectByNameButton").gameObject;
+        GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(selectByName);
     }
 	private IEnumerator CheckConnect()
 	{
