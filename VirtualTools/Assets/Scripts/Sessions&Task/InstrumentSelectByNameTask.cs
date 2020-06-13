@@ -13,23 +13,27 @@ public class InstrumentSelectByNameTask : Task
         instructions.Add("New task: pick up a <b><u>" + Instrument.GetName(m_instrumentToSelect) + "</u></b>");
     }
 
-   /* public override STATUS Evaluate(Instrument.INSTRUMENT_TAG instrumentTag, Session session)
-    {
-        if (m_instrumentToSelect == instrumentTag)
-        {
-            taskStatus = STATUS.COMPLETED_SUCCESS;
-            session.sessionResults.Log_CorrectlySelectedInstrumentByName(m_instrumentToSelect);
-        }
-        else
-        {
-            session.sessionResults.Log_FailedToSelectByName(m_instrumentToSelect, instrumentTag);
+    /* public override STATUS Evaluate(Instrument.INSTRUMENT_TAG instrumentTag, Session session)
+     {
+         if (m_instrumentToSelect == instrumentTag)
+         {
+             taskStatus = STATUS.COMPLETED_SUCCESS;
+             session.sessionResults.Log_CorrectlySelectedInstrumentByName(m_instrumentToSelect);
+         }
+         else
+         {
+             session.sessionResults.Log_FailedToSelectByName(m_instrumentToSelect, instrumentTag);
 
-            taskStatus = STATUS.COMPLETED_FAIL;
-        }
+             taskStatus = STATUS.COMPLETED_FAIL;
+         }
 
-        return taskStatus;
-    }*/
-
+         return taskStatus;
+     }*/
+    /// <summary>
+    /// Evaluate task
+    /// </summary>
+    /// <param name="list">Index 0 must be the instrument tag, index 1 must be the session</param>
+    /// <returns>The completion status of the task</returns>
     public override STATUS Evaluate(params object[] list)
     {
         Instrument.INSTRUMENT_TAG instrumentTag = (Instrument.INSTRUMENT_TAG)list[0];

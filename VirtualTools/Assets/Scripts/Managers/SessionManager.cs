@@ -76,6 +76,9 @@ public class SessionManager : MonoBehaviour
         m_allSessions.Add(session);
 
         // Generate tasks for unique instruments
+        // A bit hacky: in the instrument positioning session, tasks don not have a specific order (user can pick up instruments in any order)
+        // To generate the task, we iterate through the list of insturments and the slots in the scene
+        // We can then generate a task, which needs these 2 parameters: the instrument the the slot it's supposed to go in
         foreach (var tag in InstrumentLocManager.CurrentInstrumentOrder.Distinct())
         {
             if (tag != Instrument.INSTRUMENT_TAG.NONE)
@@ -654,12 +657,6 @@ public class SessionManager : MonoBehaviour
 
         //If this is reached there are no tasks left (write to report here?)
         CompleteCurrentSession();
-        /*Player.Instance.SetPickingEnabled(false);
-        m_currentSession.End();
-        Player.Instance.FreezePlayer(true);
-        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
-        DisplayResults(m_currentSession);
-        ExportResults(m_currentSession);*/
     }
 
     /// <summary>

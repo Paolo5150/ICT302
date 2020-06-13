@@ -48,6 +48,14 @@ public class NetworkManager : MonoBehaviour
         currentServer = server == SERVER.LOCAL ? LOCAL_SERVER_ADDRESS : REMOTE_SERVER_ADDRESS;
     }
 
+    /// <summary>
+    /// Public method for sending http requests
+    /// </summary>
+    /// <param name="form">The form to be submitted</param>
+    /// <param name="targetScript">The php script to send to</param>
+    /// <param name="onSuccess">Success request callback</param>
+    /// <param name="onFail">Failed request callback</param>
+    /// <param name="onAttemptsFailed">All attempts failed callback</param>
     public void SendRequest(WWWForm form, string targetScript, Action<String> onSuccess, Action onFail, Action onAttemptsFailed)
     {
         StartCoroutine(SendPostRequest(form, targetScript, onSuccess, onFail, onAttemptsFailed));      

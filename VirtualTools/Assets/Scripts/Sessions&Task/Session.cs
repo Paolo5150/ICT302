@@ -209,6 +209,9 @@ public class SessionResults
         return true;
     }
 
+    /// <summary>
+    /// Start current task.
+    /// </summary>
     private void StartCurrentTask()
     {
 

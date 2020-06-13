@@ -30,6 +30,11 @@ public class InstrumentSelectByPurpose : Task
         return taskStatus;
     }*/
 
+    /// <summary>
+    /// Evaluate task
+    /// </summary>
+    /// <param name="list">Index 0 must be the instrument tag, index 1 must be the session</param>
+    /// <returns>The completion status of the task</returns>
     public override STATUS Evaluate(params object[] list)
     {
         Instrument.INSTRUMENT_TAG instrumentTag = (Instrument.INSTRUMENT_TAG)list[0];

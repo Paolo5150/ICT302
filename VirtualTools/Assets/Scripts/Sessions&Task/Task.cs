@@ -23,6 +23,11 @@ public abstract class Task
         instructions = new List<string>();
     }
 
+    /// <summary>
+    /// Evaluate the task
+    /// </summary>
+    /// <param name="args">Arguments are of generic type as different tasks are evaluated differently (and need different parameters)</param>
+    /// <returns>The competion status of the task/returns>
     abstract public STATUS Evaluate(params object[] args);
 
 
