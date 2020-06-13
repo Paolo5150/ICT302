@@ -3388,3 +3388,37 @@ Stack trace:
 10:08 AM - ID: 1631082707331
 10:08 AM - ID: 1631085505787
 10:09 AM - ID: 1631092102109
+8:36 AM - Login START
+8:36 AM - Login START
+8:37 AM - Send login form
+8:37 AM - Sending to: http://vegas.murdoch.edu.au/vinst/server/login.php, attempt: 0
+8:37 AM - ID: 165837401644
+8:37 AM - ID: 165837418
+8:37 AM - ID: 165837428
+8:39 AM - Login START
+8:39 AM - Send login form
+8:39 AM - Sending to: http://vegas.murdoch.edu.au/vinst/server/login.php, attempt: 0
+8:39 AM - ID: 1658394206116
+8:39 AM - ID: 1658394216116
+8:39 AM - ID: 1658394229704
+8:39 AM - Login START
+8:39 AM - Send login form
+8:39 AM - Sending to: http://vegas.murdoch.edu.au/vinst/server/login.php, attempt: 0
+8:39 AM - ID: 1658395804199
+8:39 AM - ID: 1658395812563
+8:39 AM - ID: 1658395822563
+8:40 AM - Login START
+8:40 AM - Send login form
+8:40 AM - Sending to: http://vegas.murdoch.edu.au/vinst/server/login.php, attempt: 0
+8:40 AM - ID: 1658405409692
+8:40 AM - ID: 1658405413280
+8:40 AM - ID: 1658405423280
+8:41 AM - ID: 1658413903036
+8:41 AM - ID: 1658413916624
+8:41 AM - ID: 1658413924987
+8:42 AM - ID: 165842606998
+8:42 AM - ID: 165842615362
+8:42 AM - ID: 165842628950
+8:42 AM - ID: 165842250840
+8:42 AM - ID: 1658422512792
+8:42 AM - ID: 1658422522792
