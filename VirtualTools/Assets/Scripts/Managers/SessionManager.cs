@@ -370,6 +370,7 @@ public class SessionManager : MonoBehaviour
     /// <summary>
     /// Check if the instrument position session is complete
     /// The session is complete if, in assessment mode, all slots have an instrument placed in (regardless of whether it's the right instrument).
+    /// This is the only session types that require this check, this is because the other 2 types will automatically complete when all tasks are done.
     /// </summary>
     public void CheckIfInstrumentPositionSessionComplete()
     {

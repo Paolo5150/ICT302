@@ -244,11 +244,6 @@ public class SessionResults
         });
     }
 
-    public void Update()
-    {
-      
-    }
-
     public enum SESSION_TYPE
     {
         SELECT_BY_NAME,
