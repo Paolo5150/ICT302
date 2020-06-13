@@ -144,6 +144,7 @@ public class SessionResults
     {
         if(!m_isStarted)
         {
+            Logger.LogToFile("Started session " + GetID());
             GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
             GUIManager.Instance.GetMainCanvas().SetPauseIconOn(true);
             if (GameManager.Instance.WillShowTutorials)

@@ -9,6 +9,9 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
 
     private Renderer m_renderer;
 
+    /// <summary>
+    /// List of all instrument in enum form. Instruments are identified by enum values
+    /// </summary>
     public enum INSTRUMENT_TAG
     {
         ADDSON_BROWN_FORCEPS,
@@ -47,6 +50,11 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
         }
     }
 
+    /// <summary>
+    /// Get instrument name as string
+    /// </summary>
+    /// <param name="tag">Instrument enum</param>
+    /// <returns>The name of the instrument as string</returns>
     public static string GetName(INSTRUMENT_TAG tag)
     {
         switch (tag)
@@ -73,6 +81,12 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
                 throw new System.Exception("Name for instrument tag " + tag + " does not exist.");
         }
     }
+
+    /// <summary>
+    /// Get instrument enum from name
+    /// </summary>
+    /// <param name="str">The instrument name</param>
+    /// <returns>The instrument enum value</returns>
     public static INSTRUMENT_TAG GetInstrumentTagFromString(string str)
     {
         switch (str)
@@ -100,6 +114,11 @@ public class Instrument : MonoBehaviour, IInstrumentSelectable
         }
     }
 
+    /// <summary>
+    /// Get the description of the purpose of an instrument
+    /// </summary>
+    /// <param name="tag">Instrument tag</param>
+    /// <returns>The description of the purpose</returns>
     public static string GetPurposeDescription(INSTRUMENT_TAG tag)
     {
         switch (tag)

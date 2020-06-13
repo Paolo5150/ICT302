@@ -14,12 +14,13 @@ public class LoginUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Logger.Init();
         Logger.LogToFile("Login START");
 
         m_idField = GameObject.Find("IdField").GetComponent<InputField>();
         m_pswField = GameObject.Find("PswField").GetComponent<InputField>();
         m_loginButton = GameObject.Find("LogInButton").GetComponent<Button>();
-        m_loginButton.onClick.AddListener(Click);
+        m_loginButton.onClick.AddListener(LoginClick);
         PlayerPrefs.DeleteAll(); //Clear player prefs
     }
 
@@ -29,13 +30,7 @@ public class LoginUI : MonoBehaviour
         SceneManager.LoadScene(1);             
     }
 
-    IEnumerator ExitAfterTime()
-    {
-        yield return new WaitForSeconds(4);
-        Application.Quit();             
-    }
-
-    private void Click()
+    private void LoginClick()
     {
         m_loginButton.gameObject.SetActive(false);
         Text dogText = GameObject.Find("DogText").GetComponent<Text>();
@@ -44,17 +39,15 @@ public class LoginUI : MonoBehaviour
         string id = m_idField.text;
         string psw = m_pswField.text;
 
-        // TODO:Validate data here
-
         WWWForm form = new WWWForm();
         form.AddField("MurdochUserNumber", id);
         form.AddField("Password", psw);
         form.AddField("IsSim", 1);
 
-        Logger.LogToFile("Send login form");
+        Logger.LogToFile("Sending login form");
         NetworkManager.Instance.SendRequest(form, "login.php", (string reply) => {
-            Debug.Log("Reply: " + reply);
 
+            // Reply callback
             JSONObject replyObj = JSONObject.Create(reply);
             string status = "";
 
@@ -115,15 +108,10 @@ public class LoginUI : MonoBehaviour
         },
         ()=> {
             // If all attempts to connect fail
+            Logger.LogToFile("All attempts failed to log in, application will quit");
             Application.Quit();
         });
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void Quit()

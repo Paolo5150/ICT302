@@ -14,11 +14,6 @@ public class InstrumentSelector
         m_layerMask = LayerMask.GetMask("Instrument");
     }
 
-    public void SetSelectableOutlineColor(Color color)
-    {
-        m_selectableOutlineColor = color;
-    }
-
     public void SetRaycastingCamera(Camera camera)
     {
         m_raycastingCamera = camera;

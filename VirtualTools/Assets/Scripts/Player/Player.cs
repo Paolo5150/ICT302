@@ -5,6 +5,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour
 {
+    // Event, triggered when the player selects an intrument
     public delegate void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag);
     public static event OnInstrumentSelected instrumentSelectedEvent;
 
@@ -91,8 +92,6 @@ public class Player : MonoBehaviour
         Camera cam = GetComponentInChildren<Camera>();
         m_instrumentSelector.SetRaycastingCamera(cam);
 
-
-        m_instrumentSelector.SetSelectableOutlineColor(selectableOutlineColor);
         m_pickingEnabled = true;
         m_viewingEnabled = true;
     }
@@ -100,7 +99,6 @@ public class Player : MonoBehaviour
 
     public void FreezePlayer(bool freeze)
     {
-        //GetComponent<FirstPersonController>().enabled = !freeze;
         m_firstPersonController.enabled = !freeze;
         enabled = !freeze;
     }
@@ -139,46 +137,15 @@ public class Player : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, 0);
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         // Major hack to reset position
+        // The first person controller takes over the camera, so it's necessary to change its private members to reset the camera
         m_firstPersonController.m_MouseLook.m_CameraTargetRot = Quaternion.Euler(20, 0, 0);
         m_firstPersonController.m_MouseLook.m_CharacterTargetRot = Quaternion.Euler(0, 0, 0);
-        m_firstPersonController.SendMessage("Update");
-    }
-
-    public void ShowEndMenu()
-    {
-        m_endMenu.SetActive(true);
-        //Player.Instance.FreezePlayer(true);
-        GUIManager.Instance.ConfigureCursor(true, CursorLockMode.None);
-    }
-
-    public void HideEndMenu()
-    {
-        m_endMenu.SetActive(false);
-        // Player.Instance.FreezePlayer(false);
-        GUIManager.Instance.ConfigureCursor(false, CursorLockMode.Locked);
-    }
-
-    private void ProcessInput()
-    {
-
-        // TODO needs change for controller support!!!
-        if (Input.GetKeyDown(KeyCode.Return) && SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
-        {
-            if (!m_endMenu.activeSelf)
-            {
-                ShowEndMenu();
-            }
-            else
-            {
-                HideEndMenu();
-            }
-        }
-    }
+        m_firstPersonController.SendMessage("Update"); //Manually call update to apply changes! Super hack
+    }   
 
     // Update is called once per frame
     void Update()
     {
-        //ProcessInput();
         if (!SessionManager.Instance.IsSessionPaused())
         {
             UpdatePointingInstrumentPositionTaskSlot();
@@ -276,7 +243,7 @@ public class Player : MonoBehaviour
     {
         if (m_currentlyPointingInstrument != null && m_viewingEnabled)
         {
-
+            // In game tutorial tip
             if (!m_inspectTutorialShown && GameManager.Instance.WillShowTutorials)
             {
                 m_inspectTutorialShown = true;

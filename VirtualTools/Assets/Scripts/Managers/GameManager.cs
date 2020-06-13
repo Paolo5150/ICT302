@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private bool prevIsKeyboard = true;
     public bool WillShowTutorials { set; get; }
 
+    // Singleton, Unity style
     public static GameManager Instance
     {
         get
@@ -36,6 +37,9 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(this);
     }
 
+    /// <summary>
+    /// Reload currenct scene
+    /// </summary>
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -51,6 +55,9 @@ public class GameManager : MonoBehaviour
         return isKeyboard;
     }
 
+    /// <summary>
+    /// Quit the game, send session result to server
+    /// </summary>
     public void Quit()
     {
         if (!m_isQuitting)
@@ -59,23 +66,24 @@ public class GameManager : MonoBehaviour
             Player.Instance.FreezePlayer(true);
             GUIManager.Instance.GetMainCanvas().DogSpeak("Quitting...");
 
-            //Wait until data is pushed to server before quitting
             if(SessionManager.Instance.GetCurrentSession() != null)
             {
+                // Update session result to see if the session was not completed
                 if (!SessionManager.Instance.GetCurrentSession().sessionResults.completed)
                     SessionManager.Instance.GetCurrentSession().sessionResults.Log_SimulationClosedPrematurely();
 
-                if (SessionManager.Instance.GetCurrentSession().sessionType == Session.SESSION_TYPE.INSTRUMENT_POSITIONING)
-                    SessionManager.Instance.ReadFinalInstrumentPositioning();
+                // Update session 
+                /*if (SessionManager.Instance.GetCurrentSession().sessionType == Session.SESSION_TYPE.INSTRUMENT_POSITIONING)
+                    SessionManager.Instance.ReadFinalInstrumentPositioning();*/
 
                 string json = SessionManager.Instance.CreateJSONString(SessionManager.Instance.GetCurrentSession());
                 WWWForm form = SessionManager.Instance.GetSessionForm(json);
-                Logger.LogToFile("Just about to send request, " + SessionManager.Instance.GetCurrentSession().GetID());
+                Logger.LogToFile("Quit request, sending request for session " + SessionManager.Instance.GetCurrentSession().GetID());
+                //Wait until data is pushed to server before quitting
                 NetworkManager.Instance.SendRequest(form, "recordSession.php",
                      (string reply) => {
 
-                         Logger.LogToFile("Session recorded, id " + SessionManager.Instance.GetCurrentSession().GetID());
-                         Logger.LogToFile("Reply" + reply);
+                         Logger.LogToFile("Session successfully recorded, id " + SessionManager.Instance.GetCurrentSession().GetID());
                          Logger.LogToFile("Quitting now");
                          Application.Quit();
                      },
@@ -84,12 +92,13 @@ public class GameManager : MonoBehaviour
                          Logger.LogToFile("Failed to upload results, id " + SessionManager.Instance.GetCurrentSession().GetID());
                      },
                      () => {
-                         Logger.LogToFile("Quitting now");
+                         Logger.LogToFile("All attempts failed, quitting now");
                          Application.Quit();
                      });
             }
             else
             {
+                Logger.LogToFile("Quit request, session object is null, nothing will be exported to server, quitting now");
                 Application.Quit();
             }
            

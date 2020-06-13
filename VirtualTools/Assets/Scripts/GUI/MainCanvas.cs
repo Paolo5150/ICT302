@@ -38,7 +38,7 @@ public class MainCanvas : MonoBehaviour
 
     public void Init()
     {
-		
+		// Get all objects references
 		m_connectPanel = GameObject.Find("ConnectPanel");
         m_dogPanel = GameObject.Find("DogPanel");
         m_controlPanel = GameObject.Find("ControlsHintPanel"); 
@@ -82,24 +82,15 @@ public class MainCanvas : MonoBehaviour
         m_resumeButton.SetActive(false);
         m_showTutorialsPanel.SetActive(false);
         m_pauseIcon.SetActive(false);
-
-
-
-
     }
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(CheckConnect());
-        
+        //Check connection
+        StartCoroutine(CheckConnect());        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-  
+
     public void SetPauseIconOn(bool on)
     {
         m_pauseIcon.SetActive(on);
@@ -108,14 +99,16 @@ public class MainCanvas : MonoBehaviour
     {
         m_showTutorialsPanel.SetActive(on);
         GameObject yesBtn = m_showTutorialsPanel.transform.Find("Yes").gameObject;
+        // Add selected object, so GamePad can navigate buttond
         GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(yesBtn);
-
     }
 
     public void SetAssessmentModePanel(bool on)
     {
         m_assessmentModePanel.SetActive(on);
     }
+
+    // Enable/disable control hints, depending on last input device used
     public void SetHintActive(bool active)
     {
         m_controlPanel.SetActive(active);
@@ -137,8 +130,7 @@ public class MainCanvas : MonoBehaviour
         {
             m_gamepadHints.SetActive(false);
             m_keyboardHints.SetActive(false);
-        }
-        
+        }        
     }
 
     public void SetResultsPanelTitle(string msg)
@@ -202,8 +194,7 @@ public class MainCanvas : MonoBehaviour
 				string t;
 				t = "Sorry you do not have connection, please check your internet.";    
 				m_connectPanel.transform.GetComponentInChildren<TextMeshProUGUI>().text = t;
-				m_connectPanel.SetActive(true);
-				
+				m_connectPanel.SetActive(true);				
 
 			}
 			else 
@@ -219,6 +210,12 @@ public class MainCanvas : MonoBehaviour
 			
 		}
     }
+    /// <summary>
+    /// Displays a sequence of insturctions which can be dismissed by mouse click
+    /// </summary>
+    /// <param name="instructions">Instructions to be displayed</param>
+    /// <param name="action">Action to be taken at the end of the seuence</param>
+    /// <returns></returns>
     private IEnumerator InstructionSequence(string[] instructions, Action action)
     {
         yield return new WaitForSeconds(0.05f);
@@ -242,6 +239,11 @@ public class MainCanvas : MonoBehaviour
         action();
     }
 
+    /// <summary>
+    /// Start instruction sequence
+    /// </summary>
+    /// <param name="instructions">Instructions to be displayed</param>
+    /// <param name="action">Action to be taken at the end of the seuence</param>
     public void DogInstructionSequence(string[] instructions, Action action)
     {
         StopAllCoroutines();
@@ -270,6 +272,13 @@ public class MainCanvas : MonoBehaviour
         SetSceneSelector(m_escapeMenu.activeSelf); //Hide or show the scene selector depending on whether the escape menu is hidden or shown, respectively
     }
 
+    /// <summary>
+    /// Display result menu
+    /// </summary>
+    /// <param name="name">Student name</param>
+    /// <param name="studentNumber">Student number</param>
+    /// <param name="results">Session results</param>
+    /// <param name="isPause">Whether this menu is displayed for pause</param>
     public void DisplayResults(string name, string studentNumber, SessionResults results, bool isPause = false)
     {
         m_gamepadHints.SetActive(false);
@@ -297,16 +306,15 @@ public class MainCanvas : MonoBehaviour
         if(isPause && GameManager.Instance.IsAssessmentMode())
             m_logsText.text = "Not available while the session is running.";
 
-
         m_linkText.text = "See the full report at: http://vegas.murdoch.edu.au/vinst/";
 
+        // Add seleceted object for GamePad navigation
         if (m_resumeButton.activeInHierarchy)
             GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(m_resumeButton);
         else if(m_exitButton.activeInHierarchy)
             GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(m_exitButton);
         else if (m_nextSessionButton.activeInHierarchy)
             GameObject.Find("EventSystem").GetComponent<EventSystem>().SetSelectedGameObject(m_nextSessionButton);
-
     }
 
     public void HideResultPanel()
