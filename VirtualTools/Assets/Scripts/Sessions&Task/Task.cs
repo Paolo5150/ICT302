@@ -19,9 +19,29 @@ public abstract class Task
 
     public Task()
     {
-        taskStatus = STATUS.PENDING;
         instructions = new List<string>();
+        Reset();
     }
+
+    /// <summary>
+    /// Restart the task from the beginning
+    /// </summary>
+    public void Restart()
+    {
+        taskStatus = STATUS.PENDING;
+        AttemptNumber += 1;
+    }
+
+    /// <summary>
+    /// Reset the task and the number of attempts.
+    /// </summary>
+    public void Reset()
+    {
+        taskStatus = STATUS.PENDING;
+        AttemptNumber = 1;
+    }
+
+    public int AttemptNumber { get; set; } = 1;
 
     /// <summary>
     /// Evaluate the task

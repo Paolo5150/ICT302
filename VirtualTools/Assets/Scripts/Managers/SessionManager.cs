@@ -116,7 +116,7 @@ public class SessionManager : MonoBehaviour
         session.SetSessionName("Select By Name");
         session.sessionType = Session.SESSION_TYPE.SELECT_BY_NAME;
 
-        session.instructions = new string[] { "In this scenario, you are required to select intruments by their name." };
+        session.instructions = new string[] { "In this scenario, you are required to select instruments by their name." };
 
         session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
 
@@ -153,7 +153,7 @@ public class SessionManager : MonoBehaviour
         session.SetSessionName("Select By Purpose");
         session.sessionType = Session.SESSION_TYPE.SELECT_BY_PURPOSE;
 
-        session.instructions = new string[] { "In this scenario, you are required to select intruments by a description of their purpose." };
+        session.instructions = new string[] { "In this scenario, you are required to select instruments by a description of their purpose." };
         session.sessionResults.isAssessed = GameManager.Instance.IsAssessmentMode();
 
         m_allSessions.Add(session);

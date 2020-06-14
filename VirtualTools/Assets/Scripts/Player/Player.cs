@@ -5,7 +5,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour
 {
-    // Event, triggered when the player selects an intrument
+    // Event, triggered when the player selects an instrument
     public delegate void OnInstrumentSelected(Instrument.INSTRUMENT_TAG instrumentTag);
     public static event OnInstrumentSelected instrumentSelectedEvent;
 
@@ -300,7 +300,7 @@ public class Player : MonoBehaviour
                         GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] {
                     "You can now place the instrument in the slots on the tray",
                     "The instrument MUST go in a specific order!",
-                    "To drop the intrument, just press the left mouse button (A button on gamepad)"
+                    "To drop the inatrument, just press the left mouse button (A button on gamepad)"
                 }, () => {
                     FreezePlayer(false);
                     GUIManager.Instance.GetMainCanvas().SetPauseIconOn(false);
@@ -324,7 +324,7 @@ public class Player : MonoBehaviour
     private void UpdatePointingInstrumentPositionTaskSlot()
     {
         InstrumentPositionTaskSlot slot = m_instrumentSelector.GetInstrumentPositionTaskSlotRaycastFromCamera(RaycastLength);
-        // If I'm looking at an intrument and it's not the one i was already looking at
+        // If I'm looking at an instrument and it's not the one i was already looking at
         if (m_selectedInstrumentToPlace != null && slot != null && slot != m_currentlyPointingInstrumentPositionTaskSlot)
         {
             if (m_currentlyPointingInstrumentPositionTaskSlot != null)
@@ -347,7 +347,7 @@ public class Player : MonoBehaviour
     private void UpdatePointingInstrument()
     {
         Instrument instrument = m_instrumentSelector.GetInstrumentRaycastFromCamera(RaycastLength);
-        // If I'm looking at an intrument and it's not the one i was already looking at
+        // If I'm looking at an instrument and it's not the one i was already looking at
         if (instrument != null && instrument != m_currentlyPointingInstrument)
         {
             if (m_currentlyPointingInstrument != null)

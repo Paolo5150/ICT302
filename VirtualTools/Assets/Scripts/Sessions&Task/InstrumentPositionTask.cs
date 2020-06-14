@@ -21,7 +21,7 @@ public class InstrumentPositionTask : Task
     /// <param name="instrument">The instrument for this task</param>
     public InstrumentPositionTask(InstrumentPositionTaskSlot slot, Instrument.INSTRUMENT_TAG instrument)
     {
-        // Hacky: all tasks of this type have the same instructioni, which is currently hardcoded
+        // Hacky: all tasks of this type have the same instruction, which is currently hardcoded
         // (this feature was requested later in the project and the 'Task' class wasn't very suitable for this particular type)
         instructions.Add("New task: position the instruments for a <b><u>Spay dog</u></b>");
 

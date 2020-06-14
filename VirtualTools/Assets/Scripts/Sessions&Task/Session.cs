@@ -203,8 +203,18 @@ public class SessionResults
         if (tasks.Count == 0)
             return false;
 
-        System.Random r = new System.Random();
-        m_currentTask = tasks[r.Next(tasks.Count)];
+        // Assign next task
+        if (m_currentTask.taskStatus == Task.STATUS.COMPLETED_FAIL && !GameManager.Instance.IsAssessmentMode() && m_currentTask.AttemptNumber < 2)
+        {
+            // From Isobel's feedback: Students should be given two chances to select the correct instrument
+            m_currentTask.Restart();
+        }
+        else
+        {
+            System.Random r = new System.Random();
+            m_currentTask = tasks[r.Next(tasks.Count)];
+            m_currentTask.Reset(); // Must reset the number of attempts so they get 2 chances again since the task might have been failed before.
+        }
         StartCurrentTask();
         return true;
     }
