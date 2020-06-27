@@ -284,7 +284,6 @@ public class Player : MonoBehaviour
             // Confirm selection
             if (Input.GetButtonDown("Fire1"))
             {
-                instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
                 if (SessionManager.Instance.GetCurrentSession().GetCurrentTask() is InstrumentPositionTask)
                 {
                     m_currentlyPointingInstrument.GetComponent<Collider>().enabled = false;
@@ -309,6 +308,9 @@ public class Player : MonoBehaviour
                 });
                     }
                 }
+                else
+                    instrumentSelectedEvent(m_currentlyPointingInstrument.instrumentTag);
+
             }
             // Put item back
             if (Input.GetButtonDown("Fire2"))

@@ -407,7 +407,12 @@ public class SessionManager : MonoBehaviour
             }
 
             if (allGood)
-                CompleteCurrentSession();
+            {
+                GUIManager.Instance.GetMainCanvas().DogInstructionSequence(new string[] { "Well done! (Left mouse click or button A to end the session)" }, () => {
+                    CompleteCurrentSession();
+
+                });
+            }
         }
     }
 

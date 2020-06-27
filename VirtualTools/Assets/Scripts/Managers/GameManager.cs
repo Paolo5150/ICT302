@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void ReloadScene()
     {
+        GUIManager.Instance.GetMainCanvas().StopAllCoroutines();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

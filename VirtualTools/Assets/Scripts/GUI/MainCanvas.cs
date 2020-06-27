@@ -223,6 +223,7 @@ public class MainCanvas : MonoBehaviour
         int index = 0;
         while(index < instructions.Length)
         {
+            if (index >= instructions.Length) break;
             DogSpeak(instructions[index]);
             if (Input.GetButtonDown("Fire1") && !SessionManager.Instance.IsSessionPaused())
             {
@@ -236,7 +237,15 @@ public class MainCanvas : MonoBehaviour
                 yield return null;
         }
         SetDogEnabled(false);
+        StartCoroutine(StartAction(action));
+        yield return null;
+
+    }
+
+    IEnumerator StartAction(Action action)
+    {
         action();
+        yield return null;
     }
 
     /// <summary>
